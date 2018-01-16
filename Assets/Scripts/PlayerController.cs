@@ -31,10 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Reverse gravity if upside down
-
-
-        if(upsideDown)
+        if(upsideDown)      // Reverse physics values if upside down
         {
             gravityScale = -gravityScale;
             jumpHeight = -jumpHeight;

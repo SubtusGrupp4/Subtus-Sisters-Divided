@@ -22,25 +22,11 @@ public class CameraController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        /*
-        // Get the X distance from the camera to the players
-        float midPlayers = playerTop.position.x - playerBot.position.x;
-
-        float distanceTop = playerTop.position.x - transform.position.x + offset;
-        float distanceBot = playerBot.position.x - transform.position.x + offset;
-
-        if (distanceTop > deadZone && distanceBot > deadZone)
-            transform.Translate(new Vector2((distanceTop - deadZone) / followSpeed, 0.0f), Space.Self);      // Move Right
-        else if (distanceTop < -deadZone && distanceBot < -deadZone)
-            transform.Translate(new Vector2((distanceTop + deadZone) / followSpeed, 0.0f), Space.Self);      // Move Left
-
-        */
-
         // Get the X distance from the camera to the players
         midPlayers = playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2;
         camDistance = midPlayers - transform.position.x;
-        //transform.position = new Vector3(midPlayers, 0f, -10f);
 
+        // Move camera towards the midpoint of the players
         if (camDistance > deadZone && camDistance > deadZone)
             transform.Translate(new Vector2((camDistance - deadZone) / followSpeed, 0.0f), Space.Self);      // Move Right
         else if (camDistance < -deadZone && camDistance < -deadZone)
