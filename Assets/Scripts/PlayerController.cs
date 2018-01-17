@@ -53,4 +53,13 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(new Vector2(horizontal * speed, 0f), ForceMode2D.Impulse);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "DialogueTrigger")
+        {
+            Dialogue dialogue = collision.GetComponent<DialogueTrigger>().dialogue;
+            DialogueManager.instance.StartDialogue(dialogue);
+        }
+    }
 }
