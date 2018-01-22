@@ -9,6 +9,9 @@ public enum Controller
 
 public class PlayerController : MonoBehaviour
 {
+
+    // KOMMENTAR  KOLlA OM VI KAN FIXA SMÅ HOPP.
+
     public Controller player;
     private string controllerCode;
 
@@ -20,6 +23,10 @@ public class PlayerController : MonoBehaviour
     private string jumpInput = "Jump";
     private float distanceGraceForJump = 0.1f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
 
+    // For Input manager, How much on the joystick is needed before you start moving?
+    private float stillGrace = 0.1f; 
+    private float walkingCutOff = 0.4f;
+    
     private AudioSource myAudio; // Audio source on player object or sound master or game master ??? who knows , we do later.
     private BoxCollider2D myBox;
     private new Rigidbody2D rigidbody2D;
@@ -34,7 +41,8 @@ public class PlayerController : MonoBehaviour
     public bool flipped;
     private int flippValue = 1; // Value between 1 and -1
 
-    public float Speed;
+    public float WalkingSpeed;
+    public float Speed; 
     public float JumpVelocity;
 
     [GiveTag]
@@ -71,18 +79,18 @@ public class PlayerController : MonoBehaviour
     {
         if (isActive)
         {
-            resetJump();
+            ResetJump();
         }
     }
     private void FixedUpdate()
     {
         if (isActive)
         {
-            move();
+            Move();
         }
     }
 
-    private void move()
+    private void Move()
     {
         // Temporary
         if (Input.GetKeyDown(KeyCode.Q))
@@ -96,16 +104,22 @@ public class PlayerController : MonoBehaviour
             rigidbody2D.velocity = Vector2.up * flippValue * JumpVelocity;
 
             myAudio.PlayOneShot(jumpSound); // needs change?? need landing sound ??
-            // play jump sound       
             // play jump animation
         }
 
-        // control in air??, fix states? eg still, walking, running, or value between 0 and 1 is gucci?? 
+        
+        float X = Input.GetAxis(HorAx); // Valute between 0 and 1 from input manager.
 
-        float X = Input.GetAxis(HorAx);
+        if (X <= stillGrace)
+            X = 0;
+        else if (X > stillGrace && X <= walkingCutOff)
+            X = WalkingSpeed;
+        else if (X > walkingCutOff)
+            X = Speed;
+
         float Y = GetComponent<Rigidbody2D>().velocity.y;
 
-        rigidbody2D.velocity = new Vector2(X * Speed, Y);
+        rigidbody2D.velocity = new Vector2(X, Y);
     }
 
     public void Die()
@@ -121,7 +135,7 @@ public class PlayerController : MonoBehaviour
         isActive = true;
     }
 
-    private void resetJump()
+    private void ResetJump()
     {
         inAir = true;
         for (int i = 0; i < ResetJumpOn.Length; i++)
