@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour {
 
+    [SerializeField]
+    private bool customTag = false;
     public Dialogue[] dialogues;
 
     private void Start()
     {
+        if(!customTag)
+            transform.tag = "DialogueTrigger";
+
         dialogues = GetComponents<Dialogue>();
     }
 

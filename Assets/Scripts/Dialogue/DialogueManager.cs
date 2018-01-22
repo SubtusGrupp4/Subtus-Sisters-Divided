@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     private AudioSource audioSource;
     private Queue<string> sentences;
     public bool isBusy = false;
+    public bool moveCamera = false;
 
     [SerializeField]
     private Canvas dialogueCanvas;
@@ -23,6 +24,8 @@ public class DialogueManager : MonoBehaviour
     private int sentenceIndex = 0;
     private Dialogue[] dialogues;
 
+    private CameraController camController;
+
     private void Awake()
     {
         CreateSingleton();
@@ -33,6 +36,11 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         dialogueCanvas.enabled = false;
         audioSource = GetComponent<AudioSource>();
+
+        camController = Camera.main.GetComponent<CameraController>();
+
+        if (dialogueCanvas == null || nameText == null || image == null || dialogueText == null)
+            Debug.LogWarning("Missing references on DialogueManager. Assign in the inspector.");
     }
 
     private void CreateSingleton()
@@ -90,7 +98,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogues[dialogueIndex].audioClips[sentenceIndex] != null)
             {
-                Debug.Log("Sentence index: " + sentenceIndex);
+                //Debug.Log("Sentence index: " + sentenceIndex);
                 audioSource.clip = dialogues[dialogueIndex].audioClips[sentenceIndex];
                 audioSource.Play();
             }
@@ -105,6 +113,10 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIndex++;
         sentenceIndex = 0;
+
+        if (dialogues[dialogueIndex - 1].moveCamera)
+            MoveCamera();
+
         if (dialogueIndex == dialogues.Length)
             EndDialogue();
         else if (dialogues[dialogueIndex - 1].waitTime > 0f)
@@ -118,6 +130,16 @@ public class DialogueManager : MonoBehaviour
         dialogueCanvas.enabled = false;
         yield return new WaitForSeconds(dialogues[dialogueIndex - 1].waitTime);
         StartDialogue();
+    }
+
+    private void MoveCamera()
+    {
+        moveCamera = true;
+        float moveCameraSpeed = dialogues[dialogueIndex - 1].moveCameraSpeed;
+        float moveCameraX = dialogues[dialogueIndex - 1].moveCameraX;
+        float moveCameraWait = dialogues[dialogueIndex - 1].moveCameraWait;
+
+        camController.DialogueMove(moveCameraSpeed, moveCameraX, moveCameraWait);
     }
 
     public void EndDialogue()
