@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DialogueTrigger
+  - Floor
   layers:
   - Default
   - TransparentFX
