@@ -13,6 +13,7 @@ public class Grid : MonoBehaviour
     public float height = 1f;
 
     public Color color = Color.white;
+    public Color tileColor = Color.white;
 
     public bool hideInHierarchy = true;
     public GameObject tiles;

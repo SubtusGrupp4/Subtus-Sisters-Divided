@@ -24,17 +24,11 @@ public class GridEditor : Editor {
         string path = AssetDatabase.GetAssetPath(Selection.activeObject);
 
         if(string.IsNullOrEmpty(path))
-        {
             path = "Assets";
-        }
         else if(Path.GetExtension(path) != "")
-        {
             path = path.Replace(Path.GetFileName(path), "");
-        }
         else
-        {
             path += "/";
-        }
 
         var assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + "TileSet.asset");
         AssetDatabase.CreateAsset(asset, assetPathAndName);
@@ -49,14 +43,15 @@ public class GridEditor : Editor {
         EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
         grid.spriteWidth = CreateSlider("Width:", grid.spriteWidth);
         grid.spriteHeight = CreateSlider("Height:", grid.spriteHeight);
-        Color newColor = EditorGUILayout.ColorField("Color:", grid.color);
+        Color newColor = EditorGUILayout.ColorField("Grid Color:", grid.color);
+
+        EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
-        grid.hideInHierarchy = EditorGUILayout.Toggle("Hide in hierarchy:", grid.hideInHierarchy);
-        //grid.tiles
+        grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
+        grid.hideInHierarchy = EditorGUILayout.Toggle("Hide in Hierarchy", grid.hideInHierarchy);
+
         if (EditorGUI.EndChangeCheck())
-        {
             grid.color = newColor;
-        }
 
         // Tile Prefab
         EditorGUI.BeginChangeCheck();
@@ -107,6 +102,12 @@ public class GridEditor : Editor {
             }
         }
 
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
         EditorGUILayout.Space();
         EditorGUILayout.Space();
         EditorGUILayout.Space();
@@ -166,7 +167,6 @@ public class GridEditor : Editor {
                 Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
                 Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
 
-            //Debug.Log("Aligned: " + aligned);
             if (TileOnPosition(aligned) != -1)
                 return;
 
@@ -179,7 +179,13 @@ public class GridEditor : Editor {
 
             spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
             spawnGO.transform.position = aligned;
-            spawnGO.transform.parent = grid.tiles.transform;
+            spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
+
+            if (grid.hideInHierarchy)
+                spawnGO.transform.parent = grid.tiles.transform;
+            else
+                spawnGO.transform.parent = grid.transform;
+
             grid.tileTransforms.Add(spawnGO.transform);
 
             Undo.RegisterCreatedObjectUndo(spawnGO, "Create " + spawnGO.name);
@@ -208,24 +214,16 @@ public class GridEditor : Editor {
     private int TileOnPosition(Vector3 aligned)
     {
         if (grid.tileTransforms.Count <= 0)
-        {
-            Debug.Log("tileTransforms.Count == 0");
             return -1;
-        }
 
         for (int i = 0; i < grid.tileTransforms.Count; i++)
         {
-            Debug.Log("i: " + i);
             if (grid.tileTransforms[i] == null)
                 continue;
 
             if (aligned == grid.tileTransforms[i].position)
-            {
-                Debug.Log("Returning i: " + i);
                 return i;
-            }
         }
-        Debug.Log("Returning -1");
         return -1;
     }
 
