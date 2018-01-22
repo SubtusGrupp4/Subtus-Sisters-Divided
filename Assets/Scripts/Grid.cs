@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
+    [Header("Debug Variables, please ignore")]
     public float spriteWidth = 16f;
     public float spriteHeight = 16f;
     public float pixelsPerUnit = 16f;
@@ -12,6 +13,10 @@ public class Grid : MonoBehaviour
     public float height = 1f;
 
     public Color color = Color.white;
+
+    public bool hideInHierarchy = true;
+    public GameObject tiles;
+    public List<Transform> tileTransforms = new List<Transform>();
 
     public Transform tilePrefab;
 

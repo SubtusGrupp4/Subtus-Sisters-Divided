@@ -45,13 +45,15 @@ public class GridEditor : Editor {
 
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
-
         EditorGUI.BeginChangeCheck();
+        EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
         grid.spriteWidth = CreateSlider("Width:", grid.spriteWidth);
         grid.spriteHeight = CreateSlider("Height:", grid.spriteHeight);
         Color newColor = EditorGUILayout.ColorField("Color:", grid.color);
-        if(EditorGUI.EndChangeCheck())
+        EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
+        grid.hideInHierarchy = EditorGUILayout.Toggle("Hide in hierarchy:", grid.hideInHierarchy);
+        //grid.tiles
+        if (EditorGUI.EndChangeCheck())
         {
             grid.color = newColor;
         }
@@ -104,6 +106,12 @@ public class GridEditor : Editor {
                 }
             }
         }
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
+        base.OnInspectorGUI();
     }
 
     private float CreateSlider(string labelName, float sliderPosition)
@@ -158,13 +166,21 @@ public class GridEditor : Editor {
                 Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
                 Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
 
-            Transform tileOnPosition = GetTransformFromPosition(aligned);
-            if (tileOnPosition != null)
+            //Debug.Log("Aligned: " + aligned);
+            if (TileOnPosition(aligned) != -1)
                 return;
+
+            if (grid.tiles == null)
+            {
+                grid.tiles = new GameObject("Tiles");
+                grid.tiles.transform.parent = grid.transform;
+                grid.tiles.hideFlags = HideFlags.HideInHierarchy;
+            }
 
             spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
             spawnGO.transform.position = aligned;
-            spawnGO.transform.parent = grid.transform;
+            spawnGO.transform.parent = grid.tiles.transform;
+            grid.tileTransforms.Add(spawnGO.transform);
 
             Undo.RegisterCreatedObjectUndo(spawnGO, "Create " + spawnGO.name);
         }
@@ -179,32 +195,38 @@ public class GridEditor : Editor {
             Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
             Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
 
-        Transform tileTransform = GetTransformFromPosition(aligned);
-        if (tileTransform != null)
+        int tileOnPositionIndex = TileOnPosition(aligned);
+
+        if (tileOnPositionIndex != -1)
         {
             Undo.IncrementCurrentGroup();
-            Undo.DestroyObjectImmediate(tileTransform.gameObject);
+            Undo.DestroyObjectImmediate(grid.tileTransforms[tileOnPositionIndex].gameObject);
+            grid.tileTransforms.RemoveAt(tileOnPositionIndex);
         }
     }
 
-    /// <summary>
-    /// Might need some optimising, currently checks ALL tiles
-    /// </summary>
-    private Transform GetTransformFromPosition(Vector3 aligned)
+    private int TileOnPosition(Vector3 aligned)
     {
-        int i = grid.transform.childCount - 1;
-        while(i > 0)
+        if (grid.tileTransforms.Count <= 0)
         {
-            Transform tileTransform = grid.transform.GetChild(i);
-            if(tileTransform.position == aligned)
-            {
-                return tileTransform;
-            }
-
-            i--;
+            Debug.Log("tileTransforms.Count == 0");
+            return -1;
         }
 
-        return null;
+        for (int i = 0; i < grid.tileTransforms.Count; i++)
+        {
+            Debug.Log("i: " + i);
+            if (grid.tileTransforms[i] == null)
+                continue;
+
+            if (aligned == grid.tileTransforms[i].position)
+            {
+                Debug.Log("Returning i: " + i);
+                return i;
+            }
+        }
+        Debug.Log("Returning -1");
+        return -1;
     }
 
 }
