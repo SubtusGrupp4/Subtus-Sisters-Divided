@@ -24,6 +24,7 @@ public class TileGrid : MonoBehaviour
     public bool showGrid = true;
     [HideInInspector]
     public Sprite sprite;
+    public float rotationZ;
 
     private void OnDrawGizmos()
     {

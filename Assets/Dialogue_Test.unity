@@ -654,6 +654,7 @@ MonoBehaviour:
   resolutionY: 896
   resetKey: 0
   quitKey: 0
+  isFrozen: 0
 --- !u!4 &958887691
 Transform:
   m_ObjectHideFlags: 0
@@ -1464,6 +1465,7 @@ MonoBehaviour:
   debug: 0
   showGrid: 0
   sprite: {fileID: 21300000, guid: 681652c81f7f21747a0cfc6cf044ade7, type: 3}
+  rotationZ: 0
 --- !u!4 &2005523050
 Transform:
   m_ObjectHideFlags: 0

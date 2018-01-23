@@ -51,6 +51,7 @@ public class GridEditor : Editor {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
+        grid.rotationZ = EditorGUILayout.FloatField("Rotaton:", grid.rotationZ);
         grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
 
         if (EditorGUI.EndChangeCheck())
@@ -96,6 +97,7 @@ public class GridEditor : Editor {
                     oldIndex = index;
                     grid.tilePrefab = grid.tileSet.prefabs[index];
                     grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+                    grid.rotationZ = 0f;
 
                     float width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;
                     float height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;
@@ -148,29 +150,21 @@ public class GridEditor : Editor {
             case EventType.KeyDown:
                 {
                     if (Event.current.keyCode == (KeyCode.Keypad1))
-                    {
                         grid.tileColor = Color.white;
-                    }
                     if (Event.current.keyCode == (KeyCode.Keypad2))
-                    {
                         grid.tileColor = Color.red;
-                    }
                     if (Event.current.keyCode == (KeyCode.Keypad3))
-                    {
                         grid.tileColor = Color.green;
-                    }
                     if (Event.current.keyCode == (KeyCode.Keypad4))
-                    {
                         grid.tileColor = Color.blue;
-                    }
                     if (Event.current.keyCode == (KeyCode.Keypad5))
-                    {
                         grid.tileColor = Color.yellow;
-                    }
                     if (Event.current.keyCode == (KeyCode.Keypad6))
-                    {
                         grid.tileColor = Color.black;
-                    }
+                    if (Event.current.keyCode == (KeyCode.Keypad9))
+                        grid.rotationZ += 90f;
+                    if (Event.current.keyCode == (KeyCode.Keypad7))
+                        grid.rotationZ -= 90f;
                     break;
                 }
         }
@@ -210,6 +204,7 @@ public class GridEditor : Editor {
 
             spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
             spawnGO.transform.position = aligned;
+            spawnGO.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
             spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
 
             if (grid.hideInHierarchy)
