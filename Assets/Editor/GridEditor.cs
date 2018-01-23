@@ -4,18 +4,17 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-[CustomEditor(typeof(Grid))]
+[CustomEditor(typeof(TileGrid))]
 public class GridEditor : Editor {
 
-    Grid grid;
+    TileGrid grid;
 
     private int oldIndex;
-    private bool debug = false;
 
     private void OnEnable()
     {
         oldIndex = 0;
-        grid = (Grid)target;
+        grid = (TileGrid)target;
     }
 
     [MenuItem("Assets/Create/TileSet")]
@@ -40,10 +39,13 @@ public class GridEditor : Editor {
 
     public override void OnInspectorGUI()
     {
+        grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+
         EditorGUI.BeginChangeCheck();
         EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
-        grid.spriteWidth = CreateSlider("Width:", grid.spriteWidth);
-        grid.spriteHeight = CreateSlider("Height:", grid.spriteHeight);
+        grid.showGrid = EditorGUILayout.Toggle("Show Grid", grid.showGrid);
+        grid.width = EditorGUILayout.FloatField("Width:", grid.width);
+        grid.height = EditorGUILayout.FloatField("Height:", grid.height);
         Color newColor = EditorGUILayout.ColorField("Grid Color:", grid.color);
 
         EditorGUILayout.Space();
@@ -93,6 +95,7 @@ public class GridEditor : Editor {
                 {
                     oldIndex = index;
                     grid.tilePrefab = grid.tileSet.prefabs[index];
+                    grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
 
                     //float width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;
                     //float height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;
@@ -101,11 +104,13 @@ public class GridEditor : Editor {
                     //grid.spriteHeight = height;
                 }
             }
+            if(grid.sprite != null)
+                EditorGUILayout.ObjectField(new GUIContent("Tile Sprite", "READ-ONLY. Changing this does not affect anything."), grid.sprite, typeof(Sprite), false);
         }
 
         EditorGUILayout.Space();
-        debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), debug);
-        if (debug)
+        grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
+        if (grid.debug)
             base.OnInspectorGUI();
     }
 

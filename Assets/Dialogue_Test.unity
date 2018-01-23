@@ -1408,18 +1408,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e871015408f87c4a958d8eb2acbabfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteWidth: 16
-  spriteHeight: 16
-  pixelsPerUnit: 16
   width: 1
   height: 1
   color: {r: 1, g: 1, b: 1, a: 1}
-  tileColor: {r: 0.048442904, g: 0.053788286, b: 0.8235294, a: 1}
+  tileColor: {r: 1, g: 1, b: 1, a: 1}
   hideInHierarchy: 1
   tiles: {fileID: 1256519281}
   tileTransforms: []
   tilePrefab: {fileID: 4511230062501250, guid: c56aa4048590bec4db976c261b1c6306, type: 2}
   tileSet: {fileID: 11400000, guid: 3c8714cfb6a6e874081754e61830de38, type: 2}
+  debug: 0
+  showGrid: 0
+  sprite: {fileID: 21300000, guid: 681652c81f7f21747a0cfc6cf044ade7, type: 3}
 --- !u!4 &2005523050
 Transform:
   m_ObjectHideFlags: 0
@@ -1981,6 +1981,8 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 0
   moveCameraWait: 0
+  hide: 0
+  debug: 0
 --- !u!114 &2147380801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,6 +2008,8 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 0
   moveCameraWait: 0
+  hide: 0
+  debug: 0
 --- !u!114 &2147380802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,9 +2031,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 15b8a3fc7d66f7443a5ee2fe1f690816, type: 3}
   - {fileID: 8300000, guid: 9f9ff7f21d4c42e46a2430c3defc801c, type: 3}
   waitTime: 1
-  moveCamera: 1
+  moveCamera: 0
   freezeTime: 0
   freezeCamera: 0
   moveCameraX: 10
   moveCameraSpeed: 20
   moveCameraWait: 4
+  hide: 0
+  debug: 0

@@ -24,6 +24,11 @@ public class Dialogue : MonoBehaviour {
     public float moveCameraSpeed = 0f;
     public float moveCameraWait = 0f;
 
+    [HideInInspector]
+    public bool hide = false;
+    [HideInInspector]
+    public bool debug = false;
+
     private void Start()
     {
         // Prevent dividing by 0

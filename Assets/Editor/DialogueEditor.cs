@@ -8,8 +8,6 @@ using System.IO;
 public class DialogueEditor : Editor {
 
     Dialogue d;
-    private bool debug = false;
-    private bool hide = false;
 
     private void OnEnable()
     {
@@ -20,8 +18,8 @@ public class DialogueEditor : Editor {
     {
         EditorGUILayout.LabelField("UI Settings", EditorStyles.boldLabel);
         d.npcName = EditorGUILayout.TextField(new GUIContent("NPC Name", "Will be displayed at the top as the name."), d.npcName);
-        hide = EditorGUILayout.Toggle(new GUIContent("Hide", "Hide settings to save space."), hide);
-        if (!hide)
+        d.hide = EditorGUILayout.Toggle(new GUIContent("Hide", "Hide settings to save space."), d.hide);
+        if (!d.hide)
         {
             d.npcSprite = (Sprite)EditorGUILayout.ObjectField(new GUIContent("NPC Sprite", "Character portrait."), d.npcSprite, typeof(Sprite), false);
             d.rightAligned = EditorGUILayout.Toggle(new GUIContent("Right Aligned", "Choose what side the portrait will be on."), d.rightAligned);
@@ -51,8 +49,8 @@ public class DialogueEditor : Editor {
             d.freezeCamera = EditorGUILayout.Toggle(new GUIContent("Freeze Camera", "Stops the camera from moving, and in turn prevents the players from leaving the view."), d.freezeCamera);
 
             EditorGUILayout.Space();
-            debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), debug);
-            if (debug)
+            d.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), d.debug);
+            if (d.debug)
                 base.OnInspectorGUI();
         }
     }
