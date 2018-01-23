@@ -26,6 +26,8 @@ public class DialogueManager : MonoBehaviour
 
     private CameraController camController;
 
+    public bool freezeCamera = false;
+
     private void Awake()
     {
         CreateSingleton();
@@ -73,6 +75,9 @@ public class DialogueManager : MonoBehaviour
         dialogueCanvas.enabled = true;
         nameText.text = dialogues[dialogueIndex].npcName;
         image.sprite = dialogues[dialogueIndex].npcSprite;
+
+        freezeCamera = dialogues[dialogueIndex].freezeCamera;
+        GameManager.instance.SetFreezeGame(dialogues[dialogueIndex].freezeTime);
 
         sentences.Clear();
 
@@ -147,6 +152,8 @@ public class DialogueManager : MonoBehaviour
         dialogueCanvas.enabled = false;
         dialogueIndex = 0;
         sentenceIndex = 0;
+        GameManager.instance.SetFreezeGame(false);
+        freezeCamera = false;
 
         isBusy = false;
     }

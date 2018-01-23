@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (!DialogueManager.instance.moveCamera)
+        if (!DialogueManager.instance.moveCamera && !DialogueManager.instance.freezeCamera)
         {
             // Get the X distance from the camera to the players
             followPos = playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2;
