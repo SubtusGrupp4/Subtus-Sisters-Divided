@@ -143,6 +143,38 @@ public class GridEditor : Editor {
             RemoveTile(controlID, e, mousePos);
         }
 
+        switch (e.type)
+        {
+            case EventType.KeyDown:
+                {
+                    if (Event.current.keyCode == (KeyCode.Keypad1))
+                    {
+                        grid.tileColor = Color.white;
+                    }
+                    if (Event.current.keyCode == (KeyCode.Keypad2))
+                    {
+                        grid.tileColor = Color.red;
+                    }
+                    if (Event.current.keyCode == (KeyCode.Keypad3))
+                    {
+                        grid.tileColor = Color.green;
+                    }
+                    if (Event.current.keyCode == (KeyCode.Keypad4))
+                    {
+                        grid.tileColor = Color.blue;
+                    }
+                    if (Event.current.keyCode == (KeyCode.Keypad5))
+                    {
+                        grid.tileColor = Color.yellow;
+                    }
+                    if (Event.current.keyCode == (KeyCode.Keypad6))
+                    {
+                        grid.tileColor = Color.black;
+                    }
+                    break;
+                }
+        }
+
         /* If nothing is pressed, lose control (not used)
         if (e.isMouse && e.type == EventType.MouseUp)
         {
