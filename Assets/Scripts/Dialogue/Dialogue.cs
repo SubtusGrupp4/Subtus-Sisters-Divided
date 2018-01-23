@@ -23,4 +23,11 @@ public class Dialogue : MonoBehaviour {
     public float moveCameraX = 0f;
     public float moveCameraSpeed = 0f;
     public float moveCameraWait = 0f;
+
+    private void Start()
+    {
+        // Prevent dividing by 0
+        if(moveCameraSpeed <= 1f)
+            moveCameraSpeed = 1f;
+    }
 }

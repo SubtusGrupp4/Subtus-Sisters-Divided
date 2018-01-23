@@ -5,7 +5,9 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour {
 
     [SerializeField]
+    [Tooltip("Prevent the script from overriding the tag with \"DialogueTrigger\"")]
     private bool customTag = false;
+    [HideInInspector]
     public Dialogue[] dialogues;
 
     private void Start()

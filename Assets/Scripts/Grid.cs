@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    [Header("Debug Variables, please ignore")]
     public float spriteWidth = 16f;
     public float spriteHeight = 16f;
     public float pixelsPerUnit = 16f;

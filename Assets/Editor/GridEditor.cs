@@ -10,6 +10,7 @@ public class GridEditor : Editor {
     Grid grid;
 
     private int oldIndex;
+    private bool debug = false;
 
     private void OnEnable()
     {
@@ -48,7 +49,7 @@ public class GridEditor : Editor {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
-        grid.hideInHierarchy = EditorGUILayout.Toggle("Hide in Hierarchy", grid.hideInHierarchy);
+        grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
 
         if (EditorGUI.EndChangeCheck())
             grid.color = newColor;
@@ -103,16 +104,9 @@ public class GridEditor : Editor {
         }
 
         EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
-
-        base.OnInspectorGUI();
+        debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), debug);
+        if (debug)
+            base.OnInspectorGUI();
     }
 
     private float CreateSlider(string labelName, float sliderPosition)
