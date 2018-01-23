@@ -97,11 +97,11 @@ public class GridEditor : Editor {
                     grid.tilePrefab = grid.tileSet.prefabs[index];
                     grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
 
-                    //float width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;
-                    //float height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;
+                    float width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;
+                    float height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;
 
-                    //grid.spriteWidth = width;
-                    //grid.spriteHeight = height;
+                    grid.width = width;
+                    grid.height = height;
                 }
             }
             if(grid.sprite != null)
