@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -11,14 +12,19 @@ public class DialogueManager : MonoBehaviour
     public bool isBusy = false;
     public bool moveCamera = false;
 
+    [Header("Right Dialogue")]
     [SerializeField]
-    private Canvas dialogueCanvas;
+    private Canvas rDialogueCanvas;
+    private TextMeshProUGUI rNameText;
+    private Image rImage;
+    private TextMeshProUGUI rDialogueText;
+
+    [Header("Left Dialogue")]
     [SerializeField]
-    private Text nameText;
-    [SerializeField]
-    private Image image;
-    [SerializeField]
-    private Text dialogueText;
+    private Canvas lDialogueCanvas;
+    private TextMeshProUGUI lNameText;
+    private Image lImage;
+    private TextMeshProUGUI lDialogueText;
 
     private int dialogueIndex = 0;
     private int sentenceIndex = 0;
@@ -35,14 +41,28 @@ public class DialogueManager : MonoBehaviour
 
     void Start ()
     {
+        if (lDialogueCanvas == null || rDialogueCanvas == null)
+            Debug.LogWarning("Missing references on DialogueManager. Assign in the inspector on the DialogueManager object.");
+        else
+        {
+            Transform rPanel = rDialogueCanvas.transform.GetChild(0);
+            Transform lPanel = lDialogueCanvas.transform.GetChild(0);
+
+            rNameText = rPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
+            rImage = rPanel.GetChild(1).GetComponent<Image>();
+            rDialogueText = rPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
+
+            lNameText = lPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
+            lImage = lPanel.GetChild(1).GetComponent<Image>();
+            lDialogueText = lPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
+        }
+
         sentences = new Queue<string>();
-        dialogueCanvas.enabled = false;
+        lDialogueCanvas.enabled = false;
+        rDialogueCanvas.enabled = false;
         audioSource = GetComponent<AudioSource>();
 
         camController = Camera.main.GetComponent<CameraController>();
-
-        if (dialogueCanvas == null || nameText == null || image == null || dialogueText == null)
-            Debug.LogWarning("Missing references on DialogueManager. Assign in the inspector.");
     }
 
     private void CreateSingleton()
@@ -72,9 +92,21 @@ public class DialogueManager : MonoBehaviour
     {
         isBusy = true;
 
-        dialogueCanvas.enabled = true;
-        nameText.text = dialogues[dialogueIndex].npcName;
-        image.sprite = dialogues[dialogueIndex].npcSprite;
+        if(dialogues[dialogueIndex].rightAligned)
+        {
+            rDialogueCanvas.enabled = true;
+            lDialogueCanvas.enabled = false;
+
+            rNameText.text = dialogues[dialogueIndex].npcName;
+            rImage.sprite = dialogues[dialogueIndex].npcSprite;
+        }
+        else
+        {
+            lDialogueCanvas.enabled = true;
+            rDialogueCanvas.enabled = false;
+            lNameText.text = dialogues[dialogueIndex].npcName;
+            lImage.sprite = dialogues[dialogueIndex].npcSprite;
+        }
 
         freezeCamera = dialogues[dialogueIndex].freezeCamera;
         GameManager.instance.SetFreezeGame(dialogues[dialogueIndex].freezeTime);
@@ -97,7 +129,12 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+        if(dialogues[dialogueIndex].rightAligned)
+            rDialogueText.text = sentence;
+        else
+        {
+            lDialogueText.text = sentence;
+        }
 
         if (dialogues[dialogueIndex].audioClips.Length > sentenceIndex)
         {
@@ -132,7 +169,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DialogueDelay()
     {
-        dialogueCanvas.enabled = false;
+        lDialogueCanvas.enabled = false;
+        rDialogueCanvas.enabled = false;
         yield return new WaitForSeconds(dialogues[dialogueIndex - 1].waitTime);
         StartDialogue();
     }
@@ -149,7 +187,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        dialogueCanvas.enabled = false;
+        lDialogueCanvas.enabled = false;
+        rDialogueCanvas.enabled = false;
         dialogueIndex = 0;
         sentenceIndex = 0;
         GameManager.instance.SetFreezeGame(false);
