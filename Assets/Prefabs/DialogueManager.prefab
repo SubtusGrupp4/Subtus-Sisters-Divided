@@ -133,7 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBusy: 0
-  dialogueCanvas: {fileID: 0}
-  nameText: {fileID: 0}
-  image: {fileID: 0}
-  dialogueText: {fileID: 0}
+  moveCamera: 0
+  rDialogueCanvas: {fileID: 0}
+  lDialogueCanvas: {fileID: 0}
+  scrollSpeed: 8
+  freezeCamera: 0

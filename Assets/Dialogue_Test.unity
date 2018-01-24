@@ -2695,26 +2695,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114885578659963378, guid: 13ab66f15b041974fb1c9f14a204e61b,
         type: 2}
-      propertyPath: dialogueCanvas
-      value: 
-      objectReference: {fileID: 162524934}
-    - target: {fileID: 114885578659963378, guid: 13ab66f15b041974fb1c9f14a204e61b,
-        type: 2}
-      propertyPath: nameText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114885578659963378, guid: 13ab66f15b041974fb1c9f14a204e61b,
-        type: 2}
-      propertyPath: image
-      value: 
-      objectReference: {fileID: 1235672912}
-    - target: {fileID: 114885578659963378, guid: 13ab66f15b041974fb1c9f14a204e61b,
-        type: 2}
-      propertyPath: dialogueText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114885578659963378, guid: 13ab66f15b041974fb1c9f14a204e61b,
-        type: 2}
       propertyPath: rDialogueCanvas
       value: 
       objectReference: {fileID: 162524934}
@@ -2759,12 +2739,13 @@ MonoBehaviour:
   tileColor: {r: 1, g: 1, b: 1, a: 1}
   hideInHierarchy: 1
   tiles: {fileID: 1256519281}
-  tileTransforms: []
-  tilePrefab: {fileID: 4511230062501250, guid: c56aa4048590bec4db976c261b1c6306, type: 2}
-  tileSet: {fileID: 11400000, guid: 3c8714cfb6a6e874081754e61830de38, type: 2}
+  tileTransforms:
+  - {fileID: 0}
+  tilePrefab: {fileID: 4119290610039276, guid: 531f66400fa824a4ca126a4a4f38327d, type: 2}
+  tileSet: {fileID: 11400000, guid: 4724d98cab06fb445b2a46421ac54fe3, type: 2}
   debug: 0
   showGrid: 0
-  sprite: {fileID: 21300000, guid: 681652c81f7f21747a0cfc6cf044ade7, type: 3}
+  sprite: {fileID: 21300000, guid: 41f637d0b990116408a65e5ea599a9e5, type: 3}
   rotationZ: 0
 --- !u!4 &2005523050
 Transform:
@@ -3326,6 +3307,8 @@ MonoBehaviour:
   moveCameraWait: 0
   hide: 0
   debug: 0
+  overrideSpeed: 0
+  scrollSpeed: 1
 --- !u!114 &2147380801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,6 +3336,8 @@ MonoBehaviour:
   moveCameraWait: 0
   hide: 0
   debug: 0
+  overrideSpeed: 0
+  scrollSpeed: 1
 --- !u!114 &2147380802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3382,3 +3367,5 @@ MonoBehaviour:
   moveCameraWait: 4
   hide: 0
   debug: 0
+  overrideSpeed: 0
+  scrollSpeed: 1

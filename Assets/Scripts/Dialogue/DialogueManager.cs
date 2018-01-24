@@ -9,16 +9,17 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
     private AudioSource audioSource;
     private Queue<string> sentences;
+
+    [HideInInspector]
     public bool isBusy = false;
+    [HideInInspector]
     public bool moveCamera = false;
 
-    [Header("Right Dialogue")]
-    [Tooltip("The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
+    [Tooltip("Right Dialogue Canvas. The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
     [SerializeField]
     private Canvas rDialogueCanvas;
 
-    [Header("Left Dialogue")]
-    [Tooltip("The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
+    [Tooltip("Left Dialogue Canvas. The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
     [SerializeField]
     private Canvas lDialogueCanvas;
 
@@ -33,12 +34,17 @@ public class DialogueManager : MonoBehaviour
     private int charIndex = 0;
     private string sentenceToWrite = string.Empty;
     private string writtenSentence = string.Empty;
+
+    [Space]
+    [Tooltip("The global speed in hundreds of a second for each character to appear. Can be overrided on individual Dialogue components.")]
     [SerializeField]
-    private float scrollSpeed = 1f;
+    private float scrollSpeed = 8f;
     private float actualScrollSpeed;
+    private float scrollTime = 0f;
 
     private CameraController camController;
 
+    [HideInInspector]
     public bool freezeCamera = false;
 
     private void Awake()
@@ -61,16 +67,6 @@ public class DialogueManager : MonoBehaviour
         camController = Camera.main.GetComponent<CameraController>();
     }
 
-    private void FixedUpdate()
-    {
-        if(sentenceToWrite.Length > charIndex)
-        {
-            writtenSentence += sentenceToWrite[charIndex];
-            dialogueText.text = writtenSentence;
-            charIndex++;
-        }
-    }
-
     private void CreateSingleton()
     {
         if (instance == null)
@@ -81,10 +77,54 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (dialogues != null)
         {
-            DisplayNextSentence();
+            switch (dialogues[dialogueIndex].playerIndex )
+            {
+                case 0:
+                    // TODO: If any input
+                    if(Input.GetKeyDown(KeyCode.E))
+                        InputGet();
+                    break;
+                case 1:
+                    // TODO: If input from Player 1
+                    if (Input.GetKeyDown(KeyCode.E))
+                        InputGet();
+                    break;
+                case 2:
+                    // TODO: If input from Player 2
+                    if (Input.GetKeyDown(KeyCode.E))
+                        InputGet();
+                    break;
+            }
+
+            if (sentenceToWrite.Length > charIndex)
+            {
+                if (scrollTime < 1f)
+                {
+                    scrollTime += Time.deltaTime / (actualScrollSpeed / 100f);
+                }
+                else
+                {
+                    writtenSentence += sentenceToWrite[charIndex];
+                    dialogueText.text = writtenSentence;
+                    charIndex++;
+                    scrollTime = 0f;
+                }
+            }
         }
+    }
+
+    private void InputGet()
+    {
+        if (sentenceToWrite.Length > charIndex)
+        {
+            dialogueText.text = sentenceToWrite;
+            charIndex = sentenceToWrite.Length;
+            scrollTime = 0f;
+        }
+        else
+            DisplayNextSentence();
     }
 
     public void FetchDialogue(Dialogue[] dialogues)
@@ -98,28 +138,26 @@ public class DialogueManager : MonoBehaviour
     {
         isBusy = true;
 
+        Transform panel;
+
         if(dialogues[dialogueIndex].rightAligned)
         {
             rDialogueCanvas.enabled = true;
             lDialogueCanvas.enabled = false;
 
-            Transform rPanel = rDialogueCanvas.transform.GetChild(0);
-
-            nameText = rPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
-            image = rPanel.GetChild(1).GetComponent<Image>();
-            dialogueText = rPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
+            panel = rDialogueCanvas.transform.GetChild(0);
         }
         else
         {
             lDialogueCanvas.enabled = true;
             rDialogueCanvas.enabled = false;
 
-            Transform lPanel = lDialogueCanvas.transform.GetChild(0);
-
-            nameText = lPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
-            image = lPanel.GetChild(1).GetComponent<Image>();
-            dialogueText = lPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
+            panel = lDialogueCanvas.transform.GetChild(0);
         }
+
+        nameText = panel.GetChild(0).GetComponent<TextMeshProUGUI>();
+        image = panel.GetChild(1).GetComponent<Image>();
+        dialogueText = panel.GetChild(2).GetComponent<TextMeshProUGUI>();
 
         nameText.text = dialogues[dialogueIndex].npcName;
         image.sprite = dialogues[dialogueIndex].npcSprite;
@@ -163,12 +201,11 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogues[dialogueIndex].audioClips[sentenceIndex] != null)
             {
-                //Debug.Log("Sentence index: " + sentenceIndex);
                 audioSource.clip = dialogues[dialogueIndex].audioClips[sentenceIndex];
                 audioSource.Play();
             }
             else
-                Debug.LogWarning("No audioclip on dialogue with index " + dialogueIndex);
+                Debug.LogWarning("No audioclip on dialogue with index " + dialogueIndex + ". This is not an error, the game will work just fine without it.");
         }
 
         sentenceIndex++;

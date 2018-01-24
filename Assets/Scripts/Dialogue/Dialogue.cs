@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dialogue : MonoBehaviour {
+    [Header("Input Settings")]
+    public int playerIndex = 0;
 
     [Header("UI Settings")]
     public bool rightAligned = false;
@@ -30,7 +32,7 @@ public class Dialogue : MonoBehaviour {
     public bool debug = false;
     [HideInInspector]
     public bool overrideSpeed = false;
-    public float scrollSpeed = 1f;
+    public float scrollSpeed = 8f;
 
     private void Start()
     {

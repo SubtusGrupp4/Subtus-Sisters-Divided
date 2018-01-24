@@ -162,7 +162,7 @@ MonoBehaviour:
   followSpeed: 5
   offset: 0
   deadZone: 3.5
-  midPlayers: 0
+  followPos: 0
   camDistance: 0
 --- !u!124 &124638884736280194
 Behaviour:

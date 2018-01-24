@@ -16,6 +16,9 @@ public class DialogueEditor : Editor {
 
     public override void OnInspectorGUI()
     {
+        EditorGUILayout.LabelField("Input Settings", EditorStyles.boldLabel);
+        d.playerIndex = EditorGUILayout.IntField(new GUIContent("Player Input Index", "What players input will count on this dialogue. 0 = Both. 1 = Player 1. 2 = Player 2."), d.playerIndex);
+
         EditorGUILayout.LabelField("UI Settings", EditorStyles.boldLabel);
         d.npcName = EditorGUILayout.TextField(new GUIContent("NPC Name", "Will be displayed at the top as the name."), d.npcName);
         d.hide = EditorGUILayout.Toggle(new GUIContent("Hide", "Hide settings to save space."), d.hide);
@@ -53,7 +56,7 @@ public class DialogueEditor : Editor {
             d.overrideSpeed = EditorGUILayout.Toggle(new GUIContent("Override Speed", "Choose to use the global speed value on the DialogueManager or a custom one for this dialogue."), d.overrideSpeed);
             if (d.overrideSpeed)
             {
-                d.scrollSpeed = EditorGUILayout.FloatField(new GUIContent("Scroll Speed", "The speed in seconds for each character to appear."), d.scrollSpeed);
+                d.scrollSpeed = EditorGUILayout.FloatField(new GUIContent("Scroll Speed", "The speed in hundreds of a second for each character to appear."), d.scrollSpeed);
             }
 
             EditorGUILayout.Space();
