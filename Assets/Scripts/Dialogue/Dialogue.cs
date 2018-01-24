@@ -14,7 +14,10 @@ public class Dialogue : MonoBehaviour {
     [Header("Dialogue Boxes")]
     [TextArea(3, 10)]
     public string[] sentences;
+    public bool voiceOver = false;
     public AudioClip[] audioClips;
+    public bool typeSounds = true;
+    //public AudioClip[] typingSounds;
     [Header("Between Dialogues")]
     public float waitTime = 0f;
     public bool moveCamera = false;
@@ -32,7 +35,7 @@ public class Dialogue : MonoBehaviour {
     public bool debug = false;
     [HideInInspector]
     public bool overrideSpeed = false;
-    public float scrollSpeed = 8f;
+    public float typeSpeed = 8f;
 
     private void Start()
     {

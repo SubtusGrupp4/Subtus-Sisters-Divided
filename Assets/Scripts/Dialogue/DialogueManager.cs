@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(AudioSource))]
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
-    private AudioSource audioSource;
+    private AudioSource[] audioSources;
     private Queue<string> sentences;
 
     [HideInInspector]
@@ -35,17 +36,22 @@ public class DialogueManager : MonoBehaviour
     private string sentenceToWrite = string.Empty;
     private string writtenSentence = string.Empty;
 
-    [Space]
-    [Tooltip("The global speed in hundreds of a second for each character to appear. Can be overrided on individual Dialogue components.")]
-    [SerializeField]
-    private float scrollSpeed = 8f;
-    private float actualScrollSpeed;
-    private float scrollTime = 0f;
-
     private CameraController camController;
 
     [HideInInspector]
     public bool freezeCamera = false;
+
+    [Header("Typing Settings")]
+    [Tooltip("The global speed in hundreds of a second for each character to appear. Can be overrided on individual Dialogue components.")]
+    [SerializeField]
+    private float typeSpeed = 8f;
+    private float actualTypeSpeed;
+    private float typeTime = 0f;
+    [SerializeField]
+    private AudioClip[] typingSounds;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float typingVolume = 1f;
 
     private void Awake()
     {
@@ -61,10 +67,14 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
-        audioSource = GetComponent<AudioSource>();
-        actualScrollSpeed = scrollSpeed;
+        actualTypeSpeed = typeSpeed;
 
         camController = Camera.main.GetComponent<CameraController>();
+
+        audioSources = GetComponents<AudioSource>();
+        if (audioSources.Length > 2)
+            Debug.LogError("DialogueManager requires 2 AudioSource components to function.");
+        audioSources[1].volume = typingVolume;
     }
 
     private void CreateSingleton()
@@ -100,16 +110,24 @@ public class DialogueManager : MonoBehaviour
 
             if (sentenceToWrite.Length > charIndex)
             {
-                if (scrollTime < 1f)
+                if (typeTime < 1f)
                 {
-                    scrollTime += Time.deltaTime / (actualScrollSpeed / 100f);
+                    typeTime += Time.deltaTime / (actualTypeSpeed / 100f);
                 }
                 else
                 {
-                    writtenSentence += sentenceToWrite[charIndex];
+                    char toWrite = sentenceToWrite[charIndex];
+
+                    writtenSentence += toWrite;
                     dialogueText.text = writtenSentence;
                     charIndex++;
-                    scrollTime = 0f;
+                    typeTime = 0f;
+                    if (dialogues[dialogueIndex].typeSounds && toWrite != ' ')
+                    {
+                        int typeSoundIndex = Random.Range(0, typingSounds.Length);
+                        audioSources[1].clip = typingSounds[typeSoundIndex];
+                        audioSources[1].Play();
+                    }
                 }
             }
         }
@@ -121,7 +139,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = sentenceToWrite;
             charIndex = sentenceToWrite.Length;
-            scrollTime = 0f;
+            typeTime = 0f;
         }
         else
             DisplayNextSentence();
@@ -167,9 +185,9 @@ public class DialogueManager : MonoBehaviour
         charIndex = 0;
 
         if (dialogues[dialogueIndex].overrideSpeed)
-            actualScrollSpeed = dialogues[dialogueIndex].scrollSpeed;
+            actualTypeSpeed = dialogues[dialogueIndex].typeSpeed;
         else
-            actualScrollSpeed = scrollSpeed;
+            actualTypeSpeed = typeSpeed;
 
 
         freezeCamera = dialogues[dialogueIndex].freezeCamera;
@@ -197,15 +215,18 @@ public class DialogueManager : MonoBehaviour
         writtenSentence = string.Empty;
         charIndex = 0;
 
-        if (dialogues[dialogueIndex].audioClips.Length > sentenceIndex)
+        if (dialogues[dialogueIndex].voiceOver)
         {
-            if (dialogues[dialogueIndex].audioClips[sentenceIndex] != null)
+            if (dialogues[dialogueIndex].audioClips.Length > sentenceIndex)
             {
-                audioSource.clip = dialogues[dialogueIndex].audioClips[sentenceIndex];
-                audioSource.Play();
+                if (dialogues[dialogueIndex].audioClips[sentenceIndex] != null)
+                {
+                    audioSources[0].clip = dialogues[dialogueIndex].audioClips[sentenceIndex];
+                    audioSources[0].Play();
+                }
+                else
+                    Debug.LogWarning("No audioclip on dialogue with index " + dialogueIndex + ". This is not an error, the game will work just fine without it.");
             }
-            else
-                Debug.LogWarning("No audioclip on dialogue with index " + dialogueIndex + ". This is not an error, the game will work just fine without it.");
         }
 
         sentenceIndex++;

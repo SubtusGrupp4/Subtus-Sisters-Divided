@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4149130324830364}
   - component: {fileID: 114885578659963378}
   - component: {fileID: 82676513675418550}
+  - component: {fileID: 82357475720628188}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -41,6 +42,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82357475720628188
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424626673631144}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!82 &82676513675418550
 AudioSource:
   m_ObjectHideFlags: 1
@@ -136,5 +217,12 @@ MonoBehaviour:
   moveCamera: 0
   rDialogueCanvas: {fileID: 0}
   lDialogueCanvas: {fileID: 0}
-  scrollSpeed: 8
   freezeCamera: 0
+  typeSpeed: 8
+  typingSounds:
+  - {fileID: 8300000, guid: 2bb580c757504bf4d8eb050824d88316, type: 3}
+  - {fileID: 8300000, guid: 7e24eaab7d07fac4898f17bd83254d4d, type: 3}
+  - {fileID: 8300000, guid: 1fc48750f211a8140bfb54f55e3dc71c, type: 3}
+  - {fileID: 8300000, guid: 93c3e3319aaad0644b50ae9a9461e671, type: 3}
+  - {fileID: 8300000, guid: 1aaede4400cc83448add86a16fb1661c, type: 3}
+  typingVolume: 0.1
