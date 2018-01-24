@@ -17,7 +17,7 @@ public class DialogueEditor : Editor {
     public override void OnInspectorGUI()
     {
         EditorGUILayout.LabelField("Input Settings", EditorStyles.boldLabel);
-        d.playerIndex = EditorGUILayout.IntField(new GUIContent("Player Input Index", "What players input will count on this dialogue. 0 = Both. 1 = Player 1. 2 = Player 2."), d.playerIndex);
+        d.playerIndex = EditorGUILayout.IntField(new GUIContent("Player Input Index", "What players input will count on this dialogue. 0 = Both. 1 = Player 1. 2 = Player 2. This also determines the placement of the dialogue box. 0 = Middle, 1 = Top Left, 2 = Bottom Right."), d.playerIndex);
 
         EditorGUILayout.LabelField("UI Settings", EditorStyles.boldLabel);
         d.npcName = EditorGUILayout.TextField(new GUIContent("NPC Name", "Will be displayed at the top as the name."), d.npcName);
@@ -25,7 +25,6 @@ public class DialogueEditor : Editor {
         if (!d.hide)
         {
             d.npcSprite = (Sprite)EditorGUILayout.ObjectField(new GUIContent("NPC Sprite", "Character portrait."), d.npcSprite, typeof(Sprite), false);
-            d.rightAligned = EditorGUILayout.Toggle(new GUIContent("Right Aligned", "Choose what side the portrait will be on."), d.rightAligned);
 
             EditorGUILayout.Space();
             SerializedProperty sentences = serializedObject.FindProperty("sentences");

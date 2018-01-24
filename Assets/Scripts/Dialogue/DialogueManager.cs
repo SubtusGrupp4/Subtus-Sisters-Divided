@@ -16,6 +16,10 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector]
     public bool moveCamera = false;
 
+    [Tooltip("Middle Dialogue Canvas. The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
+    [SerializeField]
+    private Canvas mDialogueCanvas;
+
     [Tooltip("Right Dialogue Canvas. The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
     [SerializeField]
     private Canvas rDialogueCanvas;
@@ -53,6 +57,8 @@ public class DialogueManager : MonoBehaviour
     [Range(0f, 1f)]
     private float typingVolume = 1f;
 
+    private Transform panel;
+
     private void Awake()
     {
         CreateSingleton();
@@ -65,6 +71,7 @@ public class DialogueManager : MonoBehaviour
 
 
         sentences = new Queue<string>();
+        mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
         actualTypeSpeed = typeSpeed;
@@ -130,6 +137,14 @@ public class DialogueManager : MonoBehaviour
                     }
                 }
             }
+
+            if(dialogues[dialogueIndex].playerIndex == 0)
+            {
+                if(panel.GetComponent<CanvasGroup>().alpha < 1f)
+                {
+                    panel.GetComponent<CanvasGroup>().alpha += Time.deltaTime / 1f;
+                }
+            }
         }
     }
 
@@ -156,10 +171,26 @@ public class DialogueManager : MonoBehaviour
     {
         isBusy = true;
 
-        Transform panel;
-
-        if(dialogues[dialogueIndex].rightAligned)
+        if (dialogues[dialogueIndex].playerIndex == 0)
         {
+            mDialogueCanvas.enabled = true;
+            rDialogueCanvas.enabled = false;
+            lDialogueCanvas.enabled = false;
+
+            panel = mDialogueCanvas.transform.GetChild(0);
+            panel.GetComponent<CanvasGroup>().alpha = 0f;
+        }
+        else if (dialogues[dialogueIndex].playerIndex == 1)
+        {
+            mDialogueCanvas.enabled = false;
+            lDialogueCanvas.enabled = true;
+            rDialogueCanvas.enabled = false;
+
+            panel = lDialogueCanvas.transform.GetChild(0);
+        }
+        else if (dialogues[dialogueIndex].playerIndex == 2)
+        {
+            mDialogueCanvas.enabled = false;
             rDialogueCanvas.enabled = true;
             lDialogueCanvas.enabled = false;
 
@@ -167,10 +198,8 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            lDialogueCanvas.enabled = true;
-            rDialogueCanvas.enabled = false;
-
-            panel = lDialogueCanvas.transform.GetChild(0);
+            Debug.LogError("Player Index invalid value, must be 0, 1 or 2");
+            panel = mDialogueCanvas.transform.GetChild(0);
         }
 
         nameText = panel.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -250,6 +279,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DialogueDelay()
     {
+        mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
         yield return new WaitForSeconds(dialogues[dialogueIndex - 1].waitTime);
@@ -268,6 +298,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
         dialogueIndex = 0;

@@ -7,7 +7,6 @@ public class Dialogue : MonoBehaviour {
     public int playerIndex = 0;
 
     [Header("UI Settings")]
-    public bool rightAligned = false;
     public string npcName;
     public Sprite npcSprite;
 
