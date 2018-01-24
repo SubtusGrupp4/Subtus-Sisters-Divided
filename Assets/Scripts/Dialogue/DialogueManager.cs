@@ -13,22 +13,29 @@ public class DialogueManager : MonoBehaviour
     public bool moveCamera = false;
 
     [Header("Right Dialogue")]
+    [Tooltip("The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
     [SerializeField]
     private Canvas rDialogueCanvas;
-    private TextMeshProUGUI rNameText;
-    private Image rImage;
-    private TextMeshProUGUI rDialogueText;
 
     [Header("Left Dialogue")]
+    [Tooltip("The children of this object will be fetched at runtime. Do not change the order of the child objects!")]
     [SerializeField]
     private Canvas lDialogueCanvas;
-    private TextMeshProUGUI lNameText;
-    private Image lImage;
-    private TextMeshProUGUI lDialogueText;
+
+    private TextMeshProUGUI nameText;
+    private Image image;
+    private TextMeshProUGUI dialogueText;
 
     private int dialogueIndex = 0;
     private int sentenceIndex = 0;
     private Dialogue[] dialogues;
+
+    private int charIndex = 0;
+    private string sentenceToWrite = string.Empty;
+    private string writtenSentence = string.Empty;
+    [SerializeField]
+    private float scrollSpeed = 1f;
+    private float actualScrollSpeed;
 
     private CameraController camController;
 
@@ -43,26 +50,25 @@ public class DialogueManager : MonoBehaviour
     {
         if (lDialogueCanvas == null || rDialogueCanvas == null)
             Debug.LogWarning("Missing references on DialogueManager. Assign in the inspector on the DialogueManager object.");
-        else
-        {
-            Transform rPanel = rDialogueCanvas.transform.GetChild(0);
-            Transform lPanel = lDialogueCanvas.transform.GetChild(0);
 
-            rNameText = rPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
-            rImage = rPanel.GetChild(1).GetComponent<Image>();
-            rDialogueText = rPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
-
-            lNameText = lPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
-            lImage = lPanel.GetChild(1).GetComponent<Image>();
-            lDialogueText = lPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
-        }
 
         sentences = new Queue<string>();
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
         audioSource = GetComponent<AudioSource>();
+        actualScrollSpeed = scrollSpeed;
 
         camController = Camera.main.GetComponent<CameraController>();
+    }
+
+    private void FixedUpdate()
+    {
+        if(sentenceToWrite.Length > charIndex)
+        {
+            writtenSentence += sentenceToWrite[charIndex];
+            dialogueText.text = writtenSentence;
+            charIndex++;
+        }
     }
 
     private void CreateSingleton()
@@ -97,16 +103,36 @@ public class DialogueManager : MonoBehaviour
             rDialogueCanvas.enabled = true;
             lDialogueCanvas.enabled = false;
 
-            rNameText.text = dialogues[dialogueIndex].npcName;
-            rImage.sprite = dialogues[dialogueIndex].npcSprite;
+            Transform rPanel = rDialogueCanvas.transform.GetChild(0);
+
+            nameText = rPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
+            image = rPanel.GetChild(1).GetComponent<Image>();
+            dialogueText = rPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
         }
         else
         {
             lDialogueCanvas.enabled = true;
             rDialogueCanvas.enabled = false;
-            lNameText.text = dialogues[dialogueIndex].npcName;
-            lImage.sprite = dialogues[dialogueIndex].npcSprite;
+
+            Transform lPanel = lDialogueCanvas.transform.GetChild(0);
+
+            nameText = lPanel.GetChild(0).GetComponent<TextMeshProUGUI>();
+            image = lPanel.GetChild(1).GetComponent<Image>();
+            dialogueText = lPanel.GetChild(2).GetComponent<TextMeshProUGUI>();
         }
+
+        nameText.text = dialogues[dialogueIndex].npcName;
+        image.sprite = dialogues[dialogueIndex].npcSprite;
+        dialogueText.text = string.Empty;
+        writtenSentence = string.Empty;
+        sentenceToWrite = string.Empty;
+        charIndex = 0;
+
+        if (dialogues[dialogueIndex].overrideSpeed)
+            actualScrollSpeed = dialogues[dialogueIndex].scrollSpeed;
+        else
+            actualScrollSpeed = scrollSpeed;
+
 
         freezeCamera = dialogues[dialogueIndex].freezeCamera;
         GameManager.instance.SetFreezeGame(dialogues[dialogueIndex].freezeTime);
@@ -129,12 +155,9 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        if(dialogues[dialogueIndex].rightAligned)
-            rDialogueText.text = sentence;
-        else
-        {
-            lDialogueText.text = sentence;
-        }
+        sentenceToWrite = sentence;
+        writtenSentence = string.Empty;
+        charIndex = 0;
 
         if (dialogues[dialogueIndex].audioClips.Length > sentenceIndex)
         {

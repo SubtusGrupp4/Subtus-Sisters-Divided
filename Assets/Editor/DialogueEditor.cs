@@ -49,6 +49,14 @@ public class DialogueEditor : Editor {
             d.freezeCamera = EditorGUILayout.Toggle(new GUIContent("Freeze Camera", "Stops the camera from moving, and in turn prevents the players from leaving the view."), d.freezeCamera);
 
             EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Scroll Speed", EditorStyles.boldLabel);
+            d.overrideSpeed = EditorGUILayout.Toggle(new GUIContent("Override Speed", "Choose to use the global speed value on the DialogueManager or a custom one for this dialogue."), d.overrideSpeed);
+            if (d.overrideSpeed)
+            {
+                d.scrollSpeed = EditorGUILayout.FloatField(new GUIContent("Scroll Speed", "The speed in seconds for each character to appear."), d.scrollSpeed);
+            }
+
+            EditorGUILayout.Space();
             d.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), d.debug);
             if (d.debug)
                 base.OnInspectorGUI();
