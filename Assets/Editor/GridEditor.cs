@@ -104,6 +104,9 @@ public class GridEditor : Editor {
 
                     grid.width = width;
                     grid.height = height;
+
+                    grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+                    grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
                 }
             }
             if(grid.sprite != null)
@@ -162,9 +165,12 @@ public class GridEditor : Editor {
                     if (Event.current.keyCode == (KeyCode.Keypad6))
                         grid.tileColor = Color.black;
                     if (Event.current.keyCode == (KeyCode.Keypad9))
-                        grid.rotationZ += 90f;
-                    if (Event.current.keyCode == (KeyCode.Keypad7))
                         grid.rotationZ -= 90f;
+                    if (Event.current.keyCode == (KeyCode.Keypad7))
+                        grid.rotationZ += 90f;
+
+                    grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
+                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor;
                     break;
                 }
         }
@@ -175,6 +181,25 @@ public class GridEditor : Editor {
             GUIUtility.hotControl = 0;
         }
         */
+
+        if (grid.mousePreview == null && GameObject.Find("Mouse Preview") == null)
+        {
+            grid.mousePreview = new GameObject("Mouse Preview");
+            grid.mousePreview.AddComponent<SpriteRenderer>();
+            grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+            grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor;
+            grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
+            grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
+            grid.mousePreview.transform.position = mousePos;
+        }
+        else if(grid.mousePreview == null && GameObject.Find("Mouse Preview") != null)
+        {
+            DestroyImmediate(GameObject.Find("Mouse Preview"));
+        }
+        else
+        {
+            grid.mousePreview.transform.position = mousePos;
+        }
     }
 
     private void PlaceTile(int controlID, Event e, Ray ray, Vector3 mousePos)

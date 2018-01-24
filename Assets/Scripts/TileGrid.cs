@@ -25,6 +25,7 @@ public class TileGrid : MonoBehaviour
     [HideInInspector]
     public Sprite sprite;
     public float rotationZ;
+    public GameObject mousePreview;
 
     private void OnDrawGizmos()
     {
