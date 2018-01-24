@@ -106,7 +106,7 @@ public class ObjectManipulationTrigger : BaseButton
                     Objs[i].Obj, // Obj
                     ogPos[i], // Startpos
                     ogPos[i] + Objs[i].MoveTo, // EndPos
-                    Vector3.Distance(ogPos[i], ogPos[i] + Objs[i].MoveTo) / Objs[i].MoveTime, // Speed
+                    1 / Objs[i].MoveTime, // Speed
                     i); // Index
             }
             else if (!Objs[i].Moving)
@@ -116,7 +116,7 @@ public class ObjectManipulationTrigger : BaseButton
                    Objs[i].Obj, // Obj
                    ogPos[i], // Startpos
                    ogPos[i] + Objs[i].MoveTo, // EndPos
-                   Vector3.Distance(ogPos[i], ogPos[i] + Objs[i].MoveTo) / Objs[i].MoveTime * -1, // Speed
+                   1 / Objs[i].MoveTime * -1, // Speed
                    i); // Index
             }
         }
@@ -149,9 +149,11 @@ public class ObjectManipulationTrigger : BaseButton
         if (lerpConstant[index] > 1)
             lerpConstant[index] = 1;
 
-        Vector3 smoothPos = Vector3.Lerp(startTarget, targetPos, lerpConstant[index]);
-        obj.transform.position = smoothPos;
 
+        Vector3 smoothPos = startTarget;
+         smoothPos = Vector3.Lerp(startTarget, targetPos, lerpConstant[index]);
+
+        obj.transform.position = smoothPos;
     }
 
     protected override void DoStuff()
