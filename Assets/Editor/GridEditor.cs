@@ -107,6 +107,7 @@ public class GridEditor : Editor {
 
                     grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
                     grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
+                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, 0.5f);
                 }
             }
             if(grid.sprite != null)
@@ -170,7 +171,7 @@ public class GridEditor : Editor {
                         grid.rotationZ += 90f;
 
                     grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
-                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor;
+                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, 0.5f);
                     break;
                 }
         }
@@ -187,7 +188,8 @@ public class GridEditor : Editor {
             grid.mousePreview = new GameObject("Mouse Preview");
             grid.mousePreview.AddComponent<SpriteRenderer>();
             grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
-            grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor;
+            grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, 0.5f);
+
             grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
             grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
             grid.mousePreview.transform.position = mousePos;
