@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TileGrid : MonoBehaviour
 {
+    public bool showGrid = true;
+    public bool useGrid = true;
+    public bool overlap = false;
+    public bool drag = true;
     public float width = 1f;
     public float height = 1f;
 
@@ -24,9 +28,6 @@ public class TileGrid : MonoBehaviour
 
     [HideInInspector]
     public bool debug = false;
-    [HideInInspector]
-    public bool showGrid = true;
-    [HideInInspector]
     public Sprite sprite;
     public float rotationZ;
     public GameObject mousePreview;

@@ -42,6 +42,14 @@ public class GridEditor : Editor {
         grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
 
         EditorGUI.BeginChangeCheck();
+        EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
+        grid.useGrid = EditorGUILayout.Toggle("Use Grid", grid.useGrid);
+        grid.snapPreview = grid.useGrid ? true : false;
+
+        grid.drag = EditorGUILayout.Toggle("Enable Drag", grid.drag);
+        grid.overlap = EditorGUILayout.Toggle("Enable Overlap", grid.overlap);
+
+        EditorGUILayout.Space();
         EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
         grid.showGrid = EditorGUILayout.Toggle("Show Grid", grid.showGrid);
         grid.width = MinFloat("Width", grid.width, 0.01f);
@@ -158,16 +166,25 @@ public class GridEditor : Editor {
         Ray ray = Camera.current.ScreenPointToRay(new Vector3(e.mousePosition.x, -e.mousePosition.y + Camera.current.pixelHeight));
         Vector3 mousePos = ray.origin;
 
-        // Left click to place prefab
-        if (e.isMouse && e.type == EventType.MouseDown && e.button == 0 || e.isMouse && e.type == EventType.MouseDrag && e.button == 0)
+        if (grid.drag)
         {
-            PlaceTile(controlID, e, ray, mousePos);
-        }
+            // Left click to place prefab
+            if (e.isMouse && e.type == EventType.MouseDown && e.button == 0 || e.isMouse && e.type == EventType.MouseDrag && e.button == 0)
+                PlaceTile(controlID, e, ray, mousePos);
 
-        // Right click to remove prefab
-        if(e.isMouse && e.type == EventType.MouseDown && e.button == 1 || e.isMouse && e.type == EventType.MouseDrag && e.button == 1)
+            // Right click to remove prefab
+            if (e.isMouse && e.type == EventType.MouseDown && e.button == 1 || e.isMouse && e.type == EventType.MouseDrag && e.button == 1)
+                RemoveTile(controlID, e, mousePos);
+        }
+        else
         {
-            RemoveTile(controlID, e, mousePos);
+            // Left click to place prefab
+            if (e.isMouse && e.type == EventType.MouseDown && e.button == 0)
+                PlaceTile(controlID, e, ray, mousePos);
+
+            // Right click to remove prefab
+            if (e.isMouse && e.type == EventType.MouseDown && e.button == 1)
+                RemoveTile(controlID, e, mousePos);
         }
 
         switch (e.type)
@@ -247,11 +264,22 @@ public class GridEditor : Editor {
         if (prefab)
         {
             Undo.IncrementCurrentGroup();
-            Vector3 aligned = new Vector3(
-                Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
-                Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
 
-            if (TileOnPosition(aligned) != -1)
+            Vector3 aligned = Vector3.zero;
+            if (grid.useGrid)
+            {
+                aligned = new Vector3(
+                    Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
+                    Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
+            }
+            else
+            {
+                aligned = mousePos;
+            }
+
+
+            //Debug.Log("Aligned: " + aligned);
+            if (TileOnPosition(aligned) != -1 && !grid.overlap)
                 return;
 
             if (grid.tiles == null)
@@ -262,7 +290,7 @@ public class GridEditor : Editor {
             }
 
             spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
-            spawnGO.transform.position = aligned;
+            spawnGO.transform.position = new Vector2(aligned.x, aligned.y);
             spawnGO.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
             spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
 
@@ -282,10 +310,19 @@ public class GridEditor : Editor {
         GUIUtility.hotControl = controlID;
         e.Use();
 
-        Vector3 aligned = new Vector3(
-            Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
-            Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
+        Vector3 aligned = Vector3.zero;
+        if (grid.useGrid)
+        {
+             aligned = new Vector3(
+                Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
+                Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
+        }
+        else
+        {
+            aligned = mousePos;
+        }
 
+        //Debug.Log("Aligned: " + aligned);
         int tileOnPositionIndex = TileOnPosition(aligned);
 
         if (tileOnPositionIndex != -1)
@@ -304,10 +341,33 @@ public class GridEditor : Editor {
         for (int i = 0; i < grid.tileTransforms.Count; i++)
         {
             if (grid.tileTransforms[i] == null)
+            {
+                grid.tileTransforms.RemoveAt(i);
+                i--;
                 continue;
+            }
 
-            if (aligned == grid.tileTransforms[i].position)
+            Vector3 thisToCollider = new Vector3(grid.tileTransforms[i].position.x - aligned.x, grid.tileTransforms[i].position.y - aligned.y);
+
+            float x = thisToCollider.x;
+            float y = thisToCollider.y;
+            float lengthSquared = x * x + y * y;
+
+            float r = 0.5f;
+
+            if (lengthSquared < r * r)
+            {
+                Debug.Log("i: " + i);
                 return i;
+            }
+            /*
+            Vector3 distance = new Vector3 (
+                Mathf.Abs(grid.tileTransforms[i].position.x - aligned.x), 
+                Mathf.Abs(grid.tileTransforms[i].position.y - aligned.y));
+
+            if (distance.x < (grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x / 2) && distance.y < (grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x / 2))
+                return i;
+            */
         }
         return -1;
     }
