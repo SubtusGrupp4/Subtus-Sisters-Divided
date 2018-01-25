@@ -59,6 +59,8 @@ public class DialogueManager : MonoBehaviour
 
     private Transform panel;
 
+    private bool fadeInDone = false;
+
     private void Awake()
     {
         CreateSingleton();
@@ -114,9 +116,11 @@ public class DialogueManager : MonoBehaviour
                         InputGet();
                     break;
             }
-
             if (sentenceToWrite.Length > charIndex)
             {
+                if (dialogues[dialogueIndex].fadeIn && !fadeInDone)
+                    return;
+
                 if (typeTime < 1f)
                 {
                     typeTime += Time.deltaTime / (actualTypeSpeed / 100f);
@@ -138,11 +142,20 @@ public class DialogueManager : MonoBehaviour
                 }
             }
 
-            if(dialogues[dialogueIndex].playerIndex == 0)
+            if(dialogues[dialogueIndex].fadeIn)
             {
-                if(panel.GetComponent<CanvasGroup>().alpha < 1f)
+                if (panel.GetComponent<CanvasGroup>().alpha < 1f)
                 {
-                    panel.GetComponent<CanvasGroup>().alpha += Time.deltaTime / 1f;
+                    panel.GetComponent<CanvasGroup>().alpha += Time.deltaTime / dialogues[dialogueIndex].fadeTime;
+                }
+                else
+                {
+                    panel.GetComponent<CanvasGroup>().alpha = 1f;
+                    if (!fadeInDone)
+                    {
+                        DisplayNextSentence();
+                        fadeInDone = true;
+                    }
                 }
             }
         }
@@ -150,7 +163,11 @@ public class DialogueManager : MonoBehaviour
 
     private void InputGet()
     {
-        if (sentenceToWrite.Length > charIndex)
+        if(dialogues[dialogueIndex].fadeIn && panel.GetComponent<CanvasGroup>().alpha < 0.9f)
+        {
+            panel.GetComponent<CanvasGroup>().alpha = 1f;
+        }
+        else if (sentenceToWrite.Length > charIndex && panel.GetComponent<CanvasGroup>().alpha > 0.9f)
         {
             dialogueText.text = sentenceToWrite;
             charIndex = sentenceToWrite.Length;
@@ -178,7 +195,6 @@ public class DialogueManager : MonoBehaviour
             lDialogueCanvas.enabled = false;
 
             panel = mDialogueCanvas.transform.GetChild(0);
-            panel.GetComponent<CanvasGroup>().alpha = 0f;
         }
         else if (dialogues[dialogueIndex].playerIndex == 1)
         {
@@ -229,14 +245,21 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(dialogues[dialogueIndex].sentences[i]);
         }
 
-        DisplayNextSentence();
+        if(dialogues[dialogueIndex].fadeIn)
+        {
+            panel.GetComponent<CanvasGroup>().alpha = 0f;
+        }
+        else
+        {
+            DisplayNextSentence();
+        }
     }
 
     public void DisplayNextSentence()
     {
         if(sentences.Count == 0)
         {
-            DisplayNextDialogue();
+            BetweenNextDialogue();
             return;
         }
         string sentence = sentences.Dequeue();
@@ -259,6 +282,17 @@ public class DialogueManager : MonoBehaviour
         }
 
         sentenceIndex++;
+    }
+
+    private void BetweenNextDialogue()
+    {
+        if (dialogues[dialogueIndex].fadeIn)
+        {
+            panel.GetComponent<CanvasGroup>().alpha = 0f;
+            fadeInDone = false;
+        }
+
+        DisplayNextDialogue();
     }
 
     private void DisplayNextDialogue()
@@ -305,6 +339,7 @@ public class DialogueManager : MonoBehaviour
         sentenceIndex = 0;
         GameManager.instance.SetFreezeGame(false);
         freezeCamera = false;
+        fadeInDone = false;
 
         isBusy = false;
     }

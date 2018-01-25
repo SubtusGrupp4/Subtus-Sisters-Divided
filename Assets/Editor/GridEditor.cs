@@ -203,10 +203,12 @@ public class GridEditor : Editor {
                         grid.tileColor = Color.yellow;
                     if (Event.current.keyCode == (KeyCode.Keypad6))
                         grid.tileColor = Color.black;
-                    if (Event.current.keyCode == (KeyCode.Keypad9))
-                        grid.rotationZ -= 90f;
                     if (Event.current.keyCode == (KeyCode.Keypad7))
                         grid.rotationZ += 90f;
+                    if (Event.current.keyCode == (KeyCode.Keypad8))
+                        grid.drag = !grid.drag;
+                    if (Event.current.keyCode == (KeyCode.Keypad9))
+                        grid.rotationZ -= 90f;
 
                     grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
                     grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
@@ -353,7 +355,7 @@ public class GridEditor : Editor {
             float y = thisToCollider.y;
             float lengthSquared = x * x + y * y;
 
-            float r = 0.5f;
+            float r = (grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x + grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.y) / 4f;
 
             if (lengthSquared < r * r)
             {
