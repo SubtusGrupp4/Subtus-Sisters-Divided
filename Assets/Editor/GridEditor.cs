@@ -20,7 +20,7 @@ public class GridEditor : Editor {
     [MenuItem("Assets/Create/TileSet")]
     static void CreateTileSet()
     {
-        TileSet asset = ScriptableObject.CreateInstance<TileSet>();
+        TileSet asset = CreateInstance<TileSet>();
         string path = AssetDatabase.GetAssetPath(Selection.activeObject);
 
         if(string.IsNullOrEmpty(path))
@@ -44,18 +44,31 @@ public class GridEditor : Editor {
         EditorGUI.BeginChangeCheck();
         EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
         grid.showGrid = EditorGUILayout.Toggle("Show Grid", grid.showGrid);
-        grid.width = EditorGUILayout.FloatField("Width:", grid.width);
-        grid.height = EditorGUILayout.FloatField("Height:", grid.height);
-        Color newColor = EditorGUILayout.ColorField("Grid Color:", grid.color);
+        grid.width = MinFloat("Width", grid.width, 0.01f);
+        grid.height = MinFloat("Height", grid.height, 0.01f);
+        Color newColor = EditorGUILayout.ColorField("Grid Color", grid.color);
+
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Mouse Preview", EditorStyles.boldLabel);
+        grid.showPreview = EditorGUILayout.Toggle("Show Preview", grid.showPreview);
+        if (grid.showPreview)
+        {
+            grid.snapPreview = EditorGUILayout.Toggle("Snap to Grid", grid.snapPreview);
+            grid.previewTransparency = CreateSlider("Preview Transparency", grid.previewTransparency, 0f, 1f);
+        }
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
-        grid.rotationZ = EditorGUILayout.FloatField("Rotaton:", grid.rotationZ);
+        grid.rotationZ = EditorGUILayout.FloatField("Rotaton", grid.rotationZ);
         grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
 
         if (EditorGUI.EndChangeCheck())
+        {
             grid.color = newColor;
+            if(grid.mousePreview != null)
+                grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
+        }
 
         // Tile Prefab
         EditorGUI.BeginChangeCheck();
@@ -107,7 +120,7 @@ public class GridEditor : Editor {
 
                     grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
                     grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
-                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, 0.5f);
+                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
                 }
             }
             if(grid.sprite != null)
@@ -120,11 +133,19 @@ public class GridEditor : Editor {
             base.OnInspectorGUI();
     }
 
-    private float CreateSlider(string labelName, float sliderPosition)
+    private float MinFloat(string labelName, float value, float min)
+    {
+        value = EditorGUILayout.FloatField(labelName, value);
+        if (value < min)
+            value = min;
+        return value;
+    }
+
+    private float CreateSlider(string labelName, float sliderPosition, float min, float max)
     {
         GUILayout.BeginHorizontal();
         GUILayout.Label(labelName);
-        sliderPosition = EditorGUILayout.Slider(sliderPosition, 8f, 1024f);
+        sliderPosition = EditorGUILayout.Slider(sliderPosition, min, max);
         GUILayout.EndHorizontal();
 
         return sliderPosition;
@@ -171,7 +192,7 @@ public class GridEditor : Editor {
                         grid.rotationZ += 90f;
 
                     grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
-                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, 0.5f);
+                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
                     break;
                 }
         }
@@ -183,25 +204,36 @@ public class GridEditor : Editor {
         }
         */
 
-        if (grid.mousePreview == null && GameObject.Find("Mouse Preview") == null)
+        if (grid.showPreview)
         {
-            grid.mousePreview = new GameObject("Mouse Preview");
-            grid.mousePreview.AddComponent<SpriteRenderer>();
-            grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
-            grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, 0.5f);
+            if (grid.mousePreview == null && GameObject.Find("Mouse Preview") == null)
+            {
+                grid.mousePreview = new GameObject("Mouse Preview");
+                grid.mousePreview.AddComponent<SpriteRenderer>();
+                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+                grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
 
-            grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
-            grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
-            grid.mousePreview.transform.position = mousePos;
+                grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
+                grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
+            }
+            else if (grid.mousePreview == null && GameObject.Find("Mouse Preview") != null)
+            {
+                DestroyImmediate(GameObject.Find("Mouse Preview"));
+            }
+            else
+            {
+                if (!grid.snapPreview)
+                    grid.mousePreview.transform.position = mousePos;
+                else
+                {
+                    grid.mousePreview.transform.position = new Vector3(
+                        Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
+                        Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
+                }
+            }
         }
-        else if(grid.mousePreview == null && GameObject.Find("Mouse Preview") != null)
-        {
-            DestroyImmediate(GameObject.Find("Mouse Preview"));
-        }
-        else
-        {
-            grid.mousePreview.transform.position = mousePos;
-        }
+        else if (grid.mousePreview != null)
+            DestroyImmediate(grid.mousePreview);
     }
 
     private void PlaceTile(int controlID, Event e, Ray ray, Vector3 mousePos)

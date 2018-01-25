@@ -10,6 +10,10 @@ public class TileGrid : MonoBehaviour
     public Color color = Color.white;
     public Color tileColor = Color.white;
 
+    public bool showPreview = true;
+    public bool snapPreview = false;
+    public float previewTransparency = 0.5f;
+
     public bool hideInHierarchy = true;
     public GameObject tiles;
     public List<Transform> tileTransforms = new List<Transform>();
