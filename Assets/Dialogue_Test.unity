@@ -615,12 +615,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e539071d5c698a34ca126c701d5a1f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 100000
+  amount: 100
   sprites:
   - {fileID: 21300000, guid: 73c8da194d54eee4c9011e9243c862ba, type: 3}
   margin: 1.5
+  marginLeft: 1
+  marginRight: 1
+  marginTop: 1
+  marginBot: 0
+  randomSize: 1
   maxSize: 0.5
-  minSize: 0.4
+  minSize: 0.2
+  randomRotation: 1
+  staticDecorations: 1
 --- !u!212 &521289140
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -672,8 +679,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 521289138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.56, y: 12, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalPosition: {x: -0.73, y: 5.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 22
@@ -1272,27 +1279,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -27.063002}
---- !u!1 &1397383628 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1542592124350914, guid: e292e485d55d39b498951a8c1e011230,
-    type: 2}
-  m_PrefabInternal: {fileID: 1715606463}
 --- !u!4 &1397383631 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230,
     type: 2}
   m_PrefabInternal: {fileID: 1715606463}
---- !u!114 &1397383634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1397383628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11835e7ebd1f7434eb7d63a99d2e6433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &1555977925 stripped
 Canvas:
   m_PrefabParentObject: {fileID: 223529466177932394, guid: 0a0c4a0cf99fafd488d1f8395e3121d6,
@@ -1604,11 +1595,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.22
+      value: -1.11
       objectReference: {fileID: 0}
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.3
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1633,6 +1624,11 @@ Prefab:
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114557306500866274, guid: e292e485d55d39b498951a8c1e011230,
+        type: 2}
+      propertyPath: airControlPrecentage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e292e485d55d39b498951a8c1e011230, type: 2}
@@ -2261,15 +2257,15 @@ MonoBehaviour:
   sentences:
   - Cool!
   - Monster Noises!
-  voiceOver: 0
+  voiceOver: 1
   audioClips:
-  - {fileID: 8300000, guid: 6371c1d6afa4b86499c8ea914e4f1783, type: 3}
+  - {fileID: 0}
   - {fileID: 8300000, guid: ac75ab549be5e684ab4465df990a9750, type: 3}
   typeSounds: 1
   waitTime: 0
   moveCamera: 0
   fadeIn: 1
-  fadeOut: 0
+  fadeOut: 1
   fadeTime: 1
   freezeTime: 0
   freezeCamera: 0
@@ -2303,8 +2299,8 @@ MonoBehaviour:
   waitTime: 0
   moveCamera: 0
   fadeIn: 1
-  fadeOut: 0
-  fadeTime: 1
+  fadeOut: 1
+  fadeTime: 2
   freezeTime: 0
   freezeCamera: 0
   moveCameraX: 0
@@ -2312,8 +2308,8 @@ MonoBehaviour:
   moveCameraWait: 0
   hide: 0
   debug: 0
-  overrideSpeed: 0
-  typeSpeed: 8
+  overrideSpeed: 1
+  typeSpeed: 20
 --- !u!114 &2147380802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2339,7 +2335,7 @@ MonoBehaviour:
   waitTime: 1
   moveCamera: 0
   fadeIn: 1
-  fadeOut: 0
+  fadeOut: 1
   fadeTime: 1
   freezeTime: 0
   freezeCamera: 0

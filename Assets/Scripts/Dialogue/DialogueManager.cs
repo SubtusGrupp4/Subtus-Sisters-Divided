@@ -32,7 +32,7 @@ public class DialogueManager : MonoBehaviour
     private Image image;
     private TextMeshProUGUI dialogueText;
 
-    private int dialogueIndex = 0;
+    private int di = 0;
     private int sentenceIndex = 0;
     private Dialogue[] dialogues;
 
@@ -60,6 +60,9 @@ public class DialogueManager : MonoBehaviour
     private Transform panel;
 
     private bool fadeInDone = false;
+
+    private bool fadeOutDone = false;
+    private bool doFadeOut = false;
 
     private void Awake()
     {
@@ -94,11 +97,18 @@ public class DialogueManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void FetchDialogue(Dialogue[] dialogues)
+    {
+        this.dialogues = dialogues;
+
+        StartDialogue();
+    }
+
     private void Update()
     {
         if (dialogues != null)
         {
-            switch (dialogues[dialogueIndex].playerIndex )
+            switch (dialogues[di].playerIndex )
             {
                 case 0:
                     // TODO: If any input
@@ -118,7 +128,7 @@ public class DialogueManager : MonoBehaviour
             }
             if (sentenceToWrite.Length > charIndex)
             {
-                if (dialogues[dialogueIndex].fadeIn && !fadeInDone)
+                if (dialogues[di].fadeIn && !fadeInDone)
                     return;
 
                 if (typeTime < 1f)
@@ -133,7 +143,7 @@ public class DialogueManager : MonoBehaviour
                     dialogueText.text = writtenSentence;
                     charIndex++;
                     typeTime = 0f;
-                    if (dialogues[dialogueIndex].typeSounds && toWrite != ' ')
+                    if (dialogues[di].typeSounds && toWrite != ' ')
                     {
                         int typeSoundIndex = Random.Range(0, typingSounds.Length);
                         audioSources[1].clip = typingSounds[typeSoundIndex];
@@ -142,11 +152,12 @@ public class DialogueManager : MonoBehaviour
                 }
             }
 
-            if(dialogues[dialogueIndex].fadeIn)
+            if(dialogues != null && dialogues[di].fadeIn && !doFadeOut)
             {
                 if (panel.GetComponent<CanvasGroup>().alpha < 1f)
                 {
-                    panel.GetComponent<CanvasGroup>().alpha += Time.deltaTime / dialogues[dialogueIndex].fadeTime;
+                    panel.GetComponent<CanvasGroup>().alpha += Time.deltaTime / dialogues[di].fadeTime;
+                    fadeInDone = false;
                 }
                 else
                 {
@@ -158,14 +169,37 @@ public class DialogueManager : MonoBehaviour
                     }
                 }
             }
+
+            if(dialogues != null && dialogues[di].fadeOut && doFadeOut)
+            {
+                if (panel.GetComponent<CanvasGroup>().alpha > 0f)
+                {
+                    panel.GetComponent<CanvasGroup>().alpha -= Time.deltaTime / dialogues[di].fadeTime;
+                    fadeOutDone = false;
+                }
+                else
+                {
+                    panel.GetComponent<CanvasGroup>().alpha = 0f;
+                    if (!fadeOutDone)
+                    {
+                        DisplayNextDialogue();
+                        fadeOutDone = true;
+                        doFadeOut = false;
+                    }
+                }
+            }
         }
     }
 
     private void InputGet()
     {
-        if(dialogues[dialogueIndex].fadeIn && panel.GetComponent<CanvasGroup>().alpha < 0.9f)
+        if(dialogues[di].fadeIn && panel.GetComponent<CanvasGroup>().alpha < 0.99f && !fadeInDone)
         {
             panel.GetComponent<CanvasGroup>().alpha = 1f;
+        }
+        else if(dialogues[di].fadeOut && panel.GetComponent<CanvasGroup>().alpha > 0.01f && !fadeOutDone && doFadeOut)
+        {
+            panel.GetComponent<CanvasGroup>().alpha = 0f;
         }
         else if (sentenceToWrite.Length > charIndex && panel.GetComponent<CanvasGroup>().alpha > 0.9f)
         {
@@ -177,18 +211,11 @@ public class DialogueManager : MonoBehaviour
             DisplayNextSentence();
     }
 
-    public void FetchDialogue(Dialogue[] dialogues)
-    {
-        this.dialogues = dialogues;
-
-        StartDialogue();
-    }
-
     private void StartDialogue()
     {
         isBusy = true;
 
-        if (dialogues[dialogueIndex].playerIndex == 0)
+        if (dialogues[di].playerIndex == 0)
         {
             mDialogueCanvas.enabled = true;
             rDialogueCanvas.enabled = false;
@@ -196,7 +223,7 @@ public class DialogueManager : MonoBehaviour
 
             panel = mDialogueCanvas.transform.GetChild(0);
         }
-        else if (dialogues[dialogueIndex].playerIndex == 1)
+        else if (dialogues[di].playerIndex == 1)
         {
             mDialogueCanvas.enabled = false;
             lDialogueCanvas.enabled = true;
@@ -204,7 +231,7 @@ public class DialogueManager : MonoBehaviour
 
             panel = lDialogueCanvas.transform.GetChild(0);
         }
-        else if (dialogues[dialogueIndex].playerIndex == 2)
+        else if (dialogues[di].playerIndex == 2)
         {
             mDialogueCanvas.enabled = false;
             rDialogueCanvas.enabled = true;
@@ -222,42 +249,43 @@ public class DialogueManager : MonoBehaviour
         image = panel.GetChild(1).GetComponent<Image>();
         dialogueText = panel.GetChild(2).GetComponent<TextMeshProUGUI>();
 
-        nameText.text = dialogues[dialogueIndex].npcName;
-        image.sprite = dialogues[dialogueIndex].npcSprite;
+        nameText.text = dialogues[di].npcName;
+        image.sprite = dialogues[di].npcSprite;
         dialogueText.text = string.Empty;
         writtenSentence = string.Empty;
         sentenceToWrite = string.Empty;
         charIndex = 0;
 
-        if (dialogues[dialogueIndex].overrideSpeed)
-            actualTypeSpeed = dialogues[dialogueIndex].typeSpeed;
+        if (dialogues[di].overrideSpeed)
+            actualTypeSpeed = dialogues[di].typeSpeed;
         else
             actualTypeSpeed = typeSpeed;
 
 
-        freezeCamera = dialogues[dialogueIndex].freezeCamera;
-        GameManager.instance.SetFreezeGame(dialogues[dialogueIndex].freezeTime);
+        freezeCamera = dialogues[di].freezeCamera;
+        GameManager.instance.SetFreezeGame(dialogues[di].freezeTime);
 
         sentences.Clear();
 
-        for(int i = 0; i < dialogues[dialogueIndex].sentences.Length; i++)
+        for(int i = 0; i < dialogues[di].sentences.Length; i++)
         {
-            sentences.Enqueue(dialogues[dialogueIndex].sentences[i]);
+            sentences.Enqueue(dialogues[di].sentences[i]);
         }
 
-        if(dialogues[dialogueIndex].fadeIn)
+        if(dialogues[di].fadeIn)
         {
             panel.GetComponent<CanvasGroup>().alpha = 0f;
         }
         else
         {
+            panel.GetComponent<CanvasGroup>().alpha = 1f;
             DisplayNextSentence();
         }
     }
 
     public void DisplayNextSentence()
     {
-        if(sentences.Count == 0)
+        if (sentences.Count == 0)
         {
             BetweenNextDialogue();
             return;
@@ -267,17 +295,17 @@ public class DialogueManager : MonoBehaviour
         writtenSentence = string.Empty;
         charIndex = 0;
 
-        if (dialogues[dialogueIndex].voiceOver)
+        if (dialogues[di].voiceOver)
         {
-            if (dialogues[dialogueIndex].audioClips.Length > sentenceIndex)
+            if (dialogues[di].audioClips.Length > sentenceIndex)
             {
-                if (dialogues[dialogueIndex].audioClips[sentenceIndex] != null)
+                if (dialogues[di].audioClips[sentenceIndex] != null)
                 {
-                    audioSources[0].clip = dialogues[dialogueIndex].audioClips[sentenceIndex];
+                    audioSources[0].clip = dialogues[di].audioClips[sentenceIndex];
                     audioSources[0].Play();
                 }
                 else
-                    Debug.LogWarning("No audioclip on dialogue with index " + dialogueIndex + ". This is not an error, the game will work just fine without it.");
+                    Debug.LogWarning("No audioclip on dialogue with index " + di + ". This is not an error, the game will work just fine without it.");
             }
         }
 
@@ -286,26 +314,23 @@ public class DialogueManager : MonoBehaviour
 
     private void BetweenNextDialogue()
     {
-        if (dialogues[dialogueIndex].fadeIn)
-        {
-            panel.GetComponent<CanvasGroup>().alpha = 0f;
-            fadeInDone = false;
-        }
-
-        DisplayNextDialogue();
+        if (dialogues[di].fadeOut)
+            doFadeOut = true;
+        else
+            DisplayNextDialogue();
     }
 
     private void DisplayNextDialogue()
     {
-        dialogueIndex++;
+        di++;
         sentenceIndex = 0;
 
-        if (dialogues[dialogueIndex - 1].moveCamera)
+        if (dialogues[di - 1].moveCamera)
             MoveCamera();
 
-        if (dialogueIndex == dialogues.Length)
+        if (di == dialogues.Length)
             EndDialogue();
-        else if (dialogues[dialogueIndex - 1].waitTime > 0f)
+        else if (dialogues[di - 1].waitTime > 0f)
             StartCoroutine(DialogueDelay());
         else
             StartDialogue();
@@ -316,16 +341,16 @@ public class DialogueManager : MonoBehaviour
         mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
-        yield return new WaitForSeconds(dialogues[dialogueIndex - 1].waitTime);
+        yield return new WaitForSeconds(dialogues[di - 1].waitTime);
         StartDialogue();
     }
 
     private void MoveCamera()
     {
         moveCamera = true;
-        float moveCameraSpeed = dialogues[dialogueIndex - 1].moveCameraSpeed;
-        float moveCameraX = dialogues[dialogueIndex - 1].moveCameraX;
-        float moveCameraWait = dialogues[dialogueIndex - 1].moveCameraWait;
+        float moveCameraSpeed = dialogues[di - 1].moveCameraSpeed;
+        float moveCameraX = dialogues[di - 1].moveCameraX;
+        float moveCameraWait = dialogues[di - 1].moveCameraWait;
 
         camController.DialogueMove(moveCameraSpeed, moveCameraX, moveCameraWait);
     }
@@ -335,12 +360,13 @@ public class DialogueManager : MonoBehaviour
         mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
-        dialogueIndex = 0;
+        di = 0;
         sentenceIndex = 0;
         GameManager.instance.SetFreezeGame(false);
         freezeCamera = false;
         fadeInDone = false;
 
         isBusy = false;
+        dialogues = null;
     }
 }
