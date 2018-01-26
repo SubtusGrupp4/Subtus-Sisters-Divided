@@ -27,6 +27,7 @@ public class DialogueEditor : Editor {
             d.npcSprite = (Sprite)EditorGUILayout.ObjectField(new GUIContent("NPC Sprite", "Character portrait."), d.npcSprite, typeof(Sprite), false);
 
             EditorGUILayout.Space();
+            EditorGUI.BeginChangeCheck();
             SerializedProperty sentences = serializedObject.FindProperty("sentences");
             EditorGUILayout.PropertyField(sentences, new GUIContent("Text Boxes", "Each text box is displayed independently. Do not write text longer than can be in the UI boxes."), true);
 
@@ -36,12 +37,11 @@ public class DialogueEditor : Editor {
                 SerializedProperty audioClips = serializedObject.FindProperty("audioClips");
                 EditorGUILayout.PropertyField(audioClips, new GUIContent("Audio Clips", "Each audio clip is bound to the text box with the same index. So audio clip 2 will play with text box 2."), true);
             }
+
+            if(EditorGUI.EndChangeCheck())
+                serializedObject.ApplyModifiedProperties();
+
             d.typeSounds = EditorGUILayout.Toggle(new GUIContent("Type Sounds", "Play auio clips with every character appearing."), d.typeSounds);
-            /*if (d.typeSounds)
-            {
-                SerializedProperty audioClips = serializedObject.FindProperty("typingSounds");
-                EditorGUILayout.PropertyField(audioClips, new GUIContent("Typing Sounds", "Will be chosen at random from this list and played with each character."), true);
-            }*/
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Between Dialogues", EditorStyles.boldLabel);
