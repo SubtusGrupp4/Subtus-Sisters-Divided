@@ -15,6 +15,7 @@ public class GridEditor : Editor {
     {
         oldIndex = 0;
         grid = (TileGrid)target;
+        SetTile();
     }
 
     [MenuItem("Assets/Create/TileSet")]
@@ -105,7 +106,6 @@ public class GridEditor : Editor {
         if(EditorGUI.EndChangeCheck())
         {
             grid.tilePrefab = newTilePrefab;
-            Undo.RecordObject(target, "Grid Changed");
         }
 
         // Tile Map
@@ -114,7 +114,6 @@ public class GridEditor : Editor {
         if(EditorGUI.EndChangeCheck())
         {
             grid.tileSet = newTileSet;
-            Undo.RecordObject(target, "Grid Changed");
         }
 
         if(grid.tileSet != null)
@@ -129,27 +128,14 @@ public class GridEditor : Editor {
                 values[i] = i;
             }
 
-            int index = EditorGUILayout.IntPopup("Select Tile", oldIndex,names,values);
+            grid.tileIndex = EditorGUILayout.IntPopup("Select Tile", oldIndex,names,values);
 
             if(EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(target, "Grid Changed");
-                if(oldIndex != index)
+                if(oldIndex != grid.tileIndex)
                 {
-                    oldIndex = index;
-                    grid.tilePrefab = grid.tileSet.prefabs[index];
-                    grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
-                    grid.rotationZ = 0f;
-
-                    float width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;
-                    float height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;
-
-                    grid.width = width;
-                    grid.height = height;
-
-                    grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
-                    grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
-                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
+                    SetTile();
                 }
             }
             if(grid.sprite != null)
@@ -160,6 +146,24 @@ public class GridEditor : Editor {
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
         if (grid.debug)
             base.OnInspectorGUI();
+    }
+
+    private void SetTile()
+    {
+        oldIndex = grid.tileIndex;
+        grid.tilePrefab = grid.tileSet.prefabs[grid.tileIndex];
+        grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+        //grid.rotationZ = 0f;
+
+        float width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;
+        float height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;
+
+        grid.width = width;
+        grid.height = height;
+
+        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+        grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
+        grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
     }
 
     private float MinFloat(string labelName, float value, float min)
@@ -230,7 +234,18 @@ public class GridEditor : Editor {
                         grid.drag = !grid.drag;
                     if (Event.current.keyCode == (KeyCode.Keypad9))
                         grid.rotationZ -= 90f;
+                    if (Event.current.keyCode == (KeyCode.KeypadPlus))
+                        if (grid.tileIndex < grid.tileSet.prefabs.Length - 1)
+                            grid.tileIndex++;
+                        else
+                            grid.tileIndex = 0;
+                    if (Event.current.keyCode == (KeyCode.KeypadMinus))
+                        if (grid.tileIndex > 0)
+                            grid.tileIndex--;
+                        else
+                            grid.tileIndex = grid.tileSet.prefabs.Length - 1;
 
+                    SetTile();
                     grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
                     grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
                     break;

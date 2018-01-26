@@ -38,6 +38,8 @@ public class TileGrid : MonoBehaviour
     public float rotationZ;
     public GameObject mousePreview;
 
+    public int tileIndex = 0;
+
     private void OnDrawGizmos()
     {
         if (showGrid)
