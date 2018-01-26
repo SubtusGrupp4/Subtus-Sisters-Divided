@@ -20,6 +20,10 @@ public class Dialogue : MonoBehaviour {
     [Header("Between Dialogues")]
     public float waitTime = 0f;
     public bool moveCamera = false;
+    [Header("Fading")]
+    public bool fadeIn = false;
+    public bool fadeOut = false;
+    public float fadeTime = 1f;
     [Header("Freezing")]
     public bool freezeTime = false;
     public bool freezeCamera = false;

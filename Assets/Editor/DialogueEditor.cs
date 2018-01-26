@@ -45,7 +45,7 @@ public class DialogueEditor : Editor {
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Between Dialogues", EditorStyles.boldLabel);
-            d.waitTime = EditorGUILayout.FloatField(new GUIContent("Wait Time", "This timer starts after all the text boxes are read. After the set amount of time (in seconds) the next dialogue component will start."), d.waitTime);
+            d.waitTime = EditorGUILayout.FloatField(new GUIContent("Wait Time", "[DO NOT SET TO 0] This timer starts after all the text boxes are read. After the set amount of time (in seconds) the next dialogue component will start."), d.waitTime);
             d.moveCamera = EditorGUILayout.Toggle(new GUIContent("Move Camera", "The camera will move after all the text boxes are read. Keep in mind that you might want wait time with this to prevent text appearing while the camera is moving."), d.moveCamera);
             if (d.moveCamera)
             {
@@ -53,12 +53,19 @@ public class DialogueEditor : Editor {
                 EditorGUILayout.LabelField("Camera Movement", EditorStyles.boldLabel);
                 d.moveCameraX = EditorGUILayout.FloatField(new GUIContent("Move Camera X", "How many units to move the camera on the X axis."), d.moveCameraX);
                 d.moveCameraSpeed = EditorGUILayout.FloatField(new GUIContent("Move Camera Speed", "What speed to move the camera at. This value is inverted, higher values means a slower speed."), d.moveCameraSpeed);
-                d.moveCameraWait = EditorGUILayout.FloatField(new GUIContent("Move Camera Wait", "How long to wait before snapping back to normal."), d.moveCameraWait);
+                d.moveCameraWait = EditorGUILayout.FloatField(new GUIContent("Move Camera Wait", "[DO NOT SET TO 0] How long to wait before snapping back to normal."), d.moveCameraWait);
             }
 
             EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Fading", EditorStyles.boldLabel);
+            d.fadeIn = EditorGUILayout.Toggle(new GUIContent("Fade In", "Wether this dialogue box will fade in."), d.fadeIn);
+            d.fadeOut = EditorGUILayout.Toggle(new GUIContent("Fade Out", "Wether this dialogue box will fade out."), d.fadeOut);
+            if(d.fadeIn || d.fadeOut)
+                d.fadeTime = EditorGUILayout.FloatField(new GUIContent("Fade Time", "[DO NOT SET TO 0] The fading time in seconds. Applies to both fade in and out."), d.fadeTime);
+
+            EditorGUILayout.Space();
             EditorGUILayout.LabelField("Freezing", EditorStyles.boldLabel);
-            d.freezeTime = EditorGUILayout.Toggle(new GUIContent("Freeze Time", "Essentially pauses the game to display the text. Might have unforseen consequences."), d.freezeTime);
+            d.freezeTime = EditorGUILayout.Toggle(new GUIContent("Freeze Time", "[DO NOT SET TO 0] Essentially pauses the game to display the text. Might have unforseen consequences."), d.freezeTime);
             d.freezeCamera = EditorGUILayout.Toggle(new GUIContent("Freeze Camera", "Stops the camera from moving, and in turn prevents the players from leaving the view."), d.freezeCamera);
 
             EditorGUILayout.Space();
@@ -66,7 +73,7 @@ public class DialogueEditor : Editor {
             d.overrideSpeed = EditorGUILayout.Toggle(new GUIContent("Override Speed", "Choose to use the global speed value on the DialogueManager or a custom one for this dialogue."), d.overrideSpeed);
             if (d.overrideSpeed)
             {
-                d.typeSpeed = EditorGUILayout.FloatField(new GUIContent("Type Speed", "The speed in hundreds of a second for each character to appear."), d.typeSpeed);
+                d.typeSpeed = EditorGUILayout.FloatField(new GUIContent("Type Speed", "[DO NOT SET TO 0] The speed in hundreds of a second for each character to appear."), d.typeSpeed);
             }
 
             EditorGUILayout.Space();
