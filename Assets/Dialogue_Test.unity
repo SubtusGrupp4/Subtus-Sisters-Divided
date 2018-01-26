@@ -1279,27 +1279,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -27.063002}
---- !u!1 &1397383628 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1542592124350914, guid: e292e485d55d39b498951a8c1e011230,
-    type: 2}
-  m_PrefabInternal: {fileID: 1715606463}
 --- !u!4 &1397383631 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230,
     type: 2}
   m_PrefabInternal: {fileID: 1715606463}
---- !u!114 &1397383634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1397383628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11835e7ebd1f7434eb7d63a99d2e6433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &1555977925 stripped
 Canvas:
   m_PrefabParentObject: {fileID: 223529466177932394, guid: 0a0c4a0cf99fafd488d1f8395e3121d6,
@@ -1611,11 +1595,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.22
+      value: -1.11
       objectReference: {fileID: 0}
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.3
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1640,6 +1624,11 @@ Prefab:
     - target: {fileID: 4309732694503224, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114557306500866274, guid: e292e485d55d39b498951a8c1e011230,
+        type: 2}
+      propertyPath: airControlPrecentage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e292e485d55d39b498951a8c1e011230, type: 2}
@@ -2275,8 +2264,8 @@ MonoBehaviour:
   typeSounds: 1
   waitTime: 0
   moveCamera: 0
-  fadeIn: 0
-  fadeOut: 0
+  fadeIn: 1
+  fadeOut: 1
   fadeTime: 1
   freezeTime: 0
   freezeCamera: 0
@@ -2309,9 +2298,9 @@ MonoBehaviour:
   typeSounds: 1
   waitTime: 0
   moveCamera: 0
-  fadeIn: 0
-  fadeOut: 0
-  fadeTime: 1
+  fadeIn: 1
+  fadeOut: 1
+  fadeTime: 2
   freezeTime: 0
   freezeCamera: 0
   moveCameraX: 0
@@ -2319,8 +2308,8 @@ MonoBehaviour:
   moveCameraWait: 0
   hide: 0
   debug: 0
-  overrideSpeed: 0
-  typeSpeed: 8
+  overrideSpeed: 1
+  typeSpeed: 20
 --- !u!114 &2147380802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2345,8 +2334,8 @@ MonoBehaviour:
   typeSounds: 1
   waitTime: 1
   moveCamera: 0
-  fadeIn: 0
-  fadeOut: 0
+  fadeIn: 1
+  fadeOut: 1
   fadeTime: 1
   freezeTime: 0
   freezeCamera: 0
