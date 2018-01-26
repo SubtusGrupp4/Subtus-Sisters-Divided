@@ -44,39 +44,60 @@ public class GridEditor : Editor {
         EditorGUI.BeginChangeCheck();
         EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
         grid.useGrid = EditorGUILayout.Toggle("Use Grid", grid.useGrid);
-        grid.snapPreview = grid.useGrid ? true : false;
+        if (EditorGUI.EndChangeCheck())
+        {
+            grid.snapPreview = grid.useGrid;
+            if(grid.useGrid)
+                grid.overlap = false;
+        }
 
         grid.drag = EditorGUILayout.Toggle("Enable Drag", grid.drag);
         grid.overlap = EditorGUILayout.Toggle("Enable Overlap", grid.overlap);
+
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Mirror Settings", EditorStyles.boldLabel);
+        grid.mirror = EditorGUILayout.Toggle(new GUIContent("Mirror", "Enable mirroring on the Y axis."), grid.mirror);
+        if (grid.mirror)
+        {
+            grid.mirrorOffset = EditorGUILayout.FloatField(new GUIContent("Mirror Offset", "Offsets the Y axis. Basically raises and lowers the mirroring point."), grid.mirrorOffset);
+            grid.mirrorSprite = EditorGUILayout.Toggle(new GUIContent("Mirror Sprites", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.mirrorSprite);
+            grid.removeMirrored = EditorGUILayout.Toggle(new GUIContent("Remove Mirror", "Remove tiles on both sides."), grid.removeMirrored);
+        }
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
         grid.showGrid = EditorGUILayout.Toggle("Show Grid", grid.showGrid);
         grid.width = MinFloat("Width", grid.width, 0.01f);
         grid.height = MinFloat("Height", grid.height, 0.01f);
+
+        EditorGUI.BeginChangeCheck();
         Color newColor = EditorGUILayout.ColorField("Grid Color", grid.color);
+        if (EditorGUI.EndChangeCheck())
+            grid.color = newColor;
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Mouse Preview", EditorStyles.boldLabel);
+
+        EditorGUI.BeginChangeCheck();
         grid.showPreview = EditorGUILayout.Toggle("Show Preview", grid.showPreview);
         if (grid.showPreview)
         {
             grid.snapPreview = EditorGUILayout.Toggle("Snap to Grid", grid.snapPreview);
             grid.previewTransparency = CreateSlider("Preview Transparency", grid.previewTransparency, 0f, 1f);
         }
+        else
+            grid.snapPreview = false;
+
+        if (EditorGUI.EndChangeCheck())
+
+            if (grid.mousePreview != null)
+                grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
         grid.rotationZ = EditorGUILayout.FloatField("Rotaton", grid.rotationZ);
         grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
-
-        if (EditorGUI.EndChangeCheck())
-        {
-            grid.color = newColor;
-            if(grid.mousePreview != null)
-                grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
-        }
 
         // Tile Prefab
         EditorGUI.BeginChangeCheck();
@@ -223,6 +244,11 @@ public class GridEditor : Editor {
         }
         */
 
+        ShowPreview(mousePos);
+    }
+
+    private void ShowPreview(Vector3 mousePos)
+    {
         if (grid.showPreview)
         {
             if (grid.mousePreview == null && GameObject.Find("Mouse Preview") == null)
@@ -249,6 +275,22 @@ public class GridEditor : Editor {
                         Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
                         Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
                 }
+
+                if (grid.mirror)
+                {
+                    grid.mousePreview.GetComponent<SpriteRenderer>().flipY = mousePos.y < grid.mirrorOffset;
+
+                    if (grid.mirrorSprite)
+                    {
+                        if (grid.tilePrefab.gameObject.GetComponent<DualSprites>() != null)
+                        {
+                            if (mousePos.y < grid.mirrorOffset)
+                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[1];
+                            else
+                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[0];
+                        }
+                    }
+                }
             }
         }
         else if (grid.mousePreview != null)
@@ -260,7 +302,8 @@ public class GridEditor : Editor {
         GUIUtility.hotControl = controlID;
         e.Use();
 
-        GameObject spawnGO;
+        GameObject spawnGO = null;
+        GameObject mirrorGO = null;
         Transform prefab = grid.tilePrefab;
 
         if (prefab)
@@ -268,6 +311,7 @@ public class GridEditor : Editor {
             Undo.IncrementCurrentGroup();
 
             Vector3 aligned = Vector3.zero;
+            Vector3 mirrored = Vector3.zero;
             if (grid.useGrid)
             {
                 aligned = new Vector3(
@@ -275,13 +319,15 @@ public class GridEditor : Editor {
                     Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
             }
             else
-            {
                 aligned = mousePos;
-            }
 
+            if(grid.mirror)
+                mirrored = new Vector2(aligned.x, -aligned.y + grid.mirrorOffset);
 
-            //Debug.Log("Aligned: " + aligned);
             if (TileOnPosition(aligned) != -1 && !grid.overlap)
+                return;
+
+            if (grid.mirror && TileOnPosition(mirrored) != -1 && !grid.overlap)
                 return;
 
             if (grid.tiles == null)
@@ -303,7 +349,47 @@ public class GridEditor : Editor {
 
             grid.tileTransforms.Add(spawnGO.transform);
 
+            if(grid.mirror)
+            {
+                mirrorGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
+                mirrorGO.transform.position = new Vector2(mirrored.x, mirrored.y);
+                mirrorGO.transform.rotation = Quaternion.Euler(0f, 0f, -grid.rotationZ);
+
+                if(grid.mirrorSprite)
+                {
+                    if(mirrorGO.GetComponent<DualSprites>() != null)
+                    {
+                        if (aligned.y > mirrored.y)
+                        {
+                            mirrorGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[1];
+                            spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[0];
+                        }
+                        else
+                        {
+                            mirrorGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[0];
+                            spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[1];
+                        }
+                    }
+                }
+
+                mirrorGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
+                mirrorGO.GetComponent<SpriteRenderer>().flipY = true;
+
+                if (grid.hideInHierarchy)
+                    mirrorGO.transform.parent = grid.tiles.transform;
+                else
+                    mirrorGO.transform.parent = grid.transform;
+
+                grid.tileTransforms.Add(mirrorGO.transform);
+
+                spawnGO.GetComponent<SpriteRenderer>().flipY = mousePos.y < grid.mirrorOffset;
+                mirrorGO.GetComponent<SpriteRenderer>().flipY = mousePos.y > grid.mirrorOffset;
+            }
+
             Undo.RegisterCreatedObjectUndo(spawnGO, "Create " + spawnGO.name);
+
+            if (grid.mirror && mirrorGO != null)
+                Undo.RegisterCreatedObjectUndo(mirrorGO, "Mirror " + mirrorGO.name);
         }
     }
 
@@ -320,11 +406,8 @@ public class GridEditor : Editor {
                 Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
         }
         else
-        {
             aligned = mousePos;
-        }
 
-        //Debug.Log("Aligned: " + aligned);
         int tileOnPositionIndex = TileOnPosition(aligned);
 
         if (tileOnPositionIndex != -1)
@@ -332,6 +415,18 @@ public class GridEditor : Editor {
             Undo.IncrementCurrentGroup();
             Undo.DestroyObjectImmediate(grid.tileTransforms[tileOnPositionIndex].gameObject);
             grid.tileTransforms.RemoveAt(tileOnPositionIndex);
+        }
+
+        if(grid.mirror && grid.removeMirrored)
+        {
+            tileOnPositionIndex = TileOnPosition(new Vector2(aligned.x, -aligned.y + grid.mirrorOffset));
+
+            if (tileOnPositionIndex != -1)
+            {
+                Undo.IncrementCurrentGroup();
+                Undo.DestroyObjectImmediate(grid.tileTransforms[tileOnPositionIndex].gameObject);
+                grid.tileTransforms.RemoveAt(tileOnPositionIndex);
+            }
         }
     }
 
@@ -358,18 +453,7 @@ public class GridEditor : Editor {
             float r = (grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x + grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.y) / 4f;
 
             if (lengthSquared < r * r)
-            {
-                Debug.Log("i: " + i);
                 return i;
-            }
-            /*
-            Vector3 distance = new Vector3 (
-                Mathf.Abs(grid.tileTransforms[i].position.x - aligned.x), 
-                Mathf.Abs(grid.tileTransforms[i].position.y - aligned.y));
-
-            if (distance.x < (grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x / 2) && distance.y < (grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x / 2))
-                return i;
-            */
         }
         return -1;
     }

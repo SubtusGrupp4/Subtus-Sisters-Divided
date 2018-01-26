@@ -8,6 +8,12 @@ public class TileGrid : MonoBehaviour
     public bool useGrid = true;
     public bool overlap = false;
     public bool drag = true;
+
+    public bool mirror = true;
+    public float mirrorOffset = 0f;
+    public bool mirrorSprite = true;
+    public bool removeMirrored = true;
+
     public float width = 1f;
     public float height = 1f;
 
