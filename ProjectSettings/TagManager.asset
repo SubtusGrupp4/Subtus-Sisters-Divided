@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DialogueTrigger
   - Floor
+  - Pickup
   layers:
   - Default
   - TransparentFX
