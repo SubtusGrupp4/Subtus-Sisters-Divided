@@ -30,7 +30,9 @@ public class CameraController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (!DialogueManager.instance.moveCamera && !DialogueManager.instance.freezeCamera)
+
+
+        if (GameObject.Find("DialogueManager") == null || !DialogueManager.instance.moveCamera && !DialogueManager.instance.freezeCamera)
         {
             // Get the X distance from the camera to the players
             followPos = playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2;
@@ -66,7 +68,8 @@ public class CameraController : MonoBehaviour {
     private IEnumerator CameraWait()
     {
         yield return new WaitForSeconds(camWait);
-        DialogueManager.instance.moveCamera = false;
+        if(GameObject.Find("DialogueManager") != null)
+            DialogueManager.instance.moveCamera = false;
         followSpeed = startFollowSpeed;
     }
 }
