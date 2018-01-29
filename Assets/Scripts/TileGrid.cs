@@ -13,6 +13,8 @@ public class TileGrid : MonoBehaviour
     public float mirrorOffset = 0f;
     public bool mirrorSprite = true;
     public bool removeMirrored = true;
+    public bool useMirrored = false;
+    public bool flipWorld = false;
 
     public float width = 1f;
     public float height = 1f;

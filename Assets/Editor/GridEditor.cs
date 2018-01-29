@@ -63,7 +63,19 @@ public class GridEditor : Editor {
             grid.mirrorOffset = EditorGUILayout.FloatField(new GUIContent("Mirror Offset", "Offsets the Y axis. Basically raises and lowers the mirroring point."), grid.mirrorOffset);
             grid.mirrorSprite = EditorGUILayout.Toggle(new GUIContent("Mirror Sprites", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.mirrorSprite);
             grid.removeMirrored = EditorGUILayout.Toggle(new GUIContent("Remove Mirror", "Remove tiles on both sides."), grid.removeMirrored);
+            grid.useMirrored = false;
+            grid.flipWorld = false;
         }
+        else
+        {
+            EditorGUILayout.Space();
+            grid.useMirrored = EditorGUILayout.Toggle(new GUIContent("Use Mirrored", "Place the blocks for the mirrored world with normal orientation."), grid.useMirrored);
+            grid.flipWorld = EditorGUILayout.Toggle(new GUIContent("Flip World", "Place the dark world on top."), grid.flipWorld);
+        }
+        if (grid.flipWorld && !grid.mirror)
+            grid.transform.localScale = new Vector2(1f, -1f);
+        else
+            grid.transform.localScale = new Vector2(1f, 1f);
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
@@ -306,6 +318,16 @@ public class GridEditor : Editor {
                         }
                     }
                 }
+                else if (grid.useMirrored)
+                {
+                    if (grid.tilePrefab.gameObject.GetComponent<DualSprites>() != null)
+                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[1];
+                }
+                else
+                {
+                    if (grid.tilePrefab.gameObject.GetComponent<DualSprites>() != null)
+                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[0];
+                }
             }
         }
         else if (grid.mousePreview != null)
@@ -364,15 +386,15 @@ public class GridEditor : Editor {
 
             grid.tileTransforms.Add(spawnGO.transform);
 
-            if(grid.mirror)
+            if (grid.mirror)
             {
                 mirrorGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
                 mirrorGO.transform.position = new Vector2(mirrored.x, mirrored.y);
                 mirrorGO.transform.rotation = Quaternion.Euler(0f, 0f, -grid.rotationZ);
 
-                if(grid.mirrorSprite)
+                if (grid.mirrorSprite)
                 {
-                    if(mirrorGO.GetComponent<DualSprites>() != null)
+                    if (mirrorGO.GetComponent<DualSprites>() != null)
                     {
                         if (aligned.y > mirrored.y)
                         {
@@ -399,6 +421,16 @@ public class GridEditor : Editor {
 
                 spawnGO.GetComponent<SpriteRenderer>().flipY = mousePos.y < grid.mirrorOffset;
                 mirrorGO.GetComponent<SpriteRenderer>().flipY = mousePos.y > grid.mirrorOffset;
+            }
+            else if (grid.useMirrored)
+            {
+                if (spawnGO.GetComponent<DualSprites>() != null)
+                    spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[1];
+            }
+            else
+            { 
+                if (spawnGO.GetComponent<DualSprites>() != null)
+                    spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[0];
             }
 
             Undo.RegisterCreatedObjectUndo(spawnGO, "Create " + spawnGO.name);
