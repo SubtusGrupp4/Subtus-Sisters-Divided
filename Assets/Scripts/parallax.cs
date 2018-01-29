@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class parallax : MonoBehaviour
+public class Parallax : MonoBehaviour
 {
-
-    [SerializeField]
-    [Range(-1, 1)]
-    private float trackSpeed;
-
-
     private Transform cam;
 
     private Vector3 offSet;
@@ -22,7 +16,7 @@ public class parallax : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        cam = FindObjectOfType<Camera>().transform;
+        cam = Camera.main.transform;
         offSet = transform.position - cam.GetComponent<Transform>().position;
     }
 
@@ -33,7 +27,10 @@ public class parallax : MonoBehaviour
         if (CamPos != cam.transform.position)
         {
             // the parallax is the opposite of the camera movement because the previous frame multiplied by the scale
-            float parallax = (cam.position.x - CamPos.x) * trackSpeed;
+            // changed the scale to be the z position of the parallaxed object / 100
+
+            // TODO: Fix the transform.position.z value, if it is over 100, the parallax happens in the wrong direction.
+            float parallax = (cam.position.x - CamPos.x) * (transform.position.z / 10f);
 
             // set a target x position which is the current position plus the parallax
             float backgroundTargetPosX = transform.position.x + parallax;
