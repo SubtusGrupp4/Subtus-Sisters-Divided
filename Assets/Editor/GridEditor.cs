@@ -140,6 +140,7 @@ public class GridEditor : Editor {
                 values[i] = i;
             }
 
+            grid.sortingOrder = EditorGUILayout.IntField("Sorting Order:", grid.sortingOrder);
             grid.tileIndex = EditorGUILayout.IntPopup("Select Tile", oldIndex,names,values);
 
             if(EditorGUI.EndChangeCheck())
@@ -173,9 +174,12 @@ public class GridEditor : Editor {
         grid.width = width;
         grid.height = height;
 
-        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
-        grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
-        grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
+        if (grid.mousePreview != null)
+        {
+            grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+            grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
+            grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
+        }
     }
 
     private float MinFloat(string labelName, float value, float min)
@@ -378,6 +382,7 @@ public class GridEditor : Editor {
             spawnGO.transform.position = new Vector2(aligned.x, aligned.y);
             spawnGO.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
             spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
+            spawnGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
 
             if (grid.hideInHierarchy)
                 spawnGO.transform.parent = grid.tiles.transform;
@@ -391,6 +396,7 @@ public class GridEditor : Editor {
                 mirrorGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
                 mirrorGO.transform.position = new Vector2(mirrored.x, mirrored.y);
                 mirrorGO.transform.rotation = Quaternion.Euler(0f, 0f, -grid.rotationZ);
+                mirrorGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
 
                 if (grid.mirrorSprite)
                 {

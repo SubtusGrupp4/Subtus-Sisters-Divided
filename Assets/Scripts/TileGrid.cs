@@ -42,6 +42,8 @@ public class TileGrid : MonoBehaviour
 
     public int tileIndex = 0;
 
+    public int sortingOrder = 0;
+
     private void OnDrawGizmos()
     {
         if (showGrid)
