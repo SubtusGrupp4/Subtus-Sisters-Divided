@@ -419,7 +419,6 @@ public class GridEditor : Editor {
                 }
 
                 mirrorGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
-                mirrorGO.GetComponent<SpriteRenderer>().flipY = true;
 
                 if (grid.hideInHierarchy)
                     mirrorGO.transform.parent = grid.tiles.transform;
@@ -428,8 +427,16 @@ public class GridEditor : Editor {
 
                 grid.tileTransforms.Add(mirrorGO.transform);
 
-                spawnGO.GetComponent<SpriteRenderer>().flipY = mousePos.y < grid.mirrorOffset;
-                mirrorGO.GetComponent<SpriteRenderer>().flipY = mousePos.y > grid.mirrorOffset;
+                if (mousePos.y < grid.mirrorOffset)
+                {
+                    spawnGO.transform.localScale = new Vector3(spawnGO.transform.localScale.x, -spawnGO.transform.localScale.y, spawnGO.transform.localScale.z);
+                    mirrorGO.transform.localScale = new Vector3(mirrorGO.transform.localScale.x, mirrorGO.transform.localScale.y, mirrorGO.transform.localScale.z);
+                }
+                else
+                {
+                    spawnGO.transform.localScale = new Vector3(spawnGO.transform.localScale.x, spawnGO.transform.localScale.y, spawnGO.transform.localScale.z);
+                    mirrorGO.transform.localScale = new Vector3(mirrorGO.transform.localScale.x, -mirrorGO.transform.localScale.y, mirrorGO.transform.localScale.z);
+                }
             }
             else if (grid.useMirrored)
             {
