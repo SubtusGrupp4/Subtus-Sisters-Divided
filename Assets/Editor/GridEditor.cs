@@ -381,12 +381,6 @@ public class GridEditor : Editor {
             if(grid.mirror)
                 mirrored = new Vector2(aligned.x, -aligned.y + grid.mirrorOffset * 2f);
 
-            if (TileOnPosition(aligned) != -1 && !grid.overlap)
-                return;
-
-            if (grid.mirror && TileOnPosition(mirrored) != -1 && !grid.overlap)
-                return;
-
             if (grid.tiles == null)
             {
                 grid.tiles = new GameObject("Tiles");
@@ -394,23 +388,30 @@ public class GridEditor : Editor {
                 grid.tiles.hideFlags = HideFlags.HideInHierarchy;
             }
 
-            spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
-            spawnGO.transform.position = new Vector2(aligned.x, aligned.y);
-            spawnGO.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
-            spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
-            spawnGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
+            if (TileOnPosition(aligned) == -1 || grid.overlap)
+            {
 
-            if (grid.flipX)
-                spawnGO.transform.localScale = new Vector2(-Mathf.Abs(spawnGO.transform.localScale.x), spawnGO.transform.localScale.y);
+                spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
+                spawnGO.transform.position = new Vector2(aligned.x, aligned.y);
+                spawnGO.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
+                spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
+                spawnGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
 
-            if (grid.hideInHierarchy)
-                spawnGO.transform.parent = grid.tiles.transform;
-            else
-                spawnGO.transform.parent = grid.transform;
+                if (grid.flipX)
+                    spawnGO.transform.localScale = new Vector2(-Mathf.Abs(spawnGO.transform.localScale.x), spawnGO.transform.localScale.y);
 
-            grid.tileTransforms.Add(spawnGO.transform);
+                if (grid.hideInHierarchy)
+                    spawnGO.transform.parent = grid.tiles.transform;
+                else
+                    spawnGO.transform.parent = grid.transform;
 
-            if (grid.mirror)
+                grid.tileTransforms.Add(spawnGO.transform);
+
+                Undo.RegisterCreatedObjectUndo(spawnGO, "Create " + spawnGO.name);
+
+            }
+
+            if (grid.mirror && TileOnPosition(mirrored) == -1 || grid.overlap)
             {
                 mirrorGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
                 mirrorGO.transform.position = new Vector2(mirrored.x, mirrored.y);
@@ -427,12 +428,14 @@ public class GridEditor : Editor {
                         if (aligned.y > mirrored.y)
                         {
                             mirrorGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[1];
-                            spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[0];
+                            if(spawnGO != null)
+                                spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[0];
                         }
                         else
                         {
                             mirrorGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[0];
-                            spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[1];
+                            if(spawnGO != null)
+                                spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[1];
                         }
                     }
                 }
@@ -457,18 +460,16 @@ public class GridEditor : Editor {
                     mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, -mirrorGO.transform.localScale.y);
                 }
             }
-            else if (grid.useMirrored)
+            else if (grid.useMirrored && TileOnPosition(mirrored) == -1 || grid.overlap)
             {
                 if (spawnGO.GetComponent<DualSprites>() != null)
                     spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[1];
             }
-            else
+            else if(TileOnPosition(mirrored) == -1 || grid.overlap)
             { 
                 if (spawnGO.GetComponent<DualSprites>() != null)
                     spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[0];
             }
-
-            Undo.RegisterCreatedObjectUndo(spawnGO, "Create " + spawnGO.name);
 
             if (grid.mirror && mirrorGO != null)
                 Undo.RegisterCreatedObjectUndo(mirrorGO, "Mirror " + mirrorGO.name);
