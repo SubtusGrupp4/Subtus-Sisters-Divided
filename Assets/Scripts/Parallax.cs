@@ -27,9 +27,8 @@ public class Parallax : MonoBehaviour
         if (CamPos != cam.transform.position)
         {
             // the parallax is the opposite of the camera movement because the previous frame multiplied by the scale
-            // changed the scale to be the z position of the parallaxed object / 100
+            // changed the scale to be the z position of the parallaxed object / 10
 
-            // TODO: Fix the transform.position.z value, if it is over 100, the parallax happens in the wrong direction.
             float parallax = (cam.position.x - CamPos.x) * (transform.position.z / 10f);
 
             // set a target x position which is the current position plus the parallax
