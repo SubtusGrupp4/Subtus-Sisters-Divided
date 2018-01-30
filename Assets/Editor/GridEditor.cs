@@ -363,7 +363,7 @@ public class GridEditor : Editor {
                 aligned = mousePos;
 
             if(grid.mirror)
-                mirrored = new Vector2(aligned.x, -aligned.y + grid.mirrorOffset);
+                mirrored = new Vector2(aligned.x, -aligned.y + grid.mirrorOffset * 2f);
 
             if (TileOnPosition(aligned) != -1 && !grid.overlap)
                 return;
@@ -472,7 +472,7 @@ public class GridEditor : Editor {
 
         if(grid.mirror && grid.removeMirrored)
         {
-            tileOnPositionIndex = TileOnPosition(new Vector2(aligned.x, -aligned.y + grid.mirrorOffset));
+            tileOnPositionIndex = TileOnPosition(new Vector2(aligned.x, -aligned.y + grid.mirrorOffset * 2f));
 
             if (tileOnPositionIndex != -1)
             {
