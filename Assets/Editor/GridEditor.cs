@@ -110,8 +110,16 @@ public class GridEditor : Editor {
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
         EditorGUI.BeginChangeCheck();
+        grid.flipX = EditorGUILayout.Toggle("Flip X", grid.flipX);
+        if (EditorGUI.EndChangeCheck())
+            if(grid.flipX)
+                grid.mousePreview.transform.localScale = new Vector2(-Mathf.Abs(grid.mousePreview.transform.localScale.x), grid.mousePreview.transform.localScale.y);
+            else
+                grid.mousePreview.transform.localScale = new Vector2(Mathf.Abs(grid.mousePreview.transform.localScale.x), grid.mousePreview.transform.localScale.y);
+
+        EditorGUI.BeginChangeCheck();
         grid.rotationZ = EditorGUILayout.FloatField("Rotaton", grid.rotationZ);
-        if(EditorGUI.EndChangeCheck())
+        if (EditorGUI.EndChangeCheck())
             grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
         grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
 
@@ -387,6 +395,9 @@ public class GridEditor : Editor {
             spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
             spawnGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
 
+            if (grid.flipX)
+                spawnGO.transform.localScale = new Vector2(-Mathf.Abs(spawnGO.transform.localScale.x), spawnGO.transform.localScale.y);
+
             if (grid.hideInHierarchy)
                 spawnGO.transform.parent = grid.tiles.transform;
             else
@@ -400,6 +411,9 @@ public class GridEditor : Editor {
                 mirrorGO.transform.position = new Vector2(mirrored.x, mirrored.y);
                 mirrorGO.transform.rotation = Quaternion.Euler(0f, 0f, -grid.rotationZ);
                 mirrorGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
+
+                if (grid.flipX)
+                    mirrorGO.transform.localScale = new Vector2(-Mathf.Abs(mirrorGO.transform.localScale.x), mirrorGO.transform.localScale.y);
 
                 if (grid.mirrorSprite)
                 {
@@ -429,13 +443,13 @@ public class GridEditor : Editor {
 
                 if (mousePos.y < grid.mirrorOffset)
                 {
-                    spawnGO.transform.localScale = new Vector3(spawnGO.transform.localScale.x, -spawnGO.transform.localScale.y, spawnGO.transform.localScale.z);
-                    mirrorGO.transform.localScale = new Vector3(mirrorGO.transform.localScale.x, mirrorGO.transform.localScale.y, mirrorGO.transform.localScale.z);
+                    spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, -spawnGO.transform.localScale.y);
+                    mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, mirrorGO.transform.localScale.y);
                 }
                 else
                 {
-                    spawnGO.transform.localScale = new Vector3(spawnGO.transform.localScale.x, spawnGO.transform.localScale.y, spawnGO.transform.localScale.z);
-                    mirrorGO.transform.localScale = new Vector3(mirrorGO.transform.localScale.x, -mirrorGO.transform.localScale.y, mirrorGO.transform.localScale.z);
+                    spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, spawnGO.transform.localScale.y);
+                    mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, -mirrorGO.transform.localScale.y);
                 }
             }
             else if (grid.useMirrored)

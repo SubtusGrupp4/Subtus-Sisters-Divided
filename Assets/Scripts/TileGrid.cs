@@ -26,6 +26,8 @@ public class TileGrid : MonoBehaviour
     public bool snapPreview = false;
     public float previewTransparency = 0.5f;
 
+
+    public bool flipX = false;
     public bool hideInHierarchy = true;
     public GameObject tiles;
     public List<Transform> tileTransforms = new List<Transform>();
