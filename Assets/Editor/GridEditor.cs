@@ -109,18 +109,19 @@ public class GridEditor : Editor {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
+
         EditorGUI.BeginChangeCheck();
         grid.flipX = EditorGUILayout.Toggle("Flip X", grid.flipX);
+        grid.rotationZ = EditorGUILayout.FloatField("Rotaton", grid.rotationZ);
         if (EditorGUI.EndChangeCheck())
-            if(grid.flipX)
+        {
+            grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
+            if (grid.flipX)
                 grid.mousePreview.transform.localScale = new Vector2(-Mathf.Abs(grid.mousePreview.transform.localScale.x), grid.mousePreview.transform.localScale.y);
             else
                 grid.mousePreview.transform.localScale = new Vector2(Mathf.Abs(grid.mousePreview.transform.localScale.x), grid.mousePreview.transform.localScale.y);
+        }
 
-        EditorGUI.BeginChangeCheck();
-        grid.rotationZ = EditorGUILayout.FloatField("Rotaton", grid.rotationZ);
-        if (EditorGUI.EndChangeCheck())
-            grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
         grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
 
         // Tile Prefab
@@ -275,6 +276,10 @@ public class GridEditor : Editor {
                     SetTile();
                     grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
                     grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
+                    if (grid.flipX)
+                        grid.mousePreview.transform.localScale = new Vector2(-Mathf.Abs(grid.mousePreview.transform.localScale.x), grid.mousePreview.transform.localScale.y);
+                    else
+                        grid.mousePreview.transform.localScale = new Vector2(Mathf.Abs(grid.mousePreview.transform.localScale.x), grid.mousePreview.transform.localScale.y);
                     break;
                 }
         }
