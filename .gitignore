@@ -31,8 +31,8 @@ Assets/etc.meta
 ProjectSettings/ProjectVersion.txt
 
 # FMOD
-/Subtus-FMOD/Build/
-/Assets/FMODStudioCache.asset
-/Assets/FMODStudioCache.asset.meta
+#/Subtus-FMOD/Build/
+#/Assets/FMODStudioCache.asset
+#/Assets/FMODStudioCache.asset.meta
 fmod.log
 fmod_editor.log
