@@ -10,19 +10,21 @@ public enum Controller
 
 public enum AirControll
 {
-    full, Semi, None
+    full, Semi, SemiFull, None
 }
 
 public class PlayerController : MonoBehaviour
 {
-
+    // Saved State for Different Jumping states.
     private float X;
     private Vector2 savedVelocity;
     private bool changedMade;
+    private bool inAir;
+    float temp;
+    private float wallNormal = 0.9f;
 
-    // KOMMENTAR  KOLlA OM VI KAN FIXA SMÅ HOPP.
-
-    public Controller player;
+    // Input Manager 
+    public Controller Player;
     private string controllerCode;
 
     private string controllerOne = "_C1";
@@ -31,26 +33,22 @@ public class PlayerController : MonoBehaviour
     private string HorAx = "Horizontal";
     private string VerAx = "Vertical";
     private string jumpInput = "Jump";
-    private float distanceGraceForJump = 0.1f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
+    private float distanceGraceForJump = 0.4f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
 
-    // For Input manager, How much on the joystick is needed before you start moving?
-    private float stillGrace = 0.1f;
-    private float walkingCutOff = 0.4f;
-    // REMOVE ??
-
+    // Components
     private AudioSource myAudio; // Audio source on player object or sound master or game master ??? who knows , we do later.
-    private BoxCollider2D myBox;
+    private CapsuleCollider2D myBox;
     private new Rigidbody2D rigidbody2D;
     private RaycastHit2D[] objHit;
 
-    private bool inAir;
+    // Settings
     [HideInInspector]
     public bool isActive;
 
     [Header("Physics")]
 
     [SerializeField]
-    private bool flipped;
+    private bool Flipped;
     private int flippValue = 1; // Value between 1 and -1
 
     [SerializeField]
@@ -61,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private AirControll AirControll;
     [SerializeField]
     [Range(0, 1)]
-    private float airControlPrecentage;
+    private float AirControllPrecentage;
 
     [GiveTag]
     [SerializeField]
@@ -70,15 +68,15 @@ public class PlayerController : MonoBehaviour
     [Header("Sounds")]
 
     [SerializeField]
-    private AudioClip jumpSound;
+    private AudioClip JumpSound;
 
     void Start()
     {
         myAudio = GetComponent<AudioSource>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        myBox = GetComponent<BoxCollider2D>();
+        myBox = GetComponent<CapsuleCollider2D>();
 
-        if (player == Controller.Player1)
+        if (Player == Controller.Player1)
             controllerCode = controllerOne;
         else
             controllerCode = controllerTwo;
@@ -87,7 +85,7 @@ public class PlayerController : MonoBehaviour
         VerAx += controllerCode;
         jumpInput += controllerCode;
 
-        if (flipped)
+        if (Flipped)
             Flip();
 
         isActive = true;
@@ -100,16 +98,13 @@ public class PlayerController : MonoBehaviour
         {
             ResetJump();
         }
-        // if (inAir)
-        //    GetComponent<Rigidbody2D>().sharedMaterial.friction = 0;
-
-
     }
     private void FixedUpdate()
     {
         if (isActive)
         {
             Move();
+            NormalizeSlope();
         }
     }
 
@@ -128,23 +123,40 @@ public class PlayerController : MonoBehaviour
 
             //  GetComponent<BoxCollider2D>().sharedMaterial.friction = 0;
 
-            myAudio.PlayOneShot(jumpSound); // needs change?? need landing sound ??
+            myAudio.PlayOneShot(JumpSound); // needs change?? need landing sound ??
             // play jump animation
         }
 
+        // Input Manager
         X = Input.GetAxis(HorAx); // Valute between 0 and 1 from input manager.
         float Y = GetComponent<Rigidbody2D>().velocity.y;
 
-        float temp = X;
+        // Round it to nearest .5
+        temp = X;
         temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
 
         if (!inAir)
             temp *= Speed;
 
+        // Fixing all the Jumping and shit
+        ControllingAir();
 
+        // Creating SavedVelocity.
+        if (!inAir)
+        {
+            rigidbody2D.velocity = new Vector2(temp, Y);
+            savedVelocity = rigidbody2D.velocity;
+            changedMade = false;
+        }
+
+        rigidbody2D.velocity = new Vector2(temp, Y);
+    }
+
+    private void ControllingAir()
+    {
         // Full Controll
         if (AirControll == AirControll.full && inAir)
-            temp *= Speed * airControlPrecentage;
+            temp *= Speed * AirControllPrecentage;
 
         // Semi Controll 
         if (inAir && AirControll != AirControll.full)
@@ -156,12 +168,12 @@ public class PlayerController : MonoBehaviour
                 {
                     if (savedVelocity.x < 0 && !changedMade)
                     {
-                        savedVelocity.x += savedVelocity.x * airControlPrecentage * -1;
+                        savedVelocity.x += savedVelocity.x * AirControllPrecentage * -1;
                         changedMade = true;
                     }
                     else if (savedVelocity.x == 0 && !changedMade)
                     {
-                        savedVelocity.x += temp * Speed * airControlPrecentage;
+                        savedVelocity.x += temp * Speed * AirControllPrecentage;
                         changedMade = true;
                     }
                 }
@@ -169,12 +181,12 @@ public class PlayerController : MonoBehaviour
                 {
                     if (savedVelocity.x > 0 && !changedMade)
                     {
-                        savedVelocity.x += savedVelocity.x * airControlPrecentage * -1;
+                        savedVelocity.x += savedVelocity.x * AirControllPrecentage * -1;
                         changedMade = true;
                     }
-                    else if(savedVelocity.x == 0 && !changedMade)
+                    else if (savedVelocity.x == 0 && !changedMade)
                     {
-                        savedVelocity.x += temp* Speed * airControlPrecentage;
+                        savedVelocity.x += temp * Speed * AirControllPrecentage;
                         changedMade = true;
                     }
 
@@ -182,17 +194,6 @@ public class PlayerController : MonoBehaviour
             }
             temp = savedVelocity.x;
         }
-
-        // Creating SavedVelocity.
-        if (!inAir)
-        {
-            rigidbody2D.velocity = new Vector2(temp, Y);
-            savedVelocity = rigidbody2D.velocity;
-            changedMade = false;
-        }
-
-        // Applying Speed
-        rigidbody2D.velocity = new Vector2(temp, Y);
     }
 
     public void Die()
@@ -210,19 +211,30 @@ public class PlayerController : MonoBehaviour
 
     private void ResetJump()
     {
+        // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
         inAir = true;
         for (int i = 0; i < ResetJumpOn.Length; i++)
         {
-            objHit = Physics2D.RaycastAll(transform.position, -Vector2.up * flippValue, +Mathf.Abs((GetComponent<BoxCollider2D>().size.y
+            for (int l = -1; l < 2; l += 2)
+            {
+                objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flippValue), Mathf.Abs((myBox.size.y
                 * GetComponent<Transform>().localScale.y)) / 2 + distanceGraceForJump);
 
-            for (int j = 0; j < objHit.Length; j++)
-                if (objHit[j].transform.tag == ResetJumpOn[i])
+                Debug.DrawRay(transform.position, new Vector2(l, -flippValue), Color.red);
+
+                for (int j = 0; j < objHit.Length; j++)
                 {
-                    inAir = false;
-                    //        GetComponent<BoxCollider2D>().sharedMaterial.friction = 1;
-                    break;
+                    if (objHit[j].transform.tag == ResetJumpOn[i])
+                    {
+                        if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
+                        {
+                            inAir = false;
+                            break;
+                        }
+                    }
                 }
+            }
+
         }
     }
 
@@ -230,8 +242,63 @@ public class PlayerController : MonoBehaviour
     {
         // mabey flip sprite insted??
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * -1, transform.localScale.x);
-
         rigidbody2D.gravityScale *= -1; // E.V move this to portal ??
         flippValue *= -1;
     }
+
+    void NormalizeSlope()
+    {
+        float slopeFriction = 0.11f;
+        // Small optimization (if first ray hit we dont raycast a second time).
+        bool slope = false;
+
+        // Raycasting twice, meanwhile using L as direction because we want L to be between -1 and 1 so we raycast left and right...
+        for (int l = -1; l < 2; l += 2)
+        {
+            // Attempt vertical normalization
+            for (int i = 0; i < ResetJumpOn.Length; i++)
+            {
+                objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flippValue),
+                    Mathf.Abs((myBox.size.y * GetComponent<Transform>().localScale.y)) / 2 + distanceGraceForJump);
+
+                for (int j = 0; j < objHit.Length; j++)
+                {
+                    if (objHit[j].transform.tag != ResetJumpOn[i])
+                        continue;
+
+                    if (objHit[j].collider != null && Mathf.Abs(objHit[j].normal.x) > 0.1f && Mathf.Abs(objHit[j].normal.x) < wallNormal && inAir == false)
+                    {
+                        Debug.Log("hej obhHitNormalX " + objHit[j].normal.x + " L " + l);
+
+                        slopeFriction *= Mathf.Abs(objHit[j].normal.x);
+
+                        Rigidbody2D body = GetComponent<Rigidbody2D>();
+                        // Apply the opposite force against the slope force 
+                        body.velocity = new Vector2(body.velocity.x - (objHit[j].normal.x * slopeFriction), body.velocity.y);
+
+                        //Move Player up or down to compensate for the slope below them
+                        Vector3 pos = transform.position;
+                        float offSet = 0;
+                        //              "-1"          normalen     *       hastigheten          *       deltatime     *  hastigheten - (1 / -1)
+                        offSet += (flippValue * -1) * objHit[j].normal.x * Mathf.Abs(body.velocity.x) * Time.deltaTime * (body.velocity.x - objHit[j].normal.x > 0 ? 1f : -1f);
+
+                        if (offSet * flippValue > 0)
+                            offSet *=  0.5f;
+                        else
+                            offSet *= 2;
+
+                        pos.y += offSet;
+                        transform.position = pos;
+
+                        inAir = false;
+                        slope = true;
+
+                    }
+                }
+            }
+            if (slope)
+                break;
+        }
+    }
+
 }
