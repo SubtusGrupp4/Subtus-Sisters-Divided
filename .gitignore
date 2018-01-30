@@ -32,8 +32,8 @@ ProjectSettings/ProjectVersion.txt
 
 # FMOD
 #/Subtus-FMOD/Build/
-#/Assets/FMODStudioCache.asset
-#/Assets/FMODStudioCache.asset.meta
-#/Assets/StreamingAssets/*.bank
-#fmod.log
-#fmod_editor.log
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+/Assets/StreamingAssets/*.bank
+fmod.log
+fmod_editor.log
