@@ -37,3 +37,4 @@ ProjectSettings/ProjectVersion.txt
 /Assets/StreamingAssets/*.bank
 fmod.log
 fmod_editor.log
+*/fmod.log
