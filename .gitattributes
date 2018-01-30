@@ -66,7 +66,7 @@
 
 # FMOD
 
-#/Assets/StreamingAssets/*.bank filter=lfs diff=lfs merge=lfs -text
+/Assets/StreamingAssets/*.bank filter=lfs diff=lfs merge=lfs -text
 #/Assets/Plugins/fmodstudio.bundle/** filter=lfs diff=lfs merge=lfs -text
 #/Assets/Plugins/fmodstudioL.bundle/** filter=lfs diff=lfs merge=lfs -text
-#/Source/** filter=lfs diff=lfs merge=lfs -text
+/Source/** filter=lfs diff=lfs merge=lfs -text
