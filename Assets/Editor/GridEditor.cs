@@ -167,6 +167,14 @@ public class GridEditor : Editor {
                 EditorGUILayout.ObjectField(new GUIContent("Tile Sprite", "READ-ONLY. Changing this does not affect anything."), grid.sprite, typeof(Sprite), false);
         }
 
+        EditorGUI.BeginChangeCheck();
+        grid.hideFlag = EditorGUILayout.Toggle(new GUIContent("Hideflag on parent", "Hide or show the parent object in the hierarchy."), grid.hideFlag);
+        if(EditorGUI.EndChangeCheck())
+            if(grid.hideFlag)
+                grid.tiles.hideFlags = HideFlags.HideInHierarchy;
+            else
+                grid.tiles.hideFlags = HideFlags.None;
+
         EditorGUILayout.Space();
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
         if (grid.debug)
