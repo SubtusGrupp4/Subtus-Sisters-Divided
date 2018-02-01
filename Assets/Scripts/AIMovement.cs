@@ -9,7 +9,7 @@ public enum MovementEnum
 
 public class AIMovement : MonoBehaviour
 {
-    private const float patrollGrace = 0.1f;
+    protected const float patrollGrace = 0.1f;
 
     [Header("Interactions")]
 
@@ -25,46 +25,59 @@ public class AIMovement : MonoBehaviour
 
     public MovementEnum StartState;
     public MovementEnum EngagedState;
-    private MovementEnum currentState;
-    private MovementEnum savedState;
+    protected MovementEnum currentState;
+    protected MovementEnum savedState;
 
     [Header("Stats")]
 
     public float Speed;
-    public float AggroRange;
     public float StepRange;
-    private bool isDead = false;
+    public float MaxSlope;
+    public float TurnRate;
+    protected float minSlope = 0.1f; // Save some perfomance.
+
+    public float AggroRange;
+
+    protected bool isDead = false;
+    protected float distanceGraceForFalling = 0.2f;
 
 
     [Header("Check Points")]
 
     public List<GameObject> CheckPoints = new List<GameObject>();
-    private List<Vector2> checkPointPos = new List<Vector2>();
-    private List<bool> checkPointCheck = new List<bool>();
-    private bool reverse = false;
-    private int checkPointIndex = 0;
+    protected List<Vector2> checkPointPos = new List<Vector2>();
+    protected List<bool> checkPointCheck = new List<bool>();
+    protected bool reverse = false;
+    protected int checkPointIndex = 0;
 
-    private bool isFalling;
-    private bool engaged;
+    protected bool isFalling;
+    protected bool engaged;
 
-    private GameObject target;
+    protected GameObject target;
 
-    private bool bounce;
-    private Vector2 directionMultiplier; // incase u want to reverse gravity or something
+    protected bool bounce;
+    protected Vector2 directionMultiplier; // flip the X value to make the char go the opesite direction
+    protected int flipValue = 1; // used to flip the Gravity
 
-    private new Rigidbody2D rigidbody2D;
-    private List<GameObject> allTargets = new List<GameObject>();
+    protected new Rigidbody2D rigidbody2D;
+    protected List<GameObject> allTargets = new List<GameObject>();
 
-    private RaycastHit2D[] objHit;
-    private float rayDistance;
-    private float rayOffset;
-    private float slopeRayOffset;
-    private int flipValue = 1;
+    protected RaycastHit2D[] objHit;
+    protected float rayDistanceHypot;
+    protected float rayDistanceX;
+    protected float rayOffset;
+    protected float slopeRayOffset;
+
+    Vector2 desiredDir;
+
+
 
     void Start()
     {
         currentState = StartState;
-        rigidbody2D = GetComponent<Rigidbody2D>();
+
+        if (GetComponent<Rigidbody2D>())
+            rigidbody2D = GetComponent<Rigidbody2D>();
 
         for (int i = 0; i < CheckPoints.Count; i++)
         {
@@ -72,25 +85,33 @@ public class AIMovement : MonoBehaviour
             checkPointCheck.Add(false);
         }
 
+        //Maxslope
+        MaxSlope = Mathf.Sin((MaxSlope * Mathf.PI) / 180);
+
+
 
         directionMultiplier = new Vector2(1, 0);
 
-        rayDistance = Mathf.Pow((GetComponent<BoxCollider2D>().size.y * GetComponent<Transform>().localScale.y), 2) + // X^2
+        // Raydistance
+        rayDistanceHypot = Mathf.Pow((GetComponent<BoxCollider2D>().size.y * GetComponent<Transform>().localScale.y), 2) + // X^2
            Mathf.Pow((GetComponent<BoxCollider2D>().size.x * GetComponent<Transform>().localScale.x), 2);             // Y^2 
 
-        rayDistance = Mathf.Sqrt(rayDistance);
-        rayDistance += 0.05f; // offSet.
+        rayDistanceHypot = Mathf.Sqrt(rayDistanceHypot);
+        rayDistanceHypot += 0.15f; // offSet.
 
+        // SlopeRay
         rayOffset = GetComponent<BoxCollider2D>().size.x * transform.localScale.x / 2;
 
         slopeRayOffset = rayOffset;
 
+        //Xray
+        rayDistanceX = GetComponent<BoxCollider2D>().size.x * transform.localScale.x;
     }
 
 
 
 
-    void Update()
+   protected virtual void Update()
     {
         if (!GetComponent<Rigidbody2D>())
             isDead = true;
@@ -102,7 +123,6 @@ public class AIMovement : MonoBehaviour
             if (engaged == false || target == null)
             {
                 CheckEngagement();
-                Debug.Log("YES");
             }
 
             //  CheckFalling();
@@ -110,7 +130,7 @@ public class AIMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (!isDead) //&& isFalling)
         {
@@ -137,28 +157,27 @@ public class AIMovement : MonoBehaviour
     private void CheckFalling()
     {
         isFalling = true;
-        objHit = Physics2D.RaycastAll(transform.position, -Vector2.up * flipValue, 1);
-
-        Debug.DrawRay(transform.position, -Vector2.up * flipValue, Color.blue);
-
-        for (int i = 0; i < WalkOn.Length; i++)
+        for (int l = -1; l < 2; l += 2)
         {
-            for (int j = 0; j < objHit.Length; i++)
-            {
-                if (!objHit[j].transform)
-                    continue;
+            objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flipValue),
+                rayDistanceHypot + distanceGraceForFalling);
 
-                if (objHit[j].transform.tag == WalkOn[i])
+            Debug.DrawRay(transform.position, new Vector2(l, -flipValue), Color.grey);
+
+            for (int i = 0; i < WalkOn.Length; i++)
+            {
+                for (int j = 0; j < objHit.Length; j++)
                 {
-                    isFalling = false;
+                    if (objHit[j].transform.tag == WalkOn[i])
+                    {
+                        isFalling = false;
+                    }
                 }
             }
         }
-
-
     }
 
-    private void CheckEngagement()
+   protected virtual void CheckEngagement()
     {
         allTargets.Clear(); // clear the target list, incase another target is added or removed etc...
         if (EngageOn.Length >= 1)
@@ -191,44 +210,71 @@ public class AIMovement : MonoBehaviour
 
     private void Move()
     {
-        bounce = false;
         if (currentState == MovementEnum.Stalking)
         {
-            float X = target.transform.position.x - transform.position.x; // positive value = right, negative = left
+            float xDistance = target.transform.position.x - transform.position.x; // positive value = right, negative = left
 
-            if (X > 0)
-                rigidbody2D.velocity = new Vector2(1 * Speed, rigidbody2D.velocity.y);
+            if (xDistance > 0)
+                directionMultiplier = new Vector2(1, rigidbody2D.velocity.y);
 
-            if (X < 0)
-                rigidbody2D.velocity = new Vector2(-1 * Speed, rigidbody2D.velocity.y);
+            if (xDistance < 0)
+                directionMultiplier = new Vector2(-1, rigidbody2D.velocity.y);
+
+            rigidbody2D.velocity = new Vector2(directionMultiplier.x * Speed, rigidbody2D.velocity.y);
+
 
             //    rigidbody2D.velocity = new Vector2(GetComponent<Rigidbody2D>, GetComponent<Rigidbody2D>().velocity.y);
         }
 
-        if (currentState == MovementEnum.OneDirBounce)
+         else if (currentState == MovementEnum.OneDirBounce)
         {
 
-
-            bounce = true;
-            // CheckFalling();
-            if (!isFalling)
-                rigidbody2D.velocity = new Vector2(Speed * directionMultiplier.x, rigidbody2D.velocity.y);
+            CheckFalling();
 
 
-            if (CheckSlope() == true)
+
+            // PRO HACKER LMAO
+            if (rigidbody2D.velocity == Vector2.zero)
             {
-                // DO NOTHING
-                // Therefore keeping the same direction and speed as "inteded"
+                Debug.Log("got stuck" + rigidbody2D.velocity);
+
+                Debug.Log("Direction" + directionMultiplier);
+
+                Debug.Log("Falling" + isFalling);
+
+                Debug.Log("Wall" + CheckWall());
+
+                Debug.Log("Slope" + CheckSlope());
+
+                Debug.Log("Ledge" + CheckLedge());
+                rigidbody2D.AddForce(new Vector2(10, 10));
+
             }
-            else if (CheckLedge())
-                Bounce();
+
+            if (!isFalling)
+            {
+                rigidbody2D.velocity = new Vector2(Speed * directionMultiplier.x, rigidbody2D.velocity.y);
+                Debug.Log("AM I EVEN RUNNING ?");
+
+                if (CheckSlope() == true)
+                {
+                    // DO NOTHING
+                    // Therefore keeping the same direction and speed as "inteded"
+
+                }
+                else if (CheckLedge())
+                    Bounce();
 
 
-            if (CheckWall())
-                Bounce();
+                if (CheckWall())
+                    Bounce();
+
+                NormalizeSlope();
+
+            }
         }
 
-        if (currentState == MovementEnum.Patrolling)
+        else if (currentState == MovementEnum.Patrolling)
         {
             if (Vector2.Distance(transform.position, checkPointPos[checkPointIndex]) <= patrollGrace)
             {
@@ -248,26 +294,34 @@ public class AIMovement : MonoBehaviour
                 reverse = false;
             }
 
-            Vector2 desiredDir = (checkPointPos[checkPointIndex] - (Vector2)transform.position).normalized;
+            desiredDir = (checkPointPos[checkPointIndex] - (Vector2)transform.position).normalized;
              rigidbody2D.velocity = desiredDir * Speed;
-          //  transform.Translate(desiredDir * Speed * Time.deltaTime);
-
+           // transform.Translate(new Vector3(desiredDir.x, desiredDir.y, 0) * Speed * Time.deltaTime);
         }
 
-        if (currentState == MovementEnum.Idle)
+        else if (currentState == MovementEnum.Idle)
         {
-            if (rigidbody2D.velocity.x != 0)
-                rigidbody2D.velocity = Vector2.zero;
+            //  if (rigidbody2D.velocity.x != 0)
+            //     rigidbody2D.velocity = Vector2.zero;
         }
 
     }
 
+    public Vector2 GoingWhere()
+    {
+        return desiredDir;
+    }
+
+    public Vector2 Facing()
+    {
+        return directionMultiplier;
+    }
 
     private bool CheckWall()
     {
         bool walls = false;
 
-        objHit = Physics2D.RaycastAll(transform.position, new Vector2(directionMultiplier.x, 0), 1f);
+        objHit = Physics2D.RaycastAll(transform.position, new Vector2(directionMultiplier.x, 0), rayDistanceX);
         Debug.DrawRay(transform.position, new Vector2(directionMultiplier.x, 0), Color.green);
 
         for (int i = 0; i < objHit.Length; i++)
@@ -276,9 +330,8 @@ public class AIMovement : MonoBehaviour
             {
                 if (objHit[i].transform.tag == BounceOn[j])
                 {
-                    Debug.Log("normal X WALS" + Mathf.Abs(objHit[i].normal.x));
 
-                    if ((Mathf.Abs(objHit[i].normal.x) > 0.8f))
+                    if ((Mathf.Abs(objHit[i].normal.x) >= MaxSlope))
                     {
                         walls = true;
                     }
@@ -294,9 +347,9 @@ public class AIMovement : MonoBehaviour
     {
         bool slopes = false;
 
-        objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffset + 1.1f) * directionMultiplier.x, -slopeRayOffset - 0.1f * flipValue, 0), -Vector2.right * directionMultiplier.x, StepRange * 3);
+        objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffset + 1.1f) * directionMultiplier.x, -slopeRayOffset * flipValue - 0.1f * flipValue, 0), -Vector2.right * directionMultiplier.x, StepRange * 3);
 
-        Debug.DrawRay(transform.position + new Vector3((rayOffset + 1.1f) * directionMultiplier.x, -slopeRayOffset - 0.1f * flipValue), -Vector2.right * directionMultiplier.x, Color.blue);
+        Debug.DrawRay(transform.position + new Vector3((rayOffset + 1.1f) * directionMultiplier.x, -slopeRayOffset * flipValue - 0.1f * flipValue), -Vector2.right * directionMultiplier.x, Color.blue);
 
         for (int i = 0; i < objHit.Length; i++)
         {
@@ -304,10 +357,9 @@ public class AIMovement : MonoBehaviour
             {
                 if (objHit[i].transform.tag == WalkOn[j])
                 {
-                    if (Mathf.Abs(objHit[i].normal.x) > 0.1f && (Mathf.Abs(objHit[i].normal.x) < 0.8f))
+                    if (Mathf.Abs(objHit[i].normal.x) > minSlope && (Mathf.Abs(objHit[i].normal.x) < MaxSlope))
                     {
                         slopes = true;
-                        Debug.Log("normal X" + Mathf.Abs(objHit[i].normal.x));
                     }
                 }
             }
@@ -366,7 +418,7 @@ public class AIMovement : MonoBehaviour
         /*
         for (int i = 0; i < objHit.Length; i++)
         {
-            
+
 
             if (objHit[i].transform.tag != BounceOn[0])
             {
@@ -394,7 +446,62 @@ public class AIMovement : MonoBehaviour
     private void Bounce()
     {
         directionMultiplier *= -1;
-    }
 
+
+    }
+    
+    void NormalizeSlope()
+    {
+        float slopeFriction = 0.11f;
+        // Small optimization (if first ray hit we dont raycast a second time).
+        bool slope = false;
+
+        // Raycasting twice, meanwhile using L as direction because we want L to be between -1 and 1 so we raycast left and right...
+        for (int l = -1; l < 2; l += 2)
+        {
+            // Attempt vertical normalization
+            for (int i = 0; i < WalkOn.Length; i++)
+            {
+                objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flipValue),
+                 rayDistanceHypot + distanceGraceForFalling);
+
+                for (int j = 0; j < objHit.Length; j++)
+                {
+                    if (objHit[j].transform.tag != WalkOn[i])
+                        continue;
+
+                    if (objHit[j].collider != null && Mathf.Abs(objHit[j].normal.x) > 0.1f && Mathf.Abs(objHit[j].normal.x) < MaxSlope && isFalling == false)
+                    {
+
+
+                        slopeFriction *= Mathf.Abs(objHit[j].normal.x);
+
+                        Rigidbody2D body = GetComponent<Rigidbody2D>();
+                        // Apply the opposite force against the slope force 
+                        body.velocity = new Vector2(body.velocity.x - (objHit[j].normal.x * slopeFriction), body.velocity.y);
+
+                        //Move Player up or down to compensate for the slope below them
+                        Vector3 pos = transform.position;
+                        float offSet = 0;
+                        //              "-1"          normalen     *       hastigheten          *       deltatime     *  hastigheten - (1 / -1)
+                        offSet += (flipValue * -1) * objHit[j].normal.x * Mathf.Abs(body.velocity.x) * Time.deltaTime * (body.velocity.x - objHit[j].normal.x > 0 ? 1f : -1f);
+
+                        if (offSet * flipValue > 0)
+                            offSet *= 0.5f;
+                        else
+                            offSet *= 2;
+
+                        pos.y += offSet;
+                        transform.position = pos;
+
+                        slope = true;
+
+                    }
+                }
+            }
+            if (slope)
+                break;
+        }
+    } 
 
 }
