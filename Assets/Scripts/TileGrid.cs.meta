@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: 6e871015408f87c4a958d8eb2acbabfd
-timeCreated: 1516110196
+timeCreated: 1517496289
 licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tiles: {instanceID: 0}
+  - tilePrefab: {instanceID: 0}
+  - tileSet: {fileID: 11400000, guid: 854da35f1466a3b48beab926a6814b7f, type: 2}
+  - sprite: {instanceID: 0}
+  - mousePreview: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

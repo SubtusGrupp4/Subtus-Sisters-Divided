@@ -40,73 +40,77 @@ public class GridEditor : Editor {
 
     public override void OnInspectorGUI()
     {
-        grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+        if (grid.tileSet == null)
+            grid.tilePrefab = null;
 
-        EditorGUI.BeginChangeCheck();
-        EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
-        grid.useGrid = EditorGUILayout.Toggle("Use Grid", grid.useGrid);
-        if (EditorGUI.EndChangeCheck())
+        if (grid.tilePrefab != null && grid.tileSet != null)
         {
-            grid.snapPreview = grid.useGrid;
-            if(grid.useGrid)
-                grid.overlap = false;
-        }
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
+            grid.useGrid = EditorGUILayout.Toggle("Use Grid", grid.useGrid);
+            if (EditorGUI.EndChangeCheck())
+            {
+                grid.snapPreview = grid.useGrid;
+                if (grid.useGrid)
+                    grid.overlap = false;
+            }
 
-        grid.drag = EditorGUILayout.Toggle("Enable Drag", grid.drag);
-        grid.overlap = EditorGUILayout.Toggle("Enable Overlap", grid.overlap);
+            grid.drag = EditorGUILayout.Toggle("Enable Drag", grid.drag);
+            grid.overlap = EditorGUILayout.Toggle("Enable Overlap", grid.overlap);
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Mirror Settings", EditorStyles.boldLabel);
-        grid.mirror = EditorGUILayout.Toggle(new GUIContent("Mirror", "Enable mirroring on the Y axis."), grid.mirror);
-        if (grid.mirror)
-        {
-            grid.mirrorOffset = EditorGUILayout.FloatField(new GUIContent("Mirror Offset", "Offsets the Y axis. Basically raises and lowers the mirroring point."), grid.mirrorOffset);
-            grid.mirrorSprite = EditorGUILayout.Toggle(new GUIContent("Mirror Sprites", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.mirrorSprite);
-            grid.removeMirrored = EditorGUILayout.Toggle(new GUIContent("Remove Mirror", "Remove tiles on both sides."), grid.removeMirrored);
-            grid.useMirrored = false;
-            grid.flipWorld = false;
-        }
-        else
-        {
             EditorGUILayout.Space();
-            grid.useMirrored = EditorGUILayout.Toggle(new GUIContent("Use Mirrored", "Place the blocks for the mirrored world with normal orientation."), grid.useMirrored);
-            grid.flipWorld = EditorGUILayout.Toggle(new GUIContent("Flip World", "Place the dark world on top."), grid.flipWorld);
+            EditorGUILayout.LabelField("Mirror Settings", EditorStyles.boldLabel);
+            grid.mirror = EditorGUILayout.Toggle(new GUIContent("Mirror", "Enable mirroring on the Y axis."), grid.mirror);
+            if (grid.mirror)
+            {
+                grid.mirrorOffset = EditorGUILayout.FloatField(new GUIContent("Mirror Offset", "Offsets the Y axis. Basically raises and lowers the mirroring point."), grid.mirrorOffset);
+                grid.mirrorSprite = EditorGUILayout.Toggle(new GUIContent("Mirror Sprites", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.mirrorSprite);
+                grid.removeMirrored = EditorGUILayout.Toggle(new GUIContent("Remove Mirror", "Remove tiles on both sides."), grid.removeMirrored);
+                grid.useMirrored = false;
+                grid.flipWorld = false;
+            }
+            else
+            {
+                EditorGUILayout.Space();
+                grid.useMirrored = EditorGUILayout.Toggle(new GUIContent("Use Mirrored", "Place the blocks for the mirrored world with normal orientation."), grid.useMirrored);
+                grid.flipWorld = EditorGUILayout.Toggle(new GUIContent("Flip World", "Place the dark world on top."), grid.flipWorld);
+            }
+            if (grid.flipWorld && !grid.mirror)
+                grid.transform.localScale = new Vector2(1f, -1f);
+            else
+                grid.transform.localScale = new Vector2(1f, 1f);
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
+            grid.showGrid = EditorGUILayout.Toggle("Show Grid", grid.showGrid);
+            grid.width = MinFloat("Width", grid.width, 0.01f);
+            grid.height = MinFloat("Height", grid.height, 0.01f);
+
+            EditorGUI.BeginChangeCheck();
+            Color newColor = EditorGUILayout.ColorField("Grid Color", grid.color);
+            if (EditorGUI.EndChangeCheck())
+                grid.color = newColor;
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Mouse Preview", EditorStyles.boldLabel);
+
+            EditorGUI.BeginChangeCheck();
+            grid.showPreview = EditorGUILayout.Toggle("Show Preview", grid.showPreview);
+            if (grid.showPreview)
+            {
+                grid.snapPreview = EditorGUILayout.Toggle("Snap to Grid", grid.snapPreview);
+                grid.previewTransparency = CreateSlider("Preview Transparency", grid.previewTransparency, 0f, 1f);
+            }
+            else
+                grid.snapPreview = false;
+
+            if (EditorGUI.EndChangeCheck())
+
+                if (grid.mousePreview != null)
+                    grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
+
+            EditorGUILayout.Space();
         }
-        if (grid.flipWorld && !grid.mirror)
-            grid.transform.localScale = new Vector2(1f, -1f);
-        else
-            grid.transform.localScale = new Vector2(1f, 1f);
-
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Grid Settings", EditorStyles.boldLabel);
-        grid.showGrid = EditorGUILayout.Toggle("Show Grid", grid.showGrid);
-        grid.width = MinFloat("Width", grid.width, 0.01f);
-        grid.height = MinFloat("Height", grid.height, 0.01f);
-
-        EditorGUI.BeginChangeCheck();
-        Color newColor = EditorGUILayout.ColorField("Grid Color", grid.color);
-        if (EditorGUI.EndChangeCheck())
-            grid.color = newColor;
-
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Mouse Preview", EditorStyles.boldLabel);
-
-        EditorGUI.BeginChangeCheck();
-        grid.showPreview = EditorGUILayout.Toggle("Show Preview", grid.showPreview);
-        if (grid.showPreview)
-        {
-            grid.snapPreview = EditorGUILayout.Toggle("Snap to Grid", grid.snapPreview);
-            grid.previewTransparency = CreateSlider("Preview Transparency", grid.previewTransparency, 0f, 1f);
-        }
-        else
-            grid.snapPreview = false;
-
-        if (EditorGUI.EndChangeCheck())
-
-            if (grid.mousePreview != null)
-                grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
-
-        EditorGUILayout.Space();
         EditorGUILayout.LabelField("Tile Settings", EditorStyles.boldLabel);
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
         EditorGUI.BeginChangeCheck();
@@ -124,12 +128,14 @@ public class GridEditor : Editor {
         grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
 
         // Tile Prefab
+        /*
         EditorGUI.BeginChangeCheck();
         Transform newTilePrefab = (Transform)EditorGUILayout.ObjectField("Tile Prefab", grid.tilePrefab, typeof(Transform), false);
         if(EditorGUI.EndChangeCheck())
         {
             grid.tilePrefab = newTilePrefab;
         }
+        */
 
         // Tile Map
         EditorGUI.BeginChangeCheck();
@@ -137,6 +143,7 @@ public class GridEditor : Editor {
         if(EditorGUI.EndChangeCheck())
         {
             grid.tileSet = newTileSet;
+            SetTile();
         }
 
         if(grid.tileSet != null)
@@ -168,12 +175,19 @@ public class GridEditor : Editor {
 
         EditorGUILayout.Space();
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
+
+        if(grid.tilePrefab != null)
+            grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
+
         if (grid.debug)
             base.OnInspectorGUI();
     }
 
     private void SetTile()
     {
+        if (grid.tileSet == null)
+            return;
+
         oldIndex = grid.tileIndex;
         grid.tilePrefab = grid.tileSet.prefabs[grid.tileIndex];
         grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
@@ -213,6 +227,9 @@ public class GridEditor : Editor {
 
     private void OnSceneGUI()
     {
+        if (grid.tilePrefab == null)
+            return;
+
         int controlID = GUIUtility.GetControlID(FocusType.Passive);
         Event e = Event.current;
         Ray ray = Camera.current.ScreenPointToRay(new Vector3(e.mousePosition.x, -e.mousePosition.y + Camera.current.pixelHeight));
@@ -291,7 +308,7 @@ public class GridEditor : Editor {
 
     private void ShowPreview(Vector3 mousePos)
     {
-        if (grid.showPreview)
+        if (grid.showPreview && grid.tilePrefab != null)
         {
             if (grid.mousePreview == null && GameObject.Find("Mouse Preview") == null)
             {
