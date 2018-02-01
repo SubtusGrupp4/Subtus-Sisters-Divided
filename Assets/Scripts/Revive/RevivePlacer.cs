@@ -41,7 +41,6 @@ public class RevivePlacer : MonoBehaviour {
 
         float rayDistance = 0.5f;
 
-        // TODO: Set this correctly
         LayerMask layer = 1 << 0;
 
         while (search)
@@ -62,7 +61,6 @@ public class RevivePlacer : MonoBehaviour {
         }
         if(!search)
         {
-            Debug.Log("Found a safe place at " + transform.position);
             GameObject spot = Instantiate(reviveSpot, transform.position, Quaternion.identity);
             spot.GetComponent<ReviveSpot>().Initialize(playerTransform);
             Destroy(gameObject);

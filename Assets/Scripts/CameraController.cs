@@ -34,6 +34,8 @@ public class CameraController : MonoBehaviour
 
     [Header("Zooming")]
     [SerializeField]
+    private bool useZooming = true;
+    [SerializeField]
     private float yZoomOffset;
     [SerializeField]
     private float minZoom;
@@ -44,6 +46,7 @@ public class CameraController : MonoBehaviour
     private float currentZoomTime;
     private bool zoomIn = false;
     private float startZoom;
+    private float startYPos;
 
     private void Start()
     {
@@ -55,52 +58,59 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if(State == CameraState.FollowingBoth)
+        if (useZooming)
         {
-            if(zoomIn)
+            if (State == CameraState.FollowingBoth)
             {
-                currentZoomTime = 0f;
-                zoomIn = false;
-                startZoom = GetComponent<Camera>().orthographicSize;
-            }
+                if (zoomIn)
+                {
+                    currentZoomTime = 0f;
+                    zoomIn = false;
+                    startZoom = GetComponent<Camera>().orthographicSize;
+                    startYPos = transform.position.y;
+                }
 
-            currentZoomTime += Time.deltaTime;
-            if (currentZoomTime > zoomTime)
+                currentZoomTime += Time.deltaTime;
+                if (currentZoomTime > zoomTime)
+                {
+                    currentZoomTime = zoomTime;
+                }
+
+                float t = currentZoomTime / zoomTime;
+                t = t * t * (3f - 2f * t);
+
+                GetComponent<Camera>().orthographicSize = Mathf.Lerp(startZoom, maxZoom, t);
+
+                float yZoomMove = Mathf.Lerp(startYPos, 0f, t);
+                transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
+            }
+            else if (State == CameraState.FollowingOne)
             {
-                currentZoomTime = zoomTime;
+                if (!zoomIn)
+                {
+                    currentZoomTime = 0f;
+                    zoomIn = true;
+                    startZoom = GetComponent<Camera>().orthographicSize;
+                    startYPos = transform.position.y;
+                }
+
+                currentZoomTime += Time.deltaTime;
+                if (currentZoomTime > zoomTime)
+                {
+                    currentZoomTime = zoomTime;
+                }
+
+                float t = currentZoomTime / zoomTime;
+                t = t * t * (3f - 2f * t);
+
+                GetComponent<Camera>().orthographicSize = Mathf.Lerp(startZoom, minZoom, t);
+
+                if (target == playerBot && yZoomOffset > 0f)
+                    yZoomOffset = -yZoomOffset;
+
+                float yZoomMove = Mathf.Lerp(startYPos, yZoomOffset, t);
+                transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
             }
-
-            float t = currentZoomTime / zoomTime;
-            t = t * t * (3f - 2f * t);
-
-            GetComponent<Camera>().orthographicSize = Mathf.Lerp(startZoom, maxZoom, t);
-
-            transform.position = new Vector3(transform.position.x, 0f, -10f);
-        }
-        else if(State == CameraState.FollowingOne)
-        {
-            if (!zoomIn)
-            {
-                currentZoomTime = 0f;
-                zoomIn = true;
-                startZoom = GetComponent<Camera>().orthographicSize;
-            }
-
-            currentZoomTime += Time.deltaTime;
-            if (currentZoomTime > zoomTime)
-            {
-                currentZoomTime = zoomTime;
-            }
-
-            float t = currentZoomTime / zoomTime;
-            t = t * t * (3f - 2f * t);
-
-            GetComponent<Camera>().orthographicSize = Mathf.Lerp(startZoom, minZoom, t);
-
-            if (target == playerTop)
-                transform.position = new Vector3(transform.position.x, yZoomOffset, -10f);
-            else
-                transform.position = new Vector3(transform.position.x, -yZoomOffset, -10f);
         }
     }
 
@@ -122,16 +132,11 @@ public class CameraController : MonoBehaviour
         else if (State == CameraState.FollowingOne)
         {
             camDistance = target.position.x - transform.position.x;
-            //float camDistanceY = target.position.y - transform.position.y;
 
             if (camDistance > 0.1f)
-                transform.Translate(new Vector2((camDistance - deadZone) / followSpeed, 0.0f), Space.Self);      // Move Right
-            else if (camDistance < -0.1f)
-                transform.Translate(new Vector2((camDistance + deadZone) / followSpeed, 0.0f), Space.Self);      // Move Left
-
-            //transform.Translate(new Vector2(0f, camDistanceY / followSpeed));
-
-            //GetComponent<Camera>().orthographicSize = 5f;
+                transform.Translate(new Vector2(camDistance / followSpeed, 0.0f), Space.Self);      // Move Right
+            else
+                transform.Translate(new Vector2(camDistance / followSpeed, 0.0f), Space.Self);      // Move Left
 
         }
         //else
@@ -157,12 +162,10 @@ public class CameraController : MonoBehaviour
     public void SetCameraState(CameraState State, Transform playerTarget)
     {
         this.State = State;
-        Debug.Log(playerTarget);
         if (playerTarget == playerTop)
             target = playerBot;
         else
             target = playerTop;
-        Debug.Log(target);
     }
 
     public void DialogueMove(float moveCameraSpeed, float moveCameraX, float moveCameraWait)

@@ -104,7 +104,8 @@ MonoBehaviour:
   deadZone: 3.5
   followPos: {x: 0, y: 0}
   camDistance: 0
-  yZoomOffset: 5.5
-  minZoom: 5.5
+  useZooming: 1
+  yZoomOffset: 3
+  minZoom: 7
   maxZoom: 11
   zoomTime: 5
