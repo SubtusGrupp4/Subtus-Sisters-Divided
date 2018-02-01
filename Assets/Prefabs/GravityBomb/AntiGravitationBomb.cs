@@ -13,7 +13,6 @@ public class AntiGravitationBomb : MonoBehaviour
 	[SerializeField]
 	private float duration;
 
-
 	[Header("tags from objects to pull")]
 	[SerializeField]
 	[GiveTag]
@@ -24,11 +23,11 @@ public class AntiGravitationBomb : MonoBehaviour
 	private bool buttonPressed;
 	private bool targetting;
 	private bool antiGravitationActivated;
-	private string fireBomb;
+	private string activateBomb = "Fire_Shockwave_Bomb";
 
 	void Start () 
 	{
-		fireBomb = "Fire_Shockwave_Bomb";
+		
 		rb = GetComponent<Rigidbody2D> ();
 		pullObjects = new List<GameObject> ();
 		buttonPressed = true;
@@ -45,7 +44,7 @@ public class AntiGravitationBomb : MonoBehaviour
 
 	void ActivateAntiGravitationBomb()
 	{
-		if (Input.GetButtonDown(fireBomb) && buttonPressed) 
+		if (Input.GetButtonDown(activateBomb) && buttonPressed) 
 		{
 			buttonPressed = false;
 			targetting = true;
