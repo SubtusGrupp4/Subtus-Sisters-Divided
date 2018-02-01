@@ -10,9 +10,15 @@ public class RevivePlacer : MonoBehaviour {
     private float moveAmount = 0.01f;
     private float maxDistance = 15f;
 
-    public void Initialize(Controller player)
+    private Transform playerTransform;
+
+    [SerializeField]
+    private GameObject reviveSpot;
+
+    public void Initialize(Controller player, Transform playerTransform)
     {
         startPos = transform.position;
+        this.playerTransform = playerTransform;
 
         if (player == Controller.Player1)
         {
@@ -57,6 +63,9 @@ public class RevivePlacer : MonoBehaviour {
         if(!search)
         {
             Debug.Log("Found a safe place at " + transform.position);
+            GameObject spot = Instantiate(reviveSpot, transform.position, Quaternion.identity);
+            spot.GetComponent<ReviveSpot>().Initialize(playerTransform);
+            Destroy(gameObject);
         }
     }
 

@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool isActive;
 
+    private SpriteRenderer sr;
+
     [Header("Physics")]
 
     private bool Flipped;
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Reviving")]
     [SerializeField]
-    private float lastSafeX;
+    private Vector2 lastSafe;
     [SerializeField]
     private GameObject revivePlacerPrefab;
     private GameObject revivePlacer;
@@ -102,6 +104,8 @@ public class PlayerController : MonoBehaviour
 
         isActive = true;
         inAir = true;
+
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -119,7 +123,7 @@ public class PlayerController : MonoBehaviour
             NormalizeSlope();
 
             if (!inAir)
-                lastSafeX = transform.position.x;
+                lastSafe = transform.position;
         }
     }
 
@@ -216,16 +220,25 @@ public class PlayerController : MonoBehaviour
         // Mabey needed for Ressurect in future.
         isActive = false;
         rigidbody2D.velocity = Vector2.zero;
+        rigidbody2D.isKinematic = true;
 
-        Vector2 spawnPos = new Vector2(lastSafeX, 0f);
+        Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
         revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
-        revivePlacer.GetComponent<RevivePlacer>().Initialize(Player);
+        revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
+        sr.enabled = false;
+
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
     }
 
     public void Ressurect()
     {
         // ^^^^^^
+        transform.position = lastSafe;
         isActive = true;
+        rigidbody2D.isKinematic = false;
+        sr.enabled = true;
+
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
     }
 
     private void ResetJump()
