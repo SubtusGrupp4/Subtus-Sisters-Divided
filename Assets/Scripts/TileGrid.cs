@@ -39,7 +39,7 @@ public class TileGrid : MonoBehaviour
     [HideInInspector]
     public bool debug = false;
     public Sprite sprite;
-    public float rotationZ = 0f;
+    public float rotationZ;
     public GameObject mousePreview;
 
     public int tileIndex = 0;
