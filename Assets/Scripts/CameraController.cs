@@ -38,9 +38,9 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float yZoomOffset;
     [SerializeField]
-    private float minZoom;
+    private float minZoom = 7f;
     [SerializeField]
-    private float maxZoom;
+    private float maxZoom = 11f;
     [SerializeField]
     private float zoomTime = 1f;
     private float currentZoomTime;
@@ -54,6 +54,12 @@ public class CameraController : MonoBehaviour
         State = CameraState.FollowingBoth;
 
         currentZoomTime = zoomTime;
+
+        if (minZoom <= 1f)
+            minZoom = 7f;
+
+        if (maxZoom <= 1f)
+            maxZoom = 11f;
     }
 
     private void Update()
