@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBusy: 0
   moveCamera: 0
+  mDialogueCanvas: {fileID: 0}
   rDialogueCanvas: {fileID: 0}
   lDialogueCanvas: {fileID: 0}
   freezeCamera: 0
