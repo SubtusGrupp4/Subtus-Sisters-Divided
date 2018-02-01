@@ -23,7 +23,7 @@ public class AntiGravitationBomb : MonoBehaviour
 	private bool buttonPressed;
 	private bool targetting;
 	private bool antiGravitationActivated;
-	private string activateBomb = "Fire_Shockwave_Bomb";
+	private string activateBomb = "Fire_Bomb_C1";
 
 	void Start () 
 	{

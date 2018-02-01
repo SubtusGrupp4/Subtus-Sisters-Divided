@@ -25,7 +25,7 @@ public class GravitationBomb : MonoBehaviour
 	private bool targetting;
 	private bool gravitationActivated;
 	private int decreaseGravity;
-	private string activateBomb = "Fire_Gravitation_Bomb";
+	private string activateBomb = "Fire_Bomb_C2";
 
 	void Start () 
 	{
