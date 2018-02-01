@@ -5,6 +5,8 @@ using UnityEngine;
 public class InstantiateGravityBomb : MonoBehaviour 
 {
 	public GameObject gravityBomb;
+	public GameObject shockwaveBomb;
+	private GameObject fireBomb;
 	private GameObject clone;
 
 	[SerializeField]
@@ -14,26 +16,45 @@ public class InstantiateGravityBomb : MonoBehaviour
 	[SerializeField]
 	[Range(0f, 0.75f)]
 	private float sensitivity;
+
 	private Vector2 direction;
 	private bool reload;
 	private float setCooldown;
+	private int flipValue;
 
-	private string rightXAxis;
-	private string rightYAxis;
+	//input Manager
+	private string controllerCode;
+
+	private string controllerOne = "_C1";
+	private string controllerTwo = "_C2";
+
+	private string rightXAxis = "Horizontal_Fire";
+	private string rightYAxis = "Vertical_Fire";
 
 
 	void Start()
 	{
 		reload = true;
 		setCooldown = cooldown;
-		rightXAxis = "Horizontal_Fire_C1";
-		rightYAxis = "Vertical_Fire_C1";
+		if (GetComponentInParent<PlayerController> ().Player == Controller.Player1) 
+		{
+			controllerCode = controllerOne;
+			fireBomb = shockwaveBomb;
+			flipValue = 1;
+		} else 
+		{
+			controllerCode = controllerTwo;
+			fireBomb = gravityBomb;
+			flipValue = -1;
+		}
+		rightXAxis += controllerCode;
+		rightYAxis += controllerCode;
 	}
 
 	void Update()
 	{
 		GetDirection ();
-		Fire (direction, gravityBomb);
+		Fire (direction, fireBomb);
 		
 	}
 
@@ -54,6 +75,7 @@ public class InstantiateGravityBomb : MonoBehaviour
 			//Debug.Log (Direction);
 			clone = (GameObject)Instantiate (fireObj, transform.position, Quaternion.identity) as GameObject;
 			clone.GetComponent<Rigidbody2D> ().AddForce (Direction.normalized * speed);
+			clone.GetComponent<Rigidbody2D> ().gravityScale = flipValue;
 			reload = false;
 			setCooldown = cooldown;
 			direction = Vector2.zero;

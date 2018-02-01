@@ -25,11 +25,11 @@ public class GravitationBomb : MonoBehaviour
 	private bool targetting;
 	private bool gravitationActivated;
 	private int decreaseGravity;
-	private string fireBomb;
+	private string activateBomb = "Fire_Gravitation_Bomb";
 
 	void Start () 
 	{
-		fireBomb = "Fire_Gravitation_Bomb";
+		
 		rb = GetComponent<Rigidbody2D> ();
 		pullObjects = new List<GameObject> ();
 		buttonPressed = true;
@@ -60,14 +60,14 @@ public class GravitationBomb : MonoBehaviour
 	void ActivateGravitationBomb()
 	{
 		deActivate -= Time.deltaTime;
-		if (Input.GetButton (fireBomb) && buttonPressed) 
+		if (Input.GetButton (activateBomb) && buttonPressed) 
 		{
 			buttonPressed = false;
 			targetting = true;
 			gravitationActivated = true;
 			rb.bodyType = RigidbodyType2D.Static;
 		}
-		if(Input.GetButtonUp (fireBomb))
+		if(Input.GetButtonUp (activateBomb))
 		{
 			ResetGravity (0);
 			Destroy (gameObject);
@@ -140,7 +140,6 @@ public class GravitationBomb : MonoBehaviour
 			toPull.GetComponent<Rigidbody2D> ().velocity = new Vector2(toPull.GetComponent<Rigidbody2D>().velocity.x*integer, toPull.GetComponent<Rigidbody2D>().velocity.y*integer);
 		}
 	}
-
 
 
 }
