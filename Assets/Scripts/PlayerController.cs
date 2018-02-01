@@ -45,9 +45,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool isActive;
 
+    private SpriteRenderer sr;
+
     [Header("Physics")]
 
-    [SerializeField]
     private bool Flipped;
     private int flippValue = 1; // Value between 1 and -1
 
@@ -70,6 +71,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioClip JumpSound;
 
+    [Header("Reviving")]
+    [SerializeField]
+    private Vector2 lastSafe;
+    [SerializeField]
+    private GameObject revivePlacerPrefab;
+    private GameObject revivePlacer;
+
     void Start()
     {
         myAudio = GetComponent<AudioSource>();
@@ -77,9 +85,15 @@ public class PlayerController : MonoBehaviour
         myBox = GetComponent<CapsuleCollider2D>();
 
         if (Player == Controller.Player1)
+        {
             controllerCode = controllerOne;
+            Flipped = false;
+        }
         else
+        {
             controllerCode = controllerTwo;
+            Flipped = true;
+        }
 
         HorAx += controllerCode;
         VerAx += controllerCode;
@@ -90,6 +104,8 @@ public class PlayerController : MonoBehaviour
 
         isActive = true;
         inAir = true;
+
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -105,6 +121,9 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             NormalizeSlope();
+
+            if (!inAir)
+                lastSafe = transform.position;
         }
     }
 
@@ -201,12 +220,25 @@ public class PlayerController : MonoBehaviour
         // Mabey needed for Ressurect in future.
         isActive = false;
         rigidbody2D.velocity = Vector2.zero;
+        rigidbody2D.isKinematic = true;
+
+        Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
+        revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
+        revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
+        sr.enabled = false;
+
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
     }
 
     public void Ressurect()
     {
         // ^^^^^^
+        transform.position = lastSafe;
         isActive = true;
+        rigidbody2D.isKinematic = false;
+        sr.enabled = true;
+
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
     }
 
     private void ResetJump()
@@ -301,4 +333,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Portal")
+        {
+            Die();
+        }
+        else if(collision.transform.tag == "Revive")
+        {
+            Destroy(collision.gameObject);
+            Ressurect();
+        }
+    }
 }

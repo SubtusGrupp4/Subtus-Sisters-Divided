@@ -92,7 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: 0
   isActive: 0
-  Flipped: 0
   Speed: 5
   JumpVelocity: 8
   AirControll: 0
@@ -100,6 +99,8 @@ MonoBehaviour:
   ResetJumpOn:
   - Floor
   JumpSound: {fileID: 0}
+  lastSafe: {x: 0, y: 0}
+  revivePlacerPrefab: {fileID: 0}
 --- !u!114 &114571130801340578
 MonoBehaviour:
   m_ObjectHideFlags: 1
