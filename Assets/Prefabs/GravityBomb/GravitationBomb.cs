@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class GravitationBomb : MonoBehaviour 
 {
+	
 	[Header("Attributes")]
-	public int range;
-	public int pullForce;
-	public float duration;
-	public float timeBeforeBombDisappear;
+	[SerializeField]
+	private int range;
+	[SerializeField]
+	private int pullForce;
+	[SerializeField]
+	private float duration;
+	[SerializeField]
+	private float deActivate;
 	[Header("tags from objects to pull")]
 	[GiveTag]
-	public string[] tagNames;
+	[SerializeField]
+	private string[] tagNames;
 
 	private List<GameObject> pullObjects;
 	private Rigidbody2D rb;
@@ -19,9 +25,11 @@ public class GravitationBomb : MonoBehaviour
 	private bool targetting;
 	private bool gravitationActivated;
 	private int decreaseGravity;
+	private string fireBomb;
 
 	void Start () 
 	{
+		fireBomb = "Fire_Gravitation_Bomb";
 		rb = GetComponent<Rigidbody2D> ();
 		pullObjects = new List<GameObject> ();
 		buttonPressed = true;
@@ -35,6 +43,13 @@ public class GravitationBomb : MonoBehaviour
 		ActivateGravitationBomb ();
 		TargetInRange ();
 		TargetOutsideRange ();
+		if (!buttonPressed) {
+			duration -= Time.deltaTime;
+			if (duration < 0) {
+				ResetGravity (0);
+				Destroy (gameObject);
+			}
+		}
 	}
 
 	void FixedUpdate()
@@ -44,19 +59,23 @@ public class GravitationBomb : MonoBehaviour
 
 	void ActivateGravitationBomb()
 	{
-		if (Input.GetKey (KeyCode.O) && buttonPressed) 
+		deActivate -= Time.deltaTime;
+		if (Input.GetButton (fireBomb) && buttonPressed) 
 		{
 			buttonPressed = false;
 			targetting = true;
 			gravitationActivated = true;
 			rb.bodyType = RigidbodyType2D.Static;
-			Destroy (gameObject, duration);
 		}
-		if(Input.GetKeyUp(KeyCode.O))
+		if(Input.GetButtonUp (fireBomb))
+		{
+			ResetGravity (0);
+			Destroy (gameObject);
+		}
+		if (deActivate < 0) 
 		{
 			Destroy (gameObject);
 		}
-		Destroy (gameObject, timeBeforeBombDisappear);
 	}
 
 	void TargetInRange()
@@ -118,17 +137,11 @@ public class GravitationBomb : MonoBehaviour
 	{
 		foreach (GameObject toPull in pullObjects) 
 		{
-			toPull.GetComponent<Rigidbody2D> ().velocity = new Vector2(toPull.GetComponent<Rigidbody2D>().velocity.x/integer, toPull.GetComponent<Rigidbody2D>().velocity.y/integer);
+			toPull.GetComponent<Rigidbody2D> ().velocity = new Vector2(toPull.GetComponent<Rigidbody2D>().velocity.x*integer, toPull.GetComponent<Rigidbody2D>().velocity.y*integer);
 		}
 	}
 
-	void onDestroy()
-	{
-		if (gravitationActivated) 
-		{
-			ResetGravity (10);
-		}
-	}
+
 
 }
 

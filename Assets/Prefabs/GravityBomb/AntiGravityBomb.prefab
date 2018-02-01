@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4096277555710754}
   - component: {fileID: 212986115425216846}
-  - component: {fileID: 50014388867953678}
   - component: {fileID: 58190848328217374}
+  - component: {fileID: 50014388867953678}
   - component: {fileID: 114334980272682426}
   m_Layer: 0
   m_Name: AntiGravityBomb
@@ -58,7 +58,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 35dc226b18b6ca94d9f8383a1bfde12f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 10
   explosionForce: 200
-  duration: 1
+  duration: 5
   tagNames:
   - Enemy
   - Pickup

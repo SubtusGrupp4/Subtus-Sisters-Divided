@@ -134,7 +134,7 @@ MonoBehaviour:
   range: 5
   pullForce: 100
   duration: 2
-  timeBeforeBombDisappear: 10
+  deActivate: 5.01
   tagNames:
   - Pickup
   - Enemy
