@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Physics")]
 
-    [SerializeField]
     private bool Flipped;
     private int flippValue = 1; // Value between 1 and -1
 
@@ -70,6 +69,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioClip JumpSound;
 
+    [Header("Reviving")]
+    [SerializeField]
+    private float lastSafeX;
+    [SerializeField]
+    private GameObject revivePlacerPrefab;
+    private GameObject revivePlacer;
+
     void Start()
     {
         myAudio = GetComponent<AudioSource>();
@@ -77,9 +83,15 @@ public class PlayerController : MonoBehaviour
         myBox = GetComponent<CapsuleCollider2D>();
 
         if (Player == Controller.Player1)
+        {
             controllerCode = controllerOne;
+            Flipped = false;
+        }
         else
+        {
             controllerCode = controllerTwo;
+            Flipped = true;
+        }
 
         HorAx += controllerCode;
         VerAx += controllerCode;
@@ -105,6 +117,9 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             NormalizeSlope();
+
+            if (!inAir)
+                lastSafeX = transform.position.x;
         }
     }
 
@@ -201,6 +216,10 @@ public class PlayerController : MonoBehaviour
         // Mabey needed for Ressurect in future.
         isActive = false;
         rigidbody2D.velocity = Vector2.zero;
+
+        Vector2 spawnPos = new Vector2(lastSafeX, 0f);
+        revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
+        revivePlacer.GetComponent<RevivePlacer>().Initialize(Player);
     }
 
     public void Ressurect()
@@ -301,4 +320,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Portal")
+        {
+            Die();
+        }
+        else if(collision.transform.tag == "Revive")
+        {
+            Destroy(collision.gameObject);
+            Ressurect();
+        }
+    }
 }
