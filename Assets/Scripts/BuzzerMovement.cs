@@ -87,7 +87,7 @@ public class BuzzerMovement : MonoBehaviour {
 
         float playerDistance = Vector2.Distance(transform.position, playerTarget.position);
 
-        if(playerDistance < attackDistance)
+        if(playerDistance < attackDistance && playerTarget.GetComponent<PlayerController>().isActive)
         {
             StartCoroutine(AttackInterval(attackTimeWait));
         }
@@ -128,9 +128,15 @@ public class BuzzerMovement : MonoBehaviour {
         Color color = hit ? Color.green : Color.red;
         Debug.DrawRay(rayOrigin, rayDirection, color);
 
-        if (hit.transform != null)
+        if (hit.transform != null && hit.transform.tag != "Player")
         {
             rb.AddForce(-rayDirection * 2f, ForceMode2D.Impulse);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+            collision.transform.GetComponent<PlayerController>().Die();
     }
 }
