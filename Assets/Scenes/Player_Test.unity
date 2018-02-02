@@ -215,13 +215,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb73958a9723b4a46816e579caed2173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 0
   playerTop: {fileID: 1194504624}
   playerBot: {fileID: 1425653970}
   followSpeed: 5
   offset: 0
   deadZone: 3.5
-  followPos: 0
+  followPos: {x: 0, y: 0}
   camDistance: 0
+  useZooming: 1
+  yZoomOffset: 0
+  minZoom: 7
+  maxZoom: 11
+  zoomTime: 1
 --- !u!1 &150214468
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,13 +937,13 @@ MonoBehaviour:
   - Floor
   WalkOn:
   - Floor
-  StartState: 2
-  EngagedState: 3
-  Speed: 4
-  StepRange: 1
-  MaxSlope: 60
-  TurnRate: 0
-  AggroRange: 0
+  startState: 2
+  engagedState: 0
+  speed: 4
+  stepRange: 1
+  maxSlope: 60
+  turnRate: 0
+  aggroRange: 0
   CheckPoints: []
 --- !u!251 &545896502
 PlatformEffector2D:
@@ -1250,13 +1256,13 @@ MonoBehaviour:
   - Floor
   WalkOn:
   - Floor
-  StartState: 3
-  EngagedState: 2
-  Speed: 4
-  StepRange: 1
-  MaxSlope: 40
-  TurnRate: 0
-  AggroRange: 0
+  startState: 0
+  engagedState: 0
+  speed: 0
+  stepRange: 0
+  maxSlope: 0
+  turnRate: 0
+  aggroRange: 0
   CheckPoints:
   - {fileID: 1464878047}
   - {fileID: 1442306199}
@@ -1416,13 +1422,13 @@ MonoBehaviour:
   - Floor
   WalkOn:
   - Floor
-  StartState: 2
-  EngagedState: 3
-  Speed: 4
-  StepRange: 1
-  MaxSlope: 60
-  TurnRate: 0
-  AggroRange: 0
+  startState: 2
+  engagedState: 0
+  speed: 4
+  stepRange: 1
+  maxSlope: 60
+  turnRate: 0
+  aggroRange: 0
   CheckPoints: []
 --- !u!251 &794515794
 PlatformEffector2D:
@@ -1920,14 +1926,16 @@ MonoBehaviour:
   - Floor
   WalkOn:
   - Floor
-  StartState: 2
-  EngagedState: 1
-  Speed: 4
-  StepRange: 1
-  MaxSlope: 60
-  TurnRate: 0
-  AggroRange: 9.99
+  startState: 2
+  engagedState: 1
+  speed: 4
+  stepRange: 1
+  maxSlope: 60
+  turnRate: 1
+  aggroRange: 10
   CheckPoints: []
+  EngagedSpeed: 8
+  attentionSpan: 1
 --- !u!50 &1292108718
 Rigidbody2D:
   serializedVersion: 4
@@ -2024,7 +2032,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1292108715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.8, y: 5.9, z: -0.13671875}
+  m_LocalPosition: {x: -26.38, y: 4.95, z: -0.13671875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2044,11 +2052,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -30.1
+      value: -12.51
       objectReference: {fileID: 0}
     - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.82
+      value: 6.59
       objectReference: {fileID: 0}
     - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2117,6 +2125,11 @@ Prefab:
       propertyPath: resetJumpOn.Array.data[0]
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
+        type: 2}
+      propertyPath: JumpVelocity
+      value: 14.46
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e292e485d55d39b498951a8c1e011230, type: 2}
   m_IsPrefabParent: 0
@@ -2129,7 +2142,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4048087211143612, guid: c33b2360d5557ef4c92a9e762db592c8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14.3
+      value: -13.79
       objectReference: {fileID: 0}
     - target: {fileID: 4048087211143612, guid: c33b2360d5557ef4c92a9e762db592c8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2162,6 +2175,11 @@ Prefab:
     - target: {fileID: 114794665114926170, guid: c33b2360d5557ef4c92a9e762db592c8,
         type: 2}
       propertyPath: flipped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114794665114926170, guid: c33b2360d5557ef4c92a9e762db592c8,
+        type: 2}
+      propertyPath: Player
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2288,7 +2306,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1434362560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.036, y: -3.86, z: 0}
+  m_LocalPosition: {x: -12.036, y: -6.31, z: 0}
   m_LocalScale: {x: 5.2861066, y: 2.4689786, z: 0}
   m_Children: []
   m_Father: {fileID: 0}

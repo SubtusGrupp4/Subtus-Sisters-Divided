@@ -14,29 +14,32 @@ public class AIMovement : MonoBehaviour
     [Header("Interactions")]
 
     [GiveTag]
-    public string[] EngageOn = new string[] { };
+    public string[] engageOn = new string[] { };
     [GiveTag]
-    public string[] BounceOn = new string[] { };
+    public string[] bounceOn = new string[] { };
     [GiveTag]
-    public string[] WalkOn = new string[] { };
+    public string[] walkOn = new string[] { };
 
 
     [Header("States")]
 
-    public MovementEnum StartState;
-    public MovementEnum EngagedState;
+    public bool flipped;
+
+    public MovementEnum startState;
+    public MovementEnum engagedState;
     protected MovementEnum currentState;
     protected MovementEnum savedState;
 
     [Header("Stats")]
 
-    public float Speed;
-    public float StepRange;
-    public float MaxSlope;
-    public float TurnRate;
+    public float speed;
+    public float stepRange;
+    public float climbRange;
+    public float maxSlope;
+    public float turnRate;
     protected float minSlope = 0.1f; // Save some perfomance.
 
-    public float AggroRange;
+    public float aggroRange;
 
     protected bool isDead = false;
     protected float distanceGraceForFalling = 0.2f;
@@ -44,14 +47,14 @@ public class AIMovement : MonoBehaviour
 
     [Header("Check Points")]
 
-    public List<GameObject> CheckPoints = new List<GameObject>();
+    public List<GameObject> checkPoints = new List<GameObject>();
     protected List<Vector2> checkPointPos = new List<Vector2>();
     protected List<bool> checkPointCheck = new List<bool>();
     protected bool reverse = false;
     protected int checkPointIndex = 0;
 
-    protected bool isFalling;
-    protected bool engaged;
+    protected bool isFalling = false;
+    protected bool engaged = false;
 
     protected GameObject target;
 
@@ -70,23 +73,23 @@ public class AIMovement : MonoBehaviour
 
     Vector2 desiredDir;
 
-
-
-    void Start()
+    protected virtual void Start()
     {
-        currentState = StartState;
+        
+
+        currentState = startState;
 
         if (GetComponent<Rigidbody2D>())
             rigidbody2D = GetComponent<Rigidbody2D>();
 
-        for (int i = 0; i < CheckPoints.Count; i++)
+        for (int i = 0; i < checkPoints.Count; i++)
         {
-            checkPointPos.Add(CheckPoints[i].transform.position);
+            checkPointPos.Add(checkPoints[i].transform.position);
             checkPointCheck.Add(false);
         }
 
         //Maxslope
-        MaxSlope = Mathf.Sin((MaxSlope * Mathf.PI) / 180);
+        maxSlope = Mathf.Sin((maxSlope * Mathf.PI) / 180);
 
 
 
@@ -106,12 +109,15 @@ public class AIMovement : MonoBehaviour
 
         //Xray
         rayDistanceX = GetComponent<BoxCollider2D>().size.x * transform.localScale.x;
+
+        if (flipped)
+            Flip();
     }
 
 
 
 
-   protected virtual void Update()
+    protected virtual void Update()
     {
         if (!GetComponent<Rigidbody2D>())
             isDead = true;
@@ -164,11 +170,11 @@ public class AIMovement : MonoBehaviour
 
             Debug.DrawRay(transform.position, new Vector2(l, -flipValue), Color.grey);
 
-            for (int i = 0; i < WalkOn.Length; i++)
+            for (int i = 0; i < walkOn.Length; i++)
             {
                 for (int j = 0; j < objHit.Length; j++)
                 {
-                    if (objHit[j].transform.tag == WalkOn[i])
+                    if (objHit[j].transform.tag == walkOn[i])
                     {
                         isFalling = false;
                     }
@@ -177,21 +183,21 @@ public class AIMovement : MonoBehaviour
         }
     }
 
-   protected virtual void CheckEngagement()
+    protected virtual void CheckEngagement()
     {
         allTargets.Clear(); // clear the target list, incase another target is added or removed etc...
-        if (EngageOn.Length >= 1)
-            for (int i = 0; i < EngageOn.Length; i++)
-                allTargets.AddRange(GameObject.FindGameObjectsWithTag(EngageOn[i]));
+        if (engageOn.Length >= 1)
+            for (int i = 0; i < engageOn.Length; i++)
+                allTargets.AddRange(GameObject.FindGameObjectsWithTag(engageOn[i]));
 
-        float tempDistance = AggroRange;
+        float tempDistance = aggroRange;
         GameObject tempTarget = null;
 
         for (int i = 0; i < allTargets.Count; i++)
         {
             float distance = Vector2.Distance(transform.position, allTargets[i].transform.position);
 
-            if (distance > AggroRange)
+            if (distance > aggroRange)
                 continue;
 
             if (distance <= tempDistance)
@@ -204,7 +210,7 @@ public class AIMovement : MonoBehaviour
         if (target != null)
         {
             engaged = true;
-            currentState = EngagedState;
+            currentState = engagedState;
         }
     }
 
@@ -212,99 +218,115 @@ public class AIMovement : MonoBehaviour
     {
         if (currentState == MovementEnum.Stalking)
         {
-            float xDistance = target.transform.position.x - transform.position.x; // positive value = right, negative = left
-
-            if (xDistance > 0)
-                directionMultiplier = new Vector2(1, rigidbody2D.velocity.y);
-
-            if (xDistance < 0)
-                directionMultiplier = new Vector2(-1, rigidbody2D.velocity.y);
-
-            rigidbody2D.velocity = new Vector2(directionMultiplier.x * Speed, rigidbody2D.velocity.y);
-
-
-            //    rigidbody2D.velocity = new Vector2(GetComponent<Rigidbody2D>, GetComponent<Rigidbody2D>().velocity.y);
+            StalkingMove();
         }
 
-         else if (currentState == MovementEnum.OneDirBounce)
+        else if (currentState == MovementEnum.OneDirBounce)
         {
 
-            CheckFalling();
-
-
-
-            // PRO HACKER LMAO
-            if (rigidbody2D.velocity == Vector2.zero)
-            {
-                Debug.Log("got stuck" + rigidbody2D.velocity);
-
-                Debug.Log("Direction" + directionMultiplier);
-
-                Debug.Log("Falling" + isFalling);
-
-                Debug.Log("Wall" + CheckWall());
-
-                Debug.Log("Slope" + CheckSlope());
-
-                Debug.Log("Ledge" + CheckLedge());
-                rigidbody2D.AddForce(new Vector2(10, 10));
-
-            }
-
-            if (!isFalling)
-            {
-                rigidbody2D.velocity = new Vector2(Speed * directionMultiplier.x, rigidbody2D.velocity.y);
-                Debug.Log("AM I EVEN RUNNING ?");
-
-                if (CheckSlope() == true)
-                {
-                    // DO NOTHING
-                    // Therefore keeping the same direction and speed as "inteded"
-
-                }
-                else if (CheckLedge())
-                    Bounce();
-
-
-                if (CheckWall())
-                    Bounce();
-
-                NormalizeSlope();
-
-            }
+            OneDirmove();
         }
 
         else if (currentState == MovementEnum.Patrolling)
         {
-            if (Vector2.Distance(transform.position, checkPointPos[checkPointIndex]) <= patrollGrace)
-            {
-                if (reverse)
-                    checkPointIndex--;
-
-                else if (!reverse)
-                    checkPointIndex++;
-            }
-
-            if (checkPointIndex == CheckPoints.Count - 1)
-            {
-                reverse = true;
-            }
-            else if (checkPointIndex == 0)
-            {
-                reverse = false;
-            }
-
-            desiredDir = (checkPointPos[checkPointIndex] - (Vector2)transform.position).normalized;
-             rigidbody2D.velocity = desiredDir * Speed;
-           // transform.Translate(new Vector3(desiredDir.x, desiredDir.y, 0) * Speed * Time.deltaTime);
+            PatrollingMove();
         }
 
         else if (currentState == MovementEnum.Idle)
         {
-            //  if (rigidbody2D.velocity.x != 0)
-            //     rigidbody2D.velocity = Vector2.zero;
+            IdleMove();
         }
 
+    }
+
+    protected void StalkingMove()
+    {
+        float xDistance = target.transform.position.x - transform.position.x; // positive value = right, negative = left
+
+        if (xDistance > 0)
+            directionMultiplier = new Vector2(1, rigidbody2D.velocity.y);
+
+        if (xDistance < 0)
+            directionMultiplier = new Vector2(-1, rigidbody2D.velocity.y);
+
+        rigidbody2D.velocity = new Vector2(directionMultiplier.x * speed, rigidbody2D.velocity.y);
+
+    }
+
+    protected void OneDirmove()
+    {
+        CheckFalling();
+
+        // PRO HACKER 
+        if (rigidbody2D.velocity == Vector2.zero)
+        {
+            /*
+            Debug.Log("got stuck" + rigidbody2D.velocity);
+
+            Debug.Log("Direction" + directionMultiplier);
+
+            Debug.Log("Falling" + isFalling);
+
+            Debug.Log("Wall" + CheckWall());
+
+            Debug.Log("Slope" + CheckSlope());
+
+            Debug.Log("Ledge" + CheckLedge()); */
+            rigidbody2D.AddForce(new Vector2(10, 10));
+
+        }
+
+        if (!isFalling)
+        {
+            rigidbody2D.velocity = new Vector2(speed * directionMultiplier.x, rigidbody2D.velocity.y);
+
+            if (CheckSlope() == true)
+            {
+                // DO NOTHING
+                // Therefore keeping the same direction and speed as "inteded"
+
+            }
+            else if (CheckLedge())
+                Bounce();
+
+
+            if (CheckWall())
+                Bounce();
+
+            NormalizeSlope();
+
+        }
+    }
+
+    protected void PatrollingMove()
+    {
+        if (Vector2.Distance(transform.position, checkPointPos[checkPointIndex]) <= patrollGrace)
+        {
+            if (reverse)
+                checkPointIndex--;
+
+            else if (!reverse)
+                checkPointIndex++;
+        }
+
+        if (checkPointIndex == checkPoints.Count - 1)
+        {
+            reverse = true;
+        }
+        else if (checkPointIndex == 0)
+        {
+            reverse = false;
+        }
+
+        desiredDir = (checkPointPos[checkPointIndex] - (Vector2)transform.position).normalized;
+        rigidbody2D.velocity = desiredDir * speed;
+        // transform.Translate(new Vector3(desiredDir.x, desiredDir.y, 0) * Speed * Time.deltaTime);
+    }
+
+    protected void IdleMove()
+    {
+        //  if (rigidbody2D.velocity.x != 0)
+        //     rigidbody2D.velocity = Vector2.zero;
     }
 
     public Vector2 GoingWhere()
@@ -317,7 +339,7 @@ public class AIMovement : MonoBehaviour
         return directionMultiplier;
     }
 
-    private bool CheckWall()
+    protected bool CheckWall()
     {
         bool walls = false;
 
@@ -326,38 +348,36 @@ public class AIMovement : MonoBehaviour
 
         for (int i = 0; i < objHit.Length; i++)
         {
-            for (int j = 0; j < BounceOn.Length; j++)
+            for (int j = 0; j < bounceOn.Length; j++)
             {
-                if (objHit[i].transform.tag == BounceOn[j])
+                if (objHit[i].transform.tag == bounceOn[j])
                 {
 
-                    if ((Mathf.Abs(objHit[i].normal.x) >= MaxSlope))
+                    if ((Mathf.Abs(objHit[i].normal.x) >= maxSlope))
                     {
                         walls = true;
                     }
                 }
             }
         }
-
-
         return walls;
     }
 
-    private bool CheckSlope()
+    protected bool CheckSlope()
     {
         bool slopes = false;
 
-        objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffset + 1.1f) * directionMultiplier.x, -slopeRayOffset * flipValue - 0.1f * flipValue, 0), -Vector2.right * directionMultiplier.x, StepRange * 3);
+        objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffset + 1.1f) * directionMultiplier.x, -slopeRayOffset * flipValue - 0.1f * flipValue, 0), -Vector2.right * directionMultiplier.x, stepRange * 3);
 
         Debug.DrawRay(transform.position + new Vector3((rayOffset + 1.1f) * directionMultiplier.x, -slopeRayOffset * flipValue - 0.1f * flipValue), -Vector2.right * directionMultiplier.x, Color.blue);
 
         for (int i = 0; i < objHit.Length; i++)
         {
-            for (int j = 0; j < WalkOn.Length; j++)
+            for (int j = 0; j < walkOn.Length; j++)
             {
-                if (objHit[i].transform.tag == WalkOn[j])
+                if (objHit[i].transform.tag == walkOn[j])
                 {
-                    if (Mathf.Abs(objHit[i].normal.x) > minSlope && (Mathf.Abs(objHit[i].normal.x) < MaxSlope))
+                    if (Mathf.Abs(objHit[i].normal.x) > minSlope && (Mathf.Abs(objHit[i].normal.x) < maxSlope))
                     {
                         slopes = true;
                     }
@@ -369,90 +389,44 @@ public class AIMovement : MonoBehaviour
         return slopes;
     }
 
-    private bool CheckLedge()
+    protected bool CheckLedge()
     {
         bool floors = true;
 
-        objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffset + 0.1f) * directionMultiplier.x, 0, 0), -Vector2.up * flipValue, StepRange);
+        objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffset + 0.1f) * directionMultiplier.x, 0, 0), -Vector2.up * flipValue, stepRange);
 
         Debug.DrawRay(transform.position + new Vector3((rayOffset + 0.1f) * directionMultiplier.x, 0, 0), -Vector2.up * flipValue, Color.red);
 
         for (int i = 0; i < objHit.Length; i++)
         {
-            for (int j = 0; j < WalkOn.Length; j++)
+            for (int j = 0; j < walkOn.Length; j++)
             {
-                if (objHit[i].transform.tag == WalkOn[j])
+                if (objHit[i].transform.tag == walkOn[j])
                 {
                     floors = false;
                 }
             }
         }
 
-        /*  if (objHit.Length <= 0)
-              return true;
-          else
-              return false; */
-
         return floors;
-
-
-
-
-
-
-
-
-        //  else
-        //   Debug.Log("objhitlengt " + objHit.Length);
-
-
-
-
-        /*for(int i = 0; i < objHit.Length; i++)
-        {
-            if(objHit[i].transform.gameObject == this.gameObject)
-            {
-                if(objHit)
-            }
-        }*/
-        /*
-        for (int i = 0; i < objHit.Length; i++)
-        {
-
-
-            if (objHit[i].transform.tag != BounceOn[0])
-            {
-                Debug.Log("AI hit" + objHit[i].transform.gameObject);
-                directionMultiplier *= -1;
-            }
-        }*/
-        // Incase we cant have boxcollider
-        /*
-        for(int i = 0; i < BounceOn.Length; i++)
-        {
-
-            for(int j = 0; j < objHit.Length; i++)
-            {
-
-            }
-
-
-        }
-           */
-        // if(objHit)
-
     }
 
-    private void Bounce()
+    protected void Bounce()
     {
         directionMultiplier *= -1;
-
-
     }
-    
+    protected void Flip()
+    {
+        flipValue *= -1;
+        rigidbody2D.gravityScale *= -1;
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * -1, transform.localScale.x);
+    }
+
+
     void NormalizeSlope()
     {
         float slopeFriction = 0.11f;
+
         // Small optimization (if first ray hit we dont raycast a second time).
         bool slope = false;
 
@@ -460,17 +434,17 @@ public class AIMovement : MonoBehaviour
         for (int l = -1; l < 2; l += 2)
         {
             // Attempt vertical normalization
-            for (int i = 0; i < WalkOn.Length; i++)
+            for (int i = 0; i < walkOn.Length; i++)
             {
                 objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flipValue),
                  rayDistanceHypot + distanceGraceForFalling);
 
                 for (int j = 0; j < objHit.Length; j++)
                 {
-                    if (objHit[j].transform.tag != WalkOn[i])
+                    if (objHit[j].transform.tag != walkOn[i])
                         continue;
 
-                    if (objHit[j].collider != null && Mathf.Abs(objHit[j].normal.x) > 0.1f && Mathf.Abs(objHit[j].normal.x) < MaxSlope && isFalling == false)
+                    if (objHit[j].collider != null && Mathf.Abs(objHit[j].normal.x) > 0.1f && Mathf.Abs(objHit[j].normal.x) < maxSlope && isFalling == false)
                     {
 
 
@@ -502,6 +476,6 @@ public class AIMovement : MonoBehaviour
             if (slope)
                 break;
         }
-    } 
+    }
 
 }

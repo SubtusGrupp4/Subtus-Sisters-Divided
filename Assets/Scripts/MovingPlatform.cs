@@ -24,7 +24,7 @@ public class MovingPlatform : MonoBehaviour
     private void FixedUpdate()
     {
         goingTo = movement.GoingWhere();
-        goingTo *= movement.Speed * Time.deltaTime;
+        goingTo *= movement.speed * Time.deltaTime;
     }
 
     private void OnCollisionStay2D(Collision2D obj)
