@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class AntiGravitationBomb : MonoBehaviour 
 {
+	
 	[Header("Attributes")]
-	public int range;
-	public int explosionForce;
-	public float duration;
+	[SerializeField]
+	private int range;
+	[SerializeField]
+	private int explosionForce;
+	[SerializeField]
+	private float duration;
 
 	[Header("tags from objects to pull")]
+	[SerializeField]
 	[GiveTag]
-	public string[] tagNames;
+	private string[] tagNames;
 
 	private List<GameObject> pullObjects;
 	private Rigidbody2D rb;
 	private bool buttonPressed;
 	private bool targetting;
 	private bool antiGravitationActivated;
+	private string activateBomb = "Fire_Bomb_C1";
 
 	void Start () 
 	{
+		
 		rb = GetComponent<Rigidbody2D> ();
 		pullObjects = new List<GameObject> ();
 		buttonPressed = true;
@@ -37,7 +44,7 @@ public class AntiGravitationBomb : MonoBehaviour
 
 	void ActivateAntiGravitationBomb()
 	{
-		if (Input.GetKeyDown (KeyCode.O) && buttonPressed) 
+		if (Input.GetButtonDown(activateBomb) && buttonPressed) 
 		{
 			buttonPressed = false;
 			targetting = true;
