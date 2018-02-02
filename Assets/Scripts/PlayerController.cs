@@ -8,9 +8,9 @@ public enum Controller
     Player1, Player2
 }
 
-public enum AirControll
+public enum AirControl
 {
-    full, Semi, SemiFull, None
+    Full, Semi, SemiFull, None
 }
 
 public class PlayerController : MonoBehaviour
@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
     private string controllerOne = "_C1";
     private string controllerTwo = "_C2";
 
-    private string HorAx = "Horizontal";
-    private string VerAx = "Vertical";
+    private string horAx = "Horizontal";
+    private string verAx = "Vertical";
     private string jumpInput = "Jump";
     private float distanceGraceForJump = 0.4f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
 
@@ -49,27 +49,27 @@ public class PlayerController : MonoBehaviour
 
     [Header("Physics")]
 
-    private bool Flipped;
+    private bool flipped;
     private int flippValue = 1; // Value between 1 and -1
 
     [SerializeField]
-    private float Speed;
+    private float speed;
     [SerializeField]
-    private float JumpVelocity;
+    private float jumpVelocity;
     [SerializeField]
-    private AirControll AirControll;
+    private AirControl AirControl;
     [SerializeField]
     [Range(0, 1)]
-    private float AirControllPrecentage;
+    private float AirControlPrecentage;
 
     [GiveTag]
     [SerializeField]
-    private string[] ResetJumpOn = new string[] { };
+    private string[] resetJumpOn = new string[] { };
 
     [Header("Sounds")]
 
     [SerializeField]
-    private AudioClip JumpSound;
+    private AudioClip jumpSound;
 
     [Header("Reviving")]
     [SerializeField]
@@ -87,19 +87,19 @@ public class PlayerController : MonoBehaviour
         if (Player == Controller.Player1)
         {
             controllerCode = controllerOne;
-            Flipped = false;
+            flipped = false;
         }
         else
         {
             controllerCode = controllerTwo;
-            Flipped = true;
+            flipped = true;
         }
 
-        HorAx += controllerCode;
-        VerAx += controllerCode;
+        horAx += controllerCode;
+        verAx += controllerCode;
         jumpInput += controllerCode;
 
-        if (Flipped)
+        if (flipped)
             Flip();
 
         isActive = true;
@@ -138,16 +138,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis(jumpInput) > 0 && (!inAir))
         {
             inAir = true;
-            rigidbody2D.velocity = Vector2.up * flippValue * JumpVelocity;
+            rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;
 
             //  GetComponent<BoxCollider2D>().sharedMaterial.friction = 0;
 
-            myAudio.PlayOneShot(JumpSound); // needs change?? need landing sound ??
+            myAudio.PlayOneShot(jumpSound); // needs change?? need landing sound ??
             // play jump animation
         }
 
         // Input Manager
-        X = Input.GetAxis(HorAx); // Valute between 0 and 1 from input manager.
+        X = Input.GetAxis(horAx); // Valute between 0 and 1 from input manager.
         float Y = GetComponent<Rigidbody2D>().velocity.y;
 
         // Round it to nearest .5
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
 
         if (!inAir)
-            temp *= Speed;
+            temp *= speed;
 
         // Fixing all the Jumping and shit
         ControllingAir();
@@ -174,25 +174,25 @@ public class PlayerController : MonoBehaviour
     private void ControllingAir()
     {
         // Full Controll
-        if (AirControll == AirControll.full && inAir)
-            temp *= Speed * AirControllPrecentage;
+        if (AirControl == AirControl.Full && inAir)
+            temp *= speed * AirControlPrecentage;
 
         // Semi Controll 
-        if (inAir && AirControll != AirControll.full)
+        if (inAir && AirControl != AirControl.Full)
         {
             // If it's not Semi it's No controll, in which case it will just use, temp = savedvelocity.
-            if (AirControll == AirControll.Semi)
+            if (AirControl == AirControl.Semi)
             {
                 if (temp > 0) // go right
                 {
                     if (savedVelocity.x < 0 && !changedMade)
                     {
-                        savedVelocity.x += savedVelocity.x * AirControllPrecentage * -1;
+                        savedVelocity.x += savedVelocity.x * AirControlPrecentage * -1;
                         changedMade = true;
                     }
                     else if (savedVelocity.x == 0 && !changedMade)
                     {
-                        savedVelocity.x += temp * Speed * AirControllPrecentage;
+                        savedVelocity.x += temp * speed * AirControlPrecentage;
                         changedMade = true;
                     }
                 }
@@ -200,12 +200,12 @@ public class PlayerController : MonoBehaviour
                 {
                     if (savedVelocity.x > 0 && !changedMade)
                     {
-                        savedVelocity.x += savedVelocity.x * AirControllPrecentage * -1;
+                        savedVelocity.x += savedVelocity.x * AirControlPrecentage * -1;
                         changedMade = true;
                     }
                     else if (savedVelocity.x == 0 && !changedMade)
                     {
-                        savedVelocity.x += temp * Speed * AirControllPrecentage;
+                        savedVelocity.x += temp * speed * AirControlPrecentage;
                         changedMade = true;
                     }
 
@@ -217,17 +217,20 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        // Mabey needed for Ressurect in future.
-        isActive = false;
-        rigidbody2D.velocity = Vector2.zero;
-        rigidbody2D.isKinematic = true;
+        if (isActive)
+        {
+            // Mabey needed for Ressurect in future.
+            isActive = false;
+            rigidbody2D.velocity = Vector2.zero;
+            rigidbody2D.isKinematic = true;
 
-        Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
-        revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
-        revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
-        sr.enabled = false;
+            Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
+            revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
+            revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
+            sr.enabled = false;
 
-        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
+            Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
+        }
     }
 
     public void Ressurect()
@@ -245,7 +248,7 @@ public class PlayerController : MonoBehaviour
     {
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
         inAir = true;
-        for (int i = 0; i < ResetJumpOn.Length; i++)
+        for (int i = 0; i < resetJumpOn.Length; i++)
         {
             for (int l = -1; l < 2; l += 2)
             {
@@ -256,7 +259,7 @@ public class PlayerController : MonoBehaviour
 
                 for (int j = 0; j < objHit.Length; j++)
                 {
-                    if (objHit[j].transform.tag == ResetJumpOn[i])
+                    if (objHit[j].transform.tag == resetJumpOn[i])
                     {
                         if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
                         {
@@ -288,14 +291,14 @@ public class PlayerController : MonoBehaviour
         for (int l = -1; l < 2; l += 2)
         {
             // Attempt vertical normalization
-            for (int i = 0; i < ResetJumpOn.Length; i++)
+            for (int i = 0; i < resetJumpOn.Length; i++)
             {
                 objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flippValue),
                     Mathf.Abs((myBox.size.y * GetComponent<Transform>().localScale.y)) / 2 + distanceGraceForJump);
 
                 for (int j = 0; j < objHit.Length; j++)
                 {
-                    if (objHit[j].transform.tag != ResetJumpOn[i])
+                    if (objHit[j].transform.tag != resetJumpOn[i])
                         continue;
 
                     if (objHit[j].collider != null && Mathf.Abs(objHit[j].normal.x) > 0.1f && Mathf.Abs(objHit[j].normal.x) < wallNormal && inAir == false)
