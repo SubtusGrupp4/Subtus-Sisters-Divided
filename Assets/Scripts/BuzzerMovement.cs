@@ -139,4 +139,10 @@ public class BuzzerMovement : MonoBehaviour {
         if (collision.transform.tag == "Player")
             collision.transform.GetComponent<PlayerController>().Die();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Portal")
+            Destroy(gameObject);
+    }
 }

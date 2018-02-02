@@ -95,6 +95,7 @@ MonoBehaviour:
   tagNames:
   - Enemy
   - Pickup
+  - Player
 --- !u!212 &212986115425216846
 SpriteRenderer:
   m_ObjectHideFlags: 1
