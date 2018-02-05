@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059249406004788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.13, y: 4.36, z: 0}
+  m_LocalPosition: {x: -0.07682252, y: 3.9218357, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4181630558948744}
@@ -122,11 +122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityBomb: {fileID: 1006222317952464, guid: 82cbbd05bec7c8a489c39efb5c405031,
     type: 2}
-  shockwaveBomb: {fileID: 1304899937324840, guid: 8f9125da6974bae4f909af092d5bfa5e,
-    type: 2}
+  shockwaveBomb: {fileID: 0}
   speed: 600
   cooldown: 0.1
-  sensitivity: 0.319
+  sensitivity: 0
 --- !u!114 &114053249241210352
 MonoBehaviour:
   m_ObjectHideFlags: 1

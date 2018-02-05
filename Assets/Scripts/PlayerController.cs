@@ -228,6 +228,7 @@ public class PlayerController : MonoBehaviour
             revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
             revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
             sr.enabled = false;
+            myBox.enabled = false;
 
             Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
         }
@@ -240,6 +241,7 @@ public class PlayerController : MonoBehaviour
         isActive = true;
         rigidbody2D.isKinematic = false;
         sr.enabled = true;
+        myBox.enabled = true;
 
         Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
     }

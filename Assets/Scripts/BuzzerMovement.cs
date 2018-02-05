@@ -107,7 +107,7 @@ public class BuzzerMovement : MonoBehaviour {
     private IEnumerator AttackInterval(float time)
     {
         attacking = true;
-        rb.AddForce(new Vector2(0f, speed * 24f), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(0f, -speed * 24f), ForceMode2D.Impulse);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, 2f);
         Vector2 targetingPos = playerTarget.position;
         sr.flipX = rb.velocity.x < 0f ? true : false;
