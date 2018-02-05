@@ -26,6 +26,7 @@ public class BuzzerMovement : MonoBehaviour {
     private Vector2 targetPos;
 
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
 
     [Header("Attacking")]
     [SerializeField]
@@ -41,6 +42,7 @@ public class BuzzerMovement : MonoBehaviour {
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         targetPos = buzzerTarget.transform.position;
     }
 
@@ -68,8 +70,6 @@ public class BuzzerMovement : MonoBehaviour {
             flyDir = Vector2.ClampMagnitude(flyDir, 3f);
             if (flyDir != Vector2.zero)
                 rb.AddForce(flyDir * speed);
-
-
         }
         else
         {
@@ -82,8 +82,13 @@ public class BuzzerMovement : MonoBehaviour {
             changePath = true;
         }
 
-        if (attacking)
+        if (attacking) 
+        {
+            sr.flipX = rb.velocity.x < 0f ? true : false;
             return;
+        }
+        
+        sr.flipX = flyDir.x < 0f ? true : false;
 
         float playerDistance = Vector2.Distance(transform.position, playerTarget.position);
 
@@ -105,9 +110,11 @@ public class BuzzerMovement : MonoBehaviour {
         rb.AddForce(new Vector2(0f, speed * 24f), ForceMode2D.Impulse);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, 2f);
         Vector2 targetingPos = playerTarget.position;
+        sr.flipX = rb.velocity.x < 0f ? true : false;
         yield return new WaitForSeconds(time);
         Vector2 attackDir = new Vector2(targetingPos.x - transform.position.x, targetingPos.y - transform.position.y);
         rb.AddForce(attackDir.normalized * attackSpeed, ForceMode2D.Impulse);
+        sr.flipX = attackDir.x < 0f ? true : false;
         yield return new WaitForSeconds(time);
         attacking = false;
     }
@@ -119,7 +126,7 @@ public class BuzzerMovement : MonoBehaviour {
         Vector2 rayDirection = rb.velocity;
         rayDirection.Normalize();
 
-        float rayDistance = 0.5f;
+        float rayDistance = 2f;
 
         // TODO: Set this correctly
         LayerMask layer = 1 << 0;
@@ -130,7 +137,7 @@ public class BuzzerMovement : MonoBehaviour {
 
         if (hit.transform != null && hit.transform.tag != "Player")
         {
-            rb.AddForce(-rayDirection * 2f, ForceMode2D.Impulse);
+            rb.AddForce(-rayDirection, ForceMode2D.Impulse);
         }
     }
 
