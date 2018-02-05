@@ -48,6 +48,10 @@ public class TileGrid : MonoBehaviour
 
     public bool hideFlag = true;
 
+    public bool checkAdjacent = false;
+    public bool restoreColliders = false;
+    public bool resetAllSprites = false;
+
     private void OnDrawGizmos()
     {
         if (showGrid)

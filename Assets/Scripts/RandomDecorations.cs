@@ -32,11 +32,18 @@ public class RandomDecorations : MonoBehaviour {
     private bool randomRotation = true;
     [SerializeField]
     private bool staticDecorations = true;
+    [SerializeField]
+    private int sortingOrder = 10;
 
     // Use this for initialization
     void Start ()
     {
-		for(int i = 0; i < amount; i++)
+        CreateDecorations();
+    }
+
+    private void CreateDecorations() 
+    {
+        for (int i = 0; i < amount; i++)
         {
             int rng = Random.Range(0, sprites.Length - 1);
             GameObject decoration = new GameObject(sprites[rng].name);
@@ -44,6 +51,7 @@ public class RandomDecorations : MonoBehaviour {
             decoration.AddComponent<SpriteRenderer>();
             SpriteRenderer sr = decoration.GetComponent<SpriteRenderer>();
             sr.sprite = sprites[rng];
+            sr.sortingOrder = sortingOrder;
 
             decoration.transform.parent = transform;
             float xl = -sr.bounds.size.x;
@@ -64,7 +72,7 @@ public class RandomDecorations : MonoBehaviour {
 
             decoration.transform.localPosition = new Vector2(Random.Range(xl, xr), Random.Range(yt, yb));
 
-            if(randomRotation)
+            if (randomRotation)
                 decoration.transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
 
             if (randomSize)
@@ -73,10 +81,18 @@ public class RandomDecorations : MonoBehaviour {
                 decoration.transform.localScale = new Vector2(scale, scale);
             }
 
-            if(staticDecorations)
+            if (staticDecorations)
                 decoration.isStatic = true;
-
-            this.enabled = false;
         }
-	}
+
+        this.enabled = false;
+    }
+
+    public void SetMargins(bool up, bool right, bool down, bool left) 
+    {
+        marginTop = !up;
+        marginRight = !right;
+        marginBot = !down;
+        marginLeft = !left;
+    }
 }
