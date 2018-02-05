@@ -508,7 +508,7 @@ public class GridEditor : Editor {
                 if (spawnGO.GetComponent<DualSprites>() != null)
                     spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[1];
             }
-            else if(TileOnPosition(mirrored) == -1 || grid.overlap)
+            else if(TileOnPosition(mirrored) == -1 || grid.overlap && spawnGO != null)
             { 
                 if (spawnGO.GetComponent<DualSprites>() != null)
                     spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[0];
