@@ -45,7 +45,6 @@ public class GridEditor : Editor {
 
         if (grid.tilePrefab != null && grid.tileSet != null)
         {
-<<<<<<< HEAD
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
             grid.useGrid = EditorGUILayout.Toggle("Use Grid", grid.useGrid);
@@ -55,8 +54,6 @@ public class GridEditor : Editor {
                 if (grid.useGrid)
                     grid.overlap = false;
             }
-
-=======
 
             grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
 
@@ -70,7 +67,6 @@ public class GridEditor : Editor {
                     grid.overlap = false;
             }
 
->>>>>>> level-design
             grid.drag = EditorGUILayout.Toggle("Enable Drag", grid.drag);
             grid.overlap = EditorGUILayout.Toggle("Enable Overlap", grid.overlap);
 
@@ -202,11 +198,7 @@ public class GridEditor : Editor {
         EditorGUILayout.Space();
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
 
-<<<<<<< HEAD
         if(grid.tilePrefab != null)
-=======
-        if (grid.tilePrefab != null)
->>>>>>> level-design
             grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
 
         if (grid.debug)
