@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61745646298414966}
   - component: {fileID: 114667385634171840}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Square 1
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -342,7 +342,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.transform.tag == "Portal")
         {
-            Die();
+           //Die();
         }
         else if(collision.transform.tag == "Revive")
         {
