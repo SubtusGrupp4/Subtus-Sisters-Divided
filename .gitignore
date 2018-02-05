@@ -31,10 +31,9 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 Assets/etc.meta
-ProjectSettings/ProjectVersion.txt
 
 # FMOD
-#/Subtus-FMOD/Build/
+/Subtus-FMOD/Build/
 /Assets/FMODStudioCache.asset
 /Assets/FMODStudioCache.asset.meta
 /Assets/StreamingAssets/*.bank
