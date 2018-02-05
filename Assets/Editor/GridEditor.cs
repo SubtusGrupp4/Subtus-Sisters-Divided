@@ -16,6 +16,10 @@ public class GridEditor : Editor {
         oldIndex = 0;
         grid = (TileGrid)target;
         SetTile();
+
+        if (grid.tiles != null && grid.tileTransforms.Count == 0)
+            for(int i = 0; i < grid.tiles.transform.childCount; i++)
+                grid.tileTransforms.Add(grid.tiles.transform.GetChild(i));
     }
 
     [MenuItem("Assets/Create/TileSet")]
