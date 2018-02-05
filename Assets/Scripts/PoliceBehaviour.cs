@@ -7,6 +7,7 @@ public class PoliceBehaviour : AIMovement
     [Header("Police")]
     private float startSpeed;
     public float engagedSpeed;
+
     public float attentionSpan;
     private float attentionTimer;
 

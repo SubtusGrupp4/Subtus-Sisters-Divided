@@ -75,7 +75,7 @@ public class AIMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-        
+
 
         currentState = startState;
 
@@ -249,6 +249,18 @@ public class AIMovement : MonoBehaviour
         if (xDistance < 0)
             directionMultiplier = new Vector2(-1, rigidbody2D.velocity.y);
 
+
+
+        if (CheckWall(transform.position))
+        {
+            if (CheckJump())
+            {
+                // DOING JUMP 
+                isFalling = true;
+            }
+        }
+        NormalizeSlope();
+
         rigidbody2D.velocity = new Vector2(directionMultiplier.x * speed, rigidbody2D.velocity.y);
 
     }
@@ -273,7 +285,6 @@ public class AIMovement : MonoBehaviour
 
             Debug.Log("Ledge" + CheckLedge()); */
             rigidbody2D.AddForce(new Vector2(10, 10));
-
         }
 
         if (!isFalling)
@@ -290,8 +301,16 @@ public class AIMovement : MonoBehaviour
                 Bounce();
 
 
-            if (CheckWall())
-                Bounce();
+            if (CheckWall(transform.position))
+            {
+                if (CheckJump())
+                {
+                    // DOING JUMP 
+                    isFalling = true;
+                }
+                else
+                    Bounce();
+            }
 
             NormalizeSlope();
 
@@ -339,12 +358,13 @@ public class AIMovement : MonoBehaviour
         return directionMultiplier;
     }
 
-    protected bool CheckWall()
+    protected bool CheckWall(Vector3 pos)
     {
         bool walls = false;
 
-        objHit = Physics2D.RaycastAll(transform.position, new Vector2(directionMultiplier.x, 0), rayDistanceX);
-        Debug.DrawRay(transform.position, new Vector2(directionMultiplier.x, 0), Color.green);
+        objHit = Physics2D.RaycastAll(pos, new Vector2(directionMultiplier.x, 0), rayDistanceX);
+
+        Debug.DrawRay(pos, new Vector2(directionMultiplier.x, 0), Color.green);
 
         for (int i = 0; i < objHit.Length; i++)
         {
@@ -409,6 +429,46 @@ public class AIMovement : MonoBehaviour
         }
 
         return floors;
+    }
+
+    protected bool CheckJump()
+    {
+        float height;
+        bool jump = false;
+
+        for (int i = 1; i <= climbRange; i++)
+        {
+            if (!CheckWall(new Vector3(transform.position.x, // X
+                  transform.position.y + i,                 // Y
+                  transform.position.z)))                   // Z
+            {
+                height = i;
+                CalculateJump(height);
+                jump = true;
+                break;
+            }
+        }
+
+        // Loopa från min höjd, uppåt, mer smooth hop??
+
+        return jump;
+    }
+    protected void CalculateJump(float height)
+    {
+        //   height;
+
+        // U^2 = V^2 - 2as
+        float jumpVelocity;
+        float gravity;
+        gravity = -9.81f * rigidbody2D.gravityScale; // a
+                                                     // height = s
+                                                     // V = end velocity = 0
+
+        jumpVelocity = 0 - (2 * (gravity * height));
+        jumpVelocity = Mathf.Sqrt(jumpVelocity);
+
+        rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpVelocity * flipValue);
+
     }
 
     protected void Bounce()
