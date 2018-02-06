@@ -49,16 +49,6 @@ public class GridEditor : Editor {
 
         if (grid.tilePrefab != null && grid.tileSet != null)
         {
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
-            grid.useGrid = EditorGUILayout.Toggle("Use Grid", grid.useGrid);
-            if (EditorGUI.EndChangeCheck())
-            {
-                grid.snapPreview = grid.useGrid;
-                if (grid.useGrid)
-                    grid.overlap = false;
-            }
-
             grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
 
             EditorGUI.BeginChangeCheck();
@@ -80,7 +70,7 @@ public class GridEditor : Editor {
             if (grid.mirror)
             {
                 grid.mirrorOffset = EditorGUILayout.FloatField(new GUIContent("Mirror Offset", "Offsets the Y axis. Basically raises and lowers the mirroring point."), grid.mirrorOffset);
-                grid.mirrorSprite = EditorGUILayout.Toggle(new GUIContent("Mirror Sprites", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.mirrorSprite);
+                grid.mirrorSprite = EditorGUILayout.Toggle(new GUIContent("Mirror Sprites", "Enables the sprites of the mirrored object to be automatically switched."), grid.mirrorSprite);
                 grid.removeMirrored = EditorGUILayout.Toggle(new GUIContent("Remove Mirror", "Remove tiles on both sides."), grid.removeMirrored);
                 grid.useMirrored = false;
                 grid.flipWorld = false;
@@ -131,8 +121,10 @@ public class GridEditor : Editor {
         grid.tileColor = EditorGUILayout.ColorField("Tile Color:", grid.tileColor);
 
         EditorGUI.BeginChangeCheck();
-        grid.flipX = EditorGUILayout.Toggle("Flip X", grid.flipX);
+        grid.flipX = EditorGUILayout.Toggle(new GUIContent("Flip X", "Flips the scale on the X axis, not the sprite"), grid.flipX);
+        grid.randomRotation = EditorGUILayout.Toggle(new GUIContent("Random Rotation", "Enables random rotation on each click"), grid.randomRotation);
         grid.rotationZ = EditorGUILayout.FloatField("Rotaton", grid.rotationZ);
+
         if (EditorGUI.EndChangeCheck())
         {
             grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
@@ -495,12 +487,13 @@ public class GridEditor : Editor {
             else
             {
                 if (!grid.snapPreview)
-                    grid.mousePreview.transform.position = mousePos;
+                    grid.mousePreview.transform.position = new Vector3(mousePos.x, mousePos.y, 0f);
                 else
                 {
                     grid.mousePreview.transform.position = new Vector3(
                         Mathf.Floor(mousePos.x / grid.width) * grid.width + grid.width / 2.0f,
-                        Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f);
+                        Mathf.Floor(mousePos.y / grid.height) * grid.height + grid.height / 2.0f
+                        , 0f);
                 }
 
                 if (grid.mirror)
@@ -568,6 +561,12 @@ public class GridEditor : Editor {
                 grid.tiles.hideFlags = HideFlags.HideInHierarchy;
             }
 
+            if (grid.randomRotation)
+            {
+                grid.rotationZ = Random.Range(0, 360);
+                grid.mousePreview.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
+            }
+
             if (TileOnPosition(aligned) == -1 || grid.overlap)
             {
 
@@ -631,13 +630,17 @@ public class GridEditor : Editor {
 
                 if (mousePos.y < grid.mirrorOffset)
                 {
-                    spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, -spawnGO.transform.localScale.y);
-                    mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, mirrorGO.transform.localScale.y);
+                    if(spawnGO != null)
+                        spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, -spawnGO.transform.localScale.y);
+                    if(mirrorGO != null)
+                        mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, mirrorGO.transform.localScale.y);
                 }
                 else
                 {
-                    spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, spawnGO.transform.localScale.y);
-                    mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, -mirrorGO.transform.localScale.y);
+                    if (spawnGO != null)
+                        spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, spawnGO.transform.localScale.y);
+                    if (mirrorGO != null)
+                        mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, -mirrorGO.transform.localScale.y);
                 }
             }
             else if (grid.useMirrored && TileOnPosition(mirrored) == -1 || grid.overlap)
@@ -647,7 +650,7 @@ public class GridEditor : Editor {
             }
             else if(TileOnPosition(mirrored) == -1 || grid.overlap)
             { 
-                if (spawnGO.GetComponent<DualSprites>() != null)
+                if (spawnGO != null && spawnGO.GetComponent<DualSprites>() != null)
                     spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[0];
             }
 
