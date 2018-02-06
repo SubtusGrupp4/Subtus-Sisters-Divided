@@ -198,6 +198,27 @@ public class GridEditor : Editor {
                 grid.tiles.hideFlags = HideFlags.HideInHierarchy;
             else
                 grid.tiles.hideFlags = HideFlags.None;
+        
+        EditorGUILayout.Space();
+        EditorGUI.BeginChangeCheck();
+        grid.checkAdjacent = EditorGUILayout.Toggle(new GUIContent("Check Adjacent", "Calls the function to disabe colliders on occluded objects."), grid.checkAdjacent);
+        if(EditorGUI.EndChangeCheck())
+            CheckAdjacentBlocks();
+
+        EditorGUI.BeginChangeCheck();
+        grid.restoreColliders = EditorGUILayout.Toggle(new GUIContent("Restore Colliders", "Restores the colliders on all tiles."), grid.restoreColliders);
+        if (EditorGUI.EndChangeCheck())
+            RestoreColliders();
+
+        EditorGUI.BeginChangeCheck();
+        grid.resetAllSprites = EditorGUILayout.Toggle(new GUIContent("Reset All Sprites", "Uses the position to set the appropriate sprite."), grid.resetAllSprites);
+        if (EditorGUI.EndChangeCheck())
+            ResetAllSprites();
+
+        EditorGUI.BeginChangeCheck();
+        grid.resetTransformList = EditorGUILayout.Toggle(new GUIContent("Reset Transform List", "Clear and replace the entire transform tile list."), grid.resetTransformList);
+        if (EditorGUI.EndChangeCheck())
+            ResetTransformList();
 
         EditorGUILayout.Space();
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
@@ -232,6 +253,122 @@ public class GridEditor : Editor {
             grid.mousePreview.transform.localScale = grid.tilePrefab.transform.localScale;
             grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
         }
+    }
+
+    private void CheckAdjacentBlocks() 
+    {
+        List<Transform> chosen = new List<Transform>();
+        for (int i = 0; i < grid.tileTransforms.Count; i++)
+        {
+            if (grid.tileTransforms[i].GetComponent<CheckAdjacent>() != null)
+            {
+                if(grid.tileTransforms[i].GetComponent<CheckAdjacent>().DoCheck(i) == -1) 
+                {
+                    chosen.Add(grid.tileTransforms[i]);
+                }
+            }
+        }
+        foreach(Transform tile in chosen) 
+        {
+            Collider2D[] colliders = tile.GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.enabled)
+                {
+                    collider.enabled = false;
+                    Debug.Log("Disabled colliders");
+                }
+            }
+        }
+        Debug.Log("Checked all objects");
+        grid.checkAdjacent = false;
+    }
+
+    [MenuItem("Tools/Grid/Check adjacent blocks on selected")]
+    static void CheckAdjacentBlocksSelected()
+    {
+        List<Transform> chosen = new List<Transform>();
+        Transform[] selection = Selection.transforms;
+        for (int i = 0; i < selection.Length; i++)
+        {
+            if (selection[i].GetComponent<CheckAdjacent>() != null)
+            {
+                if (selection[i].GetComponent<CheckAdjacent>().DoCheck(i) == -1)
+                {
+                    chosen.Add(selection[i]);
+                }
+            }
+        }
+        foreach (Transform tile in chosen)
+        {
+            Collider2D[] colliders = tile.GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.enabled)
+                {
+                    collider.enabled = false;
+                    Debug.Log("Disabled colliders");
+                }
+            }
+        }
+        Debug.Log("Checked selected");
+    }
+
+    private void RestoreColliders() 
+    {
+        foreach(Transform tile in grid.tileTransforms)
+        {
+            Collider2D[] colliders = tile.GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                if (!collider.enabled)
+                {
+                    collider.enabled = true;
+                    Debug.Log("Enabled colliders");
+                }
+            }
+        }
+        grid.restoreColliders = false;
+    }
+
+    [MenuItem("Tools/Grid/Restore Colliders on selected")]
+    static void RestoreCollidersSelected()
+    {
+        Transform[] selection = Selection.transforms;
+        foreach (Transform tile in selection)
+        {
+            Collider2D[] colliders = tile.GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                if (!collider.enabled)
+                {
+                    collider.enabled = true;
+                    Debug.Log("Enabled colliders");
+                }
+            }
+        }
+    }
+
+    private void ResetAllSprites() 
+    {
+        foreach (Transform tile in grid.tileTransforms)
+        {
+            if(tile.GetComponent<SpriteRenderer>() != null && tile.GetComponent<DualSprites>() != null)
+            if (tile.position.y < grid.mirrorOffset)
+                tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<DualSprites>().sprites[1];
+            else
+                tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<DualSprites>().sprites[0];
+        }
+        grid.resetAllSprites = false;
+    }
+
+    private void ResetTransformList() 
+    {
+        grid.tileTransforms.Clear();
+        for (int i = 0; i < grid.tiles.transform.childCount; i++)
+            grid.tileTransforms.Add(grid.tiles.transform.GetChild(i));
+
+        grid.resetTransformList = false;
     }
 
     private float MinFloat(string labelName, float value, float min)
@@ -372,24 +509,24 @@ public class GridEditor : Editor {
 
                     if (grid.mirrorSprite)
                     {
-                        if (grid.tilePrefab.gameObject.GetComponent<DualSprites>() != null)
+                        if (grid.tilePrefab.GetComponent<DualSprites>() != null)
                         {
                             if (mousePos.y < grid.mirrorOffset)
-                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[1];
+                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[1];
                             else
-                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[0];
+                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[0];
                         }
                     }
                 }
                 else if (grid.useMirrored)
                 {
-                    if (grid.tilePrefab.gameObject.GetComponent<DualSprites>() != null)
-                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[1];
+                    if (grid.tilePrefab.GetComponent<DualSprites>() != null)
+                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[1];
                 }
                 else
                 {
-                    if (grid.tilePrefab.gameObject.GetComponent<DualSprites>() != null)
-                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.gameObject.GetComponent<DualSprites>().sprites[0];
+                    if (grid.tilePrefab.GetComponent<DualSprites>() != null)
+                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[0];
                 }
             }
         }
