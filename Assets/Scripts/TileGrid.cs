@@ -51,6 +51,7 @@ public class TileGrid : MonoBehaviour
     public bool checkAdjacent = false;
     public bool restoreColliders = false;
     public bool resetAllSprites = false;
+    public bool resetTransformList = false;
 
     private void OnDrawGizmos()
     {

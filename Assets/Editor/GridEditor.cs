@@ -215,6 +215,11 @@ public class GridEditor : Editor {
         if (EditorGUI.EndChangeCheck())
             ResetAllSprites();
 
+        EditorGUI.BeginChangeCheck();
+        grid.resetTransformList = EditorGUILayout.Toggle(new GUIContent("Reset Transform List", "Clear and replace the entire transform tile list."), grid.resetTransformList);
+        if (EditorGUI.EndChangeCheck())
+            ResetTransformList();
+
         EditorGUILayout.Space();
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
 
@@ -279,6 +284,36 @@ public class GridEditor : Editor {
         grid.checkAdjacent = false;
     }
 
+    [MenuItem("Tools/Grid/Check adjacent blocks on selected")]
+    static void CheckAdjacentBlocksSelected()
+    {
+        List<Transform> chosen = new List<Transform>();
+        Transform[] selection = Selection.transforms;
+        for (int i = 0; i < selection.Length; i++)
+        {
+            if (selection[i].GetComponent<CheckAdjacent>() != null)
+            {
+                if (selection[i].GetComponent<CheckAdjacent>().DoCheck(i) == -1)
+                {
+                    chosen.Add(selection[i]);
+                }
+            }
+        }
+        foreach (Transform tile in chosen)
+        {
+            Collider2D[] colliders = tile.GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.enabled)
+                {
+                    collider.enabled = false;
+                    Debug.Log("Disabled colliders");
+                }
+            }
+        }
+        Debug.Log("Checked selected");
+    }
+
     private void RestoreColliders() 
     {
         foreach(Transform tile in grid.tileTransforms)
@@ -296,6 +331,24 @@ public class GridEditor : Editor {
         grid.restoreColliders = false;
     }
 
+    [MenuItem("Tools/Grid/Restore Colliders on selected")]
+    static void RestoreCollidersSelected()
+    {
+        Transform[] selection = Selection.transforms;
+        foreach (Transform tile in selection)
+        {
+            Collider2D[] colliders = tile.GetComponents<Collider2D>();
+            foreach (Collider2D collider in colliders)
+            {
+                if (!collider.enabled)
+                {
+                    collider.enabled = true;
+                    Debug.Log("Enabled colliders");
+                }
+            }
+        }
+    }
+
     private void ResetAllSprites() 
     {
         foreach (Transform tile in grid.tileTransforms)
@@ -307,6 +360,15 @@ public class GridEditor : Editor {
                 tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<DualSprites>().sprites[0];
         }
         grid.resetAllSprites = false;
+    }
+
+    private void ResetTransformList() 
+    {
+        grid.tileTransforms.Clear();
+        for (int i = 0; i < grid.tiles.transform.childCount; i++)
+            grid.tileTransforms.Add(grid.tiles.transform.GetChild(i));
+
+        grid.resetTransformList = false;
     }
 
     private float MinFloat(string labelName, float value, float min)
