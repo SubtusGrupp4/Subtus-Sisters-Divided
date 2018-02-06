@@ -10,21 +10,17 @@ public class BasicAnimator : MonoBehaviour
 
     public GameObject animGameObject;
     [Range(-1,1)]
-    public float Facing;
+    public float facing;
 
-    protected float X;
+    protected float x;
     protected float savedX;
-    protected float Y;
+    protected float y;
     Animator anim;
     private new Rigidbody2D rigidbody2D;
    
-
-
-
-
     protected virtual void Start()
     {
-        savedX = Facing;
+        savedX = facing;
         savedX = savedX > 0 ? 1 : -1;
         anim = animGameObject.GetComponent<Animator>();
         anim.SetBool(animWalk, false);//Walking animation is deactivated
@@ -32,10 +28,6 @@ public class BasicAnimator : MonoBehaviour
         anim.SetBool(animFall, false);//Falling animation is deactivated
 
         rigidbody2D = GetComponent<Rigidbody2D>();
-    }
-    protected virtual void Update()
-    {
-
     }
 
     public virtual void Attack()
@@ -45,24 +37,14 @@ public class BasicAnimator : MonoBehaviour
     }
     protected virtual void Flip()
     {
-
-        if (X != savedX && X != 0)
+        if (x != savedX && x != 0)
         {
-            savedX = X;
+            savedX = x;
             // FLIP ?
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
         }
-        /*
-        if (faceright == true && X > 0 || faceright == false && X < 0)
-        {
-            savedX = X;
-            faceright = !faceright;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
-        } */
     }
 
     public virtual void Falling(bool state)
@@ -76,16 +58,15 @@ public class BasicAnimator : MonoBehaviour
     }
     protected virtual void SetAnimation(Vector2 dir)
     {
-        X = dir.x;
-        if (X != 0)
+        x = dir.x;
+        if (x != 0)
         {
-            X = dir.x > 0 ? 1 : -1;
+            x = dir.x > 0 ? 1 : -1;
 
             anim.SetBool(animWalk, true);
         }
         else
             anim.SetBool(animWalk, false);//Walking animation is activated
-
 
         Flip();
     }
