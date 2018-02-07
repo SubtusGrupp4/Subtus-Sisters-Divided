@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSprites:
-  - {fileID: 21300016, guid: 1d885de3463385342a13302166f95638, type: 3}
+  - {fileID: 21300014, guid: 7d42fc8d785c1a942a92a78357775248, type: 3}
   darkSprites:
   - {fileID: 21300016, guid: 1d885de3463385342a13302166f95638, type: 3}
   lightTile: 0
