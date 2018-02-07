@@ -66,9 +66,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string[] resetJumpOn = new string[] { };
 
-    [SerializeField]
-    private StickToPlatform stp;
-
     [Header("Sounds")]
 
     [SerializeField]
