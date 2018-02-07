@@ -6514,6 +6514,97 @@ Transform:
   m_PrefabParentObject: {fileID: 4119290610039276, guid: 531f66400fa824a4ca126a4a4f38327d,
     type: 2}
   m_PrefabInternal: {fileID: 543064824}
+--- !u!1 &543188311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 543188314}
+  - component: {fileID: 543188313}
+  - component: {fileID: 543188312}
+  m_Layer: 0
+  m_Name: merina_idle_2_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &543188312
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543188311}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4955c0b16188f5c44be30bdf082153ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!212 &543188313
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543188311}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: aadd1281f633b9c44816668d81469d50, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+--- !u!4 &543188314
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543188311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.4587407, y: 1.9672247, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &544583759
 Prefab:
   m_ObjectHideFlags: 0
@@ -12085,6 +12176,97 @@ Transform:
   m_PrefabParentObject: {fileID: 4119290610039276, guid: 531f66400fa824a4ca126a4a4f38327d,
     type: 2}
   m_PrefabInternal: {fileID: 929458099}
+--- !u!1 &931621791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 931621794}
+  - component: {fileID: 931621793}
+  - component: {fileID: 931621792}
+  m_Layer: 0
+  m_Name: merina_idle_1_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &931621792
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931621791}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f1a99fa7860b6d429f954e880fced2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!212 &931621793
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931621791}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 74ca79a1fdb3a124681deaaa49acbab4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+--- !u!4 &931621794
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931621791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7949731, y: 2.2512827, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &931647885
 Prefab:
   m_ObjectHideFlags: 0
@@ -13026,8 +13208,10 @@ Transform:
   - {fileID: 160802011}
   - {fileID: 1194196589}
   - {fileID: 377633457}
+  - {fileID: 328843984}
   - {fileID: 1610609369}
   - {fileID: 1712655464}
+  - {fileID: 592605954}
   - {fileID: 700385317}
   - {fileID: 1231998255}
   - {fileID: 302741473}
@@ -13037,6 +13221,7 @@ Transform:
   - {fileID: 1812710680}
   - {fileID: 189652825}
   - {fileID: 1992078947}
+  - {fileID: 475704215}
   - {fileID: 1330568666}
   - {fileID: 228289430}
   - {fileID: 2068892567}
@@ -13050,7 +13235,6 @@ Transform:
   - {fileID: 561881561}
   - {fileID: 1254505860}
   - {fileID: 512522526}
-  - {fileID: 25660703}
   - {fileID: 2099406060}
   - {fileID: 1884837224}
   - {fileID: 254156034}
@@ -13058,16 +13242,16 @@ Transform:
   - {fileID: 1850472868}
   - {fileID: 544583760}
   - {fileID: 1204230347}
-  - {fileID: 588502664}
   - {fileID: 148453748}
   - {fileID: 1439135010}
+  - {fileID: 927764769}
   - {fileID: 1386515018}
   - {fileID: 243086601}
+  - {fileID: 1006437930}
   - {fileID: 1427755323}
   - {fileID: 270268740}
   - {fileID: 438893936}
   - {fileID: 1734836439}
-  - {fileID: 452326933}
   - {fileID: 1087096447}
   - {fileID: 1980733128}
   - {fileID: 774529799}
@@ -13081,210 +13265,208 @@ Transform:
   - {fileID: 1725411450}
   - {fileID: 161326061}
   - {fileID: 543064825}
-  - {fileID: 592605954}
   - {fileID: 1378679993}
-  - {fileID: 705643569}
   - {fileID: 1527824947}
   - {fileID: 27260372}
-  - {fileID: 162497588}
+  - {fileID: 1171794101}
   - {fileID: 730881857}
   - {fileID: 1768123490}
   - {fileID: 1013838242}
+  - {fileID: 737647446}
   - {fileID: 942822124}
   - {fileID: 776839043}
   - {fileID: 1750573453}
-  - {fileID: 328843984}
+  - {fileID: 912862916}
   - {fileID: 929458100}
-  - {fileID: 433946935}
   - {fileID: 455190786}
   - {fileID: 1608722428}
   - {fileID: 1782454790}
   - {fileID: 299484926}
   - {fileID: 1834493553}
+  - {fileID: 1150265209}
   - {fileID: 1770100539}
-  - {fileID: 1159064192}
   - {fileID: 366623638}
   - {fileID: 617432875}
-  - {fileID: 1006437930}
   - {fileID: 972599463}
-  - {fileID: 868500733}
+  - {fileID: 682087535}
   - {fileID: 1704181052}
   - {fileID: 1037143785}
-  - {fileID: 301038499}
   - {fileID: 1705967852}
   - {fileID: 1674051098}
   - {fileID: 413668936}
-  - {fileID: 1184709008}
   - {fileID: 1233265795}
   - {fileID: 1401597079}
   - {fileID: 837377973}
+  - {fileID: 1495278034}
   - {fileID: 1688558020}
+  - {fileID: 1570350005}
   - {fileID: 104527910}
+  - {fileID: 1609719374}
   - {fileID: 928360678}
   - {fileID: 1944202348}
-  - {fileID: 693499757}
+  - {fileID: 1140614362}
   - {fileID: 1354558230}
   - {fileID: 1771767987}
-  - {fileID: 684338312}
+  - {fileID: 1581058820}
   - {fileID: 964669852}
   - {fileID: 2084301002}
   - {fileID: 1931038949}
   - {fileID: 1407220381}
   - {fileID: 733861779}
   - {fileID: 842511190}
-  - {fileID: 9943330}
   - {fileID: 810680686}
   - {fileID: 768261605}
-  - {fileID: 1303098803}
   - {fileID: 2124214769}
   - {fileID: 1152965602}
-  - {fileID: 1150265209}
   - {fileID: 929389581}
+  - {fileID: 1560883909}
   - {fileID: 1500597890}
-  - {fileID: 1609719374}
   - {fileID: 1166015531}
-  - {fileID: 322945359}
   - {fileID: 1842601903}
   - {fileID: 1835037521}
-  - {fileID: 679867558}
+  - {fileID: 373562005}
   - {fileID: 114509869}
   - {fileID: 684722837}
-  - {fileID: 1495278034}
-  - {fileID: 673514193}
-  - {fileID: 1493584838}
-  - {fileID: 74021266}
-  - {fileID: 1467955801}
-  - {fileID: 95463593}
-  - {fileID: 1813227574}
-  - {fileID: 1879851139}
-  - {fileID: 219184383}
-  - {fileID: 1218664410}
-  - {fileID: 2022681525}
-  - {fileID: 1299486665}
-  - {fileID: 1140614362}
-  - {fileID: 668518239}
-  - {fileID: 1788214392}
-  - {fileID: 1936531999}
-  - {fileID: 93287686}
-  - {fileID: 1560883909}
-  - {fileID: 1949147284}
-  - {fileID: 1067300957}
-  - {fileID: 681064911}
-  - {fileID: 1798489597}
-  - {fileID: 940358009}
-  - {fileID: 1685235863}
-  - {fileID: 1867763740}
-  - {fileID: 1501605180}
-  - {fileID: 864559392}
-  - {fileID: 1570350005}
-  - {fileID: 934224952}
-  - {fileID: 220943478}
-  - {fileID: 777796374}
-  - {fileID: 1581058820}
-  - {fileID: 1171794101}
-  - {fileID: 528723853}
-  - {fileID: 1489044577}
-  - {fileID: 927764769}
-  - {fileID: 1948678186}
-  - {fileID: 454041050}
-  - {fileID: 1488725981}
-  - {fileID: 1205558256}
-  - {fileID: 266835485}
-  - {fileID: 711500105}
-  - {fileID: 1783527984}
-  - {fileID: 1980452725}
-  - {fileID: 1814433438}
-  - {fileID: 601876741}
-  - {fileID: 1787881948}
-  - {fileID: 1321357219}
-  - {fileID: 724380517}
-  - {fileID: 916222905}
-  - {fileID: 1300288768}
-  - {fileID: 475704215}
-  - {fileID: 1595658419}
-  - {fileID: 1211992425}
-  - {fileID: 1526179390}
-  - {fileID: 1493447766}
-  - {fileID: 125155436}
-  - {fileID: 265598723}
-  - {fileID: 1882489074}
-  - {fileID: 1333656916}
-  - {fileID: 1906054804}
-  - {fileID: 923622939}
-  - {fileID: 1751632938}
-  - {fileID: 154575154}
-  - {fileID: 912862916}
-  - {fileID: 1901966557}
-  - {fileID: 346202481}
-  - {fileID: 1812905364}
-  - {fileID: 225220063}
-  - {fileID: 2075442308}
-  - {fileID: 1569717444}
-  - {fileID: 926547368}
-  - {fileID: 2019835070}
-  - {fileID: 737647446}
-  - {fileID: 1642659512}
-  - {fileID: 1563939092}
-  - {fileID: 1585875785}
-  - {fileID: 1268442312}
-  - {fileID: 1654643134}
-  - {fileID: 883823339}
-  - {fileID: 1534207204}
-  - {fileID: 1982410497}
-  - {fileID: 1622905822}
-  - {fileID: 1010868867}
-  - {fileID: 1864915926}
-  - {fileID: 782507306}
-  - {fileID: 682087535}
-  - {fileID: 892154199}
-  - {fileID: 1560654789}
-  - {fileID: 1451276142}
-  - {fileID: 1028072234}
-  - {fileID: 975158014}
-  - {fileID: 1636216445}
   - {fileID: 955563114}
-  - {fileID: 400035687}
+  - {fileID: 673514193}
+  - {fileID: 975158014}
+  - {fileID: 1493584838}
+  - {fileID: 1467955801}
+  - {fileID: 1685235863}
+  - {fileID: 95463593}
+  - {fileID: 1300288768}
+  - {fileID: 1813227574}
   - {fileID: 1000016554}
-  - {fileID: 2131533752}
-  - {fileID: 431929787}
-  - {fileID: 1907259619}
-  - {fileID: 503561727}
-  - {fileID: 608428917}
-  - {fileID: 1610592020}
-  - {fileID: 1372627756}
-  - {fileID: 2067953483}
-  - {fileID: 1308344674}
-  - {fileID: 1298420937}
+  - {fileID: 219184383}
+  - {fileID: 1879851139}
+  - {fileID: 1218664410}
+  - {fileID: 1867763740}
+  - {fileID: 1299486665}
+  - {fileID: 668518239}
+  - {fileID: 1798489597}
+  - {fileID: 1788214392}
+  - {fileID: 93287686}
+  - {fileID: 1949147284}
+  - {fileID: 1159064192}
+  - {fileID: 1569717444}
+  - {fileID: 681064911}
+  - {fileID: 940358009}
+  - {fileID: 2022681525}
+  - {fileID: 588502664}
+  - {fileID: 1936531999}
+  - {fileID: 1501605180}
   - {fileID: 631018551}
-  - {fileID: 748028986}
+  - {fileID: 1184709008}
+  - {fileID: 1787881948}
+  - {fileID: 220943478}
+  - {fileID: 705643569}
+  - {fileID: 1534207204}
+  - {fileID: 452326933}
+  - {fileID: 1489044577}
+  - {fileID: 1783527984}
+  - {fileID: 868500733}
+  - {fileID: 1585875785}
+  - {fileID: 454041050}
+  - {fileID: 1814433438}
+  - {fileID: 1205558256}
+  - {fileID: 711500105}
+  - {fileID: 1268442312}
+  - {fileID: 1303098803}
+  - {fileID: 1980452725}
+  - {fileID: 601876741}
+  - {fileID: 1948678186}
+  - {fileID: 25660703}
+  - {fileID: 1751632938}
+  - {fileID: 1321357219}
+  - {fileID: 1451276142}
+  - {fileID: 916222905}
+  - {fileID: 1642659512}
+  - {fileID: 433946935}
+  - {fileID: 1882489074}
+  - {fileID: 1211992425}
+  - {fileID: 400035687}
+  - {fileID: 1493447766}
+  - {fileID: 1812905364}
+  - {fileID: 265598723}
+  - {fileID: 1906054804}
+  - {fileID: 162497588}
+  - {fileID: 693499757}
+  - {fileID: 1563939092}
+  - {fileID: 684338312}
+  - {fileID: 1622905822}
+  - {fileID: 301038499}
+  - {fileID: 1298420937}
+  - {fileID: 346202481}
+  - {fileID: 1595658419}
+  - {fileID: 1901966557}
+  - {fileID: 1488725981}
   - {fileID: 1362011888}
-  - {fileID: 2058955310}
-  - {fileID: 373562005}
-  - {fileID: 1819319322}
+  - {fileID: 1067300957}
+  - {fileID: 926547368}
+  - {fileID: 679867558}
+  - {fileID: 2075442308}
+  - {fileID: 1526179390}
+  - {fileID: 2019835070}
+  - {fileID: 934224952}
+  - {fileID: 1654643134}
+  - {fileID: 1982410497}
+  - {fileID: 864559392}
+  - {fileID: 1864915926}
+  - {fileID: 322945359}
+  - {fileID: 777796374}
+  - {fileID: 1636216445}
+  - {fileID: 1010868867}
+  - {fileID: 1333656916}
+  - {fileID: 1372627756}
+  - {fileID: 9943330}
+  - {fileID: 892154199}
+  - {fileID: 528723853}
+  - {fileID: 1088778307}
+  - {fileID: 74021266}
+  - {fileID: 1907259619}
+  - {fileID: 923622939}
+  - {fileID: 724380517}
   - {fileID: 1091792218}
+  - {fileID: 431929787}
+  - {fileID: 2131533752}
+  - {fileID: 266835485}
   - {fileID: 1672674963}
-  - {fileID: 1790161447}
+  - {fileID: 503561727}
+  - {fileID: 1610592020}
   - {fileID: 1731461937}
+  - {fileID: 1560654789}
+  - {fileID: 2067953483}
+  - {fileID: 883823339}
+  - {fileID: 125155436}
+  - {fileID: 1440628701}
+  - {fileID: 154575154}
+  - {fileID: 2058955310}
+  - {fileID: 225220063}
+  - {fileID: 1819319322}
+  - {fileID: 782507306}
   - {fileID: 2036360663}
-  - {fileID: 421674977}
+  - {fileID: 1028072234}
+  - {fileID: 1790161447}
+  - {fileID: 1692501854}
   - {fileID: 299095007}
   - {fileID: 2061491112}
+  - {fileID: 1308344674}
   - {fileID: 294775658}
-  - {fileID: 1692501854}
-  - {fileID: 364831637}
-  - {fileID: 1088778307}
+  - {fileID: 608428917}
   - {fileID: 1672089691}
+  - {fileID: 748028986}
   - {fileID: 962220012}
-  - {fileID: 1485070017}
-  - {fileID: 761990606}
-  - {fileID: 1440628701}
-  - {fileID: 2070069596}
-  - {fileID: 1899040493}
   - {fileID: 1582275213}
-  - {fileID: 569813610}
+  - {fileID: 761990606}
   - {fileID: 1389291719}
+  - {fileID: 421674977}
+  - {fileID: 1899040493}
+  - {fileID: 2070069596}
+  - {fileID: 569813610}
   - {fileID: 1621302736}
+  - {fileID: 1485070017}
   - {fileID: 1734894691}
+  - {fileID: 364831637}
   - {fileID: 1499194063}
   - {fileID: 170612621}
   - {fileID: 52975502}
@@ -16310,6 +16492,97 @@ Transform:
   m_PrefabParentObject: {fileID: 4119290610039276, guid: 531f66400fa824a4ca126a4a4f38327d,
     type: 2}
   m_PrefabInternal: {fileID: 1218664409}
+--- !u!1 &1223817300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1223817303}
+  - component: {fileID: 1223817302}
+  - component: {fileID: 1223817301}
+  m_Layer: 0
+  m_Name: merina_attack_1_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &1223817301
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1223817300}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 245e546a81671c841baa5340285172f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!212 &1223817302
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1223817300}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 67529184f8ab3fd44a0ec5d571de146d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+--- !u!4 &1223817303
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1223817300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.19787264, y: 1.9266452, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1231998254
 Prefab:
   m_ObjectHideFlags: 0
