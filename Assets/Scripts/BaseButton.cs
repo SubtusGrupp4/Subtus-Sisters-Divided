@@ -181,6 +181,9 @@ public class BaseButton : MonoBehaviour
     {
         ChangeCount(toggleValue);
         toggleValue *= -1;
+
+        // PLAY SOUND ?
+        // CHANGE SPRITE ??
     }
 
     protected virtual void DoStuff()
