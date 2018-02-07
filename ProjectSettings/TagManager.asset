@@ -9,6 +9,8 @@ TagManager:
   - Pickup
   - Enemy
   - Portal
+  - GravitationBomb
+  - MovingFloor
   layers:
   - Default
   - TransparentFX

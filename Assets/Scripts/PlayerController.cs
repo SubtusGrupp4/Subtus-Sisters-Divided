@@ -66,6 +66,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string[] resetJumpOn = new string[] { };
 
+    [SerializeField]
+    private StickToPlatform stp;
+
     [Header("Sounds")]
 
     [SerializeField]
@@ -250,6 +253,8 @@ public class PlayerController : MonoBehaviour
     {
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
         inAir = true;
+        transform.parent = null;
+
         for (int i = 0; i < resetJumpOn.Length; i++)
         {
             for (int l = -1; l < 2; l += 2)
@@ -265,9 +270,12 @@ public class PlayerController : MonoBehaviour
                     {
                         if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
                         {
+                            if(resetJumpOn[i] == "MovingFloor" || objHit[j].transform.GetComponent<MovingPlatform>() != null) 
+                                transform.parent = objHit[j].transform;
+
                             inAir = false;
                             break;
-                        }
+                        }   
                     }
                 }
             }
