@@ -38,5 +38,5 @@ Assets/etc.meta
 /Assets/FMODStudioCache.asset.meta
 /Assets/StreamingAssets/*.bank
 /Assets/StreamingAssets/*.bank.meta
-#fmod.log
-#fmod_editor.log
+fmod.log
+fmod_editor.log

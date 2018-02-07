@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114597128796426514}
   m_Layer: 0
   m_Name: GravityBomb
-  m_TagString: Untagged
+  m_TagString: GravitationBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +55,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.69
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 35dc226b18b6ca94d9f8383a1bfde12f, type: 2}
@@ -89,10 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9d3f336087b95438591d7ca4b9262f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
-  pullForce: 100
-  duration: 2
-  deActivate: 5
+  range: 6
+  pullForce: 73
+  duration: 6.5
+  deActivate: 41.63
   tagNames:
   - Pickup
   - Enemy

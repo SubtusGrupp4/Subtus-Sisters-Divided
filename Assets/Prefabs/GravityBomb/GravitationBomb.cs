@@ -40,9 +40,20 @@ public class GravitationBomb : MonoBehaviour
 
 	void Update () 
 	{
+		
 		ActivateGravitationBomb ();
 		TargetInRange ();
 		TargetOutsideRange ();
+		DestroyAfterDuration ();
+	}
+
+	void FixedUpdate()
+	{
+		GravitationPull ();
+	}
+
+	void DestroyAfterDuration()
+	{
 		if (!buttonPressed) {
 			duration -= Time.deltaTime;
 			if (duration < 0) {
@@ -50,11 +61,6 @@ public class GravitationBomb : MonoBehaviour
 				Destroy (gameObject);
 			}
 		}
-	}
-
-	void FixedUpdate()
-	{
-		GravitationPull ();
 	}
 
 	void ActivateGravitationBomb()
@@ -89,7 +95,7 @@ public class GravitationBomb : MonoBehaviour
 				{
 					float inRange = Vector3.Distance (transform.position, targetObjects.transform.position);
 					if (range > inRange) 
-					{
+						{
 						pullObjects.Add (targetObjects);
 					}
 				}
@@ -100,6 +106,7 @@ public class GravitationBomb : MonoBehaviour
 
 	void TargetOutsideRange()
 	{
+		
 		for (int i = 0; i < pullObjects.Count; i++) 
 		{
 			float inRange = Vector3.Distance (transform.position, pullObjects[i].transform.position);
@@ -141,22 +148,6 @@ public class GravitationBomb : MonoBehaviour
 		}
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Portal")
-        {
-            if (rb.velocity.y > 0f)
-            {
-                rb.gravityScale = 1f;
-                rb.AddForce(new Vector2(0f, -100f));
-            }
-            else
-            {
-                rb.gravityScale = -1f;
-                rb.AddForce(new Vector2(0f, 100f));
-            }
-        }
-    }
 }
 
 
