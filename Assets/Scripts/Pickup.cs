@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour {
+public class Pickup : MonoBehaviour
+{
 
     [GiveTag]
     [SerializeField]
-    private string[] tags;
+    private string[] pickUp;
     private Transform pickedUp;
-    [SerializeField]
+
     private Transform hitTransform;
+
+    [GiveTag]
+    [SerializeField]
+    private string[] walls;
 
     private Rigidbody2D rb;
     private bool goingRight = true;
@@ -19,15 +24,11 @@ public class Pickup : MonoBehaviour {
     private bool isPickedUp = false;
     private bool pickupEnabled = true;
 
-    [Header("Ray Settings")]
-    [SerializeField]
-    private float rayOffsetX = 0.6f;
-    [SerializeField]
-    private float rayOffsetY = 0.6f;
-    [SerializeField]
-    private float rayDistance = 0.5f;
+
 
     [Header("Grabbing")]
+    [SerializeField]
+    private float range;
     [SerializeField]
     private Vector3 grabRight;
     [SerializeField]
@@ -51,11 +52,6 @@ public class Pickup : MonoBehaviour {
         else if (rb.velocity.x < -0.1f)
             goingRight = false;
 
-        Vector2 rayOrigin = Vector2.zero;
-        if (goingRight)
-            rayOrigin = transform.position + new Vector3(rayOffsetX, -rayOffsetY);
-        else
-            rayOrigin = transform.position + new Vector3(-rayOffsetX, -rayOffsetY);
 
         Vector2 rayDirection = Vector2.zero;
         if (goingRight)
@@ -71,21 +67,21 @@ public class Pickup : MonoBehaviour {
 
         // TODO: Set this correctly
         LayerMask layer = 1 << 0;
-
+/*
         RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, layer);
         Color color = hit ? Color.green : Color.red;
         Debug.DrawRay(rayOrigin, rayDirection, color);
 
         if (hit.transform != null)
         {
-            foreach (string tag in tags)
+            foreach (string tag in pickUp)
             {
                 if (hit.transform.tag == tag)
                     hitTransform = hit.transform;
             }
         }
-        else if(!isPickedUp)
-            hitTransform = null;
+        else if (!isPickedUp)
+            hitTransform = null; */
 
         if (isPickedUp)
         {
@@ -100,10 +96,60 @@ public class Pickup : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && hitTransform != null)
+        if (Input.GetKeyDown(KeyCode.E) && !isPickedUp)
         {
-            isPickedUp = !isPickedUp;
-            pickedUp = hitTransform;
+            bool blocked = false;
+            Collider2D[] allObjs = Physics2D.OverlapCircleAll(transform.position, range);
+            {
+                for (int t = 0; t < pickUp.Length; t++)
+                {
+                    if (blocked)
+                        break;
+
+                    for (int i = 0; i < allObjs.Length; i++)
+                    {
+                        if (allObjs[i].tag == pickUp[t])
+                        {
+                            // RAYCAST TO CHECK WALL
+                            Debug.Log("YES");
+                            float distance = Vector2.Distance(transform.position, allObjs[i].transform.position);
+                            Vector2 direction = (allObjs[i].transform.position - transform.position).normalized;
+                            Debug.DrawRay(transform.position, direction, Color.red);
+                            // (transform.position + new Vector3((rayOffset + 0.1f)
+                            // (transform.position + new Vector3((rayOffSetX - 0.1f) * directionMultiplier.x, 0, 0)
+                            RaycastHit2D[] objHit = Physics2D.RaycastAll(transform.position, direction, distance);
+
+
+                            for (int l = 0; l < objHit.Length; l++)
+                            {
+                                if (blocked)
+                                    break;
+
+                                for (int j = 0; j < walls.Length; j++)
+                                {
+                                    if (objHit[l].transform.tag == walls[j])
+                                    {
+                                        blocked = true;                                        
+                                        break;
+                                    }
+                                }
+                            }
+                            if(!blocked)
+                            {
+                                pickedUp = allObjs[i].transform;
+                                isPickedUp = true;
+                                Debug.Log("KEY IS ON");
+                                break;
+                            }
+                        }
+                    }
+                }
+
+            }           
+        }
+        else if(Input.GetKeyDown(KeyCode.E) && isPickedUp)
+        {
+            isPickedUp = false;
         }
     }
 
