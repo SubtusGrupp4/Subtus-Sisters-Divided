@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4792804060918336}
   - component: {fileID: 212501426786833752}
   - component: {fileID: 61755903406649294}
-  - component: {fileID: 114963984471891466}
+  - component: {fileID: 114658359865840904}
   m_Layer: 0
   m_Name: Comb_Right_1
   m_TagString: Floor
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114963984471891466
+--- !u!114 &114658359865840904
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,12 +75,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1879033301391448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06a0821fc0e91c42aa7e3701091acd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300014, guid: 7d42fc8d785c1a942a92a78357775248, type: 3}
+  lightSprites:
   - {fileID: 21300016, guid: 1d885de3463385342a13302166f95638, type: 3}
+  darkSprites:
+  - {fileID: 21300016, guid: 1d885de3463385342a13302166f95638, type: 3}
+  lightTile: 0
 --- !u!212 &212501426786833752
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4051651067914738}
   - component: {fileID: 212937918396557716}
   - component: {fileID: 60688398120822246}
-  - component: {fileID: 114916748569979558}
+  - component: {fileID: 114066597200702608}
   m_Layer: 0
   m_Name: Comb_SlopeTop_1
   m_TagString: Floor
@@ -70,7 +70,7 @@ PolygonCollider2D:
       - {x: 0.5, y: 0.5}
       - {x: 0.5, y: -0.5}
       - {x: -0.5, y: -0.5}
---- !u!114 &114916748569979558
+--- !u!114 &114066597200702608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -78,12 +78,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284495089483814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06a0821fc0e91c42aa7e3701091acd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
+  lightSprites:
   - {fileID: 21300008, guid: 7d42fc8d785c1a942a92a78357775248, type: 3}
+  darkSprites:
   - {fileID: 21300010, guid: 1d885de3463385342a13302166f95638, type: 3}
+  lightTile: 0
 --- !u!212 &212937918396557716
 SpriteRenderer:
   m_ObjectHideFlags: 1

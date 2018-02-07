@@ -345,11 +345,11 @@ public class GridEditor : Editor {
     {
         foreach (Transform tile in grid.tileTransforms)
         {
-            if(tile.GetComponent<SpriteRenderer>() != null && tile.GetComponent<DualSprites>() != null)
+            if(tile.GetComponent<SpriteRenderer>() != null && tile.GetComponent<CombinedTile>() != null)
             if (tile.position.y < grid.mirrorOffset)
-                tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<DualSprites>().sprites[1];
+                tile.GetComponent<CombinedTile>().SetTileLight(false);
             else
-                tile.GetComponent<SpriteRenderer>().sprite = tile.GetComponent<DualSprites>().sprites[0];
+                tile.GetComponent<CombinedTile>().SetTileLight(true);
         }
         grid.resetAllSprites = false;
     }
@@ -474,6 +474,7 @@ public class GridEditor : Editor {
             {
                 grid.mousePreview = new GameObject("Mouse Preview");
                 grid.mousePreview.AddComponent<SpriteRenderer>();
+                grid.mousePreview.AddComponent<CombinedTile>();
                 grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;
                 grid.mousePreview.GetComponent<SpriteRenderer>().color = grid.tileColor - new Color(0f, 0f, 0f, grid.previewTransparency);
 
@@ -498,28 +499,29 @@ public class GridEditor : Editor {
 
                 if (grid.mirror)
                 {
-                    grid.mousePreview.GetComponent<SpriteRenderer>().flipY = mousePos.y < grid.mirrorOffset;
+                    grid.mousePreview.GetComponent<CombinedTile>().FlipY(mousePos.y < grid.mirrorOffset);
 
                     if (grid.mirrorSprite)
                     {
-                        if (grid.tilePrefab.GetComponent<DualSprites>() != null)
+                        if (grid.tilePrefab.GetComponent<CombinedTile>() != null)
                         {
+                            grid.mousePreview.GetComponent<CombinedTile>().SetSameAs(grid.tilePrefab.GetComponent<CombinedTile>());
                             if (mousePos.y < grid.mirrorOffset)
-                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[1];
+                                grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(false);
                             else
-                                grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[0];
+                                grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(true);
                         }
                     }
                 }
                 else if (grid.useMirrored)
                 {
-                    if (grid.tilePrefab.GetComponent<DualSprites>() != null)
-                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[1];
+                    if (grid.tilePrefab.GetComponent<CombinedTile>() != null)
+                        grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(false);
                 }
                 else
                 {
-                    if (grid.tilePrefab.GetComponent<DualSprites>() != null)
-                        grid.mousePreview.GetComponent<SpriteRenderer>().sprite = grid.tilePrefab.GetComponent<DualSprites>().sprites[0];
+                    if (grid.tilePrefab.GetComponent<CombinedTile>() != null)
+                        grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(true);
                 }
             }
         }
@@ -602,19 +604,19 @@ public class GridEditor : Editor {
 
                 if (grid.mirrorSprite)
                 {
-                    if (mirrorGO.GetComponent<DualSprites>() != null)
+                    if (mirrorGO.GetComponent<CombinedTile>() != null)
                     {
                         if (aligned.y > mirrored.y)
                         {
-                            mirrorGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[1];
+                            mirrorGO.GetComponent<CombinedTile>().SetTileLight(false);
                             if(spawnGO != null)
-                                spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[0];
+                                spawnGO.GetComponent<CombinedTile>().SetTileLight(true);
                         }
                         else
                         {
-                            mirrorGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[0];
+                            mirrorGO.GetComponent<CombinedTile>().SetTileLight(true);
                             if(spawnGO != null)
-                                spawnGO.GetComponent<SpriteRenderer>().sprite = mirrorGO.GetComponent<DualSprites>().sprites[1];
+                                spawnGO.GetComponent<CombinedTile>().SetTileLight(false);
                         }
                     }
                 }
@@ -631,27 +633,27 @@ public class GridEditor : Editor {
                 if (mousePos.y < grid.mirrorOffset)
                 {
                     if(spawnGO != null)
-                        spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, -spawnGO.transform.localScale.y);
+                        spawnGO.GetComponent<CombinedTile>().FlipY(true);
                     if(mirrorGO != null)
-                        mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, mirrorGO.transform.localScale.y);
+                        mirrorGO.GetComponent<CombinedTile>().FlipY(false);
                 }
                 else
                 {
                     if (spawnGO != null)
-                        spawnGO.transform.localScale = new Vector2(spawnGO.transform.localScale.x, spawnGO.transform.localScale.y);
+                        spawnGO.GetComponent<CombinedTile>().FlipY(false);
                     if (mirrorGO != null)
-                        mirrorGO.transform.localScale = new Vector2(mirrorGO.transform.localScale.x, -mirrorGO.transform.localScale.y);
+                        mirrorGO.GetComponent<CombinedTile>().FlipY(true);
                 }
             }
             else if (grid.useMirrored && TileOnPosition(mirrored) == -1 || grid.overlap)
             {
-                if (spawnGO.GetComponent<DualSprites>() != null)
-                    spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[1];
+                if (spawnGO != null && spawnGO.GetComponent<CombinedTile>() != null)
+                    spawnGO.GetComponent<CombinedTile>().SetTileLight(false);
             }
             else if(TileOnPosition(mirrored) == -1 || grid.overlap)
             { 
-                if (spawnGO != null && spawnGO.GetComponent<DualSprites>() != null)
-                    spawnGO.GetComponent<SpriteRenderer>().sprite = spawnGO.GetComponent<DualSprites>().sprites[0];
+                if (spawnGO != null && spawnGO.GetComponent<CombinedTile>() != null)
+                    spawnGO.GetComponent<CombinedTile>().SetTileLight(true);
             }
 
             if (grid.mirror && mirrorGO != null)
