@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114338497035911180}
   - component: {fileID: 60965833413354224}
   - component: {fileID: 50650710948152934}
+  - component: {fileID: 114181524820871020}
   m_Layer: 0
   m_Name: key
   m_TagString: Pickup
@@ -98,6 +99,19 @@ PolygonCollider2D:
       - {x: 0.0859375, y: -0.04296875}
       - {x: 0.0859375, y: -0.046875}
       - {x: 0.08203125, y: -0.04296875}
+--- !u!114 &114181524820871020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317615055739762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182522955334e174baa2806c1d239409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Index: 0
+  DestroyOnUse: 0
 --- !u!114 &114338497035911180
 MonoBehaviour:
   m_ObjectHideFlags: 1
