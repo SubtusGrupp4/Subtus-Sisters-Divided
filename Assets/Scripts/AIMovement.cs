@@ -78,7 +78,8 @@ public class AIMovement : MonoBehaviour
     //
     protected virtual void Start()
     {
-        bAnim = GetComponent<BasicAnimator>();
+        if (GetComponent<BasicAnimator>())
+            bAnim = GetComponent<BasicAnimator>();
 
         currentState = startState;
 
@@ -107,7 +108,7 @@ public class AIMovement : MonoBehaviour
 
         rayDistanceHypot = 0.7f;
 
-        Debug.Log("RayDistanceHypot" + rayDistanceHypot);
+
 
         // SlopeRay
         rayOffSetX = GetComponent<BoxCollider2D>().size.x * transform.localScale.x / 2;
@@ -141,7 +142,7 @@ public class AIMovement : MonoBehaviour
 
             CheckFalling();
             //  CheckFalling();
-          
+
         }
     }
 
@@ -173,7 +174,8 @@ public class AIMovement : MonoBehaviour
     {
         isFalling = true;
         //
-        bAnim.Falling(true);
+        if (bAnim != null)
+            bAnim.Falling(true);
         //
         for (int l = -1; l < 2; l += 2)
         {
@@ -189,12 +191,12 @@ public class AIMovement : MonoBehaviour
                 {
                     if (objHit[j].transform.tag == walkOn[i])
                     {
-                        Debug.Log("FALLIGN NORMAL X" + Mathf.Abs(objHit[j].normal.x));
                         if (Mathf.Abs(objHit[j].normal.x) < maxSlope) // So we cant jump on walls.
                         {
                             isFalling = false;
                             //
-                            bAnim.Falling(false);
+                            if (bAnim != null)
+                                bAnim.Falling(false);
                             //
                             break;
                         }
@@ -237,12 +239,15 @@ public class AIMovement : MonoBehaviour
 
     private void Move()
     {
-        bAnim.Walking(directionMultiplier);
+        //
+        if (bAnim != null)
+            bAnim.Walking(directionMultiplier);
+        //
 
         if (currentState == MovementEnum.Stalking)
         {
             StalkingMove();
-            
+
         }
 
         else if (currentState == MovementEnum.OneDirBounce)
@@ -260,7 +265,7 @@ public class AIMovement : MonoBehaviour
         {
             IdleMove();
         }
-        
+
     }
 
     protected void StalkingMove()
@@ -311,11 +316,11 @@ public class AIMovement : MonoBehaviour
         }
 
         rigidbody2D.velocity = new Vector2(speed * directionMultiplier.x, rigidbody2D.velocity.y);
-    
+
 
         if (!isFalling)
         {
-           
+
 
 
 
@@ -491,8 +496,8 @@ public class AIMovement : MonoBehaviour
         float jumpVelocity;
         float gravity;
         gravity = -9.81f; // a
-                                                     // height = s
-                                                     // V = end velocity = 0
+                          // height = s
+                          // V = end velocity = 0
 
         jumpVelocity = 0 - (2 * (gravity * (height + 0.5f)));
         jumpVelocity = Mathf.Sqrt(jumpVelocity);

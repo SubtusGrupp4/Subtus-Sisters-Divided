@@ -305,7 +305,7 @@ public class PlayerController : MonoBehaviour
 
                     if (objHit[j].collider != null && Mathf.Abs(objHit[j].normal.x) > 0.1f && Mathf.Abs(objHit[j].normal.x) < wallNormal && inAir == false)
                     {
-                        Debug.Log("hej obhHitNormalX " + objHit[j].normal.x + " L " + l);
+
 
                         slopeFriction *= Mathf.Abs(objHit[j].normal.x);
 
