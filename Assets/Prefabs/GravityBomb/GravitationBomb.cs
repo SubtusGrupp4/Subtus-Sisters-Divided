@@ -54,9 +54,11 @@ public class GravitationBomb : MonoBehaviour
 
 	void DestroyAfterDuration()
 	{
-		if (!buttonPressed) {
+		if (!buttonPressed)
+		{
 			duration -= Time.deltaTime;
-			if (duration < 0) {
+			if (duration < 0) 
+			{
 				ResetGravity (0);
 				Destroy (gameObject);
 			}

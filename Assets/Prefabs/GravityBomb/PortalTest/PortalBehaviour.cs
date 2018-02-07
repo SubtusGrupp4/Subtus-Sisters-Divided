@@ -2,20 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PortalBehaviour : MonoBehaviour {
-
-
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public abstract class PortalBehaviour : MonoBehaviour 
+{
 
 	public virtual void OnPortalContact()
 	{

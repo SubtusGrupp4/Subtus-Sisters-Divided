@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPortal : PortalBehaviour {
+public class EnemyPortal : PortalBehaviour 
+{
 
+	[Header ("Scripts")]
 	public MonoBehaviour enemyScript;
 	public MonoBehaviour friendlyScript;
 
@@ -18,11 +20,8 @@ public class EnemyPortal : PortalBehaviour {
 	private int q = 0;
 	private bool enabler= true;
 
-	void Start(){
-		
-	}
-
-	void Invoker(){
+	void Invoker()
+	{
 		originalCollider.enabled = !originalCollider.enabled;
 		enemyScript.enabled = !enabler;
 		reversedCollider.enabled = !reversedCollider.enabled;
@@ -31,13 +30,16 @@ public class EnemyPortal : PortalBehaviour {
 
 	}
 
-	void ReverseComponents(){
+	void ReverseComponents()
+	{
 		q++;
 
-		if (gameObject.GetComponent<Rigidbody2D>().gravityScale < 0) {
+		if (gameObject.GetComponent<Rigidbody2D>().gravityScale < 0) 
+		{
 			this.GetComponent<Animator> ().runtimeAnimatorController = original as RuntimeAnimatorController;
 			transform.localScale = new Vector3 (1f, 1f, 1f);
-		} else {
+		} else 
+		{
 			this.GetComponent<Animator> ().runtimeAnimatorController = reversed as RuntimeAnimatorController;
 			transform.localScale = new Vector3 (1f, -1f, 1f);
 		}
@@ -45,7 +47,8 @@ public class EnemyPortal : PortalBehaviour {
 		gameObject.GetComponent<Rigidbody2D> ().gravityScale *= -1;
 	}
 
-	public override void OnPortalContact(){
+	public override void OnPortalContact()
+	{
 		Invoke ("Invoker", 0.1f);
 		ReverseComponents ();
 	}

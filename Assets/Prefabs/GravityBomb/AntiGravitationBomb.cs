@@ -105,20 +105,5 @@ public class AntiGravitationBomb : MonoBehaviour
 	
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Portal")
-        {
-            if (rb.velocity.y > 0f)
-            {
-                rb.gravityScale = 1f;
-                rb.AddForce(new Vector2(0f, -100f));
-            }
-            else
-            {
-                rb.gravityScale = -1f;
-                rb.AddForce(new Vector2(0f, 100f));
-            }
-        }
-    }
+    
 }
