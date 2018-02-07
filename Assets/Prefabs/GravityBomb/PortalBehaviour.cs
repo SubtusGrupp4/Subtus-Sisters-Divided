@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PortalBehaviour : MonoBehaviour {
 
-	protected string portalTag = "Portal";
+
 
 
 	// Use this for initialization

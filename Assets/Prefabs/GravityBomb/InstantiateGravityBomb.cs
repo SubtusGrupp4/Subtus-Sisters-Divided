@@ -61,9 +61,12 @@ public class InstantiateGravityBomb : MonoBehaviour
 
 	void Fire(Vector2 Direction, GameObject fireObj)
 	{
-		if (((Mathf.Abs(Direction.x) > sensitivity && reload) || (Mathf.Abs(Direction.y) > sensitivity && reload)) && clone == null) 
+		if (((Mathf.Abs(Direction.x) > sensitivity && reload) || (Mathf.Abs(Direction.y) > sensitivity && reload) || Input.GetKeyDown(KeyCode.P)) && clone == null) 
 		{	
-			
+			if (Input.GetKeyDown (KeyCode.P)) 
+			{
+				Direction = new Vector2 (1, 1);	
+			}
 			if (Direction.x < 0) 
 			{
 				transform.parent.localScale = new Vector3 (-1, transform.parent.localScale.y, transform.parent.localScale.z);

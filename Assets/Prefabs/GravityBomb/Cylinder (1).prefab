@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 33114795356129192}
   - component: {fileID: 23171251986537948}
   - component: {fileID: 61712394001953322}
+  - component: {fileID: 50660144495588380}
+  - component: {fileID: 114571500698166790}
   m_Layer: 0
   m_Name: Cylinder (1)
-  m_TagString: PickUp
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +85,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482351374654292}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &50660144495588380
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482351374654292}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0.3
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61712394001953322
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -108,3 +130,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0000002}
   m_EdgeRadius: 0
+--- !u!114 &114571500698166790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482351374654292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46af276954b7f854488d764cf6ef6bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reversedObject: {fileID: 1604026693618502, guid: 89da1fa3d1294684baf86c5635a29016,
+    type: 2}
