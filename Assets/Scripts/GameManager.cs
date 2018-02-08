@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
+    public Transform playerTop;
+    public Transform playerBot;
+
     [Header("Screen")]
     [SerializeField]
     private int resolutionX = 1920;

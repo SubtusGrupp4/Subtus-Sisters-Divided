@@ -11,10 +11,9 @@ public class CameraController : MonoBehaviour
 {
     public CameraState State;
 
-    [SerializeField]
 	private Transform playerTop;
-    [SerializeField]
     private Transform playerBot;
+
     [SerializeField]
     public float followSpeed = 30f;
     private float startFollowSpeed;
@@ -50,6 +49,9 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        playerTop = GameManager.instance.playerTop;
+        playerBot = GameManager.instance.playerBot;
+
         startFollowSpeed = followSpeed;
         State = CameraState.FollowingBoth;
 
