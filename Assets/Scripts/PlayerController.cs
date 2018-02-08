@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
     // Components
     private AudioSource myAudio; // Audio source on player object or sound master or game master ??? who knows , we do later.
     private CapsuleCollider2D myBox;
+    private float rayOffSetX;
+    private float rayOffSetY;
+    private BasicAnimator bodyAnim;
+    private BasicAnimator armAnim;
     private new Rigidbody2D rigidbody2D;
     private RaycastHit2D[] objHit;
 
@@ -78,8 +82,24 @@ public class PlayerController : MonoBehaviour
     private GameObject revivePlacerPrefab;
     private GameObject revivePlacer;
 
+
+
     void Start()
     {
+        rayOffSetX = GetComponent<CapsuleCollider2D>().size.x * transform.localScale.x / 2;
+        rayOffSetY = GetComponent<CapsuleCollider2D>().size.y * transform.localScale.y / 2;
+
+        // FIX JUMP
+        //
+        // Arm, ThrowArm, Hide sprite renderer ocn "Arm" when attacking, show "ThrowArm" wait until throw is done, then hide throw arm
+        // and show normal "arm" again.
+        //
+        bodyAnim = GetComponent<BasicAnimator>();
+        GameObject arm = this.transform.Find("Arm").gameObject;
+        armAnim = arm.GetComponent<BasicAnimator>();
+        //
+        //
+
         myAudio = GetComponent<AudioSource>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         myBox = GetComponent<CapsuleCollider2D>();
@@ -143,7 +163,7 @@ public class PlayerController : MonoBehaviour
             //  GetComponent<BoxCollider2D>().sharedMaterial.friction = 0;
 
             myAudio.PlayOneShot(jumpSound); // needs change?? need landing sound ??
-            // play jump animation
+                                            // play jump animation
         }
 
         // Input Manager
@@ -167,6 +187,13 @@ public class PlayerController : MonoBehaviour
             savedVelocity = rigidbody2D.velocity;
             changedMade = false;
         }
+
+        //
+        //
+        bodyAnim.Walking(new Vector2(temp, Y), true);
+        armAnim.Walking(new Vector2(temp, Y), false);
+        //
+        //
 
         rigidbody2D.velocity = new Vector2(temp, Y);
     }
@@ -251,15 +278,28 @@ public class PlayerController : MonoBehaviour
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
         inAir = true;
         transform.parent = null;
-
+        //
+        //
+        bodyAnim.Falling(true);
+        armAnim.Falling(true);
+        //
+        //
         for (int i = 0; i < resetJumpOn.Length; i++)
         {
             for (int l = -1; l < 2; l += 2)
             {
-                objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flippValue), Mathf.Abs((myBox.size.y
-                * GetComponent<Transform>().localScale.y)) / 2 + distanceGraceForJump);
+                /*
+                (transform.position + new Vector3((rayOffSetX - 0.05f) * l, 0, 0),
+                -Vector2.up * flipValue,
+                rayOffSetY + distanceGraceForFalling); */
 
-                Debug.DrawRay(transform.position, new Vector2(l, -flippValue), Color.red);
+                objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffSetX - 0.05f) * l, 0, 0),
+                    -Vector2.up * flippValue,
+                rayOffSetY + distanceGraceForJump);
+
+                Debug.DrawRay(transform.position + new Vector3((rayOffSetX - 0.05f) * l, 0, 0),
+                    -Vector2.up * flippValue,
+                    Color.red);
 
                 for (int j = 0; j < objHit.Length; j++)
                 {
@@ -267,12 +307,21 @@ public class PlayerController : MonoBehaviour
                     {
                         if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
                         {
-                            if(resetJumpOn[i] == "MovingFloor" || objHit[j].transform.GetComponent<MovingPlatform>() != null) 
+                            if (resetJumpOn[i] == "MovingFloor" || objHit[j].transform.GetComponent<MovingPlatform>() != null)
                                 transform.parent = objHit[j].transform;
 
                             inAir = false;
+
+
+                            //
+                            //
+                            bodyAnim.Falling(false);
+                            armAnim.Falling(false);
+                            //
+                            //
+
                             break;
-                        }   
+                        }
                     }
                 }
             }
@@ -325,7 +374,7 @@ public class PlayerController : MonoBehaviour
                         offSet += (flippValue * -1) * objHit[j].normal.x * Mathf.Abs(body.velocity.x) * Time.deltaTime * (body.velocity.x - objHit[j].normal.x > 0 ? 1f : -1f);
 
                         if (offSet * flippValue > 0)
-                            offSet *=  0.5f;
+                            offSet *= 0.5f;
                         else
                             offSet *= 2;
 
@@ -345,11 +394,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Portal")
+        if (collision.transform.tag == "Portal")
         {
-           //Die();
+            //Die();
         }
-        else if(collision.transform.tag == "Revive")
+        else if (collision.transform.tag == "Revive")
         {
             Destroy(collision.gameObject);
             Ressurect();

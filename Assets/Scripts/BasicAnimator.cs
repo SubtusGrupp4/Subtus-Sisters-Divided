@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BasicAnimator : MonoBehaviour
 {
-    protected const string animWalk = "IsRunning";
-    protected const string animAttack = "IsAttacking";
-    protected const string animFall = "IsFalling";
+    public const string animWalk = "IsRunning";
+    public const string animAttack = "IsAttacking";
+    public const string animFall = "IsFalling";
 
     public GameObject animGameObject;
     [Range(-1,1)]
@@ -30,10 +30,17 @@ public class BasicAnimator : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    protected virtual void Update()
+    {       
+        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0))
+        {
+            anim.SetBool(animAttack, false);
+        } 
+    }
+
     public virtual void Attack()
     {
         anim.SetBool(animAttack, true);
-        anim.SetBool(animAttack, false);
     }
     protected virtual void Flip()
     {
@@ -52,11 +59,11 @@ public class BasicAnimator : MonoBehaviour
         anim.SetBool(animFall, state);
     }
 
-    public virtual void Walking(Vector2 direction)
+    public virtual void Walking(Vector2 direction, bool flip)
     {
-        SetAnimation(direction);
+        SetAnimation(direction, flip);
     }
-    protected virtual void SetAnimation(Vector2 dir)
+    protected virtual void SetAnimation(Vector2 dir, bool flip)
     {
         x = dir.x;
         if (x != 0)
@@ -68,6 +75,7 @@ public class BasicAnimator : MonoBehaviour
         else
             anim.SetBool(animWalk, false);//Walking animation is activated
 
+        if(flip)
         Flip();
     }
 }

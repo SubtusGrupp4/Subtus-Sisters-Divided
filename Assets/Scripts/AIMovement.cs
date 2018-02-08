@@ -241,7 +241,7 @@ public class AIMovement : MonoBehaviour
     {
         //
         if (bAnim != null)
-            bAnim.Walking(directionMultiplier);
+            bAnim.Walking(directionMultiplier, true);
         //
 
         if (currentState == MovementEnum.Stalking)

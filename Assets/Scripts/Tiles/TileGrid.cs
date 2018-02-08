@@ -75,5 +75,16 @@ public class TileGrid : MonoBehaviour
                                 new Vector3(Mathf.Floor(x / width) * width, -1000000.0f));
             }
         }
+
+        Gizmos.color = Color.white;
+
+        Gizmos.DrawLine(new Vector3(-1000000.0f, 0f),
+        new Vector3(1000000.0f, 0f));
+
+        Gizmos.DrawLine(new Vector3(-1000000.0f, Camera.main.orthographicSize),
+                new Vector3(1000000.0f, Camera.main.orthographicSize));
+
+        Gizmos.DrawLine(new Vector3(-1000000.0f, -(Camera.main.orthographicSize)),
+                new Vector3(1000000.0f, -(Camera.main.orthographicSize)));
     }
 }
