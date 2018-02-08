@@ -18,7 +18,8 @@ public class InstantiateGravityBomb : MonoBehaviour
 	private float sensitivity;
 
 	private Vector2 direction;
-	private bool reload;
+	private bool reloaded;
+	[SerializeField]
 	private float setCooldown;
 	private int flipValue;
 
@@ -51,14 +52,15 @@ public class InstantiateGravityBomb : MonoBehaviour
         armSprite = arm.GetComponent<SpriteRenderer>();
         throwArmSprite = throwArm.GetComponent<SpriteRenderer>();
 
-        reload = true;
+        reloaded = true;
 		setCooldown = cooldown;
-		if (GetComponentInParent<PlayerController> ().Player == Controller.Player1) 
+		if (GetComponentInParent<PlayerController>().Player == Controller.Player1) 
 		{
 			controllerCode = controllerOne;
 			fireBomb = shockwaveBomb;
 			flipValue = 1;
-		} else 
+		} 
+		else 
 		{
 			controllerCode = controllerTwo;
 			fireBomb = gravityBomb;
@@ -70,14 +72,13 @@ public class InstantiateGravityBomb : MonoBehaviour
 
 	void Update()
 	{
-		GetDirection ();
-		Fire (direction, fireBomb);
+		GetDirection();
+		Fire(direction, fireBomb);
 
         if(animationPlaying)
         {          
             if(throwArm.GetComponent<Animator>().GetBool(BasicAnimator.animAttack) == false)
             {
-                // ITS DONE
                 animationPlaying = false;
                 throwArmSprite.enabled = false;
                 armSprite.enabled = true;
@@ -88,12 +89,12 @@ public class InstantiateGravityBomb : MonoBehaviour
 
 	void Fire(Vector2 Direction, GameObject fireObj)
 	{
-		if (((Mathf.Abs(Direction.x) > sensitivity && reload) || (Mathf.Abs(Direction.y) > sensitivity && reload) || Input.GetKeyDown(KeyCode.P)) && clone == null) 
+		if (((Mathf.Abs(Direction.x) > sensitivity && reloaded) || (Mathf.Abs(Direction.y) > sensitivity && reloaded) || Input.GetKeyDown(KeyCode.P)) && clone == null) 
 		{	
 			if (Input.GetKeyDown (KeyCode.P)) 
-			{
 				Direction = new Vector2 (1, 1);	
-			}
+
+			/* Moonwalking
 			if (Direction.x < 0) 
 			{
 				transform.parent.localScale = new Vector3 (-1, transform.parent.localScale.y, transform.parent.localScale.z);
@@ -101,21 +102,19 @@ public class InstantiateGravityBomb : MonoBehaviour
 			{
 				transform.parent.localScale = new Vector3 (1, transform.parent.localScale.y, transform.parent.localScale.z);
 			}
+			*/
 
-
-			clone = (GameObject)Instantiate (fireObj, transform.position, Quaternion.identity) as GameObject;
-			clone.GetComponent<Rigidbody2D> ().AddForce (Direction.normalized * speed);
-			clone.GetComponent<Rigidbody2D> ().gravityScale = flipValue;
-			reload = false;
+			clone = (GameObject)Instantiate(fireObj, transform.position, Quaternion.identity) as GameObject;
+			clone.GetComponent<Rigidbody2D>().AddForce (Direction.normalized * speed);
+			clone.GetComponent<Rigidbody2D>().gravityScale = flipValue;
+			reloaded = false;
 			setCooldown = cooldown;
 			direction = Vector2.zero;
 
-
-
             AnimationAttacking(Direction.normalized);
-      
 		}
-		Reload ();
+
+		Reload();
 	}
 
     void AnimationAttacking(Vector2 dir)
@@ -126,26 +125,26 @@ public class InstantiateGravityBomb : MonoBehaviour
         throwArm.transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
         throwArmAnim.Attack();
         animationPlaying = true;
-
     }
 
     void GetDirection()
 	{
-		float x = Input.GetAxisRaw (rightXAxis);
-		float y = Input.GetAxisRaw (rightYAxis);
+		float x = Input.GetAxisRaw(rightXAxis);
+		float y = Input.GetAxisRaw(rightYAxis);
 
 		direction = new Vector2(x, y);
-
 	}
 
 
 	void Reload()
 	{
-		setCooldown -= Time.deltaTime;
-		if (setCooldown < 0 && !reload) 
-		{
-			reload = true;
-		}
-	}
+		if(clone == null && !reloaded && setCooldown > 0f)
+			setCooldown -= Time.deltaTime;
 
+        if (setCooldown <= 0f && !reloaded)
+        {
+            setCooldown = cooldown;
+            reloaded = true;
+        }
+    }
 }
