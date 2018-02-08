@@ -31,10 +31,27 @@ public class InstantiateGravityBomb : MonoBehaviour
 	private string rightXAxis = "Horizontal_Fire";
 	private string rightYAxis = "Vertical_Fire";
 
+    public GameObject arm;
+    public GameObject throwArm;
+
+    private BasicAnimator armAnim;
+    private BasicAnimator throwArmAnim;
+
+    private SpriteRenderer armSprite;
+    private SpriteRenderer throwArmSprite;
+
+    private bool animationPlaying;
+
 
 	void Start()
 	{
-		reload = true;
+        armAnim = arm.GetComponent<BasicAnimator>();
+        throwArmAnim = throwArm.GetComponent<BasicAnimator>();
+
+        armSprite = arm.GetComponent<SpriteRenderer>();
+        throwArmSprite = throwArm.GetComponent<SpriteRenderer>();
+
+        reload = true;
 		setCooldown = cooldown;
 		if (GetComponentInParent<PlayerController> ().Player == Controller.Player1) 
 		{
@@ -55,7 +72,17 @@ public class InstantiateGravityBomb : MonoBehaviour
 	{
 		GetDirection ();
 		Fire (direction, fireBomb);
-		
+
+        if(animationPlaying)
+        {          
+            if(throwArm.GetComponent<Animator>().GetBool(BasicAnimator.animAttack) == false)
+            {
+                // ITS DONE
+                animationPlaying = false;
+                throwArmSprite.enabled = false;
+                armSprite.enabled = true;
+            } 
+        }		
 	}
 
 
@@ -75,18 +102,34 @@ public class InstantiateGravityBomb : MonoBehaviour
 				transform.parent.localScale = new Vector3 (1, transform.parent.localScale.y, transform.parent.localScale.z);
 			}
 
-			//Debug.Log (Direction);
+
 			clone = (GameObject)Instantiate (fireObj, transform.position, Quaternion.identity) as GameObject;
 			clone.GetComponent<Rigidbody2D> ().AddForce (Direction.normalized * speed);
 			clone.GetComponent<Rigidbody2D> ().gravityScale = flipValue;
 			reload = false;
 			setCooldown = cooldown;
 			direction = Vector2.zero;
+
+
+
+            AnimationAttacking(Direction.normalized);
+      
 		}
 		Reload ();
 	}
 
-	void GetDirection()
+    void AnimationAttacking(Vector2 dir)
+    {
+        throwArmSprite.enabled = true;
+        armSprite.enabled = false;
+        Quaternion rot = Quaternion.LookRotation(dir);
+        throwArm.transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
+        throwArmAnim.Attack();
+        animationPlaying = true;
+
+    }
+
+    void GetDirection()
 	{
 		float x = Input.GetAxisRaw (rightXAxis);
 		float y = Input.GetAxisRaw (rightYAxis);

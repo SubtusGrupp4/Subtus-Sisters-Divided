@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 60d34555c4772e14ea10758da90dcb21,
     type: 2}
   m_UseShadowmask: 0
@@ -185,6 +186,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3388,28 +3390,13 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114571130801340578, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: walls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114571130801340578, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: pickUp.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: resetJumpOn.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.37
+      value: -30.04
       objectReference: {fileID: 0}
     - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.52
+      value: 8.58
       objectReference: {fileID: 0}
     - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3434,79 +3421,6 @@ Prefab:
     - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114571130801340578, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: rayOffsetY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114571130801340578, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: tags.Array.data[0]
-      value: Pickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 50753554962463582, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: m_GravityScale
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: airControllPercentage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: jumpVelocity
-      value: 11.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4648513825104702, guid: e292e485d55d39b498951a8c1e011230, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: resetJumpOn.Array.data[0]
-      value: Floor
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: JumpVelocity
-      value: 14.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 212668127271440360, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 111
-      objectReference: {fileID: 0}
-    - target: {fileID: 114571130801340578, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: pickUp.Array.data[0]
-      value: Pickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 114571130801340578, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: walls.Array.data[0]
-      value: Floor
-      objectReference: {fileID: 0}
-    - target: {fileID: 114571130801340578, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: range
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114053249241210352, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
-      propertyPath: resetJumpOn.Array.data[1]
-      value: MovingFloor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e292e485d55d39b498951a8c1e011230, type: 2}
@@ -3677,6 +3591,10 @@ Prefab:
         type: 2}
       propertyPath: Player
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814089167762410, guid: c33b2360d5557ef4c92a9e762db592c8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c33b2360d5557ef4c92a9e762db592c8, type: 2}

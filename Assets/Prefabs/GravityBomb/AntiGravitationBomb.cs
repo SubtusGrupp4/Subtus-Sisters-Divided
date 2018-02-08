@@ -100,7 +100,7 @@ public class AntiGravitationBomb : MonoBehaviour
 			direction.normalized* push * obj.GetComponent<Rigidbody2D> ().mass / -distance;
 
 		obj.GetComponent<Rigidbody2D> ().AddForce (theForce);
-		Debug.Log (obj.name + theForce + distance + direction);
+		//Debug.Log (obj.name + theForce + distance + direction);
 
 	
 	}
