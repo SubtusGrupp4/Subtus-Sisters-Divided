@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212501426786833752}
   - component: {fileID: 61755903406649294}
   - component: {fileID: 114658359865840904}
+  - component: {fileID: 114661800598766090}
   m_Layer: 0
   m_Name: Comb_Right_1
   m_TagString: Floor
@@ -52,7 +53,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -83,6 +84,17 @@ MonoBehaviour:
   darkSprites:
   - {fileID: 21300016, guid: 1d885de3463385342a13302166f95638, type: 3}
   lightTile: 0
+--- !u!114 &114661800598766090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879033301391448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70fae0741731e346b0e4283e71440c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212501426786833752
 SpriteRenderer:
   m_ObjectHideFlags: 1
