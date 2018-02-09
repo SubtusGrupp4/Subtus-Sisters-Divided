@@ -11,6 +11,9 @@ public abstract class PortalBehaviour : MonoBehaviour
 		{
 			GetComponent<PlayerController> ().Die ();
 		}
+
 	} 
+
+
 
 }

@@ -17,8 +17,19 @@ public class EnemyPortal : PortalBehaviour
 	public Collider2D originalCollider;
 	public Collider2D reversedCollider;
 
+	private Rigidbody2D rb;
 	private int q = 0;
-	private bool enabler= true;
+	private bool enabler = true;
+
+	void Start()
+	{
+		this.GetComponent<Animator> ().runtimeAnimatorController = original as RuntimeAnimatorController;
+		if (GetComponent<Rigidbody2D> () != null) 
+		{
+			rb = GetComponent<Rigidbody2D> ();
+		}
+	}
+		
 
 	void Invoker()
 	{
@@ -29,6 +40,8 @@ public class EnemyPortal : PortalBehaviour
 		enabler = !enabler;
 
 	}
+
+
 
 	void ReverseComponents()
 	{
@@ -43,8 +56,6 @@ public class EnemyPortal : PortalBehaviour
 			this.GetComponent<Animator> ().runtimeAnimatorController = reversed as RuntimeAnimatorController;
 			transform.localScale = new Vector3 (1f, -1f, 1f);
 		}
-		//linear drag -- solution?
-		gameObject.GetComponent<Rigidbody2D> ().gravityScale *= -1;
 	}
 
 	public override void OnPortalContact()

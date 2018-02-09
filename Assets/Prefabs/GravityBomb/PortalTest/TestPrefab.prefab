@@ -25,8 +25,8 @@ GameObject:
   - component: {fileID: 61402389136239426}
   - component: {fileID: 95112482532482692}
   - component: {fileID: 114208476982908590}
-  - component: {fileID: 114180684700736528}
-  - component: {fileID: 114761160864771452}
+  - component: {fileID: 114236771833531438}
+  - component: {fileID: 114913586350871270}
   m_Layer: 0
   m_Name: TestPrefab
   m_TagString: Enemy
@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1853201695384356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.07, y: 8.12, z: 0}
+  m_LocalPosition: {x: 11.07, y: 9.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,19 +124,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114180684700736528
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1853201695384356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e11f8907302e048b3b3073d5dec1ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  state: 0
 --- !u!114 &114208476982908590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,13 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1195cd29e371d0c4db54b275d40eb968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScript: {fileID: 114180684700736528}
-  friendlyScript: {fileID: 114761160864771452}
+  enemyScript: {fileID: 114236771833531438}
+  friendlyScript: {fileID: 114913586350871270}
   original: {fileID: 9100000, guid: b5c81ddb0768d404fb835f9400d4da45, type: 2}
-  reversed: {fileID: 9100000, guid: 245e546a81671c841baa5340285172f0, type: 2}
+  reversed: {fileID: 9100000, guid: 0238ac936f2e36a4a9e4759585cd1e50, type: 2}
   originalCollider: {fileID: 61402389136239426}
   reversedCollider: {fileID: 58925596741097936}
---- !u!114 &114761160864771452
+--- !u!114 &114236771833531438
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -162,19 +149,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1853201695384356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f184ef80db1b8e542a49b94ca74bf9f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 43e11f8907302e048b3b3073d5dec1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: 0
-  isActive: 0
-  speed: 0
-  jumpVelocity: 0
-  AirControl: 0
-  AirControlPrecentage: 0
-  resetJumpOn: []
-  jumpSound: {fileID: 0}
-  lastSafe: {x: 0, y: 0}
-  revivePlacerPrefab: {fileID: 0}
+  anim: {fileID: 0}
+  state: 1
+--- !u!114 &114913586350871270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853201695384356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442bc251deaf1f540b09d007bc901560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  state: 1
 --- !u!212 &212275611993785526
 SpriteRenderer:
   m_ObjectHideFlags: 1
