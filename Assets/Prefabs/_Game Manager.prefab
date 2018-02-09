@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4315638588875236}
   - component: {fileID: 114193923815130308}
   - component: {fileID: 114929873639814728}
+  - component: {fileID: 114524765385161442}
+  - component: {fileID: 114977623922114586}
   m_Layer: 0
   m_Name: _Game Manager
   m_TagString: Untagged
@@ -59,6 +61,22 @@ MonoBehaviour:
   resetKey: 0
   quitKey: 0
   isFrozen: 0
+--- !u!114 &114524765385161442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990975449614780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc3f17643e5d00489eededad3145b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doAutoSave: 1
+  showMessage: 1
+  isStarted: 0
+  intervalScene: 1
+  projectPath: C:/Users/FilipLenovo/Documents/GitHub/Subtus-Sisters-Divided/Assets
 --- !u!114 &114929873639814728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,3 +88,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29afffbeb26d06c489cebafc3d1b9490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTopSafepoint: {fileID: 0}
+  currentBotSafepoint: {fileID: 0}
+  topSafepoint: {fileID: 0}
+  botSafepoint: {fileID: 0}
+  topCheckpoint: {fileID: 0}
+  botCheckpoint: {fileID: 0}
+--- !u!114 &114977623922114586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990975449614780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Music Loop
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0

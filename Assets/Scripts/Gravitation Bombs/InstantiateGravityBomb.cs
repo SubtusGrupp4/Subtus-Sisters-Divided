@@ -19,7 +19,6 @@ public class InstantiateGravityBomb : MonoBehaviour
 
 	private Vector2 direction;
 	private bool reloaded;
-	[SerializeField]
 	private float setCooldown;
 	private int flipValue;
 
@@ -35,6 +34,8 @@ public class InstantiateGravityBomb : MonoBehaviour
     public GameObject arm;
     public GameObject throwArm;
 
+	[SerializeField]
+    private BasicAnimator playerAnim;
     private BasicAnimator armAnim;
     private BasicAnimator throwArmAnim;
 
@@ -43,8 +44,13 @@ public class InstantiateGravityBomb : MonoBehaviour
 
     private bool animationPlaying;
 
+    [SerializeField]
+    private PlayerController playerController;
 
-	void Start()
+    private bool isFlipped = false;
+
+
+    void Start()
 	{
         armAnim = arm.GetComponent<BasicAnimator>();
         throwArmAnim = throwArm.GetComponent<BasicAnimator>();
@@ -54,7 +60,7 @@ public class InstantiateGravityBomb : MonoBehaviour
 
         reloaded = true;
 		setCooldown = cooldown;
-		if (GetComponentInParent<PlayerController>().Player == Controller.Player1) 
+		if (playerController.Player == Controller.Player1) 
 		{
 			controllerCode = controllerOne;
 			fireBomb = shockwaveBomb;
@@ -82,6 +88,12 @@ public class InstantiateGravityBomb : MonoBehaviour
                 animationPlaying = false;
                 throwArmSprite.enabled = false;
                 armSprite.enabled = true;
+                if (isFlipped)
+                {
+                    Debug.Log("Flip back!");
+                    playerAnim.Flip();
+                    isFlipped = false;
+                }
             } 
         }		
 	}
@@ -92,9 +104,9 @@ public class InstantiateGravityBomb : MonoBehaviour
 		if (((Mathf.Abs(Direction.x) > sensitivity && reloaded) || (Mathf.Abs(Direction.y) > sensitivity && reloaded) || Input.GetKeyDown(KeyCode.P)) && clone == null) 
 		{	
 			if (Input.GetKeyDown (KeyCode.P)) 
-				Direction = new Vector2 (1, 1);	
+				Direction = new Vector2 (1, 1);
 
-			/* Moonwalking
+            /* Moonwalking
 			if (Direction.x < 0) 
 			{
 				transform.parent.localScale = new Vector3 (-1, transform.parent.localScale.y, transform.parent.localScale.z);
@@ -104,14 +116,14 @@ public class InstantiateGravityBomb : MonoBehaviour
 			}
 			*/
 
-			clone = (GameObject)Instantiate(fireObj, transform.position, Quaternion.identity) as GameObject;
+            AnimationAttacking(Direction);
+
+            clone = Instantiate(fireObj, transform.position, Quaternion.identity);
 			clone.GetComponent<Rigidbody2D>().AddForce (Direction.normalized * speed);
 			clone.GetComponent<Rigidbody2D>().gravityScale = flipValue;
 			reloaded = false;
 			setCooldown = cooldown;
 			direction = Vector2.zero;
-
-            AnimationAttacking(Direction.normalized);
 		}
 
 		Reload();
@@ -121,9 +133,17 @@ public class InstantiateGravityBomb : MonoBehaviour
     {
         throwArmSprite.enabled = true;
         armSprite.enabled = false;
-        Quaternion rot = Quaternion.LookRotation(dir);
+        Quaternion rot = Quaternion.LookRotation(dir.normalized);
         throwArm.transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
         throwArmAnim.Attack();
+
+        if (dir.x < 0 && !isFlipped)
+        {
+            Debug.Log("Flip!");
+            playerAnim.Flip();
+            isFlipped = true;
+        }
+
         animationPlaying = true;
     }
 

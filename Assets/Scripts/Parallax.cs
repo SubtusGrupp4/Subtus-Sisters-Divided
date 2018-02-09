@@ -6,8 +6,6 @@ public class Parallax : MonoBehaviour
 {
     private Transform cam;
 
-    private Vector3 offSet;
-
     private Vector3 CamPos;
 
     private Vector3 ogCamPos;
@@ -17,7 +15,6 @@ public class Parallax : MonoBehaviour
     void Start()
     {
         cam = Camera.main.transform;
-        offSet = transform.position - cam.GetComponent<Transform>().position;
     }
 
     // Update is called once per frame

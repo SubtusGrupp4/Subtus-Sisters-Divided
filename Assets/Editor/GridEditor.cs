@@ -516,12 +516,18 @@ public class GridEditor : Editor {
                 else if (grid.useMirrored)
                 {
                     if (grid.tilePrefab.GetComponent<CombinedTile>() != null)
+                    {
+                        grid.mousePreview.GetComponent<CombinedTile>().SetSameAs(grid.tilePrefab.GetComponent<CombinedTile>());
                         grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(false);
+                    }
                 }
                 else
                 {
                     if (grid.tilePrefab.GetComponent<CombinedTile>() != null)
+                    {
+                        grid.mousePreview.GetComponent<CombinedTile>().SetSameAs(grid.tilePrefab.GetComponent<CombinedTile>());
                         grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(true);
+                    }
                 }
             }
         }

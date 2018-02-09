@@ -9,7 +9,7 @@ public class BasicAnimator : MonoBehaviour
     public const string animFall = "IsFalling";
 
     public GameObject animGameObject;
-    [Range(-1,1)]
+    [Range(-1, 1)]
     public float facing;
 
     protected float x;
@@ -17,7 +17,7 @@ public class BasicAnimator : MonoBehaviour
     protected float y;
     Animator anim;
     private new Rigidbody2D rigidbody2D;
-   
+
     protected virtual void Start()
     {
         savedX = facing;
@@ -31,27 +31,25 @@ public class BasicAnimator : MonoBehaviour
     }
 
     protected virtual void Update()
-    {       
+    {
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0))
         {
             anim.SetBool(animAttack, false);
-        } 
+        }
     }
 
     public virtual void Attack()
     {
         anim.SetBool(animAttack, true);
     }
-    protected virtual void Flip()
+    public virtual void Flip()
     {
-        if (x != savedX && x != 0)
-        {
-            savedX = x;
-            // FLIP ?
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
-        }
+
+        // FLIP ?
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+
     }
 
     public virtual void Falling(bool state)
@@ -75,7 +73,12 @@ public class BasicAnimator : MonoBehaviour
         else
             anim.SetBool(animWalk, false);//Walking animation is activated
 
-        if(flip)
-        Flip();
+        if (flip)
+            if (x != savedX && x != 0)
+            {
+                savedX = x;
+                Flip();
+            }
+
     }
 }
