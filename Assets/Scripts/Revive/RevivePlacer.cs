@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Make this more robust. Look in more directions, better criterias. Prevent problems occuring from the "CheckAdjacent" collider disabler
 public class RevivePlacer : MonoBehaviour {
 
     private Vector2 rayDirection;
@@ -52,9 +53,7 @@ public class RevivePlacer : MonoBehaviour {
             if (hit.transform == null)
                 search = false;
             else if (Vector2.Distance(rayOrigin, startPos) > maxDistance || hit.transform.tag == "Portal")
-            {
                 transform.position = new Vector2(transform.position.x - 1f, 0f);
-            }
 
             transform.position -= new Vector3(0f, moveAmount);
             rayOrigin = transform.position;
@@ -65,11 +64,5 @@ public class RevivePlacer : MonoBehaviour {
             spot.GetComponent<ReviveSpot>().Initialize(playerTransform);
             Destroy(gameObject);
         }
-    }
-
-    private IEnumerator DelayedSearch()
-    {
-        yield return new WaitForSeconds(0.1f);
-        Raycast();
     }
 }

@@ -9,22 +9,24 @@ public class Safepoint : MonoBehaviour
     private Sprite collectedSprite;
     protected Sprite startSprite;
 
+    [HideInInspector]
     public bool isCurrent = false;
 
     protected SpriteRenderer sr;
 
     [Header("Exit Timer")]
+    [HideInInspector]
     public bool playerExited = false;
     [SerializeField]
-    private float exitTime = 5f;
+    private float exitTime = 5f;    // Timer time in seconds
     [SerializeField]
     [Range(0f, 1f)]
-    protected float timer = 1f;
+    protected float timer = 1f;     // Do not change
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        startSprite = GetComponent<SpriteRenderer>().sprite;
+        startSprite = GetComponent<SpriteRenderer>().sprite;    // Save the initial sprite. Used for switching back
     }
 
     private void Update()

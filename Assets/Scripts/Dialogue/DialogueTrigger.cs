@@ -13,13 +13,13 @@ public class DialogueTrigger : MonoBehaviour {
     private void Start()
     {
         if(!customTag)
-            transform.tag = "DialogueTrigger";
+            transform.tag = "DialogueTrigger";  // Default tag
 
-        dialogues = GetComponents<Dialogue>();
+        dialogues = GetComponents<Dialogue>();  // Fetch the dialogue scripts
     }
 
     public void TriggerDialogue()
     {
-        DialogueManager.instance.FetchDialogue(dialogues);
+        DialogueManager.instance.FetchDialogue(dialogues);  // Send the dialogue to the DialogueManager when triggered
     }
 }

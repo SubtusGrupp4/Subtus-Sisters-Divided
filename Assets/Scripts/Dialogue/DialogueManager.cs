@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// TODO: More tooltips
+// TODO: Fix camera movement
+// TODO: Fix freezing camera
+// TODO: Fix freezing the game
+// TODO: Make boxes fade in/out at the same time
+// TODO: Organize methods
+// TODO: Is isBusy even used?
 [RequireComponent(typeof(AudioSource))]
 public class DialogueManager : MonoBehaviour
 {
@@ -32,7 +39,7 @@ public class DialogueManager : MonoBehaviour
     private Image image;
     private TextMeshProUGUI dialogueText;
 
-    private int di = 0;
+    private int di = 0; // Dialogue Index
     private int sentenceIndex = 0;
     private Dialogue[] dialogues;
 
@@ -71,22 +78,25 @@ public class DialogueManager : MonoBehaviour
 
     void Start ()
     {
-        if (lDialogueCanvas == null || rDialogueCanvas == null)
+        if (lDialogueCanvas == null || rDialogueCanvas == null || mDialogueCanvas == null)
             Debug.LogWarning("Missing references on DialogueManager. Assign in the inspector on the DialogueManager object.");
 
-
         sentences = new Queue<string>();
+
+        // Disable all of the canvases
         mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
+
+        // Two values enabled switching the speed between dialogues, but then resetting to the original value
         actualTypeSpeed = typeSpeed;
 
         camController = Camera.main.GetComponent<CameraController>();
 
         audioSources = GetComponents<AudioSource>();
-        if (audioSources.Length > 2)
+        if (audioSources.Length < 2)    // Check if there are too few audiosources to work correctly
             Debug.LogError("DialogueManager requires 2 AudioSource components to function.");
-        audioSources[1].volume = typingVolume;
+        audioSources[1].volume = typingVolume;  // Assign the typing volume
     }
 
     private void CreateSingleton()
@@ -97,17 +107,19 @@ public class DialogueManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    // Get the dialogue scripts from the trigger
     public void FetchDialogue(Dialogue[] dialogues)
     {
-        this.dialogues = dialogues;
-
-        StartDialogue();
+        this.dialogues = dialogues;     // Assign the dialogues
+        StartDialogue();                // Start processing the dialogue
     }
 
     private void Update()
     {
+        // If there are dialogues to process
         if (dialogues != null)
         {
+            // playerIndex is what player is required to press a button to interact with the dialogue
             switch (dialogues[di].playerIndex )
             {
                 case 0:
@@ -126,63 +138,63 @@ public class DialogueManager : MonoBehaviour
                         InputGet();
                     break;
             }
-            if (sentenceToWrite.Length > charIndex)
+            if (sentenceToWrite.Length > charIndex)         // If there are more characters to write than are currently displayed
             {
-                if (dialogues[di].fadeIn && !fadeInDone)
+                if (dialogues[di].fadeIn && !fadeInDone)    // Prevent characters being typed if the boxes are fading
                     return;
 
-                if (typeTime < 1f)
+                if (typeTime < 1f)  // Typing timer
+                    typeTime += Time.deltaTime / (actualTypeSpeed / 100f);  // Use the typeSpeed as hundreds of a seconds
+                else                // If the timer is done
                 {
-                    typeTime += Time.deltaTime / (actualTypeSpeed / 100f);
-                }
-                else
-                {
-                    char toWrite = sentenceToWrite[charIndex];
+                    char toWrite = sentenceToWrite[charIndex];  // Get the current character to be added to the string
 
-                    writtenSentence += toWrite;
-                    dialogueText.text = writtenSentence;
-                    charIndex++;
-                    typeTime = 0f;
-                    if (dialogues[di].typeSounds && toWrite != ' ')
+                    writtenSentence += toWrite;                 // Add it to the string
+                    dialogueText.text = writtenSentence;        // Set the text in the dialogue box to the current string
+                    charIndex++;                                // Increment the character index
+                    typeTime = 0f;                              // Reset the timer
+                    if (dialogues[di].typeSounds && toWrite != ' ')     // If sounds are enabled and the character is not a space
                     {
-                        int typeSoundIndex = Random.Range(0, typingSounds.Length);
-                        audioSources[1].clip = typingSounds[typeSoundIndex];
+                        int typeSoundIndex = Random.Range(0, typingSounds.Length);  // Get a random typing sound from the array TODO: Make this not repeating the previous sound
+                        audioSources[1].clip = typingSounds[typeSoundIndex];        // Play the selected sound
                         audioSources[1].Play();
                     }
                 }
             }
-
+            // If there is dialogue to write, and the panel should fade in but not currently out
             if(dialogues != null && dialogues[di].fadeIn && !doFadeOut)
             {
-                if (panel.GetComponent<CanvasGroup>().alpha < 1f)
+                if (panel.GetComponent<CanvasGroup>().alpha < 1f)   // If the panel is not fully opague
                 {
+                    // Add to the alpha, use it as a timer
                     panel.GetComponent<CanvasGroup>().alpha += Time.deltaTime / dialogues[di].fadeTime;
                     fadeInDone = false;
                 }
-                else
+                else    // If the panel is fully opague
                 {
-                    panel.GetComponent<CanvasGroup>().alpha = 1f;
-                    if (!fadeInDone)
+                    panel.GetComponent<CanvasGroup>().alpha = 1f;   // Prevent values larger than 1 (not sure if possible)
+                    if (!fadeInDone)            // Prevent this from happening more than once
                     {
-                        DisplayNextSentence();
+                        DisplayNextSentence();  // Grab the next sentence, and start typing it
                         fadeInDone = true;
                     }
                 }
             }
-
+            // If the panel should fade out
             if(dialogues != null && dialogues[di].fadeOut && doFadeOut)
             {
-                if (panel.GetComponent<CanvasGroup>().alpha > 0f)
+                if (panel.GetComponent<CanvasGroup>().alpha > 0f)   // If the panel is ot fully transparent
                 {
+                    // Remove from the alpha, use it as a timer
                     panel.GetComponent<CanvasGroup>().alpha -= Time.deltaTime / dialogues[di].fadeTime;
                     fadeOutDone = false;
                 }
-                else
+                else    // If the panel is fully transpaent
                 {
-                    panel.GetComponent<CanvasGroup>().alpha = 0f;
-                    if (!fadeOutDone)
+                    panel.GetComponent<CanvasGroup>().alpha = 0f;   // Prevent values smaller than 0 (not sure if possible)
+                    if (!fadeOutDone)   // Prevent this from happening more than once
                     {
-                        DisplayNextDialogue();
+                        DisplayNextDialogue();  // Grab the next sentence, and start typing it
                         fadeOutDone = true;
                         doFadeOut = false;
                     }
@@ -191,30 +203,30 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    // If the button to skip is pressed, not dependant on which player, that is handled in Update()
     private void InputGet()
     {
-        if(dialogues[di].fadeIn && panel.GetComponent<CanvasGroup>().alpha < 0.99f && !fadeInDone)
+        if(dialogues[di].fadeIn && panel.GetComponent<CanvasGroup>().alpha < 0.99f && !fadeInDone)  // If fading in
+            panel.GetComponent<CanvasGroup>().alpha = 1f;                                           // Finish the fade
+        else if(dialogues[di].fadeOut && panel.GetComponent<CanvasGroup>().alpha > 0.01f && !fadeOutDone && doFadeOut)  // If fading out
+            panel.GetComponent<CanvasGroup>().alpha = 0f;                                                               // Finish the fade
+        else if (sentenceToWrite.Length > charIndex && panel.GetComponent<CanvasGroup>().alpha > 0.9f)  // If the text is not done being written
         {
-            panel.GetComponent<CanvasGroup>().alpha = 1f;
+            dialogueText.text = sentenceToWrite;    // Complete the written sentence
+            charIndex = sentenceToWrite.Length;     // Skip to the last character, preventing the typing to occur
+            typeTime = 0f;                          // Reset the typing timer
         }
-        else if(dialogues[di].fadeOut && panel.GetComponent<CanvasGroup>().alpha > 0.01f && !fadeOutDone && doFadeOut)
-        {
-            panel.GetComponent<CanvasGroup>().alpha = 0f;
-        }
-        else if (sentenceToWrite.Length > charIndex && panel.GetComponent<CanvasGroup>().alpha > 0.9f)
-        {
-            dialogueText.text = sentenceToWrite;
-            charIndex = sentenceToWrite.Length;
-            typeTime = 0f;
-        }
-        else
-            DisplayNextSentence();
+        else    // If not fading and is finished typing
+            DisplayNextSentence();  // Grab the next sentence, and start typing it
     }
 
+    // Initial start of the dialogue
+    // Runs for each dialogue script
     private void StartDialogue()
     {
         isBusy = true;
 
+        // Enable the correct dialogue canvas, depending on the player index
         if (dialogues[di].playerIndex == 0)
         {
             mDialogueCanvas.enabled = true;
@@ -242,131 +254,147 @@ public class DialogueManager : MonoBehaviour
         else
         {
             Debug.LogError("Player Index invalid value, must be 0, 1 or 2");
-            panel = mDialogueCanvas.transform.GetChild(0);
+            return;
         }
 
+        // Assign the correct name text, image and dialogue text boxes
         nameText = panel.GetChild(0).GetComponent<TextMeshProUGUI>();
         image = panel.GetChild(1).GetComponent<Image>();
         dialogueText = panel.GetChild(2).GetComponent<TextMeshProUGUI>();
 
+        // Display the name and image
         nameText.text = dialogues[di].npcName;
         image.sprite = dialogues[di].npcSprite;
+
+        // Empty all strings, clearing them from previous values
         dialogueText.text = string.Empty;
         writtenSentence = string.Empty;
         sentenceToWrite = string.Empty;
-        charIndex = 0;
+        charIndex = 0;  // Reset the char index, resetting the typing
 
+        // Assignt the correct typing speed for the current dialogue
         if (dialogues[di].overrideSpeed)
             actualTypeSpeed = dialogues[di].typeSpeed;
         else
             actualTypeSpeed = typeSpeed;
 
+        // TODO: Make these work
+        //freezeCamera = dialogues[di].freezeCamera;                      // Freezing camera
+        //GameManager.instance.SetFreezeGame(dialogues[di].freezeTime);   // Freezing game
 
-        freezeCamera = dialogues[di].freezeCamera;
-        GameManager.instance.SetFreezeGame(dialogues[di].freezeTime);
-
+        // Clear the queue of sentences from previous values
         sentences.Clear();
 
-        for(int i = 0; i < dialogues[di].sentences.Length; i++)
+        for(int i = 0; i < dialogues[di].sentences.Length; i++)     // For each sentence on the dialogue dialogue script
         {
-            sentences.Enqueue(dialogues[di].sentences[i]);
+            sentences.Enqueue(dialogues[di].sentences[i]);          // Add them to the sentences queue
         }
 
-        if(dialogues[di].fadeIn)
-        {
-            panel.GetComponent<CanvasGroup>().alpha = 0f;
-        }
+        if(dialogues[di].fadeIn)                                    // If fading in
+            panel.GetComponent<CanvasGroup>().alpha = 0f;           // Make the panel invisible to allow fading in
         else
         {
-            panel.GetComponent<CanvasGroup>().alpha = 1f;
-            DisplayNextSentence();
+            panel.GetComponent<CanvasGroup>().alpha = 1f;           // Else, make it opague
+            DisplayNextSentence();                                  // and immediately display the next sentence
         }
     }
 
+    // Fetches the next sentence
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 0)   // If there is no more sentences to read
         {
-            BetweenNextDialogue();
-            return;
+            BetweenNextDialogue();  // Go to the "between" next dialogue
+            return;                 // Stop this method from trying to read the next sentence
         }
-        string sentence = sentences.Dequeue();
-        sentenceToWrite = sentence;
-        writtenSentence = string.Empty;
-        charIndex = 0;
+        string sentence = sentences.Dequeue();  // Store the next sentence into a string, and remove it (dequeue)
+        sentenceToWrite = sentence; 
+        writtenSentence = string.Empty;         // Clear what has been typed
+        charIndex = 0;                          // Reset the typing char index
 
-        if (dialogues[di].voiceOver)
+        if (dialogues[di].voiceOver)            // If there is voiceover to play
         {
-            if (dialogues[di].audioClips.Length > sentenceIndex)
+            if (dialogues[di].audioClips.Length > sentenceIndex)    // If there are more audioclips than the current sentence index
             {
-                if (dialogues[di].audioClips[sentenceIndex] != null)
+                if (dialogues[di].audioClips[sentenceIndex] != null)    // And the current sentence has an audioclip assigned to it
                 {
                     audioSources[0].clip = dialogues[di].audioClips[sentenceIndex];
-                    audioSources[0].Play();
+                    audioSources[0].Play();                             // Play the voiceover clip
                 }
                 else
                     Debug.LogWarning("No audioclip on dialogue with index " + di + ". This is not an error, the game will work just fine without it.");
             }
         }
 
-        sentenceIndex++;
+        sentenceIndex++;    // Increment the sentence index for next time
     }
 
     private void BetweenNextDialogue()
     {
-        if (dialogues[di].fadeOut)
+        if (dialogues[di].fadeOut)  // Fade out, if it is supposed to
             doFadeOut = true;
-        else
+        else                        // Otherwise just skip to the next dialogue
             DisplayNextDialogue();
     }
 
     private void DisplayNextDialogue()
     {
-        di++;
-        sentenceIndex = 0;
+        di++;                   // Increment the dialogue index
+        sentenceIndex = 0;      // Reset the sentence index
 
-        if (dialogues[di - 1].moveCamera)
+        if (dialogues[di - 1].moveCamera)   // If the camera is supposed to move, do so
             MoveCamera();
 
-        if (di == dialogues.Length)
+        if (di == dialogues.Length)     // If the last dialogue was the last one, end the dialogue
             EndDialogue();
-        else if (dialogues[di - 1].waitTime > 0f)
+        else if (dialogues[di - 1].waitTime > 0f)   // Otherwise, if it is supposed to wait, start next dialogue after a delay
             StartCoroutine(DialogueDelay());
-        else
+        else                            // Otherwise, just start the next dialogue
             StartDialogue();
     }
 
     private IEnumerator DialogueDelay()
     {
+        // Hide all the canvases
         mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
-        yield return new WaitForSeconds(dialogues[di - 1].waitTime);
-        StartDialogue();
+        yield return new WaitForSeconds(dialogues[di - 1].waitTime);    // Wait a set time
+        StartDialogue();                                                // Start the next dialogue
     }
 
     private void MoveCamera()
     {
+        // Assign all the values
         moveCamera = true;
         float moveCameraSpeed = dialogues[di - 1].moveCameraSpeed;
         float moveCameraX = dialogues[di - 1].moveCameraX;
         float moveCameraWait = dialogues[di - 1].moveCameraWait;
 
+        // Then send them to the camera controller
         camController.DialogueMove(moveCameraSpeed, moveCameraX, moveCameraWait);
     }
 
     public void EndDialogue()
     {
+        // Disable all of the canvases
         mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
+
+        // Reset the indices
         di = 0;
         sentenceIndex = 0;
+
+        // Unfreeze
         GameManager.instance.SetFreezeGame(false);
         freezeCamera = false;
-        fadeInDone = false;
 
+        // Reset more values
+        fadeInDone = false;
         isBusy = false;
+
+        // Null the dialoues
         dialogues = null;
     }
 }

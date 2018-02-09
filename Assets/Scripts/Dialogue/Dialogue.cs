@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// This script serves as a single dialogue box
+// It will be read in the DialogueManager and displayed on the UI
+// TODO: Add tooltips on what everything does
 public class Dialogue : MonoBehaviour {
     [Header("Input Settings")]
     public int playerIndex = 0;
@@ -29,7 +32,7 @@ public class Dialogue : MonoBehaviour {
     public bool freezeCamera = false;
     [Header("Camera Movement")]
     public float moveCameraX = 0f;
-    public float moveCameraSpeed = 0f;
+    public float moveCameraSpeed = 1f;
     public float moveCameraWait = 0f;
 
     [HideInInspector]
@@ -42,8 +45,6 @@ public class Dialogue : MonoBehaviour {
 
     private void Start()
     {
-        // Prevent dividing by 0
-        if(moveCameraSpeed <= 1f)
-            moveCameraSpeed = 1f;
+        GameManager.instance.PreventDividingByZero(moveCameraSpeed, 1f);
     }
 }

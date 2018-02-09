@@ -64,4 +64,16 @@ public class GameManager : MonoBehaviour {
     {
         isFrozen = freeze;
     }
+
+    public float PreventDividingByZero(float value) 
+    {
+        value = value < 0.01f ? 0.01f : value;
+        return value;
+    }
+
+    public float PreventDividingByZero(float value, float min)
+    {
+        value = value < min ? min : value;
+        return value;
+    }
 }
