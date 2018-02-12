@@ -8,6 +8,10 @@ public class BasicAnimator : MonoBehaviour
     public const string animAttack = "IsAttacking";
     public const string animFall = "IsFalling";
 
+    public const string attackAnimName = "Attack";
+
+    private bool attacking;
+
     public GameObject animGameObject;
     [Range(-1, 1)]
     public float facing;
@@ -32,19 +36,23 @@ public class BasicAnimator : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0))
+        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(attackAnimName) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0) && attacking == true)
         {
+            Debug.Log("Basic Attack False");
             anim.SetBool(animAttack, false);
+            attacking = false;
         }
     }
 
     public virtual void Attack()
     {
+        Debug.Log("Basic Attack True");
         anim.SetBool(animAttack, true);
+        attacking = true;
     }
     public virtual void Flip()
     {
-
+        Debug.Log("BASIC Flip");
         // FLIP ?
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;

@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1175024672971254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -3.469632, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4369038003203618}
@@ -143,12 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42e78f698f369b4484c73ab1ddde5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags:
-  - PickUp
-  hitTransform: {fileID: 0}
-  rayOffsetX: 0.6
-  rayOffsetY: 0.6
-  rayDistance: 0.5
+  pickUp: []
+  walls: []
+  range: 0
   grabRight: {x: 1.79, y: 0, z: 0}
   grabLeft: {x: -1.32, y: 0, z: 0}
   throwDistance: 2.5
@@ -170,6 +167,10 @@ MonoBehaviour:
   speed: 600
   cooldown: 0.1
   sensitivity: 0.319
+  arm: {fileID: 0}
+  throwArm: {fileID: 0}
+  playerAnim: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!212 &212363064377119768
 SpriteRenderer:
   m_ObjectHideFlags: 1

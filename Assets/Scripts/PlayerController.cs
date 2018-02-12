@@ -277,6 +277,7 @@ public class PlayerController : MonoBehaviour
     {
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
         inAir = true;
+
         transform.parent = null;
         //
         //
