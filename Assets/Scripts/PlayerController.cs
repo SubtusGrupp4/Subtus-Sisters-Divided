@@ -278,7 +278,8 @@ public class PlayerController : MonoBehaviour
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
         inAir = true;
 
-        transform.parent = null;
+        // transform.parent = null;
+
         //
         //
         bodyAnim.Falling(true);
@@ -308,9 +309,10 @@ public class PlayerController : MonoBehaviour
                     {
                         if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
                         {
+                            /*
                             if (resetJumpOn[i] == "MovingFloor" || objHit[j].transform.GetComponent<MovingPlatform>() != null)
                                 transform.parent = objHit[j].transform;
-
+*/
                             inAir = false;
 
 

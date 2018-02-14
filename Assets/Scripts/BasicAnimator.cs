@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class BasicAnimator : MonoBehaviour
 {
-    public const string animWalk = "IsRunning";
+    public const string animRun = "IsRunning";
     public const string animAttack = "IsAttacking";
     public const string animFall = "IsFalling";
+    public const string animWalk = "IsWalking";
+    public const string animJump = "IsJumping";
+
+    private bool walkRunBool = false;
 
     public const string attackAnimName = "Attack";
 
     private bool attacking;
+    private bool jumping;
 
     public GameObject animGameObject;
     [Range(-1, 1)]
@@ -27,37 +32,57 @@ public class BasicAnimator : MonoBehaviour
         savedX = facing;
         savedX = savedX > 0 ? 1 : -1;
         anim = animGameObject.GetComponent<Animator>();
-        anim.SetBool(animWalk, false);//Walking animation is deactivated
+        anim.SetBool(animRun, false);//Walking animation is deactivated
         anim.SetBool(animAttack, false);//Attacking animation is deactivated
         anim.SetBool(animFall, false);//Falling animation is deactivated
+        anim.SetBool(animWalk, true);
 
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Update()
     {
+        // toggle of attack when attack is finished
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(attackAnimName) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0) && attacking == true)
         {
-            Debug.Log("Basic Attack False");
             anim.SetBool(animAttack, false);
             attacking = false;
+        }
+        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animJump) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0) && jumping == true)
+        {
+           
+            anim.SetBool(animJump, false);
+            jumping = false;
         }
     }
 
     public virtual void Attack()
     {
-        Debug.Log("Basic Attack True");
         anim.SetBool(animAttack, true);
         attacking = true;
     }
+
+    public virtual void Jump()
+    {
+        Debug.Log("JUMPING ANIMATION");
+        anim.SetBool(animJump, true);
+        jumping = true;
+    }
     public virtual void Flip()
     {
-        Debug.Log("BASIC Flip");
         // FLIP ?
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
 
+    }
+
+    public virtual void ToggleWalk(bool state)
+    {
+      //  walkRunBool ^= true;
+        Debug.Log("walkrunbool" + state);
+
+        anim.SetBool(animWalk, state);
     }
 
     public virtual void Falling(bool state)
@@ -76,10 +101,10 @@ public class BasicAnimator : MonoBehaviour
         {
             x = dir.x > 0 ? 1 : -1;
 
-            anim.SetBool(animWalk, true);
+            anim.SetBool(animRun, true);
         }
         else
-            anim.SetBool(animWalk, false);//Walking animation is activated
+            anim.SetBool(animRun, false);//Walking animation is activated
 
         if (flip)
             if (x != savedX && x != 0)

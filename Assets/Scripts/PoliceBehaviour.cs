@@ -11,10 +11,17 @@ public class PoliceBehaviour : AIMovement
     public float attentionSpan;
     private float attentionTimer;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
+       
+
+    }
+
+    private void Start()
+    {
         startSpeed = speed;
+
     }
 
 
@@ -26,6 +33,8 @@ public class PoliceBehaviour : AIMovement
 
         if (engaged)
             CheckDisEngagement();
+
+        CheckFalling();
     }
 
     protected override void FixedUpdate()
@@ -37,7 +46,7 @@ public class PoliceBehaviour : AIMovement
     protected override void CheckEngagement()
     {
         // base.CheckEngagement();
-
+        bAnim.ToggleWalk(true);
 
         {
             allTargets.Clear(); // clear the target list, incase another target is added or removed etc...
@@ -104,21 +113,26 @@ public class PoliceBehaviour : AIMovement
                 engaged = true;
                 currentState = engagedState;
                 speed = engagedSpeed;
+
+                
             }
+           
 
         }
     }
 
     private void CheckDisEngagement()
     {
-
-        if (attentionTimer >= attentionSpan)
+        bAnim.ToggleWalk(false);
+        if (attentionTimer >= attentionSpan || target.activeInHierarchy != true)
         {
             currentState = startState;
             Bounce();
             engaged = false;
             speed = startSpeed;
+           
         }
+     
 
         float distance = Vector2.Distance(transform.position, target.transform.position);
 

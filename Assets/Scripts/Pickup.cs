@@ -96,6 +96,11 @@ public class Pickup : MonoBehaviour
 
     private void Update()
     {
+        PickUpAction();
+    }
+
+    public void PickUpAction()
+    {
         if (Input.GetKeyDown(KeyCode.E) && !isPickedUp)
         {
             bool blocked = false;
@@ -129,12 +134,12 @@ public class Pickup : MonoBehaviour
                                 {
                                     if (objHit[l].transform.tag == walls[j])
                                     {
-                                        blocked = true;                                        
+                                        blocked = true;
                                         break;
                                     }
                                 }
                             }
-                            if(!blocked)
+                            if (!blocked)
                             {
                                 pickedUp = allObjs[i].transform;
                                 isPickedUp = true;
@@ -144,10 +149,9 @@ public class Pickup : MonoBehaviour
                         }
                     }
                 }
-
-            }           
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.E) && isPickedUp)
+        else if (Input.GetKeyDown(KeyCode.E) && isPickedUp)
         {
             isPickedUp = false;
         }
