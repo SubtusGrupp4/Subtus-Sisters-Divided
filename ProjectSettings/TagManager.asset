@@ -11,6 +11,8 @@ TagManager:
   - Portal
   - GravitationBomb
   - MovingFloor
+  - Lever
+  - ManipulateFloor
   layers:
   - Default
   - TransparentFX

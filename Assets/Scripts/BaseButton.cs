@@ -22,7 +22,10 @@ public class BaseButton : MonoBehaviour
     private bool StayDown; // if triggered, stay down.
     private bool isDown;
 
+    [Header("Sprites")]
     public bool HideOnInteraction; // Hide the sprite if the button is active.
+    public Sprite stateOne;
+    public Sprite stateTwo;
 
     [Header("Item requirments")]
 
@@ -50,6 +53,7 @@ public class BaseButton : MonoBehaviour
     private AudioClip DeactivationSound;
 
     private AudioSource myAudio;
+    private SpriteRenderer sr;
 
     private List<BaseButton> otherButtons = new List<BaseButton>();
     private List<GameObject> brothers = new List<GameObject>();
@@ -58,6 +62,8 @@ public class BaseButton : MonoBehaviour
     {
         if (Sounds)
             myAudio = GetComponent<AudioSource>();
+
+        sr = GetComponent<SpriteRenderer>();
 
         // Find other buttons with same TriggerIndex
         otherButtons.AddRange(FindObjectsOfType<BaseButton>());
@@ -110,10 +116,12 @@ public class BaseButton : MonoBehaviour
                 else if (!useItemIndex)
                     ChangeCount(change);
 
+                /*
                 if (hide)
                     Hide();// Change to 2 pictures??, aka picture 1 and picture 2? good incase we want to Toggle a lever or something
                 else
                     Show();
+                    */
             }
     }
 
@@ -124,9 +132,20 @@ public class BaseButton : MonoBehaviour
             {
                 brothers[i].GetComponent<BaseButton>().triggerCounter += change;
                 brothers[i].GetComponent<BaseButton>().CountChange();
+
+                if (change > 0)
+                    Hide();// Change to 2 pictures??, aka picture 1 and picture 2? good incase we want to Toggle a lever or something
+                else
+                    Show();
+
             }
         else
         {
+            if (change > 0)
+                Hide();// Change to 2 pictures??, aka picture 1 and picture 2? good incase we want to Toggle a lever or something
+            else
+                Show();
+
             triggerCounter += change;
             CountChange();
         }
@@ -137,12 +156,16 @@ public class BaseButton : MonoBehaviour
     private void Hide()
     {
         // Change to Show Picture 2
+        sr.sprite = stateTwo;
+
         if (HideOnInteraction)
             GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void Show()
     {
+        sr.sprite = stateOne;
+
         // Change to Show picture 1
         if (HideOnInteraction)
             GetComponent<SpriteRenderer>().enabled = true;
@@ -179,6 +202,8 @@ public class BaseButton : MonoBehaviour
 
     public void Toggle()
     {
+
+
         ChangeCount(toggleValue);
         toggleValue *= -1;
 

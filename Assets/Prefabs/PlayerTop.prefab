@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 95287651329241354}
   - component: {fileID: 114315930396904570}
   - component: {fileID: 114840947078747540}
+  - component: {fileID: 114618732551154816}
   m_Layer: 0
   m_Name: PlayerTop
   m_TagString: Player
@@ -93,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885305298513428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.109, y: 0.31, z: 0}
+  m_LocalPosition: {x: 0.06100008, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4104182937267980}
@@ -106,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221702535368190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.552, y: 8.416408, z: 0}
+  m_LocalPosition: {x: -30.43, y: 2.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4124828373953728}
@@ -120,14 +121,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412240866182594}
-  m_LocalRotation: {x: 0, y: 0, z: 0.3420201, w: 0.9396927}
-  m_LocalPosition: {x: -0.12700081, y: 0.31499958, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.092, y: 0.272, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4321738687973598}
   m_Father: {fileID: 4104182937267980}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4321738687973598
 Transform:
   m_ObjectHideFlags: 1
@@ -239,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: 0
+  controllerCode: 
   isActive: 0
   speed: 5
   jumpVelocity: 11.28
@@ -318,6 +320,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animGameObject: {fileID: 1885305298513428}
   facing: 1
+--- !u!114 &114618732551154816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221702535368190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88520b5121205cc4ea086fe1650f2cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUp:
+  - Pickup
+  lever:
+  - Lever
+  walls:
+  - Floor
+  range: 2
 --- !u!114 &114783988198582998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,7 +484,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 111
-  m_Sprite: {fileID: 21300000, guid: aadd1281f633b9c44816668d81469d50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67529184f8ab3fd44a0ec5d571de146d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
