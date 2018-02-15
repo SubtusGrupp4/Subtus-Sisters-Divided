@@ -44,7 +44,7 @@ public class AntiGravitationBomb : MonoBehaviour
 
 	void ActivateAntiGravitationBomb()
 	{
-		if (Input.GetButtonDown(activateBomb) && buttonPressed) 
+		if (Input.GetAxis(activateBomb) > 0 && buttonPressed) 
 		{
 			buttonPressed = false;
 			targetting = true;
