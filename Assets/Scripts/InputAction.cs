@@ -34,8 +34,8 @@ public class InputAction : MonoBehaviour
     {
         playerCont = GetComponent<PlayerController>();
 
-        inputString += playerCont.controllerCode;
-       /*
+      //  inputString += playerCont.controllerCode;
+       
         if (playerCont.Player == Controller.Player1)
         {
             inputString += "_C1";
@@ -44,7 +44,7 @@ public class InputAction : MonoBehaviour
         {
             inputString += "_C2";
         }
-        */
+        
     }
 
     // Update is called once per frame
@@ -58,6 +58,7 @@ public class InputAction : MonoBehaviour
         //   lastValue = Input.GetAxisRaw(inputString);
 
         // input manger, button 4??
+        Debug.Log("Inputmadad " + inputString);
 
         if (Input.GetAxisRaw(inputString) > 0 && !axisInUse)
         {

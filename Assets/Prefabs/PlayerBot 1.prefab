@@ -290,7 +290,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: 1
-  controllerCode: 
   isActive: 0
   speed: 5
   jumpVelocity: 11.28

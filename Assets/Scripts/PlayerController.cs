@@ -25,10 +25,12 @@ public class PlayerController : MonoBehaviour
 
     // Input Manager 
     public Controller Player;
+    [NonSerialized]
     public string controllerCode;
 
-    private string controllerOne = "_C1";
-    private string controllerTwo = "_C2";
+  
+    public const string controllerOne = "_C1";
+    public const string controllerTwo = "_C2";
 
     private string horAx = "Horizontal";
     private string verAx = "Vertical";
