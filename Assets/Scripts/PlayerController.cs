@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     // Input Manager 
     public Controller Player;
-    private string controllerCode;
+    public string controllerCode;
 
     private string controllerOne = "_C1";
     private string controllerTwo = "_C2";
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
         rayOffSetX = GetComponent<CapsuleCollider2D>().size.x * transform.localScale.x / 2;
         rayOffSetY = GetComponent<CapsuleCollider2D>().size.y * transform.localScale.y / 2;

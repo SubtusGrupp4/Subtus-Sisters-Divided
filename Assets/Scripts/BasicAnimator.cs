@@ -50,7 +50,6 @@ public class BasicAnimator : MonoBehaviour
         }
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animJump) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0) && jumping == true)
         {
-           
             anim.SetBool(animJump, false);
             jumping = false;
         }
@@ -64,7 +63,6 @@ public class BasicAnimator : MonoBehaviour
 
     public virtual void Jump()
     {
-        Debug.Log("JUMPING ANIMATION");
         anim.SetBool(animJump, true);
         jumping = true;
     }
@@ -80,7 +78,7 @@ public class BasicAnimator : MonoBehaviour
     public virtual void ToggleWalk(bool state)
     {
       //  walkRunBool ^= true;
-        Debug.Log("walkrunbool" + state);
+
 
         anim.SetBool(animWalk, state);
     }
