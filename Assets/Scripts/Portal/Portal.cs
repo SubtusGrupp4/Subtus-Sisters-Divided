@@ -6,6 +6,7 @@ public class Portal : MonoBehaviour
 {
 
 	public Vector2 vec;
+	public float offset;
 
 	void Update()
 	{
@@ -16,7 +17,11 @@ public class Portal : MonoBehaviour
 	{
 		if (otherObj.gameObject.GetComponent<PortalBehaviour>() != null) 
 		{
-			if (otherObj.gameObject.transform.position.y < Mathf.Abs(vec.y)) {
+			if (otherObj.gameObject.transform.position.y < 0 && otherObj.GetComponent<Rigidbody2D>().gravityScale > 0) {
+				Debug.Log ("p");
+				otherObj.GetComponent<PortalBehaviour> ().OnPortalContact ();
+			}
+			if (otherObj.gameObject.transform.position.y > 0 && otherObj.GetComponent<Rigidbody2D>().gravityScale <= 0) {
 				Debug.Log ("p");
 				otherObj.GetComponent<PortalBehaviour> ().OnPortalContact ();
 			}
