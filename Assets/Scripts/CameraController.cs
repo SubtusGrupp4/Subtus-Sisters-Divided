@@ -14,17 +14,14 @@ public class CameraController : MonoBehaviour
 	private Transform playerTop;
     private Transform playerBot;
 
+    [Header("Following")]
     [SerializeField]
-    public float followSpeed = 30f;
+    public float followSpeed = 30f;     // Higher values = Slower speed
     private float startFollowSpeed;
     [SerializeField]
-    private float offset;
-    [SerializeField]
-    private float deadZone;
+    private float deadZone;             // How far the players can move from the center of the screen before it starts following
 
-    [SerializeField]
     public Vector2 followPos;
-    [SerializeField]
     private float camDistance;
 
     private float camWait = 0f;
@@ -56,6 +53,8 @@ public class CameraController : MonoBehaviour
         State = CameraState.FollowingBoth;
 
         currentZoomTime = zoomTime;
+
+        maxZoom = GetComponent<Camera>().orthographicSize;
 
         if (minZoom <= 1f)
             minZoom = 7f;

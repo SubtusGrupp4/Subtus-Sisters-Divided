@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Put his on an object that should collide with the dialogue triggers
 public class CollideWithDialogue : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
