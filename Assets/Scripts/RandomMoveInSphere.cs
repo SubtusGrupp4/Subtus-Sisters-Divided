@@ -24,7 +24,7 @@ public class RandomMoveInSphere : MonoBehaviour {
 	{
 		rb.AddForce(startPos - transform.position * strength);
 
-		if(timeSinceRandomRefresh >= 1.5f) 
+		if(timeSinceRandomRefresh >= 1f) 
 		{
 			randomDir = Random.insideUnitSphere;
 			timeSinceRandomRefresh = 0f;
