@@ -12,8 +12,6 @@ public class MainMenuManager : MonoBehaviour {
 	private Transform lightUI;
 	[SerializeField]
 	private Transform darkUI;
-    [SerializeField]
-    private Transform uiParent;
 
     [Header("Version Parents")]
 	[SerializeField]
@@ -82,144 +80,141 @@ public class MainMenuManager : MonoBehaviour {
     private bool isSwitching = false;
     private int spriteSwitchIndex = 0;
 
-    // Use this for initialization
     void Start () 
 	{
-		StartCoroutine(KeyTimer());
-        glitchTarget.enabled = false;
+		StartCoroutine(KeyTimer());     // Coroutine that displays the "Press any key" prompt
+        glitchTarget.enabled = false;   // Do not show the glitch sprite
     }
 	
-	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.anyKey && !isActivated) 
-		{
-			lightUI.gameObject.SetActive(true);
-			lightUI.GetComponentInChildren<PlayableDirector>().Play();
-			StartCoroutine(DonePlaying((float)lightUI.transform.GetChild(0).GetComponent<PlayableDirector>().duration));
-			pressAnyKey.gameObject.SetActive(false);
-			isActivated = true;
-		}
+        if (Input.anyKey && !isActivated)
+            StartAnimation();
 
 		if(isDonePlaying) 
 		{
-            if (Input.GetKeyDown(KeyCode.P) && isActivated)
-                useDark = !useDark;
+            SwitchLightDark();  // Chooses what version to display
 
-            if (isActivated && useDark) 
-			{
-				dark.gameObject.SetActive(true);
-				light.gameObject.SetActive(false);
-			}
-			else if(isActivated) 
-			{
-				dark.gameObject.SetActive(false);
-				light.gameObject.SetActive(true);
-			}
+            darkUI.transform.position = lightUI.transform.position; // Keep both versions of the UI on the same position
 
-            darkUI.transform.position = lightUI.transform.position;
+            ProgressBar();  // Progress bar input and processing
 
-            // Holding A to fill the progress bars
-            if (Input.GetAxis("Jump_C1") > 0f)
-                player1A += Time.deltaTime * fillRate;
+            if (doGlitch && !isSwitching)
+                GlitchAnimation();  // Cycle through glitch sprites
+
+            if (isSwitching)
+                SwitchAnimation();  // Cycle through switching sprites
+        }
+    }
+
+    private void StartAnimation()
+    {
+        lightUI.gameObject.SetActive(true);
+        lightUI.GetComponentInChildren<PlayableDirector>().Play();  // Start playing all of their animations
+        StartCoroutine(DonePlaying((float)lightUI.transform.GetChild(0).GetComponent<PlayableDirector>().duration));    // Set a timer the length of the animations
+        pressAnyKey.gameObject.SetActive(false);    // Hide the "Press any key" prompt
+        isActivated = true;
+    }
+
+    private void SwitchLightDark()
+    {
+        if (isActivated && useDark)
+        {
+            dark.gameObject.SetActive(true);
+            light.gameObject.SetActive(false);
+        }
+        else if (isActivated)
+        {
+            dark.gameObject.SetActive(false);
+            light.gameObject.SetActive(true);
+        }
+    }
+
+    private void ProgressBar()
+    {
+        // Holding A to fill the progress bars
+        if (Input.GetAxis("Jump_C1") > 0f)
+            player1A += Time.deltaTime * fillRate;
+        else
+            player1A -= Time.deltaTime * emptyRate; // Empty if not holding A
+
+        if (Input.GetAxis("Jump_C2") > 0f)
+            player2A += Time.deltaTime * fillRate;
+        else
+            player2A -= Time.deltaTime * emptyRate;
+
+        // Clamping to appropriate numbers
+        player1A = Mathf.Clamp(player1A, 0.4f, 1f);
+        player2A = Mathf.Clamp(player2A, 0.4f, 1f);
+
+        // Applying the amount to each radial progress bar
+        radial1.SetAmount(player1A);
+        radial2.SetAmount(player2A);
+        // 3 and 4 are the dark versions
+        radial3.SetAmount(player1A);
+        radial4.SetAmount(player2A);
+
+        // If both are filled, start fading out
+        if (player1A >= 0.99f && player2A >= 0.99f)
+            fadeOut = true;
+
+        if (fadeOut)
+        {
+            // Make sure the progress bars stay full
+            radial1.SetAmount(1f);
+            radial2.SetAmount(1f);
+            radial3.SetAmount(1f);
+            radial4.SetAmount(1f);
+
+            // Fade in a black image
+            if (fadeOutImage.GetComponent<CanvasGroup>().alpha < 1f)
+                fadeOutImage.GetComponent<CanvasGroup>().alpha += Time.deltaTime * fadeSpeed;
             else
-                player1A -= Time.deltaTime * emptyRate;
+                SceneManager.LoadScene("Main"); // When finished, load the main scene
+        }
+    }
 
-            if (Input.GetAxis("Jump_C2") > 0f)
-                player2A += Time.deltaTime * fillRate;
-            else
-                player2A -= Time.deltaTime * emptyRate;
+    private void GlitchAnimation()
+    {
+        glitchTarget.enabled = true;    // Display the image
+        if (spriteIndex < spriteSequence.Length)    // If there are still sprites to show
+        {
+            glitchTarget.sprite = spriteSequence[spriteIndex];  // Switch to the next one
+            spriteIndex++;
+        }
+        else    // Stop the animation and reset
+        {
+            doGlitch = false;
+            spriteIndex = 0;
+            StartCoroutine(GlitchTimer());  // Start a timer for when next glitch should occur
+            glitchTarget.enabled = false;
+        }
+    }
 
-            // Clamping to appropriate numbers
-            player1A = Mathf.Clamp(player1A, 0.4f, 1f);
-            player2A = Mathf.Clamp(player2A, 0.4f, 1f);
+    private void SwitchAnimation()
+    {
+        SpriteArray[] spriteArrays = glitchesSwitch.GetComponents<SpriteArray>();   // Fetch the sprite array
 
-            // Applying the amount to each radial progress bar
-            radial1.SetAmount(player1A);
-            radial2.SetAmount(player2A);
-            radial3.SetAmount(player1A);
-            radial4.SetAmount(player2A);
+        int index = 0;
+        if (useDark)
+            index = 1;
 
-            // If both are filled, start fading out
-            if (player1A >= 0.99f && player2A >= 0.99f)
-                fadeOut = true;
+        spriteSequence = spriteArrays[index].frames;    // Get either the switch to dark or light, depending on current version
 
-            if(fadeOut)
-            {
-                // Make sure the progress bars stay full
-                radial1.SetAmount(1f);
-                radial2.SetAmount(1f);
-                radial3.SetAmount(1f);
-                radial4.SetAmount(1f);
-
-                // Fade in a black image
-                if (fadeOutImage.GetComponent<CanvasGroup>().alpha < 1f)
-                    fadeOutImage.GetComponent<CanvasGroup>().alpha += Time.deltaTime * fadeSpeed;
-                else
-                    SceneManager.LoadScene("Main"); // When finished, load the main scene
-            }
-
-            /*
-            if(Input.GetAxis("Jump_C1") > 0f)
-                player1A -= Time.deltaTime / 3f;
-            else
-                player1A += Time.deltaTime / 9f;
-
-            if(Input.GetAxis("Jump_C2") > 0f)
-                player2A -= Time.deltaTime / 3f;
-            else
-                player2A += Time.deltaTime / 9f;
-
-            player1A = Mathf.Clamp(player1A, 0.025f, 0.5f);
-            player2A = Mathf.Clamp(player2A, 0.025f, 0.5f);
-
-            radial1.SetAmount(player1A);
-            radial2.SetAmount(player2A);
-            */
-
-            if(doGlitch && !isSwitching)
-            {
-                glitchTarget.enabled = true;
-                if (spriteIndex < spriteSequence.Length)
-                {
-                    glitchTarget.sprite = spriteSequence[spriteIndex];
-                    spriteIndex++;
-                }
-                else
-                {
-                    doGlitch = false;
-                    spriteIndex = 0;
-                    StartCoroutine(GlitchTimer());
-                    glitchTarget.enabled = false;
-                }
-            }
-
-            if(isSwitching)
-            {
-                SpriteArray[] spriteArrays = glitchesSwitch.GetComponents<SpriteArray>();
-
-                int index = 0;
-                if (useDark)
-                    index = 1;
-
-                spriteSequence = spriteArrays[index].frames;
-
-                glitchTarget.enabled = true;
-                if (spriteSwitchIndex < spriteSequence.Length)
-                {
-                    glitchTarget.sprite = spriteSequence[spriteSwitchIndex];
-                    spriteSwitchIndex++;
-                }
-                else
-                {
-                    isSwitching = false;
-                    spriteSwitchIndex = 0;
-                    StartCoroutine(SwitchTimer());
-                    useDark = !useDark;
-                    if(!doGlitch)
-                        glitchTarget.enabled = false;
-                }
-            }
+        glitchTarget.enabled = true;
+        if (spriteSwitchIndex < spriteSequence.Length)
+        {
+            glitchTarget.sprite = spriteSequence[spriteSwitchIndex];
+            spriteSwitchIndex++;
+        }
+        else
+        {
+            isSwitching = false;
+            spriteSwitchIndex = 0;
+            StartCoroutine(SwitchTimer());
+            useDark = !useDark;
+            if (!doGlitch)
+                glitchTarget.enabled = false;
         }
     }
 
