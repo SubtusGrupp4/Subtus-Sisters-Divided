@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
     public GameObject playerTopPrefab;
     public GameObject playerBotPrefab;
 
+    [Header("Game Variables")]
+    public bool onePlayerDead = false;
+
     [Header("Screen")]
     [SerializeField]
     private int resolutionX = 1920;

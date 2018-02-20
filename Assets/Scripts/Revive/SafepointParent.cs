@@ -11,6 +11,8 @@ public class SafepointParent : Safepoint
 
     [Header("Line Settings")]
     [SerializeField]
+    private bool showLine = true;
+    [SerializeField]
     private Color color = Color.yellow;
     [SerializeField]
     private float lineHeight = 11f; // The distance from 0 on Y to the tip of the rays
@@ -20,12 +22,15 @@ public class SafepointParent : Safepoint
         child = transform.GetChild(0);                                                                      // Get the child safepoint
         child.transform.position = new Vector2(transform.position.x, -transform.position.y) + childOffset;  // Offset using the set vector
 
-        // Draw lines representing the safepoints in the scene
-        Gizmos.color = color;
-        Gizmos.DrawLine(new Vector3(transform.position.x, lineHeight),
-                new Vector3(transform.position.x, 0f));
-        Gizmos.DrawLine(new Vector3(child.position.x, -lineHeight),
-                new Vector3(child.position.x, 0f));
+        if (showLine)
+        {
+            // Draw lines representing the safepoints in the scene
+            Gizmos.color = color;
+            Gizmos.DrawLine(new Vector3(transform.position.x, lineHeight),
+                    new Vector3(transform.position.x, 0f));
+            Gizmos.DrawLine(new Vector3(child.position.x, -lineHeight),
+                    new Vector3(child.position.x, 0f));
+        }
     }
 
     // Reset the sprite and set to not be the current safepoint, also includes the child

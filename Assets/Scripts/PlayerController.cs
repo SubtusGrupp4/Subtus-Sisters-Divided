@@ -134,6 +134,9 @@ public class PlayerController : MonoBehaviour
         {
             ResetJump();
         }
+
+        if (!inAir)
+            lastSafe = transform.position;
     }
     private void FixedUpdate()
     {
@@ -141,9 +144,6 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             NormalizeSlope();
-
-            if (!inAir)
-                lastSafe = transform.position;
         }
     }
 
@@ -246,24 +246,74 @@ public class PlayerController : MonoBehaviour
     {
         if (isActive)
         {
-            // Mabey needed for Ressurect in future.
             isActive = false;
-            rigidbody2D.velocity = Vector2.zero;
-            rigidbody2D.isKinematic = true;
+            gameObject.SetActive(false);
 
-            Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
-            revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
-            revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
-
-            if (Player == Controller.Player1)
-                GameManager.instance.playerTop = null;
+            // If any of the players is dead and the last dies, call BothDead() instead.
+            if (GameManager.instance.onePlayerDead)
+            {
+                BothDead();
+            }
             else
-                GameManager.instance.playerBot = null;
-
-            Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
-
-            Destroy(gameObject);
+            {
+                Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
+                revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
+                revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
+                Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
+                GameManager.instance.onePlayerDead = true;
+            }      
         }
+    }
+
+    private void Revive()
+    {
+        Transform player;
+
+        if (Player == Controller.Player1)
+        {
+            player = GameManager.instance.playerBot;
+            player.position = SafepointManager.instance.botCheckpoint.position; // Place player at last checkpoint
+        }
+        else
+        {
+            player = GameManager.instance.playerTop;
+            player.position = SafepointManager.instance.topCheckpoint.position;
+        }
+
+        player.gameObject.SetActive(true);
+        player.GetComponent<PlayerController>().isActive = true;
+
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
+
+        GameManager.instance.onePlayerDead = false;
+    }
+
+    private void BothDead()
+    {
+        // Delete all revive objects, if there are any
+        GameObject[] revives = GameObject.FindGameObjectsWithTag("Revive");
+        foreach (GameObject revive in revives)
+            Destroy(revive);
+
+        // Get the player transforms
+        Transform playerTop = GameManager.instance.playerTop;
+        Transform playerBot = GameManager.instance.playerBot;
+
+        // Activate them
+        playerTop.gameObject.SetActive(true);
+        playerBot.gameObject.SetActive(true);
+
+        // Place them on the current safepoints
+        playerTop.transform.position = SafepointManager.instance.currentTopSafepoint.position;
+        playerBot.transform.position = SafepointManager.instance.currentBotSafepoint.position;
+
+        // Set the camera to follow both
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth, transform);
+
+        GameManager.instance.onePlayerDead = false;
+
+        playerTop.GetComponent<PlayerController>().isActive = true;
+        playerBot.GetComponent<PlayerController>().isActive = true;
     }
 
     private void ResetJump()
@@ -396,20 +446,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.transform.tag == "Revive")
         {
-            GameObject resPlayer;
-            if (Player == Controller.Player1)
-            {
-                resPlayer = Instantiate(GameManager.instance.playerBotPrefab, SafepointManager.instance.botCheckpoint.position, Quaternion.identity);
-                GameManager.instance.playerBot = resPlayer.transform;
-            }
-            else
-            {
-                resPlayer = Instantiate(GameManager.instance.playerTopPrefab, SafepointManager.instance.topCheckpoint.position, Quaternion.identity);
-                GameManager.instance.playerTop = resPlayer.transform;
-            }
-
+            Revive();
             Destroy(collision.gameObject);
-            Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
         }
     }
 }

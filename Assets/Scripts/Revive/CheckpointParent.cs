@@ -11,6 +11,8 @@ public class CheckpointParent : MonoBehaviour
 
     [Header("Line Settings")]
     [SerializeField]
+    private bool showLine = true;
+    [SerializeField]
     private Color color = Color.blue;
     [SerializeField]
     private float lineHeight = 11f; // The distance from 0 on Y to the tip of the rays
@@ -27,25 +29,28 @@ public class CheckpointParent : MonoBehaviour
 
     private void Update()
     {
-        if (transform != SafepointManager.instance.topCheckpoint)
+        if (transform != SafepointManager.instance.topCheckpoint && playerTop.gameObject.activeSelf)
             if (playerTop.position.x > transform.position.x - 1f && playerTop.position.x < transform.position.x + 1f)
                 SafepointManager.instance.SetCheckpoint(transform, playerTop);
 
-        if (child != SafepointManager.instance.botCheckpoint)
+        if (child != SafepointManager.instance.botCheckpoint && playerBot.gameObject.activeSelf)
             if (playerBot.position.x > child.position.x - 1f && playerBot.position.x < transform.position.x + 1f)
                 SafepointManager.instance.SetCheckpoint(child, playerBot);
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         child = transform.GetChild(0);                                                                      // Get the child safepoint
         child.transform.position = new Vector2(transform.position.x, -transform.position.y) + childOffset;  // Offset using the set vector
 
-        // Draw lines representing the safepoints in the scene
-        Gizmos.color = color;
-        Gizmos.DrawLine(new Vector3(transform.position.x, lineHeight),
-                new Vector3(transform.position.x, 0f));
-        Gizmos.DrawLine(new Vector3(child.position.x, -lineHeight),
-                new Vector3(child.position.x, 0f));
+        if (showLine)
+        {
+            // Draw lines representing the safepoints in the scene
+            Gizmos.color = color;
+            Gizmos.DrawLine(new Vector3(transform.position.x, lineHeight),
+                    new Vector3(transform.position.x, 0f));
+            Gizmos.DrawLine(new Vector3(child.position.x, -lineHeight),
+                    new Vector3(child.position.x, 0f));
+        }
     }
 }
