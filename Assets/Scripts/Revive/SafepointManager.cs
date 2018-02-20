@@ -30,13 +30,23 @@ public class SafepointManager : MonoBehaviour {
 
 	private void Start()
 	{
+        playerTop = GameManager.instance.playerTop;
+        playerBot = GameManager.instance.playerBot;
+
         // Set the initial respawn points to be the starting position of the players.
         currentTopSafepoint = new GameObject("Initial Top Safepoint").transform;
         currentTopSafepoint.position = GameManager.instance.playerTop.position;
 
         currentBotSafepoint = new GameObject("Initial Bot Safepoint").transform;
         currentBotSafepoint.position = GameManager.instance.playerTop.position;
-	}
+
+        // Set the initial revive points to be the starting position of the players.
+        topCheckpoint = new GameObject("Initial Top Checkpoint").transform;
+        topCheckpoint.position = GameManager.instance.playerTop.position;
+
+        botCheckpoint = new GameObject("Initial Bot Checkpoint").transform;
+        botCheckpoint.position = GameManager.instance.playerTop.position;
+    }
 
     private void CreateSingleton()
     {
@@ -81,5 +91,15 @@ public class SafepointManager : MonoBehaviour {
             topSafepoint = null;
         else if(botSafepoint == safepoint)
             botSafepoint = null;
+    }
+
+    public void SetCheckpoint(Transform checkpoint, Transform player)
+    {
+        if (player == playerTop)
+            topCheckpoint = checkpoint;
+        else if (player == playerBot)
+            botCheckpoint = checkpoint;
+
+        Debug.Log("New checkpoint for " + player + " at position " + checkpoint.position);
     }
 }
