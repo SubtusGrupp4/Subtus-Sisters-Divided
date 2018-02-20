@@ -62,9 +62,8 @@ public class RevivePlacer : MonoBehaviour
         }
         if (!search) // If a safe spot is found
         {
-            GameObject spot = Instantiate (reviveSpot, transform.position, Quaternion.identity);    // Instantiate the respawn pickup
-            spot.GetComponent<ReviveSpot> ().Initialize (playerTransform);                          // Initialize it
-            Destroy (gameObject);                                                                   // Destroy the current object (the placer)
+            Instantiate (reviveSpot, transform.position, Quaternion.identity);  // Instantiate the respawn pickup
+            Destroy (gameObject);                                               // Destroy the current object (the placer)
         }
     }
 }

@@ -84,8 +84,6 @@ public class PlayerController : MonoBehaviour
     private GameObject revivePlacerPrefab;
     private GameObject revivePlacer;
 
-
-
     void Awake()
     {
         rayOffSetX = GetComponent<CapsuleCollider2D>().size.x * transform.localScale.x / 2;
@@ -256,23 +254,16 @@ public class PlayerController : MonoBehaviour
             Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
             revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
             revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
-            sr.enabled = false;
-            myBox.enabled = false;
+
+            if (Player == Controller.Player1)
+                GameManager.instance.playerTop = null;
+            else
+                GameManager.instance.playerBot = null;
 
             Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
+
+            Destroy(gameObject);
         }
-    }
-
-    public void Ressurect()
-    {
-        // ^^^^^^
-        transform.position = lastSafe;
-        isActive = true;
-        rigidbody2D.isKinematic = false;
-        sr.enabled = true;
-        myBox.enabled = true;
-
-        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
     }
 
     private void ResetJump()
@@ -401,12 +392,24 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.transform.tag == "Portal")
         {
-            //Die();
+            Die();
         }
         else if (collision.transform.tag == "Revive")
         {
+            GameObject resPlayer;
+            if (Player == Controller.Player1)
+            {
+                resPlayer = Instantiate(GameManager.instance.playerBotPrefab, SafepointManager.instance.botCheckpoint.position, Quaternion.identity);
+                GameManager.instance.playerBot = resPlayer.transform;
+            }
+            else
+            {
+                resPlayer = Instantiate(GameManager.instance.playerTopPrefab, SafepointManager.instance.topCheckpoint.position, Quaternion.identity);
+                GameManager.instance.playerTop = resPlayer.transform;
+            }
+
             Destroy(collision.gameObject);
-            Ressurect();
+            Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
         }
     }
 }

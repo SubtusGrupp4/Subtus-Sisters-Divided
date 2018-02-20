@@ -124,7 +124,7 @@ public class CameraController : MonoBehaviour
     private void FixedUpdate()
     {
         //if (GameObject.Find("DialogueManager") == null || !DialogueManager.instance.moveCamera && !DialogueManager.instance.freezeCamera)
-        if (State == CameraState.FollowingBoth)
+        if (State == CameraState.FollowingBoth && playerTop != null && playerBot != null)
         {
             // Get the X distance from the camera to the players
             followPos = new Vector2(playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2, 0f);

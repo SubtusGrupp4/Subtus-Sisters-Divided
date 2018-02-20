@@ -8,8 +8,13 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
+    [Header("Instantiated Players")]
     public Transform playerTop;
     public Transform playerBot;
+
+    [Header("Prefab Players")]
+    public GameObject playerTopPrefab;
+    public GameObject playerBotPrefab;
 
     [Header("Screen")]
     [SerializeField]
@@ -28,6 +33,18 @@ public class GameManager : MonoBehaviour {
     {
         CreateSingleton();
         SetStartResolution(resolutionX, resolutionY);
+    }
+
+    private void Start()
+    {
+        if (playerTop == null)
+            Debug.LogError("PlayerTop not assigned on Start() in GameManager!");
+        if (playerBot == null)
+            Debug.LogError("PlayerBot not assigned on Start() in GameManager!");
+        if (playerTopPrefab == null)
+            Debug.LogError("PlayerTopPrefab not assigned on Start() in GameManager!");
+        if (playerBotPrefab == null)
+            Debug.LogError("PlayerBotPrefab not assigned on Start() in GameManager!");
     }
 
     private void Update () {

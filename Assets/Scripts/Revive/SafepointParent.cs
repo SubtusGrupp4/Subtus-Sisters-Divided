@@ -11,7 +11,7 @@ public class SafepointParent : Safepoint
 
     [Header("Line Settings")]
     [SerializeField]
-    private Color color;
+    private Color color = Color.yellow;
     [SerializeField]
     private float lineHeight = 11f; // The distance from 0 on Y to the tip of the rays
 
