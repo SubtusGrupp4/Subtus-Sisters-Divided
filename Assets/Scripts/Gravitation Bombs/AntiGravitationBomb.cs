@@ -104,8 +104,8 @@ public class AntiGravitationBomb : MonoBehaviour
 
         if (obj.GetComponent<AIMovement>())
         {
-            obj.GetComponent<AIMovement>().Stun(0.5f);
-            obj.GetComponent<AIMovement>().Freeze(true);
+            obj.GetComponent<AIMovement>().Stun(0.1f);
+            obj.GetComponent<AIMovement>().Freeze(true, 0);
         }
 
         obj.GetComponent<Rigidbody2D>().AddForce(theForce);

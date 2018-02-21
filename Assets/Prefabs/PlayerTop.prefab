@@ -106,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221702535368190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.53, y: 2.88, z: 0}
+  m_LocalPosition: {x: -37.72, y: 5.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4124828373953728}
@@ -185,7 +185,7 @@ Animator:
   m_GameObject: {fileID: 1885305298513428}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 544786bffaba6c54287fe1d5ec36df59, type: 2}
+  m_Controller: {fileID: 9100000, guid: a462fc6eef803564f8869f04de2014ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -202,7 +202,7 @@ Animator:
   m_GameObject: {fileID: 1221702535368190}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4955c0b16188f5c44be30bdf082153ef, type: 2}
+  m_Controller: {fileID: 9100000, guid: 801b4dd39b04bfe4c87bc125e2c7e351, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -251,8 +251,7 @@ MonoBehaviour:
   lastSafe: {x: 0, y: 0}
   revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
     type: 2}
-  dyingAnimationGO: {fileID: 1689820527217352, guid: 19c8a767f1a6bc640a7141ea57fd18bc,
-    type: 2}
+  dyingAnimationGO: {fileID: 0}
 --- !u!114 &114162503053591004
 MonoBehaviour:
   m_ObjectHideFlags: 1
