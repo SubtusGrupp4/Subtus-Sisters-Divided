@@ -387,7 +387,7 @@ public class DialogueManager : MonoBehaviour
         sentenceIndex = 0;
 
         // Unfreeze
-        GameManager.instance.SetFreezeGame(false);
+        //GameManager.instance.SetFreezeGame(false);
         freezeCamera = false;
 
         // Reset more values

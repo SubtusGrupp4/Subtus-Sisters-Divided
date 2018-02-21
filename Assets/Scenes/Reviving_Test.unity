@@ -4283,18 +4283,6 @@ Prefab:
       propertyPath: playerBot
       value: 
       objectReference: {fileID: 1269677335}
-    - target: {fileID: 114193923815130308, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
-        type: 2}
-      propertyPath: playerBotPrefab
-      value: 
-      objectReference: {fileID: 1566391204588738, guid: c4f07d902bdbf6b418818c9c4b7a6960,
-        type: 2}
-    - target: {fileID: 114193923815130308, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
-        type: 2}
-      propertyPath: playerTopPrefab
-      value: 
-      objectReference: {fileID: 1221702535368190, guid: e292e485d55d39b498951a8c1e011230,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97bb6a60288057341bdd0eb0c1cb3f23, type: 2}
   m_IsPrefabParent: 0
