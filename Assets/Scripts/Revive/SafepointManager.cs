@@ -7,19 +7,22 @@ public class SafepointManager : MonoBehaviour {
     // Singleton instance
 	public static SafepointManager instance;
 
-    [Header("Used for respawning")]
     // Used for respawning both the players. Stays activated
+    [HideInInspector]
     public Transform currentTopSafepoint;
+    [HideInInspector]
     public Transform currentBotSafepoint;
 
-    [Header("Triggered safe points")]
     // Got from Safepoints being triggered. Will deactivate if one is empty or not a matching pair.
+    [HideInInspector]
     public Transform topSafepoint;
+    [HideInInspector]
     public Transform botSafepoint;
 
-    [Header("Used for reviving")]
     // Used as the spawning point if only one player dies but is revived
+    [HideInInspector]
     public Transform topCheckpoint;
+    [HideInInspector]
     public Transform botCheckpoint;
 
     // References to the players. Fetched from GameManager
@@ -98,11 +101,10 @@ public class SafepointManager : MonoBehaviour {
 
     public void SetCheckpoint(Transform checkpoint, Transform player)
     {
+        // Set the new checkpoints for the players
         if (player == playerTop)
             topCheckpoint = checkpoint;
-        else if (player == playerBot)
+        else
             botCheckpoint = checkpoint;
-
-        Debug.Log("New checkpoint for " + player + " at position " + checkpoint.position);
     }
 }

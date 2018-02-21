@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject revivePlacerPrefab;
     private GameObject revivePlacer;
+    [SerializeField]
+    private GameObject dyingAnimationGO;
 
     void Awake()
     {
@@ -256,12 +258,16 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                //GameObject dead;
+                //dead = Instantiate(dyingAnimationGO, transform.position, transform.rotation);
+                //dead.transform.localScale = transform.localScale;
+
                 Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
                 revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
                 revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
                 Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
                 GameManager.instance.onePlayerDead = true;
-            }      
+            }
         }
     }
 
