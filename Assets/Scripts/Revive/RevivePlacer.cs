@@ -20,11 +20,10 @@ public class RevivePlacer : MonoBehaviour
     private Vector2 lastSafe;
 
     // Called by the player that dies
-    public void Initialize (Controller player, Transform playerTransform, Vector2 lastSafe) 
+    public void Initialize (Controller player, Transform playerTransform) 
     {
         startPos = transform.position;
         this.playerTransform = playerTransform;
-        this.lastSafe = lastSafe;
 
         // Change the direction based on what player died
         if (player == Controller.Player1)
