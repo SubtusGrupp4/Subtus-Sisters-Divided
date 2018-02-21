@@ -13,6 +13,7 @@ TagManager:
   - MovingFloor
   - Lever
   - ManipulateFloor
+  - Revive
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,8 @@ public abstract class PortalBehaviour : MonoBehaviour
 	{
 		if (this.GetComponent<PlayerController> () != null) 
 		{
-			GetComponent<PlayerController> ().Die ();
+            // This is handled in PlayerController
+			//GetComponent<PlayerController> ().Die ();
 		}
 
 	} 

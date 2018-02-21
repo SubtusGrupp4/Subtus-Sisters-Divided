@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114863663172382582}
   m_Layer: 0
   m_Name: ReviveSpot
-  m_TagString: Untagged
+  m_TagString: Revive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

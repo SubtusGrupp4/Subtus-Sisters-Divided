@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReviveSpot : MonoBehaviour {
-
+public class ReviveSpot : MonoBehaviour
+{
+    /*
     Transform playerTransform;
 
     public void Initialize(Transform playerTransform)
@@ -19,4 +20,5 @@ public class ReviveSpot : MonoBehaviour {
             Destroy(gameObject);                                            // Destroy self
         }
     }
+    */
 }
