@@ -52,7 +52,7 @@ public class KillPlayer : MonoBehaviour
 
             bAnim.Attack();
 
-            AImove.Freeze(false);
+            AImove.Freeze(false, 0);
         }
     }
 }
