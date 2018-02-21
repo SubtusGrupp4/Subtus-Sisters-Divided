@@ -9,6 +9,9 @@ public class DialogueTrigger : MonoBehaviour {
     private bool customTag = false;
     [HideInInspector]
     public Dialogue[] dialogues;
+    [SerializeField]
+    private bool onlyTriggerOnce = false;
+    private bool isTriggered;
 
     private void Start()
     {
@@ -20,6 +23,10 @@ public class DialogueTrigger : MonoBehaviour {
 
     public void TriggerDialogue()
     {
-        DialogueManager.instance.FetchDialogue(dialogues);  // Send the dialogue to the DialogueManager when triggered
+        if(!onlyTriggerOnce || !isTriggered)
+            DialogueManager.instance.FetchDialogue(dialogues);  // Send the dialogue to the DialogueManager when triggered
+
+        if (onlyTriggerOnce)
+            isTriggered = true;
     }
 }

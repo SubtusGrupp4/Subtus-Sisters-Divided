@@ -4,22 +4,32 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour 
 {
-	public GameObject game;
-	public GameObject clone;
-	public bool test1 = false;
-	public float test2;
-	
+
+	public Vector2 vec;
+	public float offset;
+
+	void Update()
+	{
+		
+	}
+
 	void OnTriggerExit2D(Collider2D otherObj)
 	{
 		if (otherObj.gameObject.GetComponent<PortalBehaviour>() != null) 
 		{
-			if (test2 > otherObj.gameObject.transform.position.y/2 && otherObj.gameObject.transform.position.y < 0) {
-				otherObj.GetComponent<Rigidbody2D> ().gravityScale *= -1;
+			if (otherObj.gameObject.transform.position.y < 0 && otherObj.GetComponent<Rigidbody2D>().gravityScale > 0) {
+				Debug.Log ("p");
+				otherObj.GetComponent<PortalBehaviour> ().OnPortalContact ();
 			}
-			if(test2 < otherObj.gameObject.transform.position.y /2 && otherObj.gameObject.transform.position.y > 0){
-				otherObj.GetComponent<Rigidbody2D> ().gravityScale *= -1;
+			if (otherObj.gameObject.transform.position.y > 0 && otherObj.GetComponent<Rigidbody2D>().gravityScale <= 0) {
+				Debug.Log ("p");
+				otherObj.GetComponent<PortalBehaviour> ().OnPortalContact ();
 			}
-			otherObj.GetComponent<PortalBehaviour> ().OnPortalContact ();
+
+
+
+
+
 		}
 	}
 
@@ -28,8 +38,7 @@ public class Portal : MonoBehaviour
 		if (otherObj.gameObject.GetComponent<PlayerPortal> () != null) {
 			otherObj.GetComponent<PlayerPortal> ().OnPortalContact ();
 		} else {
-			clone = Instantiate (game, otherObj.gameObject.transform.position, Quaternion.identity);
-			test2 = otherObj.gameObject.transform.position.y;
+			vec = otherObj.gameObject.transform.position;
 		}
 	}
 

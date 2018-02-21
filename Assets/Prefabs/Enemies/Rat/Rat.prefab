@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 212755675223386786}
   - component: {fileID: 95201081877332854}
   - component: {fileID: 114803104298512386}
+  - component: {fileID: 114118780176167208}
+  - component: {fileID: 61011371305488594}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127109019429044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -38.62, y: 2.25, z: -0.13671875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,6 +67,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &61011371305488594
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127109019429044}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.20139432, y: -0.2513038}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.4, y: 0.4}
+    oldSize: {x: 5.12, y: 2.56}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.1859088, y: 1.5453928}
+  m_EdgeRadius: 0
 --- !u!61 &61217982118782902
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -77,10 +104,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.26349688}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4, y: 0.38596344}
+    pivot: {x: 0.4, y: 0.4}
     oldSize: {x: 5.12, y: 2.56}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
@@ -88,7 +115,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.5269938}
   m_EdgeRadius: 0
 --- !u!95 &95201081877332854
 Animator:
@@ -107,6 +134,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114118780176167208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127109019429044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ce34b62b794104e9a3c4b9adfe7d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114587685437681830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,9 +164,9 @@ MonoBehaviour:
   flipped: 0
   startState: 2
   engagedState: 0
-  speed: 3
-  stepRange: 2
-  climbRange: 1
+  speed: 4
+  stepRange: 4
+  climbRange: 3
   maxSlope: 60
   turnRate: 0
   aggroRange: 0
@@ -145,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animGameObject: {fileID: 1127109019429044}
-  facing: 0
+  facing: -1
 --- !u!212 &212755675223386786
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -180,7 +218,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 11fb02a924f15384ab49b740b86b3495, type: 3}
+  m_Sprite: {fileID: 21300004, guid: b1a0e7fcec8efe540828c7de9f0dd664, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

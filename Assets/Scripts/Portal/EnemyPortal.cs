@@ -20,6 +20,7 @@ public class EnemyPortal : PortalBehaviour
 	private Rigidbody2D rb;
 	private int q = 0;
 	private bool enabler = true;
+	private bool startBool = false;
 
 	void Start()
 	{
@@ -38,6 +39,7 @@ public class EnemyPortal : PortalBehaviour
 		reversedCollider.enabled = !reversedCollider.enabled;
 		friendlyScript.enabled = enabler;
 		enabler = !enabler;
+		startBool = !startBool;
 
 	}
 
@@ -46,20 +48,28 @@ public class EnemyPortal : PortalBehaviour
 	void ReverseComponents()
 	{
 		q++;
-
-		if (gameObject.GetComponent<Rigidbody2D>().gravityScale < 0) 
+		Debug.Log(enabler);
+		if (startBool) 
 		{
 			this.GetComponent<Animator> ().runtimeAnimatorController = original as RuntimeAnimatorController;
-			transform.localScale = new Vector3 (1f, 1f, 1f);
+			transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+			rb.gravityScale = -rb.gravityScale;
+
 		} else 
 		{
 			this.GetComponent<Animator> ().runtimeAnimatorController = reversed as RuntimeAnimatorController;
-			transform.localScale = new Vector3 (1f, -1f, 1f);
+			transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+			rb.gravityScale = -rb.gravityScale;
 		}
+
+
+
+
 	}
 
 	public override void OnPortalContact()
 	{
+		//Invoker ();
 		Invoke ("Invoker", 0.1f);
 		ReverseComponents ();
 	}

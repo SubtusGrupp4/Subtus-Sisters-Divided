@@ -10,5 +10,9 @@ public class test1 : MonoBehaviour
 	public bool state = true;
 
 
-
+	void Update(){
+		
+	}
+	void Start(){
+	}
 }

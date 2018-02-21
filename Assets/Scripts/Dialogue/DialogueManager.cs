@@ -124,17 +124,17 @@ public class DialogueManager : MonoBehaviour
             {
                 case 0:
                     // TODO: If any input
-                    if(Input.GetKeyDown(KeyCode.E))
+                    if(Input.GetAxis("Jump_C1") > 0.1f || Input.GetAxis("Jump_C2") > 0.1f)
                         InputGet();
                     break;
                 case 1:
                     // TODO: If input from Player 1
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetAxis("Jump_C1") > 0.1f)
                         InputGet();
                     break;
                 case 2:
                     // TODO: If input from Player 2
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (Input.GetAxis("Jump_C2") > 0.1f)
                         InputGet();
                     break;
             }
@@ -387,7 +387,7 @@ public class DialogueManager : MonoBehaviour
         sentenceIndex = 0;
 
         // Unfreeze
-        GameManager.instance.SetFreezeGame(false);
+        //GameManager.instance.SetFreezeGame(false);
         freezeCamera = false;
 
         // Reset more values

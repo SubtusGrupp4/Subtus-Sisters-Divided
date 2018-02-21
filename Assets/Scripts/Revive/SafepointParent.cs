@@ -11,21 +11,26 @@ public class SafepointParent : Safepoint
 
     [Header("Line Settings")]
     [SerializeField]
-    private Color color;
+    private bool showLine = true;
     [SerializeField]
-    private float lineHeight = 11f;
+    private Color color = Color.yellow;
+    [SerializeField]
+    private float lineHeight = 11f; // The distance from 0 on Y to the tip of the rays
 
-    // Draw lines representing the safepoints in the scene
     private void OnDrawGizmos()
     {
-        child = transform.GetChild(0);
-        child.transform.position = new Vector2(transform.position.x, -transform.position.y) + childOffset;
+        child = transform.GetChild(0);                                                                      // Get the child safepoint
+        child.transform.position = new Vector2(transform.position.x, -transform.position.y) + childOffset;  // Offset using the set vector
 
-        Gizmos.color = color;
-        Gizmos.DrawLine(new Vector3(transform.position.x, lineHeight),
-                new Vector3(transform.position.x, 0f));
-        Gizmos.DrawLine(new Vector3(child.position.x, -lineHeight),
-                new Vector3(child.position.x, 0f));
+        if (showLine)
+        {
+            // Draw lines representing the safepoints in the scene
+            Gizmos.color = color;
+            Gizmos.DrawLine(new Vector3(transform.position.x, lineHeight),
+                    new Vector3(transform.position.x, 0f));
+            Gizmos.DrawLine(new Vector3(child.position.x, -lineHeight),
+                    new Vector3(child.position.x, 0f));
+        }
     }
 
     // Reset the sprite and set to not be the current safepoint, also includes the child
@@ -33,7 +38,7 @@ public class SafepointParent : Safepoint
     public void ResetSafepoint()
     {
         sr.sprite = startSprite;
-        child.GetComponent<SpriteRenderer>().sprite = startSprite;
+        child.GetComponent<SpriteRenderer>().sprite = startSprite; 
         isCurrent = false;
         child.GetComponent<Safepoint>().isCurrent = false;
     }

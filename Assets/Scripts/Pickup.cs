@@ -96,6 +96,28 @@ public class Pickup : MonoBehaviour
 
     private void Update()
     {
+       // PickUpAction();
+    }
+
+    public void PickItUp(GameObject obj)
+    {
+
+      
+            pickedUp = obj.transform;
+            isPickedUp = true;
+
+      
+ 
+
+    }
+    public void DropIt()
+    {
+        if(isPickedUp)
+            isPickedUp = false;
+    }
+
+    public void PickUpAction()
+    {
         if (Input.GetKeyDown(KeyCode.E) && !isPickedUp)
         {
             bool blocked = false;
@@ -129,25 +151,22 @@ public class Pickup : MonoBehaviour
                                 {
                                     if (objHit[l].transform.tag == walls[j])
                                     {
-                                        blocked = true;                                        
+                                        blocked = true;
                                         break;
                                     }
                                 }
                             }
-                            if(!blocked)
+                            if (!blocked)
                             {
-                                pickedUp = allObjs[i].transform;
-                                isPickedUp = true;
-                                Debug.Log("KEY IS ON");
-                                break;
+                                PickItUp(allObjs[i].gameObject);
+                                break; 
                             }
                         }
                     }
                 }
-
-            }           
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.E) && isPickedUp)
+        else if (isPickedUp)
         {
             isPickedUp = false;
         }

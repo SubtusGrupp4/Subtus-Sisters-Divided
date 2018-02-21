@@ -16,8 +16,6 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         movement = GetComponent<AIMovement>();
-
-        //
     }
 
     // Update is called once per frame
@@ -39,10 +37,15 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D obj)
     {
+        float flipValue = 1;
+
+        if (obj.GetComponent<Rigidbody2D>())
+            flipValue = obj.GetComponent<Rigidbody2D>().gravityScale;
+
         for (int i = 0; i < interactWith.Length; i++)
             if (obj.transform.tag == interactWith[i])
             {
-                obj.transform.position = new Vector3(obj.transform.position.x + goingTo.x, obj.transform.position.y + (goingTo.y > 0 ? 0 : goingTo.y), obj.transform.position.z);
+                obj.transform.position = new Vector3(obj.transform.position.x + goingTo.x, obj.transform.position.y + (goingTo.y > 0 ? 0 : goingTo.y * flipValue), obj.transform.position.z);
                 //  obj.transform.GetComponent<Rigidbody2D>().velocity += new Vector2(goingTo.x, goingTo.y);
             }
     }
