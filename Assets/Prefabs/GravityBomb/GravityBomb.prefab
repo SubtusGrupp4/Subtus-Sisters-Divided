@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 6
-  pullForce: 73
+  pullForce: 99
   duration: 6.5
   deActivate: 5
   tagNames:

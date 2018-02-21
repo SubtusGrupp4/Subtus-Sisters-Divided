@@ -9,6 +9,7 @@ public class BasicAnimator : MonoBehaviour
     public const string animFall = "IsFalling";
     public const string animWalk = "IsWalking";
     public const string animJump = "IsJumping";
+    public const string animLand = "IsLanding";
 
     private bool walkRunBool = false;
 
@@ -16,6 +17,7 @@ public class BasicAnimator : MonoBehaviour
 
     private bool attacking;
     private bool jumping;
+    private bool landing;
 
     public GameObject animGameObject;
     [Range(-1, 1)]
@@ -48,11 +50,17 @@ public class BasicAnimator : MonoBehaviour
             anim.SetBool(animAttack, false);
             attacking = false;
         }
-        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animJump) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0) && jumping == true)
+        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animJump) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1 && !anim.GetComponent<Animator>().IsInTransition(0) && jumping == true)
         {
             anim.SetBool(animJump, false);
             jumping = false;
         }
+        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animLand) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0) && landing == true)
+        {
+            anim.SetBool(animLand, false);
+            landing = false;
+        }
+
     }
 
     public virtual void Attack()
@@ -65,6 +73,12 @@ public class BasicAnimator : MonoBehaviour
     {
         anim.SetBool(animJump, true);
         jumping = true;
+    }
+
+    public virtual void Land()
+    {
+        anim.SetBool(animLand, true);
+        landing = true;
     }
     public virtual void Flip()
     {

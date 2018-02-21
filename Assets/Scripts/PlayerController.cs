@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     [NonSerialized]
     public string controllerCode;
 
-  
     public const string controllerOne = "_C1";
     public const string controllerTwo = "_C2";
 
@@ -159,11 +158,13 @@ public class PlayerController : MonoBehaviour
         // JUMP
         if (Input.GetAxis(jumpInput) > 0 && (!inAir))
         {
-            inAir = true;
+          
             rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;
 
             //  GetComponent<BoxCollider2D>().sharedMaterial.friction = 0;
 
+            bodyAnim.Jump();
+            armAnim.Jump();
             myAudio.PlayOneShot(jumpSound); // needs change?? need landing sound ??
                                             // play jump animation
         }
@@ -175,6 +176,17 @@ public class PlayerController : MonoBehaviour
         // Round it to nearest .5
         temp = X;
         temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
+
+        if (Mathf.Abs(temp) <= 0.5f)
+        {
+            bodyAnim.ToggleWalk(true);
+            armAnim.ToggleWalk(true);
+        }
+        else
+        {
+            bodyAnim.ToggleWalk(false);
+            armAnim.ToggleWalk(false);
+        }
 
         if (!inAir)
             temp *= speed;
@@ -278,7 +290,8 @@ public class PlayerController : MonoBehaviour
     private void ResetJump()
     {
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
-        inAir = true;
+
+        bool tempInAir = true;
 
         // transform.parent = null;
 
@@ -288,6 +301,7 @@ public class PlayerController : MonoBehaviour
         armAnim.Falling(true);
         //
         //
+
         for (int i = 0; i < resetJumpOn.Length; i++)
         {
             for (int l = -1; l < 2; l += 2)
@@ -311,12 +325,23 @@ public class PlayerController : MonoBehaviour
                     {
                         if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
                         {
+
+                            if(inAir)
+                            {
+                                // LANDING
+                                //play land sound
+
+                                
+                                // play land animation
+
+                            }
+
                             /*
                             if (resetJumpOn[i] == "MovingFloor" || objHit[j].transform.GetComponent<MovingPlatform>() != null)
                                 transform.parent = objHit[j].transform;
 */
-                            inAir = false;
-
+                           // inAir = false;
+                            tempInAir = false;
 
                             //
                             //
@@ -330,6 +355,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            inAir = tempInAir;
 
         }
     }

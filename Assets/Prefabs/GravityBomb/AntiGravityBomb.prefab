@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  explosionForce: 200
+  explosionForce: 450
   duration: 5
   tagNames:
   - Enemy
