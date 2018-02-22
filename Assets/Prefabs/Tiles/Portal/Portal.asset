@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ad430eaa27d37488f46d9eb69c7739, type: 3}
+  m_Name: Portal
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 4386200088940554, guid: 3097ae506e3597c47b1a9325cbd950b2, type: 2}
+  - {fileID: 4602630339418770, guid: 06f75438b75af7a4faf45df6a4483962, type: 2}
+  - {fileID: 4938629512766308, guid: 3ac262bcd648e1d4e8ff15abc7a8470f, type: 2}
