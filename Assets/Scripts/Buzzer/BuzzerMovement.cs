@@ -47,10 +47,20 @@ public class BuzzerMovement:MonoBehaviour
 
     private BasicAnimator bodyAnim;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip attackSound;
+    [SerializeField]
+    private AudioClip idleSound;
+    [SerializeField]
+    private AudioClip flyingSound;
+    private AudioSource audioSource;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         // If the BasicAnimator component is missing, add it. Should not need any configuration
         if(GetComponent<BasicAnimator>() == null)
@@ -76,6 +86,12 @@ public class BuzzerMovement:MonoBehaviour
             sr.flipX = rb.velocity.x < 0f ? true : false;           // Set the sprite being flipped in the direction of travel
         else                // If not attacking
         {
+            if (audioSource.clip != idleSound)
+            {
+                audioSource.clip = idleSound;
+                audioSource.Play();
+            }
+
             float targetDistance = Vector2.Distance(transform.position, targetPos);     // How far away the buzzer is from the target
 
             if (targetDistance < followDistance)    // If inside the target radius
@@ -91,6 +107,8 @@ public class BuzzerMovement:MonoBehaviour
                 flyDir = Vector2.ClampMagnitude(flyDir, 3f);    // Clamp the flying speed
                 if (flyDir != Vector2.zero)
                     rb.AddForce(flyDir * speed);                // Fly in the direction flyDir TODO: Base this on Time.deltaTime?
+
+                audioSource.loop = true;
             }
             else    // If outside the target radius
             {
@@ -107,39 +125,7 @@ public class BuzzerMovement:MonoBehaviour
             if (playerDistance < attackDistance && playerTarget.GetComponent<PlayerController>().isActive)  // If the player is closer than the attack distance
                 StartCoroutine(AttackInterval(attackTimeWait));                                             // Start the attacking sequence
         }
-    }
 
-    // Changes the direction after a set time
-    private IEnumerator MoveInterval(float time)
-    {
-        yield return new WaitForSeconds(time);
-        changePath = true;
-    }
-
-    // A sequence of events that composes the attacking
-    private IEnumerator AttackInterval(float time)
-    {
-        bodyAnim.Attack();      // Start the attacking animation
-
-        attacking = true;       // Prevent the movement code from running, and another attack from triggering
-        rb.AddForce(new Vector2(0f, -speed * 24f), ForceMode2D.Impulse);    // Move upwards to show the imminent attack
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, 2f);              // Clamp the speed
-        Vector2 targetingPos = playerTarget.position;                       // Target where the player currently is, but only once
-        sr.flipX = rb.velocity.x < 0f ? true : false;                       // Flip the sprite in the direction of travel
-
-        yield return new WaitForSeconds(time);                              // Wait
-
-        Vector2 attackDir = new Vector2(targetingPos.x - transform.position.x, targetingPos.y - transform.position.y);  // Get the direction towards where the player was
-        rb.AddForce(attackDir.normalized * attackSpeed, ForceMode2D.Impulse);   // Fly quickly towards where the player used to be
-        sr.flipX = attackDir.x < 0f ? true : false;     // Flip the sprite in the direction of attack
-
-        yield return new WaitForSeconds(time);  // Wait
-
-        attacking = false;      // Stop attackin, re-enabling the movement code
-    }
-
-    private void FixedUpdate()
-    {
         // Raycast in the direction of travel
         Vector2 rayOrigin = transform.position + new Vector3(rb.velocity.normalized.x, rb.velocity.normalized.y);
 
@@ -157,6 +143,39 @@ public class BuzzerMovement:MonoBehaviour
         // If the raycast hits anything but a player, slow down by moving in the opposite direction
         if (hit.transform != null && hit.transform.tag != "Player")
             rb.AddForce(-rayDirection, ForceMode2D.Impulse);
+    }
+
+    // Changes the direction after a set time
+    private IEnumerator MoveInterval(float time)
+    {
+        yield return new WaitForSeconds(time);
+        changePath = true;
+    }
+
+    // A sequence of events that composes the attacking
+    private IEnumerator AttackInterval(float time)
+    {
+        bodyAnim.Attack();      // Start the attacking animation
+        audioSource.loop = false;
+        audioSource.clip = flyingSound;
+        audioSource.Play();
+        attacking = true;       // Prevent the movement code from running, and another attack from triggering
+        rb.AddForce(new Vector2(0f, -speed * 24f), ForceMode2D.Impulse);    // Move upwards to show the imminent attack
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, 2f);              // Clamp the speed
+        Vector2 targetingPos = playerTarget.position;                       // Target where the player currently is, but only once
+        sr.flipX = rb.velocity.x < 0f ? true : false;                       // Flip the sprite in the direction of travel
+
+        yield return new WaitForSeconds(time);                              // Wait
+
+        audioSource.clip = attackSound;
+        audioSource.Play();
+        Vector2 attackDir = new Vector2(targetingPos.x - transform.position.x, targetingPos.y - transform.position.y);  // Get the direction towards where the player was
+        rb.AddForce(attackDir.normalized * attackSpeed, ForceMode2D.Impulse);   // Fly quickly towards where the player used to be
+        sr.flipX = attackDir.x < 0f ? true : false;     // Flip the sprite in the direction of attack
+
+        yield return new WaitForSeconds(time);  // Wait
+
+        attacking = false;      // Stop attackin, re-enabling the movement code
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
