@@ -61,6 +61,8 @@ GameObject:
   - component: {fileID: 95026820334797860}
   - component: {fileID: 114587427707560048}
   - component: {fileID: 114174067668099832}
+  - component: {fileID: 82446556660860800}
+  - component: {fileID: 114440824730290900}
   m_Layer: 0
   m_Name: PlayerBot 1
   m_TagString: Player
@@ -133,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.63, y: -2.58, z: 0}
+  m_LocalPosition: {x: -30.051666, y: -4.233577, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -176,6 +178,86 @@ CapsuleCollider2D:
   m_Offset: {x: -0.11201906, y: -0.3393296}
   m_Size: {x: 0.6327181, y: 3.150244}
   m_Direction: 0
+--- !u!82 &82446556660860800
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566391204588738}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95026820334797860
 Animator:
   serializedVersion: 3
@@ -264,6 +346,24 @@ MonoBehaviour:
   walls:
   - Floor
   range: 2
+--- !u!114 &114440824730290900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566391204588738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a7845cdb5f8944eb09e613df5de419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footsteps:
+  - {fileID: 8300000, guid: 4674572942a35d74b9c756d46fce9153, type: 3}
+  - {fileID: 8300000, guid: 9c3453b961aeb9b469a747e4ef10abe2, type: 3}
+  - {fileID: 8300000, guid: c6c757d8f1af3174f820ad1083c1a2e7, type: 3}
+  - {fileID: 8300000, guid: 26f4d859918b5e84281a7b9f061b9fae, type: 3}
+  - {fileID: 8300000, guid: fb1f21b6d4ee6214994c7486506a25e4, type: 3}
+  - {fileID: 8300000, guid: c4296ebe7af857e4d9b2a4e7674cbc81, type: 3}
 --- !u!114 &114587427707560048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,12 +397,12 @@ MonoBehaviour:
   resetJumpOn:
   - Floor
   - MovingFloor
-  jumpSound: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 4674572942a35d74b9c756d46fce9153, type: 3}
+  landingSound: {fileID: 8300000, guid: c3ae6d2c236f08b4db13dc5cb07a7de7, type: 3}
   lastSafe: {x: 0, y: 0}
   revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
     type: 2}
-  dyingAnimationGO: {fileID: 1260716085056240, guid: 1c448e5cfcff1264faa15edf4633ecce,
-    type: 2}
+  dyingAnimationGO: {fileID: 0}
 --- !u!114 &114954191565589998
 MonoBehaviour:
   m_ObjectHideFlags: 1
