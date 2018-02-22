@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="AudioFile" id="{04731af4-5649-4e18-8f67-4d938de4216b}">
+    <object class="AudioFile" id="{ba60309c-41d2-48d9-8282-b67fe80bd53c}">
         <property name="assetPath">
-            <value>Attacking.wav</value>
+            <value>crawler_Idle.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>
@@ -11,7 +11,7 @@
             <value>1</value>
         </property>
         <property name="length">
-            <value>3.0546485260770977</value>
+            <value>3.7373242630385488</value>
         </property>
         <relationship name="masterAssetFolder">
             <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>
