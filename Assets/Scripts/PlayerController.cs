@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     private float distanceGraceForJump = 0.4f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
 
     // Components
-    private AudioSource myAudio; // Audio source on player object or sound master or game master ??? who knows , we do later.
     private CapsuleCollider2D myBox;
     private float rayOffSetX;
     private float rayOffSetY;
@@ -72,9 +71,11 @@ public class PlayerController : MonoBehaviour
     private string[] resetJumpOn = new string[] { };
 
     [Header("Sounds")]
-
     [SerializeField]
     private AudioClip jumpSound;
+    [SerializeField]
+    private AudioClip landingSound;
+    private AudioSource audioSource;
 
     [Header("Reviving")]
     [SerializeField]
@@ -101,7 +102,6 @@ public class PlayerController : MonoBehaviour
         //
         //
 
-        myAudio = GetComponent<AudioSource>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         myBox = GetComponent<CapsuleCollider2D>();
 
@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
         inAir = true;
 
         sr = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -165,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
             bodyAnim.Jump();
             armAnim.Jump();
-            myAudio.PlayOneShot(jumpSound); // needs change?? need landing sound ??
+            audioSource.PlayOneShot(jumpSound); // needs change?? need landing sound ??
                                             // play jump animation
         }
 
@@ -379,7 +380,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 // LANDING
                                 //play land sound
-
+                                audioSource.PlayOneShot(landingSound, 0.1f);
                                 
                                 // play land animation
 
