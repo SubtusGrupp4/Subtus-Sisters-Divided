@@ -5305,6 +5305,59 @@ Prefab:
       propertyPath: OverrideMaxDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1216726206435462, guid: 97bb6a60288057341bdd0eb0c1cb3f23, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224142348829169010, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 554
+      objectReference: {fileID: 0}
+    - target: {fileID: 224142348829169010, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 311.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072529210852774, guid: 97bb6a60288057341bdd0eb0c1cb3f23, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864711973879772, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864711973879772, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864711973879772, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864711973879772, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864711973879772, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483667675023352, guid: 97bb6a60288057341bdd0eb0c1cb3f23, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114094692904828946, guid: 97bb6a60288057341bdd0eb0c1cb3f23,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d8c9e5bb3afd2094fbd299b821607612,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97bb6a60288057341bdd0eb0c1cb3f23, type: 2}
   m_IsPrefabParent: 0

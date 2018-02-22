@@ -44,14 +44,14 @@ public class SafepointManager : MonoBehaviour {
         currentTopSafepoint.position = GameManager.instance.playerTop.position;
 
         currentBotSafepoint = new GameObject("Initial Bot Safepoint").transform;
-        currentBotSafepoint.position = GameManager.instance.playerTop.position;
+        currentBotSafepoint.position = GameManager.instance.playerBot.position;
 
         // Set the initial revive points to be the starting position of the players.
         topCheckpoint = new GameObject("Initial Top Checkpoint").transform;
         topCheckpoint.position = GameManager.instance.playerTop.position;
 
         botCheckpoint = new GameObject("Initial Bot Checkpoint").transform;
-        botCheckpoint.position = GameManager.instance.playerTop.position;
+        botCheckpoint.position = GameManager.instance.playerBot.position;
     }
 
     private void CreateSingleton()
