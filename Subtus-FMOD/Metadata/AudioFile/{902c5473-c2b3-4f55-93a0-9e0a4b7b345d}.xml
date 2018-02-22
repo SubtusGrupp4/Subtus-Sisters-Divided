@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{902c5473-c2b3-4f55-93a0-9e0a4b7b345d}">
+        <property name="assetPath">
+            <value>buzzer_Falling_01.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>1.1133333333333333</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>
+        </relationship>
+    </object>
+</objects>
