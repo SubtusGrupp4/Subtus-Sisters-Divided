@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{870d33eb-c7c1-4ea8-b15e-892cfd94838f}">
+        <property name="assetPath">
+            <value>crawler_Attacking.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>3.0546485260770977</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>
+        </relationship>
+    </object>
+</objects>
