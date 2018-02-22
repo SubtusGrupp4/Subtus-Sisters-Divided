@@ -390,7 +390,7 @@ public class AIMovement : MonoBehaviour
         if (rigidbody2D.velocity == Vector2.zero)
         {
 
-            rigidbody2D.AddForce(new Vector2(10, 76));
+            rigidbody2D.AddForce(new Vector2(10, 45));
         }
 
 

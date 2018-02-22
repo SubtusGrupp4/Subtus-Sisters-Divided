@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c25ab583a97a0fd47a5d08b472a3de35
-timeCreated: 1518555958
+timeCreated: 1519305496
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -194,10 +194,10 @@ TextureImporter:
       name: crawler_idle_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4608
-        width: 768
-        height: 512
+        x: 30
+        y: 4606
+        width: 692
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +208,10 @@ TextureImporter:
       name: crawler_idle_1_1
       rect:
         serializedVersion: 2
-        x: 768
-        y: 4608
-        width: 768
-        height: 512
+        x: 798
+        y: 4606
+        width: 692
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +222,10 @@ TextureImporter:
       name: crawler_idle_1_2
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 4608
-        width: 768
-        height: 512
+        x: 1566
+        y: 4606
+        width: 692
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +236,10 @@ TextureImporter:
       name: crawler_idle_1_3
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 4608
-        width: 768
-        height: 512
+        x: 2334
+        y: 4606
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +250,10 @@ TextureImporter:
       name: crawler_idle_1_4
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 4608
-        width: 768
-        height: 512
+        x: 3102
+        y: 4606
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,10 +264,10 @@ TextureImporter:
       name: crawler_idle_1_5
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 4608
-        width: 768
-        height: 512
+        x: 3870
+        y: 4606
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: crawler_idle_1_6
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 4608
-        width: 768
-        height: 512
+        x: 4638
+        y: 4606
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,10 +292,10 @@ TextureImporter:
       name: crawler_idle_1_7
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 4608
-        width: 768
-        height: 512
+        x: 5406
+        y: 4606
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +306,10 @@ TextureImporter:
       name: crawler_idle_1_8
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 4608
-        width: 768
-        height: 512
+        x: 6174
+        y: 4606
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,10 +320,10 @@ TextureImporter:
       name: crawler_idle_1_9
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 4608
-        width: 768
-        height: 512
+        x: 6942
+        y: 4606
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +334,10 @@ TextureImporter:
       name: crawler_idle_1_10
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 4608
-        width: 768
-        height: 512
+        x: 7710
+        y: 4606
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,10 +348,10 @@ TextureImporter:
       name: crawler_idle_1_11
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 4608
-        width: 768
-        height: 512
+        x: 8478
+        y: 4606
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,10 +362,10 @@ TextureImporter:
       name: crawler_idle_1_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4096
-        width: 768
-        height: 512
+        x: 30
+        y: 4095
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,10 +376,10 @@ TextureImporter:
       name: crawler_idle_1_13
       rect:
         serializedVersion: 2
-        x: 768
-        y: 4096
-        width: 768
-        height: 512
+        x: 799
+        y: 4095
+        width: 691
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -390,10 +390,10 @@ TextureImporter:
       name: crawler_idle_1_14
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 4096
-        width: 768
-        height: 512
+        x: 1567
+        y: 4095
+        width: 691
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,10 +404,10 @@ TextureImporter:
       name: crawler_idle_1_15
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 4096
-        width: 768
-        height: 512
+        x: 2335
+        y: 4095
+        width: 691
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +418,10 @@ TextureImporter:
       name: crawler_idle_1_16
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 4096
-        width: 768
-        height: 512
+        x: 3103
+        y: 4095
+        width: 691
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -432,10 +432,10 @@ TextureImporter:
       name: crawler_idle_1_17
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 4096
-        width: 768
-        height: 512
+        x: 3871
+        y: 4095
+        width: 691
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,10 +446,10 @@ TextureImporter:
       name: crawler_idle_1_18
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 4096
-        width: 768
-        height: 512
+        x: 4639
+        y: 4095
+        width: 691
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,10 +460,10 @@ TextureImporter:
       name: crawler_idle_1_19
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 4096
-        width: 768
-        height: 512
+        x: 5407
+        y: 4095
+        width: 691
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -474,10 +474,10 @@ TextureImporter:
       name: crawler_idle_1_20
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 4096
-        width: 768
-        height: 512
+        x: 6175
+        y: 4095
+        width: 691
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,10 +488,10 @@ TextureImporter:
       name: crawler_idle_1_21
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 4096
-        width: 768
-        height: 512
+        x: 6943
+        y: 4095
+        width: 691
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,10 +502,10 @@ TextureImporter:
       name: crawler_idle_1_22
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 4096
-        width: 768
-        height: 512
+        x: 7711
+        y: 4095
+        width: 691
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -516,10 +516,10 @@ TextureImporter:
       name: crawler_idle_1_23
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 4096
-        width: 768
-        height: 512
+        x: 8479
+        y: 4095
+        width: 691
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -530,10 +530,10 @@ TextureImporter:
       name: crawler_idle_1_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3584
-        width: 768
-        height: 512
+        x: 32
+        y: 3583
+        width: 690
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -544,10 +544,10 @@ TextureImporter:
       name: crawler_idle_1_25
       rect:
         serializedVersion: 2
-        x: 768
-        y: 3584
-        width: 768
-        height: 512
+        x: 799
+        y: 3583
+        width: 691
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -558,10 +558,10 @@ TextureImporter:
       name: crawler_idle_1_26
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 3584
-        width: 768
-        height: 512
+        x: 1567
+        y: 3583
+        width: 691
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,10 +572,10 @@ TextureImporter:
       name: crawler_idle_1_27
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 3584
-        width: 768
-        height: 512
+        x: 2336
+        y: 3583
+        width: 690
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -586,10 +586,10 @@ TextureImporter:
       name: crawler_idle_1_28
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 3584
-        width: 768
-        height: 512
+        x: 3103
+        y: 3583
+        width: 691
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -600,10 +600,10 @@ TextureImporter:
       name: crawler_idle_1_29
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 3584
-        width: 768
-        height: 512
+        x: 3871
+        y: 3583
+        width: 691
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -614,10 +614,10 @@ TextureImporter:
       name: crawler_idle_1_30
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 3584
-        width: 768
-        height: 512
+        x: 4639
+        y: 3583
+        width: 691
+        height: 259
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -628,10 +628,10 @@ TextureImporter:
       name: crawler_idle_1_31
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 3584
-        width: 768
-        height: 512
+        x: 5407
+        y: 3583
+        width: 691
+        height: 259
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -642,10 +642,10 @@ TextureImporter:
       name: crawler_idle_1_32
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 3584
-        width: 768
-        height: 512
+        x: 6175
+        y: 3583
+        width: 691
+        height: 259
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -656,10 +656,10 @@ TextureImporter:
       name: crawler_idle_1_33
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 3584
-        width: 768
-        height: 512
+        x: 6943
+        y: 3583
+        width: 691
+        height: 260
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -670,10 +670,10 @@ TextureImporter:
       name: crawler_idle_1_34
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 3584
-        width: 768
-        height: 512
+        x: 7711
+        y: 3583
+        width: 691
+        height: 261
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -684,10 +684,10 @@ TextureImporter:
       name: crawler_idle_1_35
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 3584
-        width: 768
-        height: 512
+        x: 8479
+        y: 3583
+        width: 691
+        height: 261
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -698,10 +698,10 @@ TextureImporter:
       name: crawler_idle_1_36
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3072
-        width: 768
-        height: 512
+        x: 31
+        y: 3071
+        width: 691
+        height: 261
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -712,10 +712,10 @@ TextureImporter:
       name: crawler_idle_1_37
       rect:
         serializedVersion: 2
-        x: 768
-        y: 3072
-        width: 768
-        height: 512
+        x: 799
+        y: 3071
+        width: 691
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -726,10 +726,10 @@ TextureImporter:
       name: crawler_idle_1_38
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 3072
-        width: 768
-        height: 512
+        x: 1567
+        y: 3071
+        width: 691
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -740,10 +740,10 @@ TextureImporter:
       name: crawler_idle_1_39
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 3072
-        width: 768
-        height: 512
+        x: 2335
+        y: 3071
+        width: 691
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -754,10 +754,10 @@ TextureImporter:
       name: crawler_idle_1_40
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 3072
-        width: 768
-        height: 512
+        x: 3103
+        y: 3071
+        width: 691
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -768,10 +768,10 @@ TextureImporter:
       name: crawler_idle_1_41
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 3072
-        width: 768
-        height: 512
+        x: 3871
+        y: 3071
+        width: 690
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -782,10 +782,10 @@ TextureImporter:
       name: crawler_idle_1_42
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 3072
-        width: 768
-        height: 512
+        x: 4639
+        y: 3071
+        width: 691
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -796,10 +796,10 @@ TextureImporter:
       name: crawler_idle_1_43
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 3072
-        width: 768
-        height: 512
+        x: 5407
+        y: 3071
+        width: 691
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -810,10 +810,10 @@ TextureImporter:
       name: crawler_idle_1_44
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 3072
-        width: 768
-        height: 512
+        x: 6175
+        y: 3071
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -824,10 +824,10 @@ TextureImporter:
       name: crawler_idle_1_45
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 3072
-        width: 768
-        height: 512
+        x: 6944
+        y: 3071
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -838,10 +838,10 @@ TextureImporter:
       name: crawler_idle_1_46
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 3072
-        width: 768
-        height: 512
+        x: 7711
+        y: 3071
+        width: 691
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -852,10 +852,10 @@ TextureImporter:
       name: crawler_idle_1_47
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 3072
-        width: 768
-        height: 512
+        x: 8479
+        y: 3071
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -866,10 +866,10 @@ TextureImporter:
       name: crawler_idle_1_48
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2560
-        width: 768
-        height: 512
+        x: 31
+        y: 2559
+        width: 691
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -880,10 +880,10 @@ TextureImporter:
       name: crawler_idle_1_49
       rect:
         serializedVersion: 2
-        x: 768
-        y: 2560
-        width: 768
-        height: 512
+        x: 799
+        y: 2559
+        width: 691
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -894,10 +894,10 @@ TextureImporter:
       name: crawler_idle_1_50
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 2560
-        width: 768
-        height: 512
+        x: 1567
+        y: 2559
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -908,10 +908,10 @@ TextureImporter:
       name: crawler_idle_1_51
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 2560
-        width: 768
-        height: 512
+        x: 2336
+        y: 2559
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -922,10 +922,10 @@ TextureImporter:
       name: crawler_idle_1_52
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 2560
-        width: 768
-        height: 512
+        x: 3103
+        y: 2559
+        width: 691
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -936,10 +936,10 @@ TextureImporter:
       name: crawler_idle_1_53
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 2560
-        width: 768
-        height: 512
+        x: 3871
+        y: 2559
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -950,10 +950,10 @@ TextureImporter:
       name: crawler_idle_1_54
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 2560
-        width: 768
-        height: 512
+        x: 4640
+        y: 2559
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -964,10 +964,10 @@ TextureImporter:
       name: crawler_idle_1_55
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 2560
-        width: 768
-        height: 512
+        x: 5407
+        y: 2559
+        width: 691
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -978,10 +978,10 @@ TextureImporter:
       name: crawler_idle_1_56
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 2560
-        width: 768
-        height: 512
+        x: 6175
+        y: 2559
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -992,10 +992,10 @@ TextureImporter:
       name: crawler_idle_1_57
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 2560
-        width: 768
-        height: 512
+        x: 6944
+        y: 2559
+        width: 690
+        height: 265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1006,10 +1006,10 @@ TextureImporter:
       name: crawler_idle_1_58
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 2560
-        width: 768
-        height: 512
+        x: 7712
+        y: 2559
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1020,10 +1020,10 @@ TextureImporter:
       name: crawler_idle_1_59
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 2560
-        width: 768
-        height: 512
+        x: 8479
+        y: 2559
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1034,10 +1034,10 @@ TextureImporter:
       name: crawler_idle_1_60
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2048
-        width: 768
-        height: 512
+        x: 32
+        y: 2047
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1048,10 +1048,10 @@ TextureImporter:
       name: crawler_idle_1_61
       rect:
         serializedVersion: 2
-        x: 768
-        y: 2048
-        width: 768
-        height: 512
+        x: 799
+        y: 2047
+        width: 691
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1062,10 +1062,10 @@ TextureImporter:
       name: crawler_idle_1_62
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 2048
-        width: 768
-        height: 512
+        x: 1567
+        y: 2047
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1076,10 +1076,10 @@ TextureImporter:
       name: crawler_idle_1_63
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 2048
-        width: 768
-        height: 512
+        x: 2336
+        y: 2047
+        width: 690
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1090,10 +1090,10 @@ TextureImporter:
       name: crawler_idle_1_64
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 2048
-        width: 768
-        height: 512
+        x: 3103
+        y: 2047
+        width: 691
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1104,10 +1104,10 @@ TextureImporter:
       name: crawler_idle_1_65
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 2048
-        width: 768
-        height: 512
+        x: 3871
+        y: 2047
+        width: 690
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1118,10 +1118,10 @@ TextureImporter:
       name: crawler_idle_1_66
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 2048
-        width: 768
-        height: 512
+        x: 4640
+        y: 2047
+        width: 690
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1132,10 +1132,10 @@ TextureImporter:
       name: crawler_idle_1_67
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 2048
-        width: 768
-        height: 512
+        x: 5407
+        y: 2047
+        width: 691
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1146,10 +1146,10 @@ TextureImporter:
       name: crawler_idle_1_68
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 2048
-        width: 768
-        height: 512
+        x: 6175
+        y: 2047
+        width: 690
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1160,10 +1160,10 @@ TextureImporter:
       name: crawler_idle_1_69
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 2048
-        width: 768
-        height: 512
+        x: 6943
+        y: 2047
+        width: 691
+        height: 263
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1174,10 +1174,10 @@ TextureImporter:
       name: crawler_idle_1_70
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 2048
-        width: 768
-        height: 512
+        x: 7711
+        y: 2047
+        width: 691
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1188,10 +1188,10 @@ TextureImporter:
       name: crawler_idle_1_71
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 2048
-        width: 768
-        height: 512
+        x: 8479
+        y: 2047
+        width: 690
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1202,10 +1202,10 @@ TextureImporter:
       name: crawler_idle_1_72
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1536
-        width: 768
-        height: 512
+        x: 31
+        y: 1535
+        width: 691
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1216,10 +1216,10 @@ TextureImporter:
       name: crawler_idle_1_73
       rect:
         serializedVersion: 2
-        x: 768
-        y: 1536
-        width: 768
-        height: 512
+        x: 799
+        y: 1535
+        width: 691
+        height: 261
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1230,10 +1230,10 @@ TextureImporter:
       name: crawler_idle_1_74
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 768
-        height: 512
+        x: 1566
+        y: 1535
+        width: 692
+        height: 261
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1244,10 +1244,10 @@ TextureImporter:
       name: crawler_idle_1_75
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 1536
-        width: 768
-        height: 512
+        x: 2334
+        y: 1535
+        width: 692
+        height: 261
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1258,10 +1258,10 @@ TextureImporter:
       name: crawler_idle_1_76
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 1536
-        width: 768
-        height: 512
+        x: 3102
+        y: 1535
+        width: 692
+        height: 260
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1272,10 +1272,10 @@ TextureImporter:
       name: crawler_idle_1_77
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 1536
-        width: 768
-        height: 512
+        x: 3870
+        y: 1535
+        width: 692
+        height: 260
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1286,10 +1286,10 @@ TextureImporter:
       name: crawler_idle_1_78
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 1536
-        width: 768
-        height: 512
+        x: 4638
+        y: 1535
+        width: 692
+        height: 260
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1300,10 +1300,10 @@ TextureImporter:
       name: crawler_idle_1_79
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 1536
-        width: 768
-        height: 512
+        x: 5406
+        y: 1535
+        width: 692
+        height: 260
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1314,10 +1314,10 @@ TextureImporter:
       name: crawler_idle_1_80
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 1536
-        width: 768
-        height: 512
+        x: 6174
+        y: 1535
+        width: 692
+        height: 259
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1328,10 +1328,10 @@ TextureImporter:
       name: crawler_idle_1_81
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 1536
-        width: 768
-        height: 512
+        x: 6942
+        y: 1535
+        width: 692
+        height: 259
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1342,10 +1342,10 @@ TextureImporter:
       name: crawler_idle_1_82
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 1536
-        width: 768
-        height: 512
+        x: 7710
+        y: 1535
+        width: 692
+        height: 259
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1356,10 +1356,10 @@ TextureImporter:
       name: crawler_idle_1_83
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 1536
-        width: 768
-        height: 512
+        x: 8478
+        y: 1535
+        width: 692
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1370,10 +1370,10 @@ TextureImporter:
       name: crawler_idle_1_84
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 768
-        height: 512
+        x: 30
+        y: 1023
+        width: 692
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1384,10 +1384,10 @@ TextureImporter:
       name: crawler_idle_1_85
       rect:
         serializedVersion: 2
-        x: 768
-        y: 1024
-        width: 768
-        height: 512
+        x: 798
+        y: 1023
+        width: 692
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1398,10 +1398,10 @@ TextureImporter:
       name: crawler_idle_1_86
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1024
-        width: 768
-        height: 512
+        x: 1566
+        y: 1023
+        width: 692
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1412,10 +1412,10 @@ TextureImporter:
       name: crawler_idle_1_87
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 1024
-        width: 768
-        height: 512
+        x: 2334
+        y: 1023
+        width: 692
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1426,10 +1426,10 @@ TextureImporter:
       name: crawler_idle_1_88
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 1024
-        width: 768
-        height: 512
+        x: 3102
+        y: 1023
+        width: 692
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1440,10 +1440,10 @@ TextureImporter:
       name: crawler_idle_1_89
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 1024
-        width: 768
-        height: 512
+        x: 3870
+        y: 1023
+        width: 692
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1454,10 +1454,10 @@ TextureImporter:
       name: crawler_idle_1_90
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 1024
-        width: 768
-        height: 512
+        x: 4638
+        y: 1023
+        width: 692
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1468,10 +1468,10 @@ TextureImporter:
       name: crawler_idle_1_91
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 1024
-        width: 768
-        height: 512
+        x: 5406
+        y: 1023
+        width: 692
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1482,10 +1482,10 @@ TextureImporter:
       name: crawler_idle_1_92
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 1024
-        width: 768
-        height: 512
+        x: 6174
+        y: 1023
+        width: 692
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1496,10 +1496,10 @@ TextureImporter:
       name: crawler_idle_1_93
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 1024
-        width: 768
-        height: 512
+        x: 6942
+        y: 1023
+        width: 692
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1510,10 +1510,10 @@ TextureImporter:
       name: crawler_idle_1_94
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 1024
-        width: 768
-        height: 512
+        x: 7710
+        y: 1023
+        width: 692
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1524,10 +1524,10 @@ TextureImporter:
       name: crawler_idle_1_95
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 1024
-        width: 768
-        height: 512
+        x: 8478
+        y: 1023
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1538,10 +1538,10 @@ TextureImporter:
       name: crawler_idle_1_96
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
-        width: 768
-        height: 512
+        x: 30
+        y: 510
+        width: 692
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1552,10 +1552,10 @@ TextureImporter:
       name: crawler_idle_1_97
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
-        width: 768
-        height: 512
+        x: 798
+        y: 510
+        width: 692
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1566,10 +1566,10 @@ TextureImporter:
       name: crawler_idle_1_98
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 768
-        height: 512
+        x: 1566
+        y: 510
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1580,10 +1580,10 @@ TextureImporter:
       name: crawler_idle_1_99
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 512
-        width: 768
-        height: 512
+        x: 2334
+        y: 510
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1594,10 +1594,10 @@ TextureImporter:
       name: crawler_idle_1_100
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 512
-        width: 768
-        height: 512
+        x: 3102
+        y: 510
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1608,10 +1608,10 @@ TextureImporter:
       name: crawler_idle_1_101
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 512
-        width: 768
-        height: 512
+        x: 3870
+        y: 510
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1622,10 +1622,10 @@ TextureImporter:
       name: crawler_idle_1_102
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 512
-        width: 768
-        height: 512
+        x: 4638
+        y: 510
+        width: 692
+        height: 253
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1636,10 +1636,10 @@ TextureImporter:
       name: crawler_idle_1_103
       rect:
         serializedVersion: 2
-        x: 5376
-        y: 512
-        width: 768
-        height: 512
+        x: 5406
+        y: 510
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1650,10 +1650,10 @@ TextureImporter:
       name: crawler_idle_1_104
       rect:
         serializedVersion: 2
-        x: 6144
-        y: 512
-        width: 768
-        height: 512
+        x: 6174
+        y: 510
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1664,10 +1664,10 @@ TextureImporter:
       name: crawler_idle_1_105
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 512
-        width: 768
-        height: 512
+        x: 6942
+        y: 510
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1678,10 +1678,10 @@ TextureImporter:
       name: crawler_idle_1_106
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 512
-        width: 768
-        height: 512
+        x: 7710
+        y: 510
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1692,10 +1692,10 @@ TextureImporter:
       name: crawler_idle_1_107
       rect:
         serializedVersion: 2
-        x: 8448
-        y: 512
-        width: 768
-        height: 512
+        x: 8478
+        y: 510
+        width: 692
+        height: 252
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1706,10 +1706,10 @@ TextureImporter:
       name: crawler_idle_1_108
       rect:
         serializedVersion: 2
-        x: 0
+        x: 30
         y: 0
-        width: 768
-        height: 512
+        width: 692
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1720,10 +1720,10 @@ TextureImporter:
       name: crawler_idle_1_109
       rect:
         serializedVersion: 2
-        x: 768
+        x: 798
         y: 0
-        width: 768
-        height: 512
+        width: 692
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1734,10 +1734,10 @@ TextureImporter:
       name: crawler_idle_1_110
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1566
         y: 0
-        width: 768
-        height: 512
+        width: 691
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

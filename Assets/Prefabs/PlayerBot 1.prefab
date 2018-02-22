@@ -301,7 +301,8 @@ MonoBehaviour:
   lastSafe: {x: 0, y: 0}
   revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
     type: 2}
-  dyingAnimationGO: {fileID: 0}
+  dyingAnimationGO: {fileID: 1260716085056240, guid: 1c448e5cfcff1264faa15edf4633ecce,
+    type: 2}
 --- !u!114 &114954191565589998
 MonoBehaviour:
   m_ObjectHideFlags: 1

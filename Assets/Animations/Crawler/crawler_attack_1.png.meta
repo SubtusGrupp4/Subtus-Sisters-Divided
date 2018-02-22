@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0338b1593c17f7344a3de28484749487
-timeCreated: 1518555741
+timeCreated: 1519306323
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -94,6 +94,8 @@ TextureImporter:
     21300174: crawler_attack_1_87
     21300176: crawler_attack_1_88
     21300178: crawler_attack_1_89
+    21300180: crawler_attack_1_90
+    21300182: crawler_attack_1_91
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -173,12 +175,12 @@ TextureImporter:
       name: crawler_attack_1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 31
         y: 4096
-        width: 769
-        height: 512
+        width: 678
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,12 +189,12 @@ TextureImporter:
       name: crawler_attack_1_1
       rect:
         serializedVersion: 2
-        x: 769
+        x: 800
         y: 4096
-        width: 769
-        height: 512
+        width: 677
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,12 +203,12 @@ TextureImporter:
       name: crawler_attack_1_2
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1569
         y: 4096
-        width: 769
-        height: 512
+        width: 672
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +217,12 @@ TextureImporter:
       name: crawler_attack_1_3
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2337
         y: 4096
-        width: 769
-        height: 512
+        width: 667
+        height: 251
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,12 +231,12 @@ TextureImporter:
       name: crawler_attack_1_4
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3104
         y: 4096
-        width: 769
-        height: 512
+        width: 662
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -243,12 +245,12 @@ TextureImporter:
       name: crawler_attack_1_5
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3869
         y: 4096
-        width: 769
-        height: 512
+        width: 658
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,12 +259,12 @@ TextureImporter:
       name: crawler_attack_1_6
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4634
         y: 4096
-        width: 769
-        height: 512
+        width: 656
+        height: 249
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,12 +273,12 @@ TextureImporter:
       name: crawler_attack_1_7
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5400
         y: 4096
-        width: 769
-        height: 512
+        width: 654
+        height: 259
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,12 +287,12 @@ TextureImporter:
       name: crawler_attack_1_8
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6168
         y: 4096
-        width: 769
-        height: 512
+        width: 653
+        height: 274
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,12 +301,12 @@ TextureImporter:
       name: crawler_attack_1_9
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6940
         y: 4096
-        width: 769
-        height: 512
+        width: 650
+        height: 288
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -313,12 +315,12 @@ TextureImporter:
       name: crawler_attack_1_10
       rect:
         serializedVersion: 2
-        x: 0
+        x: 27
         y: 3584
-        width: 769
-        height: 512
+        width: 643
+        height: 301
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -327,12 +329,12 @@ TextureImporter:
       name: crawler_attack_1_11
       rect:
         serializedVersion: 2
-        x: 769
+        x: 807
         y: 3584
-        width: 769
-        height: 512
+        width: 634
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,12 +343,12 @@ TextureImporter:
       name: crawler_attack_1_12
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1586
         y: 3584
-        width: 769
-        height: 512
+        width: 628
+        height: 336
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -355,12 +357,12 @@ TextureImporter:
       name: crawler_attack_1_13
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2351
         y: 3584
-        width: 769
-        height: 512
+        width: 636
+        height: 347
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -369,12 +371,12 @@ TextureImporter:
       name: crawler_attack_1_14
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3116
         y: 3584
-        width: 769
-        height: 512
+        width: 645
+        height: 355
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -383,12 +385,12 @@ TextureImporter:
       name: crawler_attack_1_15
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3876
         y: 3584
-        width: 769
-        height: 512
+        width: 659
+        height: 357
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -397,12 +399,12 @@ TextureImporter:
       name: crawler_attack_1_16
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4632
         y: 3584
-        width: 769
-        height: 512
+        width: 677
+        height: 352
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -411,12 +413,12 @@ TextureImporter:
       name: crawler_attack_1_17
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5401
         y: 3584
-        width: 769
-        height: 512
+        width: 681
+        height: 339
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -425,12 +427,12 @@ TextureImporter:
       name: crawler_attack_1_18
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6168
         y: 3584
-        width: 769
-        height: 512
+        width: 687
+        height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -439,12 +441,12 @@ TextureImporter:
       name: crawler_attack_1_19
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6933
         y: 3584
-        width: 769
-        height: 512
+        width: 693
+        height: 297
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -453,12 +455,12 @@ TextureImporter:
       name: crawler_attack_1_20
       rect:
         serializedVersion: 2
-        x: 0
+        x: 10
         y: 3072
-        width: 769
-        height: 512
+        width: 697
+        height: 274
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -467,12 +469,12 @@ TextureImporter:
       name: crawler_attack_1_21
       rect:
         serializedVersion: 2
-        x: 769
+        x: 778
         y: 3072
-        width: 769
-        height: 512
+        width: 700
+        height: 249
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -481,12 +483,12 @@ TextureImporter:
       name: crawler_attack_1_22
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1549
         y: 3072
-        width: 769
-        height: 512
+        width: 698
+        height: 242
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -495,12 +497,12 @@ TextureImporter:
       name: crawler_attack_1_23
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2322
         y: 3072
-        width: 769
-        height: 512
+        width: 694
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -509,12 +511,12 @@ TextureImporter:
       name: crawler_attack_1_24
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3094
         y: 3072
-        width: 769
-        height: 512
+        width: 692
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -523,12 +525,12 @@ TextureImporter:
       name: crawler_attack_1_25
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3863
         y: 3072
-        width: 769
-        height: 512
+        width: 692
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -537,12 +539,12 @@ TextureImporter:
       name: crawler_attack_1_26
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4631
         y: 3072
-        width: 769
-        height: 512
+        width: 693
+        height: 241
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -551,12 +553,12 @@ TextureImporter:
       name: crawler_attack_1_27
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5400
         y: 3072
-        width: 769
-        height: 512
+        width: 693
+        height: 242
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -565,12 +567,12 @@ TextureImporter:
       name: crawler_attack_1_28
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6168
         y: 3072
-        width: 769
-        height: 512
+        width: 694
+        height: 242
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -579,12 +581,12 @@ TextureImporter:
       name: crawler_attack_1_29
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6936
         y: 3072
-        width: 769
-        height: 512
+        width: 695
+        height: 243
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -593,12 +595,12 @@ TextureImporter:
       name: crawler_attack_1_30
       rect:
         serializedVersion: 2
-        x: 0
+        x: 15
         y: 2560
-        width: 769
-        height: 512
+        width: 695
+        height: 244
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -607,12 +609,12 @@ TextureImporter:
       name: crawler_attack_1_31
       rect:
         serializedVersion: 2
-        x: 769
+        x: 784
         y: 2560
-        width: 769
-        height: 512
+        width: 695
+        height: 244
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -621,12 +623,12 @@ TextureImporter:
       name: crawler_attack_1_32
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1553
         y: 2560
-        width: 769
-        height: 512
+        width: 695
+        height: 245
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -635,12 +637,12 @@ TextureImporter:
       name: crawler_attack_1_33
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2322
         y: 2560
-        width: 769
-        height: 512
+        width: 695
+        height: 246
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -649,12 +651,12 @@ TextureImporter:
       name: crawler_attack_1_34
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3091
         y: 2560
-        width: 769
-        height: 512
+        width: 695
+        height: 247
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -663,12 +665,12 @@ TextureImporter:
       name: crawler_attack_1_35
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3861
         y: 2560
-        width: 769
-        height: 512
+        width: 694
+        height: 247
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -677,12 +679,12 @@ TextureImporter:
       name: crawler_attack_1_36
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4630
         y: 2560
-        width: 769
-        height: 512
+        width: 694
+        height: 248
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -691,12 +693,12 @@ TextureImporter:
       name: crawler_attack_1_37
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5400
         y: 2560
-        width: 769
-        height: 512
+        width: 693
+        height: 249
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -705,12 +707,12 @@ TextureImporter:
       name: crawler_attack_1_38
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6169
         y: 2560
-        width: 769
-        height: 512
+        width: 693
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -719,12 +721,12 @@ TextureImporter:
       name: crawler_attack_1_39
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6938
         y: 2560
-        width: 769
-        height: 512
+        width: 693
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -733,12 +735,12 @@ TextureImporter:
       name: crawler_attack_1_40
       rect:
         serializedVersion: 2
-        x: 0
+        x: 18
         y: 2048
-        width: 769
-        height: 512
+        width: 692
+        height: 251
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -747,12 +749,12 @@ TextureImporter:
       name: crawler_attack_1_41
       rect:
         serializedVersion: 2
-        x: 769
+        x: 788
         y: 2048
-        width: 769
-        height: 512
+        width: 691
+        height: 251
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -761,12 +763,12 @@ TextureImporter:
       name: crawler_attack_1_42
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1557
         y: 2048
-        width: 769
-        height: 512
+        width: 691
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -775,12 +777,12 @@ TextureImporter:
       name: crawler_attack_1_43
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2326
         y: 2048
-        width: 769
-        height: 512
+        width: 691
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -789,12 +791,12 @@ TextureImporter:
       name: crawler_attack_1_44
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3096
         y: 2048
-        width: 769
-        height: 512
+        width: 690
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -803,12 +805,12 @@ TextureImporter:
       name: crawler_attack_1_45
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3865
         y: 2048
-        width: 769
-        height: 512
+        width: 690
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -817,12 +819,12 @@ TextureImporter:
       name: crawler_attack_1_46
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4635
         y: 2048
-        width: 769
-        height: 512
+        width: 689
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -831,12 +833,12 @@ TextureImporter:
       name: crawler_attack_1_47
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5404
         y: 2048
-        width: 769
-        height: 512
+        width: 689
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -845,12 +847,12 @@ TextureImporter:
       name: crawler_attack_1_48
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6173
         y: 2048
-        width: 769
-        height: 512
+        width: 689
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -859,12 +861,12 @@ TextureImporter:
       name: crawler_attack_1_49
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6943
         y: 2048
-        width: 769
-        height: 512
+        width: 688
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -873,12 +875,12 @@ TextureImporter:
       name: crawler_attack_1_50
       rect:
         serializedVersion: 2
-        x: 0
+        x: 22
         y: 1536
-        width: 769
-        height: 512
+        width: 689
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -887,12 +889,12 @@ TextureImporter:
       name: crawler_attack_1_51
       rect:
         serializedVersion: 2
-        x: 769
+        x: 791
         y: 1536
-        width: 769
-        height: 512
+        width: 689
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -901,12 +903,12 @@ TextureImporter:
       name: crawler_attack_1_52
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1561
         y: 1536
-        width: 769
-        height: 512
+        width: 688
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -915,12 +917,12 @@ TextureImporter:
       name: crawler_attack_1_53
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2330
         y: 1536
-        width: 769
-        height: 512
+        width: 688
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -929,12 +931,12 @@ TextureImporter:
       name: crawler_attack_1_54
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3099
         y: 1536
-        width: 769
-        height: 512
+        width: 688
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -943,12 +945,12 @@ TextureImporter:
       name: crawler_attack_1_55
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3869
         y: 1536
-        width: 769
-        height: 512
+        width: 687
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -957,12 +959,12 @@ TextureImporter:
       name: crawler_attack_1_56
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4638
         y: 1536
-        width: 769
-        height: 512
+        width: 687
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -971,12 +973,12 @@ TextureImporter:
       name: crawler_attack_1_57
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5407
         y: 1536
-        width: 769
-        height: 512
+        width: 687
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -985,12 +987,12 @@ TextureImporter:
       name: crawler_attack_1_58
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6177
         y: 1536
-        width: 769
-        height: 512
+        width: 686
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -999,12 +1001,12 @@ TextureImporter:
       name: crawler_attack_1_59
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6946
         y: 1536
-        width: 769
-        height: 512
+        width: 685
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1013,12 +1015,12 @@ TextureImporter:
       name: crawler_attack_1_60
       rect:
         serializedVersion: 2
-        x: 0
+        x: 25
         y: 1024
-        width: 769
-        height: 512
+        width: 685
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1027,12 +1029,12 @@ TextureImporter:
       name: crawler_attack_1_61
       rect:
         serializedVersion: 2
-        x: 769
+        x: 795
         y: 1024
-        width: 769
-        height: 512
+        width: 684
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1041,12 +1043,12 @@ TextureImporter:
       name: crawler_attack_1_62
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1564
         y: 1024
-        width: 769
-        height: 512
+        width: 684
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1055,12 +1057,12 @@ TextureImporter:
       name: crawler_attack_1_63
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2333
         y: 1024
-        width: 769
-        height: 512
+        width: 684
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1069,12 +1071,12 @@ TextureImporter:
       name: crawler_attack_1_64
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3102
         y: 1024
-        width: 769
-        height: 512
+        width: 684
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1083,12 +1085,12 @@ TextureImporter:
       name: crawler_attack_1_65
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3872
         y: 1024
-        width: 769
-        height: 512
+        width: 683
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1097,12 +1099,12 @@ TextureImporter:
       name: crawler_attack_1_66
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4641
         y: 1024
-        width: 769
-        height: 512
+        width: 683
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1111,12 +1113,12 @@ TextureImporter:
       name: crawler_attack_1_67
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5410
         y: 1024
-        width: 769
-        height: 512
+        width: 683
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1125,12 +1127,12 @@ TextureImporter:
       name: crawler_attack_1_68
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6180
         y: 1024
-        width: 769
-        height: 512
+        width: 682
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1139,12 +1141,12 @@ TextureImporter:
       name: crawler_attack_1_69
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6949
         y: 1024
-        width: 769
-        height: 512
+        width: 682
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1153,12 +1155,12 @@ TextureImporter:
       name: crawler_attack_1_70
       rect:
         serializedVersion: 2
-        x: 0
+        x: 28
         y: 512
-        width: 769
-        height: 512
+        width: 682
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1167,12 +1169,12 @@ TextureImporter:
       name: crawler_attack_1_71
       rect:
         serializedVersion: 2
-        x: 769
+        x: 798
         y: 512
-        width: 769
-        height: 512
+        width: 681
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1181,12 +1183,12 @@ TextureImporter:
       name: crawler_attack_1_72
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1567
         y: 512
-        width: 769
-        height: 512
+        width: 681
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1195,12 +1197,12 @@ TextureImporter:
       name: crawler_attack_1_73
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2336
         y: 512
-        width: 769
-        height: 512
+        width: 681
+        height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1209,12 +1211,12 @@ TextureImporter:
       name: crawler_attack_1_74
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3105
         y: 512
-        width: 769
-        height: 512
+        width: 681
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1223,12 +1225,12 @@ TextureImporter:
       name: crawler_attack_1_75
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3875
         y: 512
-        width: 769
-        height: 512
+        width: 680
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1237,12 +1239,12 @@ TextureImporter:
       name: crawler_attack_1_76
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4644
         y: 512
-        width: 769
-        height: 512
+        width: 680
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1251,12 +1253,12 @@ TextureImporter:
       name: crawler_attack_1_77
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5413
         y: 512
-        width: 769
-        height: 512
+        width: 680
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1265,12 +1267,12 @@ TextureImporter:
       name: crawler_attack_1_78
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6182
         y: 512
-        width: 769
-        height: 512
+        width: 680
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1279,12 +1281,12 @@ TextureImporter:
       name: crawler_attack_1_79
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6951
         y: 512
-        width: 769
-        height: 512
+        width: 680
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1293,12 +1295,12 @@ TextureImporter:
       name: crawler_attack_1_80
       rect:
         serializedVersion: 2
-        x: 0
+        x: 31
         y: 0
-        width: 769
-        height: 512
+        width: 679
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1307,12 +1309,12 @@ TextureImporter:
       name: crawler_attack_1_81
       rect:
         serializedVersion: 2
-        x: 769
+        x: 800
         y: 0
-        width: 769
-        height: 512
+        width: 679
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1321,12 +1323,12 @@ TextureImporter:
       name: crawler_attack_1_82
       rect:
         serializedVersion: 2
-        x: 1538
+        x: 1569
         y: 0
-        width: 769
-        height: 512
+        width: 679
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1335,12 +1337,12 @@ TextureImporter:
       name: crawler_attack_1_83
       rect:
         serializedVersion: 2
-        x: 2307
+        x: 2338
         y: 0
-        width: 769
-        height: 512
+        width: 679
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1349,12 +1351,12 @@ TextureImporter:
       name: crawler_attack_1_84
       rect:
         serializedVersion: 2
-        x: 3076
+        x: 3107
         y: 0
-        width: 769
-        height: 512
+        width: 679
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1363,12 +1365,12 @@ TextureImporter:
       name: crawler_attack_1_85
       rect:
         serializedVersion: 2
-        x: 3845
+        x: 3876
         y: 0
-        width: 769
-        height: 512
+        width: 678
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1377,12 +1379,12 @@ TextureImporter:
       name: crawler_attack_1_86
       rect:
         serializedVersion: 2
-        x: 4614
+        x: 4645
         y: 0
-        width: 769
-        height: 512
+        width: 678
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1391,12 +1393,12 @@ TextureImporter:
       name: crawler_attack_1_87
       rect:
         serializedVersion: 2
-        x: 5383
+        x: 5414
         y: 0
-        width: 769
-        height: 512
+        width: 678
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1405,12 +1407,12 @@ TextureImporter:
       name: crawler_attack_1_88
       rect:
         serializedVersion: 2
-        x: 6152
+        x: 6183
         y: 0
-        width: 769
-        height: 512
+        width: 678
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1419,12 +1421,12 @@ TextureImporter:
       name: crawler_attack_1_89
       rect:
         serializedVersion: 2
-        x: 6921
+        x: 6952
         y: 0
-        width: 769
-        height: 512
+        width: 678
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
