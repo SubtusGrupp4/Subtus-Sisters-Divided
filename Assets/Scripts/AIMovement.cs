@@ -32,14 +32,32 @@ public class AIMovement : MonoBehaviour
 
     [Header("Stats")]
 
+
+    [Tooltip("The amount of units the object can move per second, has no what so ever interference with anything else, it's not the speed" +
+        "the AI moves downards at simply the speed the AI moves left and right, If you would wish to change the speed the AI would move up, please see 'ClimbRange' If you wish" +
+        "to change the speed the AI goes downards please change the GravityScale in Rigidbody2D,  but be careful there's no acceleration in the moving left and right part.")]
     public float speed;
     //  public float accerlation;
+    [Tooltip("The amount of units the AI can drop, if it can not drop" +
+        " it will then turn and go the other direction, units in Unity means, 1 Unity unit is the same as 1 metre in Maya, aswell as 1 unit in Unity also being 1 unit in Unity " +
+        "also known as the number you see in the transform, if u higher the transform by 1, you will move it 1 unit")]
     public float stepRange;
+    [Tooltip("The amount of units the AI can jump, if it can not jump" +
+     " it will then turn and go the other direction, by 1 Unit, the AI can then jump up to objects 1 Unit higer than the object (relativle) if it's flipped, it will still " +
+        "be able to calculate that as a jump and does NOT need to have a negative value if you wish to jump up to a block that is 2 units higher than a value of 2 is correct" +
+        " but be careful if there's 1 object that has the height of two units you still need to insert a value of 2")]
     public float climbRange;
+    [Tooltip("The amount of MAX degrees the AI will think of a slope and not a wall, if the slope happens to have a degree value over the inserted maxSlope value it will think of" +
+        "it as a wall and behave around it as a wall. ")]
     public float maxSlope;
+    [Tooltip("The amount of time, in seconds that i takes for the AI to turn, be careful this is not bound to the an animation and therefor the value you put in is actually important" +
+        "if you wish for it to turn instantly you could simpley put in a value of 0, but if you wish for it to turn kinda slowly you put in a value such as 1, even though it's a float" +
+        "you dont need to put an F after the inserted number ")]
     public float turnRate;
     protected float minSlope = 0.1f; // Save some perfomance.
 
+    [Tooltip("The distance of which the AI will switch mode from startState to engagedState, the distance is messured in unity units, therefore a distance of 1 is the same distance of two objects having the" +
+        "placement of 3 and 4 in Unitys transform, also the same as 345 and 346")]
     public float aggroRange;
 
     protected bool isDead = false;
