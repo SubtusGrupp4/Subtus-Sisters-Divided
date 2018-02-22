@@ -26,13 +26,18 @@ public class ObjectPortal : PortalBehaviour
 				rb.velocity = new Vector2(0, 1);
 			}
 		}
+		if (rb.velocity == Vector2.zero) {
+			onPortal = false;
+		}
 	}
 
 	void ChangeSprite(){
-		if (checkState) {
-			this.GetComponent<SpriteRenderer> ().sprite = original;
-		} else {
-			this.GetComponent<SpriteRenderer> ().sprite = reversed;
+		if (!CompareTag("GravitationBomb")) {
+			if (checkState) {
+				this.GetComponent<SpriteRenderer> ().sprite = original;
+			} else {
+				this.GetComponent<SpriteRenderer> ().sprite = reversed;
+			}
 		}
 	}
 

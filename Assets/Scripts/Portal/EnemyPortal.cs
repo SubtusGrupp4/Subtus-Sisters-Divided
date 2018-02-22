@@ -6,6 +6,7 @@ public class EnemyPortal : PortalBehaviour
 {
 
 	[Header ("Scripts")]
+	public MonoBehaviour enemyScript2;
 	public MonoBehaviour enemyScript;
 	public MonoBehaviour friendlyScript;
 
@@ -36,6 +37,7 @@ public class EnemyPortal : PortalBehaviour
 	{
 		originalCollider.enabled = !originalCollider.enabled;
 		enemyScript.enabled = !enabler;
+		enemyScript2.enabled = !enabler;
 		reversedCollider.enabled = !reversedCollider.enabled;
 		friendlyScript.enabled = enabler;
 		enabler = !enabler;
@@ -69,8 +71,8 @@ public class EnemyPortal : PortalBehaviour
 
 	public override void OnPortalContact()
 	{
-		//Invoker ();
-		Invoke ("Invoker", 0.1f);
+		Invoker ();
+		//Invoke ("Invoker", 0.1f);
 		ReverseComponents ();
 	}
 }

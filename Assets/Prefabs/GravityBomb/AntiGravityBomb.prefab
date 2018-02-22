@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 58190848328217374}
   - component: {fileID: 50014388867953678}
   - component: {fileID: 114334980272682426}
+  - component: {fileID: 114466831535558526}
   m_Layer: 0
   m_Name: AntiGravityBomb
-  m_TagString: Untagged
+  m_TagString: GravitationBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,19 @@ MonoBehaviour:
   - Pickup
   - Player
   - ManipulateFloor
+--- !u!114 &114466831535558526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304899937324840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 833b54a830099ce46af39afee6074eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  original: {fileID: 0}
+  reversed: {fileID: 0}
 --- !u!212 &212986115425216846
 SpriteRenderer:
   m_ObjectHideFlags: 1
