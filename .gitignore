@@ -34,6 +34,8 @@ Assets/etc.meta
 
 # FMOD
 /Subtus-FMOD/.cache/
+/Subtus-FMOD/.unsaved/
+#/Subtus-FMOD/Metadata/
 #/Subtus-FMOD/Build/
 /Assets/FMODStudioCache.asset
 /Assets/FMODStudioCache.asset.meta

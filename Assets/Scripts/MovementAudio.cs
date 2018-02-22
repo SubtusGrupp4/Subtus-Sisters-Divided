@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MovementAudio : MonoBehaviour
 {
-    private void Start()
-    {
-
-    }
+    [SerializeField]
+    private string eventPath;
 
     public void Footstep()
     {
-
+        Debug.Log("Play Footsteps");
+        //FMODUnity.RuntimeManager.PlayOneShot(eventPath);
+        FMODUnity.RuntimeManager.PlayOneShotAttached(eventPath, gameObject);
     }
 }
