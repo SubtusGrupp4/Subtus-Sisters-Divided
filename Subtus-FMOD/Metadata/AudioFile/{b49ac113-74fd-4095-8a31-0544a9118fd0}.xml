@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="AudioFile" id="{c243ca08-c12a-46bd-90f9-19eeb08b535c}">
+    <object class="AudioFile" id="{b49ac113-74fd-4095-8a31-0544a9118fd0}">
         <property name="assetPath">
-            <value>Idle.wav</value>
+            <value>Crawler_Idle.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>

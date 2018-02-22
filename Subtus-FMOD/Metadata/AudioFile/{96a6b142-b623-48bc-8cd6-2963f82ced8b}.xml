@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="AudioFile" id="{9b61effc-a8ce-4e18-80d7-e2b1d1005636}">
+    <object class="AudioFile" id="{96a6b142-b623-48bc-8cd6-2963f82ced8b}">
         <property name="assetPath">
-            <value>Falling.wav</value>
+            <value>Crawler_Walking.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>
@@ -11,7 +11,7 @@
             <value>1</value>
         </property>
         <property name="length">
-            <value>2.1160090702947847</value>
+            <value>3.9080045351473922</value>
         </property>
         <relationship name="masterAssetFolder">
             <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>
