@@ -57,9 +57,12 @@ public class RevivePlacer : MonoBehaviour
 
             if (hit.transform != null)
             {
-                // If over the max distance, or hit portal, or
-                if (Vector2.Distance(rayOrigin, startPos) > maxDistance || hit.transform.tag == "Portal")
-                    transform.position = new Vector2(-0.5f, 0f);       // Move slightly to the left. TODO: Better solution?
+                // If over the max distance, or hit portal
+                if (rayOrigin.y - startPos.y > maxDistance || hit.transform.tag == "Portal")
+                {
+                    transform.position = new Vector2(transform.position.x -0.5f, 0f);       // Move slightly to the left. TODO: Better solution?
+                    passedThrough = false;
+                }
                 if (hit.transform != null && hit.transform.tag != "portal") // If it hits something
                     passedThrough = true;                                   // It has passed through a block
             }
