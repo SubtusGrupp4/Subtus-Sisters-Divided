@@ -80,10 +80,16 @@ public class MainMenuManager : MonoBehaviour {
     private bool isSwitching = false;
     private int spriteSwitchIndex = 0;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip[] staticClips;
+    private AudioSource[] audioSources;
+
     void Start () 
 	{
 		StartCoroutine(KeyTimer());     // Coroutine that displays the "Press any key" prompt
         glitchTarget.enabled = false;   // Do not show the glitch sprite
+        audioSources = GetComponents<AudioSource>();
     }
 	
 	void Update () 
@@ -122,11 +128,17 @@ public class MainMenuManager : MonoBehaviour {
         {
             dark.gameObject.SetActive(true);
             light.gameObject.SetActive(false);
+
+            audioSources[1].volume = 0f;
+            audioSources[2].volume = 1f;
         }
         else if (isActivated)
         {
             dark.gameObject.SetActive(false);
             light.gameObject.SetActive(true);
+
+            audioSources[1].volume = 0.6f;
+            audioSources[2].volume = 0f;
         }
     }
 
@@ -177,6 +189,9 @@ public class MainMenuManager : MonoBehaviour {
     private void GlitchAnimation()
     {
         glitchTarget.enabled = true;    // Display the image
+        int rng = Random.Range(0, staticClips.Length);
+        audioSources[0].PlayOneShot(staticClips[rng]);
+
         if (spriteIndex < spriteSequence.Length)    // If there are still sprites to show
         {
             glitchTarget.sprite = spriteSequence[spriteIndex];  // Switch to the next one
@@ -193,6 +208,8 @@ public class MainMenuManager : MonoBehaviour {
 
     private void SwitchAnimation()
     {
+        int rng = Random.Range(0, staticClips.Length);
+        audioSources[0].PlayOneShot(staticClips[rng]);
         SpriteArray[] spriteArrays = glitchesSwitch.GetComponents<SpriteArray>();   // Fetch the sprite array
 
         int index = 0;
