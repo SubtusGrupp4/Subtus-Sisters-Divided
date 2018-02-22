@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948561542305820}
   - component: {fileID: 212161861634147538}
+  - component: {fileID: 114607060357111252}
   m_Layer: 0
   m_Name: "Tr\xE4d_Light_2"
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114607060357111252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1110092178885454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: c454ee006a65fc74ba3ea28d4f7b5ee4, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: beedbce0399209441abc05cc0edc235f, type: 3}
+  lightTile: 0
 --- !u!212 &212161861634147538
 SpriteRenderer:
   m_ObjectHideFlags: 1
