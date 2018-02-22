@@ -270,9 +270,11 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //GameObject dead;
-                //dead = Instantiate(dyingAnimationGO, transform.position, transform.rotation);
-                //dead.transform.localScale = transform.localScale;
+                GameObject dead;
+                dead = Instantiate(dyingAnimationGO, transform.position, transform.rotation);
+                dead.transform.localScale = transform.localScale;
+
+                Destroy(dead, dead.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
                 Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
                 revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
