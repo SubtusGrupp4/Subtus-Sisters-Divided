@@ -9,6 +9,8 @@ using System;
 [CustomEditor(typeof(AutosaveScene))]
 public class AutosaveSceneEditor : Editor {
 
+    /* This script doesn't currently work
+
     AutosaveScene autosaveScene;
 
     [InitializeOnLoadMethod]
@@ -59,4 +61,5 @@ public class AutosaveSceneEditor : Editor {
         if (autosaveScene.showMessage)
             Debug.Log("AutoSave saved: " + EditorSceneManager.GetActiveScene().name + " on " + autosaveScene.lastSaveTimeScene);
     }
+    */
 }

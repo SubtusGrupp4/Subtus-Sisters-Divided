@@ -25,10 +25,11 @@ public class PlayerController : MonoBehaviour
 
     // Input Manager 
     public Controller Player;
-    private string controllerCode;
+    [NonSerialized]
+    public string controllerCode;
 
-    private string controllerOne = "_C1";
-    private string controllerTwo = "_C2";
+    public const string controllerOne = "_C1";
+    public const string controllerTwo = "_C2";
 
     private string horAx = "Horizontal";
     private string verAx = "Vertical";
@@ -81,10 +82,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject revivePlacerPrefab;
     private GameObject revivePlacer;
+    [SerializeField]
+    private GameObject dyingAnimationGO;
 
-
-
-    void Start()
+    void Awake()
     {
         rayOffSetX = GetComponent<CapsuleCollider2D>().size.x * transform.localScale.x / 2;
         rayOffSetY = GetComponent<CapsuleCollider2D>().size.y * transform.localScale.y / 2;
@@ -134,6 +135,9 @@ public class PlayerController : MonoBehaviour
         {
             ResetJump();
         }
+
+        if (!inAir)
+            lastSafe = transform.position;
     }
     private void FixedUpdate()
     {
@@ -141,9 +145,6 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             NormalizeSlope();
-
-            if (!inAir)
-                lastSafe = transform.position;
         }
     }
 
@@ -157,11 +158,13 @@ public class PlayerController : MonoBehaviour
         // JUMP
         if (Input.GetAxis(jumpInput) > 0 && (!inAir))
         {
-            inAir = true;
+          
             rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;
 
             //  GetComponent<BoxCollider2D>().sharedMaterial.friction = 0;
 
+            bodyAnim.Jump();
+            armAnim.Jump();
             myAudio.PlayOneShot(jumpSound); // needs change?? need landing sound ??
                                             // play jump animation
         }
@@ -173,6 +176,17 @@ public class PlayerController : MonoBehaviour
         // Round it to nearest .5
         temp = X;
         temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
+
+        if (Mathf.Abs(temp) <= 0.5f)
+        {
+            bodyAnim.ToggleWalk(true);
+            armAnim.ToggleWalk(true);
+        }
+        else
+        {
+            bodyAnim.ToggleWalk(false);
+            armAnim.ToggleWalk(false);
+        }
 
         if (!inAir)
             temp *= speed;
@@ -246,45 +260,95 @@ public class PlayerController : MonoBehaviour
     {
         if (isActive)
         {
-            // Mabey needed for Ressurect in future.
             isActive = false;
-            rigidbody2D.velocity = Vector2.zero;
-            rigidbody2D.isKinematic = true;
+            gameObject.SetActive(false);
 
-            Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
-            revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
-            revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
-            sr.enabled = false;
-            myBox.enabled = false;
+            // If any of the players is dead and the last dies, call BothDead() instead.
+            if (GameManager.instance.onePlayerDead)
+            {
+                BothDead();
+            }
+            else
+            {
+                //GameObject dead;
+                //dead = Instantiate(dyingAnimationGO, transform.position, transform.rotation);
+                //dead.transform.localScale = transform.localScale;
 
-            Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
+                Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
+                revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
+                revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
+                Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
+                GameManager.instance.onePlayerDead = true;
+            }
         }
     }
 
-    public void Ressurect()
+    private void Revive()
     {
-        // ^^^^^^
-        transform.position = lastSafe;
-        isActive = true;
-        rigidbody2D.isKinematic = false;
-        sr.enabled = true;
-        myBox.enabled = true;
+        Transform player;
+
+        if (Player == Controller.Player1)
+        {
+            player = GameManager.instance.playerBot;
+            player.position = SafepointManager.instance.botCheckpoint.position; // Place player at last checkpoint
+        }
+        else
+        {
+            player = GameManager.instance.playerTop;
+            player.position = SafepointManager.instance.topCheckpoint.position;
+        }
+
+        player.gameObject.SetActive(true);
+        player.GetComponent<PlayerController>().isActive = true;
 
         Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
+
+        GameManager.instance.onePlayerDead = false;
+    }
+
+    private void BothDead()
+    {
+        // Delete all revive objects, if there are any
+        GameObject[] revives = GameObject.FindGameObjectsWithTag("Revive");
+        foreach (GameObject revive in revives)
+            Destroy(revive);
+
+        // Get the player transforms
+        Transform playerTop = GameManager.instance.playerTop;
+        Transform playerBot = GameManager.instance.playerBot;
+
+        // Activate them
+        playerTop.gameObject.SetActive(true);
+        playerBot.gameObject.SetActive(true);
+
+        // Place them on the current safepoints
+        playerTop.transform.position = SafepointManager.instance.currentTopSafepoint.position;
+        playerBot.transform.position = SafepointManager.instance.currentBotSafepoint.position;
+
+        // Set the camera to follow both
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth, transform);
+
+        GameManager.instance.onePlayerDead = false;
+
+        playerTop.GetComponent<PlayerController>().isActive = true;
+        playerBot.GetComponent<PlayerController>().isActive = true;
     }
 
     private void ResetJump()
     {
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
-        inAir = true;
 
-        transform.parent = null;
+        bool tempInAir = true;
+
+        // transform.parent = null;
+
         //
         //
         bodyAnim.Falling(true);
         armAnim.Falling(true);
         //
         //
+
         for (int i = 0; i < resetJumpOn.Length; i++)
         {
             for (int l = -1; l < 2; l += 2)
@@ -308,11 +372,23 @@ public class PlayerController : MonoBehaviour
                     {
                         if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
                         {
+
+                            if(inAir)
+                            {
+                                // LANDING
+                                //play land sound
+
+                                
+                                // play land animation
+
+                            }
+
+                            /*
                             if (resetJumpOn[i] == "MovingFloor" || objHit[j].transform.GetComponent<MovingPlatform>() != null)
                                 transform.parent = objHit[j].transform;
-
-                            inAir = false;
-
+*/
+                           // inAir = false;
+                            tempInAir = false;
 
                             //
                             //
@@ -326,6 +402,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            inAir = tempInAir;
 
         }
     }
@@ -397,12 +474,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.transform.tag == "Portal")
         {
-            //Die();
+            Die();
         }
         else if (collision.transform.tag == "Revive")
         {
+            Revive();
             Destroy(collision.gameObject);
-            Ressurect();
         }
     }
 }

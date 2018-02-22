@@ -33,6 +33,7 @@ sysinfo.txt
 Assets/etc.meta
 
 # FMOD
+/Subtus-FMOD/.cache/
 #/Subtus-FMOD/Build/
 /Assets/FMODStudioCache.asset
 /Assets/FMODStudioCache.asset.meta

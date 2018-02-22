@@ -65,7 +65,7 @@ public class GravitationBomb : MonoBehaviour
 		}
 	}
 
-	void ActivateGravitationBomb()
+	/*void ActivateGravitationBomb()
 	{
 		deActivate -= Time.deltaTime;
 		if (Input.GetButton (activateBomb) && buttonPressed) 
@@ -76,6 +76,28 @@ public class GravitationBomb : MonoBehaviour
 			rb.bodyType = RigidbodyType2D.Static;
 		}
 		if(Input.GetButtonUp (activateBomb))
+		{
+			ResetGravity (0);
+			Destroy (gameObject);
+		}
+		if (deActivate < 0) 
+		{
+			Destroy (gameObject);
+		}
+	}
+	*/
+
+	void ActivateGravitationBomb()
+	{
+		deActivate -= Time.deltaTime;
+		if (Input.GetAxis (activateBomb) > 0 && buttonPressed) 
+		{
+			buttonPressed = false;
+			targetting = true;
+			gravitationActivated = true;
+			rb.bodyType = RigidbodyType2D.Static;
+		}
+		if(Input.GetAxis (activateBomb) <= 0 && !buttonPressed)
 		{
 			ResetGravity (0);
 			Destroy (gameObject);
