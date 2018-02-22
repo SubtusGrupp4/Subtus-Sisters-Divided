@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MovementAudio : MonoBehaviour
 {
-    [SerializeField]
-    private string eventPath;
+    [FMODUnity.EventRef]
+    public string eventPath;
 
     public void Footstep()
     {
