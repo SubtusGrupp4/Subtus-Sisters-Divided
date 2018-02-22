@@ -12,7 +12,6 @@ public class BuzzerMovement:MonoBehaviour
     [Header("Target")]
     [SerializeField]
     private BuzzerTarget buzzerTarget; // The target GameObject that the buzzer tries to fly around
-    [SerializeField]
     private Transform playerTarget; // The player the buzzer will go after. Should be changed later to always be PlayerBot
     private float followDistance; 
 
@@ -68,6 +67,8 @@ public class BuzzerMovement:MonoBehaviour
 
         bodyAnim = GetComponent<BasicAnimator>();
         targetPos = buzzerTarget.transform.position;
+
+        playerTarget = GameManager.instance.playerBot;
     }
 
     void Update ()
