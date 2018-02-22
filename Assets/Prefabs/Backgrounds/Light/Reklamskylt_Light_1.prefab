@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4075661790959008}
   - component: {fileID: 212715220048720070}
+  - component: {fileID: 114684294232608594}
   m_Layer: 0
   m_Name: Reklamskylt_Light_1
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114684294232608594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1329359452580376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: 531e85d50bcc14d4f99e7c1ab50b52e6, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 923995a6b6dfbb743b11c3f9b569ff76, type: 3}
+  lightTile: 0
 --- !u!212 &212715220048720070
 SpriteRenderer:
   m_ObjectHideFlags: 1

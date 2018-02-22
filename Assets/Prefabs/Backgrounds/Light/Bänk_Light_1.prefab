@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4348444651533768}
   - component: {fileID: 212454112176205394}
+  - component: {fileID: 114054228964953702}
   m_Layer: 0
   m_Name: "B\xE4nk_Light_1"
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114054228964953702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008809611893432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: 47ebc5ebce876074a95c89eb374f3f83, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 36cfd60809c088f42967af32a485eec8, type: 3}
+  lightTile: 0
 --- !u!212 &212454112176205394
 SpriteRenderer:
   m_ObjectHideFlags: 1

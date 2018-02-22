@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4251351791521636}
   - component: {fileID: 212931762335754898}
+  - component: {fileID: 114710939370500844}
   m_Layer: 0
   m_Name: Parkeringsskylt_Light_1
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114710939370500844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555108199644458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: 5dab3c1aa4dd0624788fee78efd3a8b5, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 4d70fbe2653a589409b757cc0009b4ca, type: 3}
+  lightTile: 0
 --- !u!212 &212931762335754898
 SpriteRenderer:
   m_ObjectHideFlags: 1

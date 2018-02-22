@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4991258527444494}
   - component: {fileID: 212324083527249100}
+  - component: {fileID: 114919351810165238}
   m_Layer: 0
   m_Name: house1_light_1
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114919351810165238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090096287462934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: fc6726ef4eecec1479d29cb5eab74052, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 6e80cc6999a79634d83080bca619f5ae, type: 3}
+  lightTile: 0
 --- !u!212 &212324083527249100
 SpriteRenderer:
   m_ObjectHideFlags: 1
