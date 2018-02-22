@@ -33,7 +33,7 @@ public class AIMovement : MonoBehaviour
     [Header("Stats")]
 
     public float speed;
-    public float accerlation;
+    //  public float accerlation;
     public float stepRange;
     public float climbRange;
     public float maxSlope;
@@ -44,6 +44,7 @@ public class AIMovement : MonoBehaviour
 
     protected bool isDead = false;
     protected bool frozen;
+    private bool autoActivate;
     protected bool stunned;
     protected float distanceGraceForFalling = 0.2f;
 
@@ -63,6 +64,7 @@ public class AIMovement : MonoBehaviour
 
     protected bool bounce;
     protected Vector2 directionMultiplier; // flip the X value to make the char go the opesite direction
+    private Vector2 savedDirection;
     protected int flipValue = 1; // used to flip the Gravity
 
     protected new Rigidbody2D rigidbody2D;
@@ -152,8 +154,8 @@ public class AIMovement : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if(!stunned)
-          {
+        if (!stunned)
+        {
             if (!isDead && !frozen)
             {
                 Move();
@@ -163,15 +165,22 @@ public class AIMovement : MonoBehaviour
         }
     }
 
-    public void Freeze(bool autoActivate)
+    public void Freeze(bool autoActivate, float time)
     {
         if (!frozen)
         {
             savedState = currentState;
             currentState = MovementEnum.Idle;
 
+            frozen = true;
+            this.autoActivate = autoActivate;
+        }
 
-            frozen = autoActivate;
+        if (time != 0)
+        {
+           
+            Debug.Log("time" + time);
+            StartCoroutine(FreezeWait(time));
         }
     }
 
@@ -186,9 +195,16 @@ public class AIMovement : MonoBehaviour
         isDead = true;
     }
 
+    private void TurnAnim(float time)
+    {
+        bAnim.Turning(true);
+        StartCoroutine(TurnWait(time));
+    }
+
     public void Stun(float time)
     {
         StartCoroutine(StunWait(time));
+
         stunned = true;
     }
     IEnumerator StunWait(float waitTime)
@@ -196,22 +212,17 @@ public class AIMovement : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         stunned = false;
     }
-
-    public void Activate()
+    IEnumerator FreezeWait(float waitTime)
     {
-        if (rigidbody2D.velocity == Vector2.zero)
-        {
-            isDead = false;
-        }
+        yield return new WaitForSeconds(waitTime);
+        UnFreeze();
+    }
+    IEnumerator TurnWait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        bAnim.Turning(false);
     }
 
-    public void Deactivate()
-    {
-        /* if (rigidbody2D.velocity.x > directionMultiplier.x * speed * 2)
-         {
-             frozen = true;
-         } */
-    }
 
 
     protected void CheckFalling()
@@ -235,7 +246,7 @@ public class AIMovement : MonoBehaviour
                 {
                     if (objHit[j].transform.tag == walkOn[i])
                     {
-                        if (frozen)
+                        if (autoActivate)
                             UnFreeze();
 
                         if (Mathf.Abs(objHit[j].normal.x) < maxSlope) // So we cant jump on walls.
@@ -379,7 +390,7 @@ public class AIMovement : MonoBehaviour
         if (rigidbody2D.velocity == Vector2.zero)
         {
 
-            rigidbody2D.AddForce(new Vector2(10, 50));
+            rigidbody2D.AddForce(new Vector2(10, 76));
         }
 
 
@@ -400,12 +411,23 @@ public class AIMovement : MonoBehaviour
                     isFalling = true;
                 }
                 else
+                {
                     Bounce();
+
+                    Stun(turnRate);
+                    TurnAnim(turnRate);
+                }
             }
             else if (CheckSlope() == false)
             {
                 if (CheckLedge())
+                {
                     Bounce();
+
+                    Stun(turnRate);
+                    TurnAnim(turnRate);
+
+                }
 
             }
 

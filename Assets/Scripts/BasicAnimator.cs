@@ -10,6 +10,7 @@ public class BasicAnimator : MonoBehaviour
     public const string animWalk = "IsWalking";
     public const string animJump = "IsJumping";
     public const string animLand = "IsLanding";
+    public const string animTurning = "IsTurning";
 
     private bool walkRunBool = false;
 
@@ -61,6 +62,10 @@ public class BasicAnimator : MonoBehaviour
             landing = false;
         }
 
+    }
+    public virtual void Turning(bool state)
+    {
+        anim.SetBool(animTurning, state);
     }
 
     public virtual void Attack()
