@@ -142,7 +142,7 @@ public class BuzzerMovement:MonoBehaviour
         Debug.DrawRay(rayOrigin, rayDirection, color);
 
         // If the raycast hits anything but a player, slow down by moving in the opposite direction
-        if (hit.transform != null && hit.transform.tag != "Player")
+        if (hit.transform != null && hit.transform.tag != "Player" && !hit.collider.isTrigger)
             rb.AddForce(-rayDirection, ForceMode2D.Impulse);
     }
 
