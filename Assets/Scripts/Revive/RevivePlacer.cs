@@ -52,8 +52,6 @@ public class RevivePlacer : MonoBehaviour
         {
             // Cast a ray looking for blocks
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, layer);
-            Color color = hit ? Color.green : Color.red;
-            Debug.DrawRay(rayOrigin, rayDirection, color);
 
             if (hit.transform != null && !hit.collider.isTrigger && hit.transform.tag != "Player")
             {
