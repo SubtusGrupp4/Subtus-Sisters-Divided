@@ -291,16 +291,11 @@ public class PlayerController : MonoBehaviour
         Transform player;
 
         if (Player == Controller.Player1)
-        {
             player = GameManager.instance.playerBot;
-            player.position = SafepointManager.instance.botCheckpoint.position; // Place player at last checkpoint
-        }
         else
-        {
             player = GameManager.instance.playerTop;
-            player.position = SafepointManager.instance.topCheckpoint.position;
-        }
 
+        SafepointManager.instance.PlacePlayerOnCheckpoint(player);
         player.gameObject.SetActive(true);
         player.GetComponent<PlayerController>().isActive = true;
 

@@ -107,4 +107,34 @@ public class SafepointManager : MonoBehaviour {
         else
             botCheckpoint = checkpoint;
     }
+
+    public void PlacePlayerOnCheckpoint(Transform player)
+    {
+        if(player == GameManager.instance.playerTop)
+        {
+            Vector2 rayOrigin = topCheckpoint.position;
+            Vector2 rayDirection = Vector2.down;
+            // TODO: Set this correctly. Should for example not detect the players
+            LayerMask layer = 1 << 0;
+
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, 11f, layer);
+            if (hit.transform != null)  // If it hits something, prevent the player from spawning in the ground
+                player.position = hit.point + new Vector2(0f, player.GetComponent<SpriteRenderer>().bounds.size.y / 2f);    // Raise the spawnpoint by half the players height
+            else
+                player.position = topCheckpoint.position;   // Else, just spawn on the checkpoint
+        }
+        else
+        {
+            Vector2 rayOrigin = botCheckpoint.position;
+            Vector2 rayDirection = Vector2.up;
+            // TODO: Set this correctly. Should for example not detect the players
+            LayerMask layer = 1 << 0;
+
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, 11f, layer);
+            if (hit.transform != null)  // If it hits something, prevent the player from spawning in the ground
+                player.position = hit.point + new Vector2(0f, -player.GetComponent<SpriteRenderer>().bounds.size.y / 2f);   // Raise the spawnpoint by half the players height
+            else
+                player.position = botCheckpoint.position;   // Else, just spawn on the checkpoint
+        }
+    }
 }
