@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour
 
     // Components
     private CapsuleCollider2D myBox;
-    private float rayOffSetX;
-    private float rayOffSetY;
+    private float capsuleRadiusX;
+    private float capsuleRadiusY;
+    private float capsuleOffSetX;
+    private float capsuleOffSetY;
+
     private BasicAnimator bodyAnim;
     private BasicAnimator armAnim;
     private new Rigidbody2D rigidbody2D;
@@ -88,8 +91,13 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        rayOffSetX = GetComponent<CapsuleCollider2D>().size.x * transform.localScale.x / 2;
-        rayOffSetY = GetComponent<CapsuleCollider2D>().size.y * transform.localScale.y / 2;
+        myBox = GetComponent<CapsuleCollider2D>();
+
+        capsuleRadiusX = myBox.size.x * transform.localScale.x / 2;
+        capsuleRadiusY = myBox.size.y * transform.localScale.y / 2;
+
+        capsuleOffSetX = myBox.offset.x;
+        capsuleOffSetY = myBox.offset.y;
 
         // FIX JUMP
         //
@@ -103,7 +111,7 @@ public class PlayerController : MonoBehaviour
         //
 
         rigidbody2D = GetComponent<Rigidbody2D>();
-        myBox = GetComponent<CapsuleCollider2D>();
+       
 
         if (Player == Controller.Player1)
         {
@@ -356,11 +364,11 @@ public class PlayerController : MonoBehaviour
                 -Vector2.up * flipValue,
                 rayOffSetY + distanceGraceForFalling); */
 
-                objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffSetX - 0.05f) * l, 0, 0),
+                objHit = Physics2D.RaycastAll(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue,0),
                     -Vector2.up * flippValue,
-                rayOffSetY + distanceGraceForJump);
+                capsuleRadiusY + distanceGraceForJump);
 
-                Debug.DrawRay(transform.position + new Vector3((rayOffSetX - 0.05f) * l, 0, 0),
+                Debug.DrawRay(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue, 0) ,
                     -Vector2.up * flippValue,
                     Color.red);
 
