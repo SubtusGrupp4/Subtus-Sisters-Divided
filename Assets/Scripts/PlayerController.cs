@@ -160,10 +160,12 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         // Temporary
+        /*
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Flip();
         }
+        */
         // JUMP
         if (Input.GetAxis(jumpInput) > 0 && (!inAir))
         {
