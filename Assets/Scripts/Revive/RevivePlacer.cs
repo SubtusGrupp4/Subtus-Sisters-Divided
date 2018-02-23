@@ -55,7 +55,7 @@ public class RevivePlacer : MonoBehaviour
             Color color = hit ? Color.green : Color.red;
             Debug.DrawRay(rayOrigin, rayDirection, color);
 
-            if (hit.transform != null)
+            if (hit.transform != null && !hit.collider.isTrigger && hit.transform.tag != "Player")
             {
                 // If over the max distance, or hit portal
                 if (rayOrigin.y - startPos.y > maxDistance || hit.transform.tag == "Portal")
