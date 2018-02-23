@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class TileGrid : MonoBehaviour
 {
@@ -54,8 +55,24 @@ public class TileGrid : MonoBehaviour
     public bool resetAllSprites = false;
     public bool resetTransformList = false;
 
+    public bool didUndo = false;
+
+    private void OnEnable()
+    {
+        // Event for when CTRL-Z is pressed
+        Undo.undoRedoPerformed = MyUndoCallback;
+    }
+
+    void MyUndoCallback()
+    {
+        // When true, will refresh tile transforms list
+        didUndo = true;
+    }
+
     private void OnDrawGizmos()
     {
+        Undo.undoRedoPerformed = MyUndoCallback;
+
         if (showGrid)
         {
             Vector3 pos = Camera.current.transform.position;

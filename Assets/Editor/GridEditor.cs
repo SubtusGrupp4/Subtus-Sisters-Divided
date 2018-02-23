@@ -459,6 +459,17 @@ public class GridEditor : Editor
         }
 
         ShowPreview(mousePos);
+
+        // If a redo or undo has happened
+        if(grid.didUndo)
+        {
+            // Reset the transform list
+            grid.tileTransforms.Clear();
+            for (int i = 0; i < grid.tiles.transform.childCount; i++)
+                grid.tileTransforms.Add(grid.tiles.transform.GetChild(i));
+
+            grid.didUndo = false;
+        }
     }
 
     private void ShowPreview(Vector3 mousePos)
@@ -726,5 +737,4 @@ public class GridEditor : Editor
         }
         return -1;
     }
-
 }
