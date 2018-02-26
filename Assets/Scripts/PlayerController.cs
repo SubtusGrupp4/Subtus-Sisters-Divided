@@ -145,8 +145,8 @@ public class PlayerController : MonoBehaviour
             ResetJump();
         }
 
-        if (!inAir)
-            lastSafe = transform.position;
+      //  if (!inAir)
+          //  lastSafe = transform.position;
     }
     private void FixedUpdate()
     {
@@ -397,6 +397,7 @@ public class PlayerController : MonoBehaviour
 */
                            // inAir = false;
                             tempInAir = false;
+                            lastSafe = transform.position;
 
                             //
                             //
@@ -411,7 +412,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
             inAir = tempInAir;
-
         }
     }
 
