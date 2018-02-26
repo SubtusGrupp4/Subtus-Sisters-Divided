@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{357775cc-ec3d-42ba-9ec9-33c2d4d773e6}">
+        <property name="name">
+            <value>Övre/undre </value>
+        </property>
+        <relationship name="folder">
+            <destination>{b8f21763-cd01-4114-9a88-668e9cc3a841}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{e74f167a-b951-4b65-90fd-44c722997dbc}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{e74f167a-b951-4b65-90fd-44c722997dbc}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>0.2200000137090683</value>
+        </property>
+    </object>
+</objects>

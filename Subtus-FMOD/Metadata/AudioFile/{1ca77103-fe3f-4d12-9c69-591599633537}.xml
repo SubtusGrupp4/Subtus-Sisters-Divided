@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="AudioFile" id="{1ca77103-fe3f-4d12-9c69-591599633537}">
         <property name="assetPath">
-            <value>Level 1_Merinaledmotiv_1.wav</value>
+            <value>Simon/Level1_Merina_1/Level 1_Merinaledmotiv_1.wav</value>
         </property>
         <property name="isStreaming">
             <value>true</value>

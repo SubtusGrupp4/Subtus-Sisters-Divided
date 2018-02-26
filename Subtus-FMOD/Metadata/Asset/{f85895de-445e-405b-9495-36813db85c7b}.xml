@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="EncodableAsset" id="{f85895de-445e-405b-9495-36813db85c7b}">
+        <property name="assetPath">
+            <value>Simon/Level1_Merina_1/</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>
+        </relationship>
+    </object>
+</objects>
