@@ -70,13 +70,6 @@ public class RevivePlacer : MonoBehaviour
             else if(passedThrough)          // After passing through one block and then not finding anything
                 search = false;             // This spot is safe
 
-            /* Old solution, doesn't work with the collision remover
-            if (hit.transform == null) // If nothing is found, this spot is safe to spawn on. Stop the loop
-                search = false;
-            else if (Vector2.Distance (rayOrigin, startPos) > maxDistance || hit.transform.tag == "Portal") // If over the max distance, or hit portal
-                transform.position = new Vector2 (transform.position.x - 1f, 0f);                           // Move slightly to the left
-            */
-
             transform.position -= new Vector3 (0f, moveAmount);     // Move slightly
             rayOrigin = transform.position;                         // Reset the ray origin to the current position
         }

@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 82748056771500978}
   m_Layer: 0
   m_Name: Buzzer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054353198000982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 308.36664, y: -6.2352085, z: -0.016227648}
+  m_LocalPosition: {x: 115.88785, y: -7.611816, z: -0.016227648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
