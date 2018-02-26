@@ -38,20 +38,20 @@ public class SafepointManager : MonoBehaviour {
 	{
         playerTop = GameManager.instance.playerTop;
         playerBot = GameManager.instance.playerBot;
-
+ 
         // Set the initial respawn points to be the starting position of the players.
         currentTopSafepoint = new GameObject("Initial Top Safepoint").transform;
-        currentTopSafepoint.position = GameManager.instance.playerTop.position;
+        currentTopSafepoint.position = playerTop.position;
 
         currentBotSafepoint = new GameObject("Initial Bot Safepoint").transform;
-        currentBotSafepoint.position = GameManager.instance.playerBot.position;
+        currentBotSafepoint.position = playerBot.position;
 
         // Set the initial revive points to be the starting position of the players.
         topCheckpoint = new GameObject("Initial Top Checkpoint").transform;
-        topCheckpoint.position = GameManager.instance.playerTop.position;
+        topCheckpoint.position = playerTop.position;
 
         botCheckpoint = new GameObject("Initial Bot Checkpoint").transform;
-        botCheckpoint.position = GameManager.instance.playerBot.position;
+        botCheckpoint.position = playerBot.position;
     }
 
     private void CreateSingleton()
@@ -110,7 +110,7 @@ public class SafepointManager : MonoBehaviour {
 
     public void PlacePlayerOnCheckpoint(Transform player)
     {
-        if(player == GameManager.instance.playerTop)
+        if(player == playerTop)
         {
             Vector2 rayOrigin = topCheckpoint.position;
             Vector2 rayDirection = Vector2.down;
