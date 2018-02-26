@@ -56,4 +56,6 @@ MonoBehaviour:
     Value: 32
   Plugins: []
   MasterBank: Master Bank
-  Banks: []
+  Banks:
+  - AU_Underworld
+  - Simon
