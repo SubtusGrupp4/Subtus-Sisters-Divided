@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212937918396557716}
   - component: {fileID: 60688398120822246}
   - component: {fileID: 114066597200702608}
+  - component: {fileID: 251497761310404552}
   m_Layer: 0
   m_Name: Comb_SlopeTop_1
   m_TagString: Floor
@@ -130,3 +131,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &251497761310404552
+PlatformEffector2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284495089483814}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
