@@ -53,16 +53,19 @@ public class RevivePlacer : MonoBehaviour
             // Cast a ray looking for blocks
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, layer);
 
-            if (hit.transform != null && !hit.collider.isTrigger && hit.transform.tag != "Player")
+            if (hit.transform != null)  // If it hits something
             {
-                // If over the max distance, or hit portal
-                if (rayOrigin.y - startPos.y > maxDistance || hit.transform.tag == "Portal")
-                {
-                    transform.position = new Vector2(transform.position.x -0.5f, 0f);       // Move slightly to the left. TODO: Better solution?
-                    passedThrough = false;
+                if (hit.transform.tag != "Player")  // And it isn't the player
+                { 
+                    // If over the max distance, or hit portal
+                    if (rayOrigin.y - startPos.y > maxDistance || hit.transform.tag == "Portal")
+                    {
+                        transform.position = new Vector2(transform.position.x - 0.5f, 0f);       // Move slightly to the left. TODO: Better solution?
+                        passedThrough = false;
+                    }
+                    if (hit.transform != null && !hit.collider.isTrigger &&  hit.transform.tag != "Portal") // If it hits something
+                        passedThrough = true;// It has passed through a block
                 }
-                if (hit.transform != null && hit.transform.tag != "portal") // If it hits something
-                    passedThrough = true;                                   // It has passed through a block
             }
             else if(passedThrough)          // After passing through one block and then not finding anything
                 search = false;             // This spot is safe
