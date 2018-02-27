@@ -13,6 +13,10 @@ public class AntiGravitationBomb : MonoBehaviour
     [SerializeField]
     private float duration;
 
+	[Header("Particles")]
+	[SerializeField]
+	private GameObject[] particles;
+
     [Header("tags from objects to pull")]
     [SerializeField]
     [GiveTag]
@@ -46,6 +50,11 @@ public class AntiGravitationBomb : MonoBehaviour
     {
         if (Input.GetAxis(activateBomb) > 0 && buttonPressed)
         {
+			foreach (GameObject particle in particles) 
+			{
+				GameObject clone = Instantiate (particle, transform.position, Quaternion.identity);
+				Destroy (clone, 2f);
+			}
             buttonPressed = false;
             targetting = true;
             TargetInRange();

@@ -90,7 +90,7 @@ public class GravitationBomb : MonoBehaviour
 	void ActivateGravitationBomb()
 	{
 		deActivate -= Time.deltaTime;
-		if (Input.GetAxis (activateBomb) > 0 && buttonPressed) 
+		if (Input.GetAxis (activateBomb) > 0.5f && buttonPressed) 
 		{
 			buttonPressed = false;
 			targetting = true;

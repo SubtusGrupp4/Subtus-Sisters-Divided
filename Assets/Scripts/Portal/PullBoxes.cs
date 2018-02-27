@@ -43,7 +43,7 @@ public class PullBoxes : MonoBehaviour {
 		RaycastHit2D hit = Physics2D.Raycast (rayLine, Vector2.right * transform.localScale.x, distance, boxMask);
 
 		if (hit.collider != null && hit.collider.gameObject.tag == "Pickup"/*or box*/ && (Input.GetKeyDown (KeyCode.G) 
-			|| Input.GetButtonDown(pullBox)) && !playerController.inAir) 
+			|| Input.GetButtonDown(pullBox)) /*&& !playerController.inAir*/) 
 		{
 			if (hit.collider.GetComponent<OverEdgeFalling> ().IsGrounded ())
 			{
