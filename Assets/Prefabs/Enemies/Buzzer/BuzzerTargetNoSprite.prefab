@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4032584879311944}
   - component: {fileID: 114803224594135018}
   m_Layer: 0
-  m_Name: BuzzerTarget
+  m_Name: BuzzerTargetNoSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,4 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f5246cd5550074b8e0fca0012ac286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 3
