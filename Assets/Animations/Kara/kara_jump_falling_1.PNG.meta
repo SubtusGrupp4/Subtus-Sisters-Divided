@@ -1,33 +1,21 @@
 fileFormatVersion: 2
-guid: e763cb010efef254d8692c8044a5a5ff
-timeCreated: 1519225443
+guid: 232c00f120bd36747863dca571a8402c
+timeCreated: 1519744880
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: kara_jump_2_0
-    21300002: kara_jump_2_1
-    21300004: kara_jump_2_2
-    21300006: kara_jump_2_3
-    21300008: kara_jump_2_4
-    21300010: kara_jump_2_5
-    21300012: kara_jump_2_6
-    21300014: kara_jump_2_7
-    21300016: kara_jump_2_8
-    21300018: kara_jump_2_9
-    21300020: kara_jump_2_10
-    21300022: kara_jump_2_11
-    21300024: kara_jump_2_12
-    21300026: kara_jump_2_13
-    21300028: kara_jump_2_14
-    21300030: kara_jump_2_15
-    21300032: kara_jump_2_16
-    21300034: kara_jump_2_17
-    21300036: kara_jump_2_18
-    21300038: kara_jump_2_19
-    21300040: kara_jump_2_20
-    21300042: kara_jump_2_21
-    21300044: kara_jump_2_22
-    21300046: kara_jump_2_23
+    21300000: kara_jump_falling_1_0
+    21300002: kara_jump_falling_1_1
+    21300004: kara_jump_falling_1_2
+    21300006: kara_jump_falling_1_3
+    21300008: kara_jump_falling_1_4
+    21300010: kara_jump_falling_1_5
+    21300012: kara_jump_falling_1_6
+    21300014: kara_jump_falling_1_7
+    21300016: kara_jump_falling_1_8
+    21300018: kara_jump_falling_1_9
+    21300020: kara_jump_falling_1_10
+    21300022: kara_jump_falling_1_11
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -104,91 +92,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kara_jump_2_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2304
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_1
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 2304
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_2
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 2304
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_3
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 2304
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_4
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 2304
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_5
-      rect:
-        serializedVersion: 2
-        x: 2560
-        y: 2304
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_6
+      name: kara_jump_falling_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -202,7 +106,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_7
+      name: kara_jump_falling_1_1
       rect:
         serializedVersion: 2
         x: 512
@@ -216,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_8
+      name: kara_jump_falling_1_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -230,7 +134,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_9
+      name: kara_jump_falling_1_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -244,7 +148,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_10
+      name: kara_jump_falling_1_4
       rect:
         serializedVersion: 2
         x: 2048
@@ -258,21 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_11
-      rect:
-        serializedVersion: 2
-        x: 2560
-        y: 1536
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_12
+      name: kara_jump_falling_1_5
       rect:
         serializedVersion: 2
         x: 0
@@ -286,7 +176,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_13
+      name: kara_jump_falling_1_6
       rect:
         serializedVersion: 2
         x: 512
@@ -300,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_14
+      name: kara_jump_falling_1_7
       rect:
         serializedVersion: 2
         x: 1024
@@ -314,7 +204,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_15
+      name: kara_jump_falling_1_8
       rect:
         serializedVersion: 2
         x: 1536
@@ -328,7 +218,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_16
+      name: kara_jump_falling_1_9
       rect:
         serializedVersion: 2
         x: 2048
@@ -342,21 +232,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_17
-      rect:
-        serializedVersion: 2
-        x: 2560
-        y: 768
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_18
+      name: kara_jump_falling_1_10
       rect:
         serializedVersion: 2
         x: 0
@@ -370,66 +246,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: kara_jump_2_19
+      name: kara_jump_falling_1_11
       rect:
         serializedVersion: 2
         x: 512
-        y: 0
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_20
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_21
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_22
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 512
-        height: 768
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: kara_jump_2_23
-      rect:
-        serializedVersion: 2
-        x: 2560
         y: 0
         width: 512
         height: 768

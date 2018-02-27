@@ -11,6 +11,7 @@ public class BasicAnimator : MonoBehaviour
     public const string animJump = "IsJumping";
     public const string animLand = "IsLanding";
     public const string animTurning = "IsTurning";
+    public const string animCrawl = "IsCrawling";
 
     private bool walkRunBool = false;
 
@@ -90,6 +91,11 @@ public class BasicAnimator : MonoBehaviour
     {
         anim.SetBool(animJump, true);
         jumping = true;
+    }
+
+    public virtual void Crawl(bool state)
+    {
+        anim.SetBool(animCrawl, state);
     }
 
     public virtual void Land()

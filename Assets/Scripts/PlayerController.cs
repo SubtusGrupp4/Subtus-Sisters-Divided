@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
     private float capsuleOffSetX;
     private float capsuleOffSetY;
 
-    private BasicAnimator bodyAnim;
-    private BasicAnimator armAnim;
+    public BasicAnimator bodyAnim;
+    public BasicAnimator armAnim;
     private new Rigidbody2D rigidbody2D;
     private RaycastHit2D[] objHit;
 
