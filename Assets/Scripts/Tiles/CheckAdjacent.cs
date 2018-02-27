@@ -21,30 +21,30 @@ public class CheckAdjacent : MonoBehaviour
 		{
 			RaycastHit2D hit = Physics2D.Raycast(origin + rayDirection, rayDirection, rayDistance);
 			
-            if(hit.transform != null)
+            if(hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
 				hits++;
 
             if (rayDirection == Vector2.up)
             {
                 rayDirection = Vector2.right;
-				if(hit.transform != null)
+				if(hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
                     up = true;
             }
             else if (rayDirection == Vector2.right)
             {
                 rayDirection = Vector2.down;
-                if (hit.transform != null)
+                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
                     right = true;
             }
             else if(rayDirection == Vector2.down)
             {
                 rayDirection = Vector2.left;
-                if (hit.transform != null)
+                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
                     down = true;
             }
 			else 
 			{
-                if (hit.transform != null)
+                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
                     left = true;
 			}
         }
