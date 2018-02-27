@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private string horAx = "Horizontal";
     private string verAx = "Vertical";
     private string jumpInput = "Jump";
-    private float distanceGraceForJump = 0.4f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
+    private float distanceGraceForJump = 0.02f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
 
     // Components
     private CapsuleCollider2D myBox;
@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     // Settings
     [HideInInspector]
     public bool isActive;
+
+    bool landing;
 
     private SpriteRenderer sr;
 
@@ -111,7 +113,7 @@ public class PlayerController : MonoBehaviour
         //
 
         rigidbody2D = GetComponent<Rigidbody2D>();
-       
+
 
         if (Player == Controller.Player1)
         {
@@ -145,8 +147,13 @@ public class PlayerController : MonoBehaviour
             ResetJump();
         }
 
-      //  if (!inAir)
-          //  lastSafe = transform.position;
+        if(bodyAnim.GetLandState() == false)
+        {
+            landing = false;
+        }
+
+        //  if (!inAir)
+        //  lastSafe = transform.position;
     }
     private void FixedUpdate()
     {
@@ -159,25 +166,18 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        // Temporary
-        /*
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Flip();
-        }
-        */
         // JUMP
-        if (Input.GetAxis(jumpInput) > 0 && (!inAir))
+        if (Input.GetAxis(jumpInput) > 0 && (!inAir) && landing == false)
         {
-          
+            inAir = true;
             rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;
 
-            //  GetComponent<BoxCollider2D>().sharedMaterial.friction = 0;
 
             bodyAnim.Jump();
             armAnim.Jump();
-            audioSource.PlayOneShot(jumpSound); // needs change?? need landing sound ??
-                                            // play jump animation
+
+            Debug.Log("audio being played");
+            audioSource.PlayOneShot(jumpSound); 
         }
 
         // Input Manager
@@ -359,18 +359,23 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < resetJumpOn.Length; i++)
         {
+            bool quickBreak = false;
+
             for (int l = -1; l < 2; l += 2)
             {
+                if (quickBreak)
+                    break;
+
                 /*
                 (transform.position + new Vector3((rayOffSetX - 0.05f) * l, 0, 0),
                 -Vector2.up * flipValue,
                 rayOffSetY + distanceGraceForFalling); */
 
-                objHit = Physics2D.RaycastAll(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue,0),
+                objHit = Physics2D.RaycastAll(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue, 0),
                     -Vector2.up * flippValue,
                 capsuleRadiusY + distanceGraceForJump);
 
-                Debug.DrawRay(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue, 0) ,
+                Debug.DrawRay(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue, 0),
                     -Vector2.up * flippValue,
                     Color.red);
 
@@ -381,12 +386,21 @@ public class PlayerController : MonoBehaviour
                         if (Mathf.Abs(objHit[j].normal.x) < wallNormal) // So we cant jump on walls.
                         {
 
-                            if(inAir)
+                            if (inAir)
                             {
                                 // LANDING
                                 //play land sound
-                                audioSource.PlayOneShot(landingSound, 0.1f);
-                                
+                                if (bodyAnim.GetJumpState() == false)
+                                {
+                                    Debug.Log("LANDING");
+
+                                    bodyAnim.Land();
+
+                                    audioSource.PlayOneShot(landingSound, 0.1f);
+                                    landing = true;
+
+                                }
+
                                 // play land animation
 
                             }
@@ -395,7 +409,7 @@ public class PlayerController : MonoBehaviour
                             if (resetJumpOn[i] == "MovingFloor" || objHit[j].transform.GetComponent<MovingPlatform>() != null)
                                 transform.parent = objHit[j].transform;
 */
-                           // inAir = false;
+                            // inAir = false;
                             tempInAir = false;
                             lastSafe = transform.position;
 
@@ -406,7 +420,7 @@ public class PlayerController : MonoBehaviour
                             //
                             //
 
-                            break;
+                            quickBreak = true;
                         }
                     }
                 }

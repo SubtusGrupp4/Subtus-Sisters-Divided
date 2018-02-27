@@ -53,13 +53,16 @@ public class BasicAnimator : MonoBehaviour
         }
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animJump) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1 && !anim.GetComponent<Animator>().IsInTransition(0) && jumping == true)
         {
+
             anim.SetBool(animJump, false);
             jumping = false;
         }
-        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animLand) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.GetComponent<Animator>().IsInTransition(0) && landing == true)
+        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animLand) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !anim.GetComponent<Animator>().IsInTransition(0))
         {
-            anim.SetBool(animLand, false);
+            Debug.Log("anim Land");
             landing = false;
+            anim.SetBool(animLand, false);
+           
         }
 
     }
@@ -72,6 +75,15 @@ public class BasicAnimator : MonoBehaviour
     {
         anim.SetBool(animAttack, true);
         attacking = true;
+    }
+    public virtual bool GetJumpState()
+    {
+        return jumping;
+    }
+
+    public virtual bool GetLandState()
+    {
+        return landing;
     }
 
     public virtual void Jump()

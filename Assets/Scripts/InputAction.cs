@@ -58,7 +58,7 @@ public class InputAction : MonoBehaviour
         //   lastValue = Input.GetAxisRaw(inputString);
 
         // input manger, button 4??
-        Debug.Log("Inputmadad " + inputString);
+
 
         if (Input.GetAxisRaw(inputString) > 0 && !axisInUse)
         {
