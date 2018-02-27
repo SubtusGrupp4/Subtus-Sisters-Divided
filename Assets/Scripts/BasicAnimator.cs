@@ -12,14 +12,17 @@ public class BasicAnimator : MonoBehaviour
     public const string animLand = "IsLanding";
     public const string animTurning = "IsTurning";
     public const string animCrawl = "IsCrawling";
+ 
 
     private bool walkRunBool = false;
 
     public const string attackAnimName = "Attack";
+    public const string crawlEndName = "EndCrawl";
 
     private bool attacking;
     private bool jumping;
     private bool landing;
+    private bool crawling;
 
     public GameObject animGameObject;
     [Range(-1, 1)]
@@ -60,10 +63,17 @@ public class BasicAnimator : MonoBehaviour
         }
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animLand) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !anim.GetComponent<Animator>().IsInTransition(0))
         {
-            Debug.Log("anim Land");
+         
             landing = false;
             anim.SetBool(animLand, false);
            
+        }
+        if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(crawlEndName) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !anim.GetComponent<Animator>().IsInTransition(0) )
+        {
+            Debug.Log("crawl end");
+            crawling = false;
+            anim.SetBool(crawlEndName, true);
+
         }
 
     }
@@ -82,6 +92,11 @@ public class BasicAnimator : MonoBehaviour
         return jumping;
     }
 
+    public virtual bool GetCrawlState()
+    {
+        return crawling;
+    }
+    
     public virtual bool GetLandState()
     {
         return landing;
@@ -96,6 +111,12 @@ public class BasicAnimator : MonoBehaviour
     public virtual void Crawl(bool state)
     {
         anim.SetBool(animCrawl, state);
+
+        if (state)
+        {
+            crawling = true;
+            anim.SetBool(crawlEndName, false);
+        }
     }
 
     public virtual void Land()

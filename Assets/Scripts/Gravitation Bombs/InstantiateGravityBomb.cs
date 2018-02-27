@@ -83,6 +83,8 @@ public class InstantiateGravityBomb : MonoBehaviour
         lookingAt = transform.parent.transform.parent.localScale;
 
         GetDirection();
+
+        if(!playerController.crawling)
         Fire(direction, fireBomb);
 
         if (animationPlaying)

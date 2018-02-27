@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Crawl : MonoBehaviour
 {
-
-
     private string inputString = "CrawlInput";
     private bool axisInUse = false;
 
     private bool crawling = false;
+
+    public float crawlSpeed;
+    private float savedSpeed;
+
+    [Header("Collider")]
+    public Vector2 colliderOffset;
+    public Vector2 colliderSize;
+
+    private Vector2 savedColliderOffSet;
+    private Vector2 savedColliderSize;
 
 
     PlayerController playerCont;
@@ -19,6 +27,7 @@ public class Crawl : MonoBehaviour
     void Start()
     {
         playerCont = GetComponent<PlayerController>();
+
 
         if (playerCont.Player == Controller.Player1)
         {
@@ -42,11 +51,20 @@ public class Crawl : MonoBehaviour
         {
             // BUTTON DOWN LETS START THIS SHIT
             crawling ^= true;
-            
+            axisInUse = true;
+
             playerCont.bodyAnim.Crawl(crawling);
-            playerCont.bodyAnim.Crawl(crawling);
+            playerCont.armAnim.Crawl(crawling);
 
             // Disable ATTACK, Jump?
+            if(crawling)
+            {
+                // do crawling shit
+            }
+            else
+            {
+                // undo crawling shit
+            }
 
         }
         else if (Input.GetAxisRaw(inputString) == 0)

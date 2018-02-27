@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private string horAx = "Horizontal";
     private string verAx = "Vertical";
     private string jumpInput = "Jump";
+    private string crawlInput = "CrawlInput";
     private float distanceGraceForJump = 0.02f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
 
     // Components
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
     public bool isActive;
 
     bool landing;
+    [HideInInspector]
+    public bool crawling;
 
     private SpriteRenderer sr;
 
@@ -91,6 +94,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject dyingAnimationGO;
 
+    [Header("Crawling")]
+    private bool insideCrawling = false;
+    private bool axisInUse = false;
+
+    public float crawlSpeed;
+    private float savedSpeed;
+
+    public Vector2 crawlColliderOffset;
+    public Vector2 crawlColliderSize;
+
+    private Vector2 savedColliderOffSet;
+    private Vector2 savedColliderSize;
+
+
+
     void Awake()
     {
         myBox = GetComponent<CapsuleCollider2D>();
@@ -100,6 +118,11 @@ public class PlayerController : MonoBehaviour
 
         capsuleOffSetX = myBox.offset.x;
         capsuleOffSetY = myBox.offset.y;
+
+        savedColliderSize = myBox.size;
+        savedColliderOffSet = myBox.offset;
+
+        savedSpeed = speed;
 
         // FIX JUMP
         //
@@ -129,6 +152,7 @@ public class PlayerController : MonoBehaviour
         horAx += controllerCode;
         verAx += controllerCode;
         jumpInput += controllerCode;
+        crawlInput += controllerCode;
 
         if (flipped)
             Flip();
@@ -151,9 +175,11 @@ public class PlayerController : MonoBehaviour
         {
             landing = false;
         }
+        crawling = bodyAnim.GetCrawlState();
 
-        //  if (!inAir)
-        //  lastSafe = transform.position;
+        if (Player == Controller.Player1)
+            ToggleCrawl();
+
     }
     private void FixedUpdate()
     {
@@ -164,10 +190,53 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ToggleCrawl()
+    {
+
+        // Disable ATTACK, Jump?
+        if (crawling)
+        {
+            // Collider
+            myBox.size = crawlColliderSize;
+            myBox.offset = crawlColliderOffset;
+            myBox.direction = CapsuleDirection2D.Horizontal;
+
+            speed = crawlSpeed;
+        }
+        else
+        {
+            // Collider
+            myBox.size = savedColliderSize;
+            myBox.offset = savedColliderOffSet;
+            myBox.direction = CapsuleDirection2D.Vertical;
+
+            speed = savedSpeed;
+        }
+
+        if (Input.GetAxisRaw(crawlInput) > 0 && !axisInUse)
+        {
+            // BUTTON DOWN LETS START THIS SHIT
+            insideCrawling ^= true;
+            //
+            axisInUse = true;
+
+            bodyAnim.Crawl(insideCrawling);
+            armAnim.Crawl(insideCrawling);
+
+           
+
+        }
+        else if (Input.GetAxisRaw(crawlInput) == 0)
+        {
+            // axisInUse is used to make sure that you dont trigger it alot when you hold down the button.
+            axisInUse = false;
+        }
+    }
+
     private void Move()
     {
         // JUMP
-        if (Input.GetAxis(jumpInput) > 0 && (!inAir) && landing == false)
+        if (Input.GetAxis(jumpInput) > 0 && (!inAir) && landing == false && crawling == false)
         {
             inAir = true;
             rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;
@@ -395,6 +464,7 @@ public class PlayerController : MonoBehaviour
                                     Debug.Log("LANDING");
 
                                     bodyAnim.Land();
+                                    armAnim.Land();
 
                                     audioSource.PlayOneShot(landingSound, 0.1f);
                                     landing = true;
