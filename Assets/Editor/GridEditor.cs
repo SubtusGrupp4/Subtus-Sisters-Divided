@@ -213,6 +213,11 @@ public class GridEditor : Editor
         if (EditorGUI.EndChangeCheck())
             ResetTransformList();
 
+        EditorGUI.BeginChangeCheck();
+        grid.addAsChildren = EditorGUILayout.Toggle(new GUIContent("Add all tiles as children", "[CAN'T UNDO] Clear and replace the entire transform tile list."), grid.addAsChildren);
+        if (EditorGUI.EndChangeCheck())
+            AddTilesAsChildren();
+
         EditorGUILayout.Space();
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
 
@@ -334,6 +339,25 @@ public class GridEditor : Editor
                 }
             }
         }
+    }
+
+    void AddTilesAsChildren()
+    {
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        int amount = 0;
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.transform.tag == "Floor" ||
+                obj.GetComponent<CombinedTile>() != null ||
+                obj.GetComponent<PlatformEffector2D>() != null ||
+                obj.GetComponent<CheckAdjacent>() != null)
+            {
+                obj.transform.parent = grid.tiles.transform;
+                amount++;
+            }
+        }
+        Debug.Log(amount + " tiles added to Tiles as children.");
+        grid.addAsChildren = false;
     }
 
     private void ResetAllSprites()

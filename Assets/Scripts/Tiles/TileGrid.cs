@@ -54,6 +54,7 @@ public class TileGrid : MonoBehaviour
     public bool restoreColliders = false;
     public bool resetAllSprites = false;
     public bool resetTransformList = false;
+    public bool addAsChildren = false;
 
     public bool didUndo = false;
 
