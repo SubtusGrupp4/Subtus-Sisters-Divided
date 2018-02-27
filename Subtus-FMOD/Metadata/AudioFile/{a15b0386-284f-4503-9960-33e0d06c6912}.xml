@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="AudioFile" id="{f18e75b9-2e67-4aa3-9e6a-ab7a38c3b832}">
+    <object class="AudioFile" id="{a15b0386-284f-4503-9960-33e0d06c6912}">
         <property name="assetPath">
-            <value>GrassGross_footstep_01.wav</value>
+            <value>Gravel/Footstep_gravel_2.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>
@@ -11,7 +11,7 @@
             <value>2</value>
         </property>
         <property name="length">
-            <value>0.29882086167800453</value>
+            <value>0.5</value>
         </property>
         <relationship name="masterAssetFolder">
             <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>

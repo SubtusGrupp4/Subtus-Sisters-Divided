@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{dd233135-9357-4b53-a1db-1bc09c6ffd18}">
+        <property name="assetPath">
+            <value>Grass Gross/GrassGross_footstep_03.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.73043083900226757</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>
+        </relationship>
+    </object>
+</objects>
