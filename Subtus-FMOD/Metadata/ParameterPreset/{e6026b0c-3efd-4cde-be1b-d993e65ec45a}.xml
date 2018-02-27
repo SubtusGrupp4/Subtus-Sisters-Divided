@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{e6026b0c-3efd-4cde-be1b-d993e65ec45a}">
+        <property name="name">
+            <value>Undre </value>
+        </property>
+        <relationship name="folder">
+            <destination>{b8f21763-cd01-4114-9a88-668e9cc3a841}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{061d3dcd-d349-4d3f-a02b-b139071117cd}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{061d3dcd-d349-4d3f-a02b-b139071117cd}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>0.26000002026557922</value>
+        </property>
+    </object>
+</objects>
