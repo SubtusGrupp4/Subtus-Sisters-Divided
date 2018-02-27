@@ -68,6 +68,11 @@ public class BasicAnimator : MonoBehaviour
             anim.SetBool(animLand, false);
            
         }
+        else if(!anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animLand) && !anim.GetComponent<Animator>().IsInTransition(0))
+        {
+            landing = false;
+            anim.SetBool(animLand, false);
+        }
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(crawlEndName) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !anim.GetComponent<Animator>().IsInTransition(0) )
         {
             Debug.Log("crawl end");
