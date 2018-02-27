@@ -19,13 +19,13 @@ public class ObjectPortal : PortalBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (onPortal) {
-			if (transform.position.y > 10) {
+		/*if (onPortal) {
+			if (transform.position.y > GetComponent<OverEdgeFalling>().heightLimit) {
 				rb.velocity = new Vector2(0, -1);
-			} else if (transform.position.y < -10) {
+			} else if (transform.position.y < -GetComponent<OverEdgeFalling>().heightLimit) {
 				rb.velocity = new Vector2(0, 1);
 			}
-		}
+		}*/
 		if (rb.velocity == Vector2.zero) {
 			onPortal = false;
 		}
