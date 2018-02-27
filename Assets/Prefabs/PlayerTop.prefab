@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 82548618978913640}
   - component: {fileID: 114877929058656616}
   - component: {fileID: 114676271810125542}
+  - component: {fileID: 114190269308026364}
   m_Layer: 0
   m_Name: PlayerTop
   m_TagString: Player
@@ -109,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221702535368190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.53, y: 2.88, z: 0}
+  m_LocalPosition: {x: 16.9, y: 4.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4124828373953728}
@@ -350,15 +351,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityBomb: {fileID: 1006222317952464, guid: 82cbbd05bec7c8a489c39efb5c405031,
     type: 2}
-  shockwaveBomb: {fileID: 1304899937324840, guid: 8f9125da6974bae4f909af092d5bfa5e,
+  shockwaveBomb: {fileID: 1510888046279538, guid: bc57c5b828ec6844f9200b794388e8b1,
     type: 2}
   speed: 600
-  cooldown: 0.1
-  sensitivity: 0.21
+  cooldown: 1.42
+  sensitivity: 0.303
   arm: {fileID: 1885305298513428}
   throwArm: {fileID: 1412240866182594}
   playerAnim: {fileID: 114315930396904570}
   playerController: {fileID: 114075432480208920}
+--- !u!114 &114190269308026364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221702535368190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4379cc6a3991f774db546798b36ae064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1
+  boxMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  pushSpeed: 2
 --- !u!114 &114315930396904570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,7 +407,7 @@ MonoBehaviour:
   range: 4
   grabRight: {x: 1.79, y: 0, z: 0}
   grabLeft: {x: -1.32, y: 0, z: 0}
-  throwDistance: 2.5
+  throwDistance: 0
 --- !u!114 &114418944913835374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,13 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a7845cdb5f8944eb09e613df5de419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footsteps:
-  - {fileID: 8300000, guid: 4674572942a35d74b9c756d46fce9153, type: 3}
-  - {fileID: 8300000, guid: 9c3453b961aeb9b469a747e4ef10abe2, type: 3}
-  - {fileID: 8300000, guid: c6c757d8f1af3174f820ad1083c1a2e7, type: 3}
-  - {fileID: 8300000, guid: 26f4d859918b5e84281a7b9f061b9fae, type: 3}
-  - {fileID: 8300000, guid: fb1f21b6d4ee6214994c7486506a25e4, type: 3}
-  - {fileID: 8300000, guid: c4296ebe7af857e4d9b2a4e7674cbc81, type: 3}
+  eventName: 
 --- !u!114 &114783988198582998
 MonoBehaviour:
   m_ObjectHideFlags: 1
