@@ -64,8 +64,8 @@ public class AudioZone : MonoBehaviour
 
                 parameters.Add(p);
             }
+            fetchParameters = false;
         }
-        resetOnExit = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
