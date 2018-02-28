@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{d88decfd-44ee-4921-a5e8-9ac86f1cc738}">
+        <property name="assetPath">
+            <value>Simon/Level1_Merina_1/Merina/Drums/Level 1_Merinaledmotiv_1 Hi-hat Echo.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>61.439999999999998</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{1e4b9ed5-573b-43ed-bdc7-ef2c79811c93}</destination>
+        </relationship>
+    </object>
+</objects>
