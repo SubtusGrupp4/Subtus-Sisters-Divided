@@ -23,10 +23,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Grass
+  - Gravel
+  - Wood
+  - GrassGross
   - 
   - 
   - 
@@ -51,6 +51,18 @@ TagManager:
   - name: Background
     uniqueID: 1106017909
     locked: 0
+  - name: Buildings
+    uniqueID: 945630941
+    locked: 0
+  - name: Decorations
+    uniqueID: 1017279869
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Playfield
+    uniqueID: 3664269281
+    locked: 0
+  - name: Foreground
+    uniqueID: 2800070951
     locked: 0
