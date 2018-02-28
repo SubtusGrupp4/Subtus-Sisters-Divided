@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class OverEdgeFalling : MonoBehaviour
 {
-	public float constantSpeed = 2f;
-
-	public LayerMask layer;
+	
 
 	private Collider2D col;
 	private SpriteRenderer sp;
@@ -34,16 +32,16 @@ public class OverEdgeFalling : MonoBehaviour
 
 	public bool IsGrounded()
 	{
-		Vector2 leftPosition = new Vector2(transform.position.x - sp.bounds.size.x/2, transform.position.y);
-		Vector2 rightPosition = new Vector2(transform.position.x + sp.bounds.size.x/2, transform.position.y);
+		Vector2 leftPosition = new Vector2(transform.position.x - sp.bounds.size.x/2 -0.03f, transform.position.y);
+		Vector2 rightPosition = new Vector2(transform.position.x + sp.bounds.size.x/2 + 0.03f, transform.position.y);
 		Vector2 direction = Vector2.down * transform.localScale.y;
 
-		float distance = 1.0f;
+		float distance = 0.6f;
 		bool checkLeftRay;
 		bool checkRightRay;
 
-		RaycastHit2D hit = Physics2D.Raycast (leftPosition, direction, distance, layer);
-		RaycastHit2D hit2 = Physics2D.Raycast (rightPosition, direction, distance, layer);
+		RaycastHit2D hit = Physics2D.Raycast (leftPosition, direction, distance);
+		RaycastHit2D hit2 = Physics2D.Raycast (rightPosition, direction, distance);
 		if (hit.collider != null) {
 			
 			checkLeftRay = true;
@@ -67,5 +65,12 @@ public class OverEdgeFalling : MonoBehaviour
 
 		return true;
 	}
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.yellow;
+
+		Gizmos.DrawLine (transform.position, (Vector2)transform.position + Vector2.down * transform.localScale.y * 0.6f);
+	}
+
 
 }

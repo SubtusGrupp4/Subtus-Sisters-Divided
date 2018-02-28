@@ -12,27 +12,12 @@ public class PullBoxes : MonoBehaviour {
 	private Vector2 rayLine;
 	private bool isPulling;
 
-	private string controllerCode;
-	private string controllerOne = "_C1";
-	private string controllerTwo = "_C2";
-
-	private string pullBox = "Pulling";
+	private string tagName = "Box";
 
 	private PlayerController playerController;
 
 	void Start(){
 		playerController = GetComponent<PlayerController> ();
-
-		if (playerController.Player == Controller.Player1)
-		{
-			pullBox += controllerOne;
-
-		}
-		else
-		{
-			pullBox += controllerTwo;
-
-		}
 	}
 
 	void Update () 
@@ -42,8 +27,7 @@ public class PullBoxes : MonoBehaviour {
 		Physics2D.queriesStartInColliders = false;
 		RaycastHit2D hit = Physics2D.Raycast (rayLine, Vector2.right * transform.localScale.x, distance, boxMask);
 
-		if (hit.collider != null && hit.collider.gameObject.tag == "Pickup"/*or box*/ && (Input.GetKeyDown (KeyCode.G) 
-			|| Input.GetButtonDown(pullBox)) /*&& !playerController.inAir*/) 
+		if (hit.collider != null && hit.collider.gameObject.tag == tagName && (hit.collider.GetComponent<OverEdgeFalling>() != null) && !playerController.inAir) 
 		{
 			if (hit.collider.GetComponent<OverEdgeFalling> ().IsGrounded ())
 			{
@@ -58,7 +42,7 @@ public class PullBoxes : MonoBehaviour {
 			//code
 
 		} 
-		else if ((Input.GetKeyUp (KeyCode.G) || Input.GetButtonUp(pullBox)) && isPulling) 
+		else if (/*(Input.GetKeyUp (KeyCode.G) || Input.GetButtonUp(pullBox))*/ hit.collider == null && isPulling) 
 		{
 			isPulling = false;
 			box.GetComponent<Rigidbody2D> ().mass = 100;

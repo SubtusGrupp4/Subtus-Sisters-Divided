@@ -5,8 +5,8 @@ using UnityEngine;
 public class Portal : MonoBehaviour 
 {
 
-	public Vector2 vec;
-	public float offset;
+	private Vector2 vec;
+
 
 	void Update()
 	{

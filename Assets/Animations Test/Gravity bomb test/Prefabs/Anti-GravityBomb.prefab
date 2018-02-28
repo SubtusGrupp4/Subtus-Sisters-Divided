@@ -169,13 +169,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 10
   explosionForce: 450
-  duration: 20
+  duration: 5
   particles:
   - {fileID: 1527653109992404, guid: 12963556841d793499cf8ff25089e09c, type: 2}
   tagNames:
   - Enemy
   - Pickup
   - Player
+  - Box
 --- !u!198 &198614017947931998
 ParticleSystem:
   m_ObjectHideFlags: 1

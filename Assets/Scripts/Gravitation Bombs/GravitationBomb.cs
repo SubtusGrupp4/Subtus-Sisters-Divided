@@ -19,6 +19,11 @@ public class GravitationBomb : MonoBehaviour
 	[SerializeField]
 	private string[] tagNames;
 
+	[Header("Particles")]
+	[SerializeField]
+	private GameObject[] particles;
+	private List<GameObject> particleClones;
+
 	private List<GameObject> pullObjects;
 	private Rigidbody2D rb;
 	private bool buttonPressed;
@@ -29,7 +34,7 @@ public class GravitationBomb : MonoBehaviour
 
 	void Start () 
 	{
-		
+		particleClones = new List<GameObject> ();
 		rb = GetComponent<Rigidbody2D> ();
 		pullObjects = new List<GameObject> ();
 		buttonPressed = true;
@@ -64,34 +69,20 @@ public class GravitationBomb : MonoBehaviour
 			}
 		}
 	}
-
-	/*void ActivateGravitationBomb()
-	{
-		deActivate -= Time.deltaTime;
-		if (Input.GetButton (activateBomb) && buttonPressed) 
-		{
-			buttonPressed = false;
-			targetting = true;
-			gravitationActivated = true;
-			rb.bodyType = RigidbodyType2D.Static;
-		}
-		if(Input.GetButtonUp (activateBomb))
-		{
-			ResetGravity (0);
-			Destroy (gameObject);
-		}
-		if (deActivate < 0) 
-		{
-			Destroy (gameObject);
-		}
-	}
-	*/
-
+		
 	void ActivateGravitationBomb()
 	{
+		
 		deActivate -= Time.deltaTime;
 		if (Input.GetAxis (activateBomb) > 0.5f && buttonPressed) 
 		{
+
+			foreach (GameObject particle in particles) 
+			{
+				GameObject clone = (Instantiate (particle, transform.position, Quaternion.identity));
+				particleClones.Add (clone);
+			}
+
 			buttonPressed = false;
 			targetting = true;
 			gravitationActivated = true;
@@ -169,6 +160,13 @@ public class GravitationBomb : MonoBehaviour
 		foreach (GameObject toPull in pullObjects) 
 		{
 			toPull.GetComponent<Rigidbody2D> ().velocity = new Vector2(toPull.GetComponent<Rigidbody2D>().velocity.x*integer, toPull.GetComponent<Rigidbody2D>().velocity.y*integer);
+		}
+	}
+	void OnDestroy()
+	{
+		foreach (GameObject particle in particleClones) 
+		{
+			Destroy (particle);
 		}
 	}
 
