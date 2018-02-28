@@ -20,8 +20,11 @@ public class FlyReactToPlayer : MonoBehaviour {
         {
             foreach(ParticleSystem fly in flies)
             {
-                fly.emissionRate = 15f;
-                fly.startSpeed = 2f;
+                var emission = fly.emission;
+                emission.rateOverTime = 15f;
+
+                var main = fly.main;
+                main.startSpeed = 2f;
             }
             transform.position = startPosition + (Random.insideUnitCircle / 35f);
         }
@@ -29,8 +32,11 @@ public class FlyReactToPlayer : MonoBehaviour {
         {
             foreach (ParticleSystem fly in flies)
             {
-                fly.emissionRate = 1f;
-                fly.startSpeed = 1f;
+                var emission = fly.emission;
+                emission.rateOverTime = 1f;
+
+                var main = fly.main;
+                main.startSpeed = 1f;
             }
             transform.position = startPosition;
         }

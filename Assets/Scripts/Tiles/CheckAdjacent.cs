@@ -21,30 +21,30 @@ public class CheckAdjacent : MonoBehaviour
 		{
 			RaycastHit2D hit = Physics2D.Raycast(origin + rayDirection, rayDirection, rayDistance);
 			
-            if(hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
+            if(hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null && hit.transform.gameObject.isStatic)
 				hits++;
 
             if (rayDirection == Vector2.up)
             {
                 rayDirection = Vector2.right;
-				if(hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
+				if(hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null && hit.transform.gameObject.isStatic)
                     up = true;
             }
             else if (rayDirection == Vector2.right)
             {
                 rayDirection = Vector2.down;
-                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
+                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null && hit.transform.gameObject.isStatic)
                     right = true;
             }
             else if(rayDirection == Vector2.down)
             {
                 rayDirection = Vector2.left;
-                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
+                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null && hit.transform.gameObject.isStatic)
                     down = true;
             }
 			else 
 			{
-                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null)
+                if (hit.transform != null && hit.transform.GetComponent<CheckAdjacent>() != null && hit.transform.gameObject.isStatic)
                     left = true;
 			}
         }
@@ -71,8 +71,15 @@ public class CheckAdjacent : MonoBehaviour
                 Debug.Log("Enabled colliders");
             }
         }
-
-        DestroyImmediate(GetComponent<SetParentTo>());
+        PlatformEffector2D[] effectors = GetComponents<PlatformEffector2D>();
+        foreach (PlatformEffector2D e in effectors)
+        {
+            if (!e.enabled)
+            {
+                e.enabled = true;
+                Debug.Log("Enabled effectors");
+            }
+        }
     }
 
 	private void SetDecorationMargins(bool up, bool right, bool down, bool left) 

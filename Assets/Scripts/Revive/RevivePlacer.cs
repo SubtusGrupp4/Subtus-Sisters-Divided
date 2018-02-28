@@ -6,12 +6,9 @@ using UnityEngine;
 public class RevivePlacer : MonoBehaviour 
 {
     private Vector2 rayDirection;
-    private Vector2 startPos;
 
     private float moveAmount = 0.05f;
     private float maxDistance = 15f;
-
-    private Transform playerTransform;
 
     [SerializeField]
     private GameObject reviveSpot;
@@ -23,11 +20,8 @@ public class RevivePlacer : MonoBehaviour
     private bool useDebugDelay = true;
 
     // Called by the player that dies
-    public void Initialize (Controller player, Transform playerTransform) 
+    public void Initialize (Controller player) 
     {
-        startPos = transform.position;
-        this.playerTransform = playerTransform;
-
         // Change the direction based on what player died
         if (player == Controller.Player1)
             rayDirection = Vector2.up;

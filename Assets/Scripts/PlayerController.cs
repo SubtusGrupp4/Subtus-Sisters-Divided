@@ -399,7 +399,7 @@ public class PlayerController : MonoBehaviour
 
                 Vector2 spawnPos = new Vector2(lastSafe.x, 0f);
                 revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
-                revivePlacer.GetComponent<RevivePlacer>().Initialize(Player, transform);
+                revivePlacer.GetComponent<RevivePlacer>().Initialize(Player);
                 Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
                 GameManager.instance.onePlayerDead = true;
             }

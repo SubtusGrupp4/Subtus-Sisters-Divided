@@ -15,9 +15,9 @@ public class MainMenuManager : MonoBehaviour {
 
     [Header("Version Parents")]
 	[SerializeField]
-	private Transform light;
+	private Transform lightParent;
 	[SerializeField]
-	private Transform dark;
+	private Transform darkParent;
 
     [Header("Press Any Key notification")]
 	[SerializeField]
@@ -126,16 +126,16 @@ public class MainMenuManager : MonoBehaviour {
     {
         if (isActivated && useDark)
         {
-            dark.gameObject.SetActive(true);
-            light.gameObject.SetActive(false);
+            darkParent.gameObject.SetActive(true);
+            lightParent.gameObject.SetActive(false);
 
             audioSources[1].volume = 0f;
             audioSources[2].volume = 1f;
         }
         else if (isActivated)
         {
-            dark.gameObject.SetActive(false);
-            light.gameObject.SetActive(true);
+            darkParent.gameObject.SetActive(false);
+            lightParent.gameObject.SetActive(true);
 
             audioSources[1].volume = 0.6f;
             audioSources[2].volume = 0f;

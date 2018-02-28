@@ -274,6 +274,15 @@ public class GridEditor : Editor
                     Debug.Log("Disabled colliders");
                 }
             }
+            PlatformEffector2D[] effectors = tile.GetComponents<PlatformEffector2D>();
+            foreach(PlatformEffector2D e in effectors)
+            {
+                if(e.enabled)
+                {
+                    e.enabled = false;
+                    Debug.Log("Disabled effectors");
+                }
+            }
         }
         Debug.Log("Checked all objects");
         grid.checkAdjacent = false;                                                         // Set the bool to false to prevent being checked in the inspector
