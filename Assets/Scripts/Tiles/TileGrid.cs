@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 public class TileGrid : MonoBehaviour
 {
@@ -56,12 +56,14 @@ public class TileGrid : MonoBehaviour
     public bool resetTransformList = false;
     public bool addAsChildren = false;
 
+    public bool selectTilesWithName = false;
+
     public bool didUndo = false;
 
     private void OnEnable()
     {
         // Event for when CTRL-Z is pressed
-        Undo.undoRedoPerformed = MyUndoCallback;
+        //Undo.undoRedoPerformed = MyUndoCallback;
     }
 
     void MyUndoCallback()
@@ -72,7 +74,7 @@ public class TileGrid : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Undo.undoRedoPerformed = MyUndoCallback;
+        //Undo.undoRedoPerformed = MyUndoCallback;
 
         if (showGrid)
         {

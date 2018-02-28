@@ -3,7 +3,7 @@ using UnityEngine;
  
 public class ApplySelectedPrefabs : EditorWindow
 {
-    [MenuItem ("Tools/Tiles/Switch Sprite")]
+    [MenuItem ("4K Studios Tools/Tiles/Switch Sprite")]
     static void SwitchSprite()
     {
 		Transform[] selection = Selection.transforms;
@@ -26,7 +26,7 @@ public class ApplySelectedPrefabs : EditorWindow
      	}
     }
 
-    [MenuItem("Tools/Tiles/Flip Tile Y")]
+    [MenuItem("4K Studios Tools/Tiles/Flip Tile Y")]
     static void FlipTileY()
     {
         Transform[] selection = Selection.transforms;

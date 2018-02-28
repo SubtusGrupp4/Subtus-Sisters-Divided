@@ -218,6 +218,11 @@ public class GridEditor : Editor
         if (EditorGUI.EndChangeCheck())
             AddTilesAsChildren();
 
+        EditorGUI.BeginChangeCheck();
+        grid.selectTilesWithName = EditorGUILayout.Toggle(new GUIContent("Select all with name same as prefab", ""), grid.selectTilesWithName);
+        if (EditorGUI.EndChangeCheck())
+            SelectTilesWithName(grid.tileSet.prefabs[grid.tileIndex].name);
+
         EditorGUILayout.Space();
         grid.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), grid.debug);
 
@@ -276,7 +281,7 @@ public class GridEditor : Editor
 
     // Same function as CheckAdjacentBlocks(), but only affects the selected objects
     // Called from the Tools menu
-    [MenuItem("Tools/Grid/Check adjacent blocks on selected")]
+    [MenuItem("4K Studios Tools/Grid/Check adjacent blocks on selected")]
     static void CheckAdjacentBlocksSelected()
     {
         List<Transform> chosen = new List<Transform>();
@@ -323,7 +328,7 @@ public class GridEditor : Editor
         grid.restoreColliders = false;
     }
 
-    [MenuItem("Tools/Grid/Restore Colliders on selected")]
+    [MenuItem("4K Studios Tools/Grid/Restore Colliders on selected")]
     static void RestoreCollidersSelected()
     {
         Transform[] selection = Selection.transforms;
@@ -380,6 +385,20 @@ public class GridEditor : Editor
             grid.tileTransforms.Add(grid.tiles.transform.GetChild(i));  // add them to the list
 
         grid.resetTransformList = false;
+    }
+
+    private void SelectTilesWithName(string name)
+    {
+        GameObject[] gameObjects = FindObjectsOfType<GameObject>();
+        List<GameObject> gos = new List<GameObject>();
+
+        foreach(GameObject go in gameObjects)
+        {
+            if(go.name == name)
+                gos.Add(go);
+        }
+        Selection.objects = gos.ToArray();
+        grid.selectTilesWithName = false;
     }
 
     // Prevents a float field from being smaller than the min value
