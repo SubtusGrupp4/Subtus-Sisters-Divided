@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4603644218669752}
   - component: {fileID: 114569973662789206}
   - component: {fileID: 114955746522735056}
-  - component: {fileID: 60651107743421904}
+  - component: {fileID: 61870896148464248}
   m_Layer: 0
   m_Name: AudioZone
   m_TagString: Untagged
@@ -42,8 +42,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60651107743421904
-PolygonCollider2D:
+--- !u!61 &61870896148464248
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -51,7 +51,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -64,14 +64,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 3.852138, y: -3.2987778}
-      - {x: 8.056541, y: -1.9675398}
-      - {x: 4.934674, y: 1.6922183}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10}
+  m_EdgeRadius: 0
 --- !u!114 &114569973662789206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,15 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emitter: {fileID: 114955746522735056}
-  parameters:
-  - name: Lowpass IN
-    value: 0
-  - name: 'Undre_Lead '
-    value: 0
-  - name: "\xD6vre_Lead"
-    value: 0
+  parameters: []
   resetOnExit: 0
-  fetchParameters: 1
+  setStartOnEnter: 0
+  fetchParameters: 0
 --- !u!114 &114955746522735056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,11 +102,11 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Lowpass IN
+  - Name: "\xD6vre_Lead"
     Value: 0
   - Name: 'Undre_Lead '
     Value: 0
-  - Name: "\xD6vre_Lead"
+  - Name: Lowpass IN
     Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
