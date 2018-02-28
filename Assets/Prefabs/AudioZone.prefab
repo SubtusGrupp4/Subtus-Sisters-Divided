@@ -19,9 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4603644218669752}
-  - component: {fileID: 114569973662789206}
-  - component: {fileID: 114955746522735056}
   - component: {fileID: 61870896148464248}
+  - component: {fileID: 114569973662789206}
   m_Layer: 0
   m_Name: AudioZone
   m_TagString: Untagged
@@ -78,36 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29720b7280fd86144852d6258a0e3aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitter: {fileID: 114955746522735056}
+  emitter: {fileID: 0}
   parameters: []
   resetOnExit: 0
   setStartOnEnter: 0
   fetchParameters: 0
---- !u!114 &114955746522735056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1979037287191264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: "event:/Simon/Mu_S_\xD6vreUndre"
-  PlayEvent: 1
-  StopEvent: 2
-  CollisionTag: 
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params:
-  - Name: "\xD6vre_Lead"
-    Value: 0
-  - Name: 'Undre_Lead '
-    Value: 0
-  - Name: Lowpass IN
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0

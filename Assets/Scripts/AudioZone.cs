@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-[RequireComponent(typeof(Collider))]
 public class AudioZone : MonoBehaviour
 {
     [System.Serializable]
@@ -78,29 +77,37 @@ public class AudioZone : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
+        {
+            Debug.Log("Player entered AudioZone");
+
             foreach (Parameter p in parameters)
                 emitter.SetParameter(p.name, p.value);
 
-        if (resetOnExit && setStartOnEnter)
-        {
-            oldParameters.Clear();
-            for (int i = 0; i < emitter.Params.Length; i++)
+            if (resetOnExit && setStartOnEnter)
             {
-                Parameter p = new Parameter
+                oldParameters.Clear();
+                for (int i = 0; i < emitter.Params.Length; i++)
                 {
-                    name = emitter.Params[i].Name,
-                    value = emitter.Params[i].Value
-                };
+                    Parameter p = new Parameter
+                    {
+                        name = emitter.Params[i].Name,
+                        value = emitter.Params[i].Value
+                    };
 
-                oldParameters.Add(p);
+                    oldParameters.Add(p);
+                }
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && resetOnExit)
-            foreach (Parameter p in oldParameters)
+        if (collision.tag == "Player")
+        {
+            Debug.Log("Player exited AudioZone");
+            if (resetOnExit)
+                foreach (Parameter p in oldParameters)
                 emitter.SetParameter(p.name, p.value);
+        }
     }
 }
