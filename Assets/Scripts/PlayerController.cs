@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
             ResetJump();
         }
 
-        if(bodyAnim.GetLandState() == false)
+        if (bodyAnim.GetLandState() == false)
         {
             landing = false;
         }
@@ -192,8 +192,6 @@ public class PlayerController : MonoBehaviour
 
     void ToggleCrawl()
     {
-
-        // Disable ATTACK, Jump?
         if (crawling)
         {
             // Collider
@@ -215,15 +213,56 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxisRaw(crawlInput) > 0 && !axisInUse)
         {
-            // BUTTON DOWN LETS START THIS SHIT
-            insideCrawling ^= true;
-            //
+            Collider2D[] allObjs;
+            bool blocked = false;
             axisInUse = true;
 
-            bodyAnim.Crawl(insideCrawling);
-            armAnim.Crawl(insideCrawling);
+            if (!crawling)
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + crawlColliderOffset + new Vector2(0, 0.3f), crawlColliderSize, 0);
+            else
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + savedColliderOffSet + new Vector2(0, 0.3f), savedColliderSize, 0);
+            /*
+            // We want to difference between transiton to crawl, and is currently crawling.
+            if (!crawling)
+                allObjs = Physics2D.CapsuleCastAll((Vector2)transform.position + crawlColliderOffset ,
+                    crawlColliderSize,
+                    CapsuleDirection2D.Horizontal,
+                    0,
+                    Vector2.right);
+            else
+                allObjs = Physics2D.CapsuleCastAll((Vector2)transform.position + savedColliderOffSet ,
+                    savedColliderSize,
+                    CapsuleDirection2D.Vertical,
+                    0,
+                    Vector2.right);
+                    */
 
-           
+
+            for (int i = 0; i < allObjs.Length; i++)
+            {
+                if (blocked)
+                    break;
+                for (int j = 0; j < resetJumpOn.Length; j++)
+                {
+                    if (blocked)
+                        break;
+                    if (allObjs[i].transform.tag == resetJumpOn[j])
+                    {
+                        blocked = true;
+                        break;
+                    }
+                }
+            }
+            Debug.Log("blocked" + blocked);
+            if (!blocked)
+            {
+                insideCrawling ^= true;
+                //
+
+
+                bodyAnim.Crawl(insideCrawling);
+                armAnim.Crawl(insideCrawling);
+            }
 
         }
         else if (Input.GetAxisRaw(crawlInput) == 0)
@@ -246,7 +285,7 @@ public class PlayerController : MonoBehaviour
             armAnim.Jump();
 
             Debug.Log("audio being played");
-            audioSource.PlayOneShot(jumpSound); 
+            audioSource.PlayOneShot(jumpSound);
         }
 
         // Input Manager
