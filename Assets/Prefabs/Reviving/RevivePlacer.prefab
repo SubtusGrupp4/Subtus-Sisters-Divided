@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reviveSpot: {fileID: 1325320069798532, guid: 21dfd43e3a03b06408ccc688ed62ded9, type: 2}
+  useDebugDelay: 1
 --- !u!212 &212662311081835534
 SpriteRenderer:
   m_ObjectHideFlags: 1
