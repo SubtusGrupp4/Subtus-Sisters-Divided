@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="ParameterPreset" id="{357775cc-ec3d-42ba-9ec9-33c2d4d773e6}">
+    <object class="ParameterPreset" id="{07968702-b0c2-427e-aa6f-38f4f5bbad78}">
         <property name="name">
-            <value>Top</value>
+            <value>Drums </value>
         </property>
         <relationship name="folder">
-            <destination>{1763589a-0b24-4d43-8f0f-ecdefba18cc1}</destination>
+            <destination>{b8f21763-cd01-4114-9a88-668e9cc3a841}</destination>
         </relationship>
         <relationship name="parameter">
-            <destination>{e74f167a-b951-4b65-90fd-44c722997dbc}</destination>
+            <destination>{2e7cba0b-8528-4bcb-86c2-931bf5f03beb}</destination>
         </relationship>
     </object>
-    <object class="GameParameter" id="{e74f167a-b951-4b65-90fd-44c722997dbc}">
+    <object class="GameParameter" id="{2e7cba0b-8528-4bcb-86c2-931bf5f03beb}">
         <property name="initialValue">
             <value>0</value>
         </property>
         <property name="seekSpeed">
-            <value>0.81000006198883057</value>
+            <value>0.80000001192092896</value>
         </property>
     </object>
 </objects>

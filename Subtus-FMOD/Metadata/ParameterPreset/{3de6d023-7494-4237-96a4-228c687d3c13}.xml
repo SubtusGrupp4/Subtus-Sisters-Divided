@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="ParameterPreset" id="{357775cc-ec3d-42ba-9ec9-33c2d4d773e6}">
+    <object class="ParameterPreset" id="{3de6d023-7494-4237-96a4-228c687d3c13}">
         <property name="name">
-            <value>Top</value>
+            <value>Bas 3 </value>
         </property>
         <relationship name="folder">
-            <destination>{1763589a-0b24-4d43-8f0f-ecdefba18cc1}</destination>
+            <destination>{b8f21763-cd01-4114-9a88-668e9cc3a841}</destination>
         </relationship>
         <relationship name="parameter">
-            <destination>{e74f167a-b951-4b65-90fd-44c722997dbc}</destination>
+            <destination>{7b4b0e9b-ab1a-4329-bfa5-f06af72276e0}</destination>
         </relationship>
     </object>
-    <object class="GameParameter" id="{e74f167a-b951-4b65-90fd-44c722997dbc}">
+    <object class="GameParameter" id="{7b4b0e9b-ab1a-4329-bfa5-f06af72276e0}">
         <property name="initialValue">
             <value>0</value>
         </property>

@@ -2,10 +2,10 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="ParameterPreset" id="{e6026b0c-3efd-4cde-be1b-d993e65ec45a}">
         <property name="name">
-            <value>Undre </value>
+            <value>Bot</value>
         </property>
         <relationship name="folder">
-            <destination>{b8f21763-cd01-4114-9a88-668e9cc3a841}</destination>
+            <destination>{1763589a-0b24-4d43-8f0f-ecdefba18cc1}</destination>
         </relationship>
         <relationship name="parameter">
             <destination>{061d3dcd-d349-4d3f-a02b-b139071117cd}</destination>
@@ -16,7 +16,7 @@
             <value>0</value>
         </property>
         <property name="seekSpeed">
-            <value>0.26000002026557922</value>
+            <value>0.81000006198883057</value>
         </property>
     </object>
 </objects>
