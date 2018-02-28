@@ -57,16 +57,13 @@ public class BasicAnimator : MonoBehaviour
         }
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animJump) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 0.1 && !anim.GetComponent<Animator>().IsInTransition(0) && jumping == true)
         {
-
             anim.SetBool(animJump, false);
             jumping = false;
         }
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animLand) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !anim.GetComponent<Animator>().IsInTransition(0))
-        {
-         
+        {       
             landing = false;
-            anim.SetBool(animLand, false);
-           
+            anim.SetBool(animLand, false);         
         }
         else if(!anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(animLand) && !anim.GetComponent<Animator>().IsInTransition(0))
         {
@@ -75,12 +72,9 @@ public class BasicAnimator : MonoBehaviour
         }
         if (anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(crawlEndName) && anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !anim.GetComponent<Animator>().IsInTransition(0) )
         {
-            Debug.Log("crawl end");
             crawling = false;
             anim.SetBool(crawlEndName, true);
-
         }
-
     }
     public virtual void Turning(bool state)
     {
@@ -140,9 +134,6 @@ public class BasicAnimator : MonoBehaviour
 
     public virtual void ToggleWalk(bool state)
     {
-      //  walkRunBool ^= true;
-
-
         anim.SetBool(animWalk, state);
     }
 
