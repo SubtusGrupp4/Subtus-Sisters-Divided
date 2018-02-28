@@ -240,8 +240,14 @@ public class GridEditor : Editor
             grid.tilePrefab = grid.tileSet.prefabs[grid.tileIndex];             // Select the tile at the current tileIndex
         grid.sprite = grid.tilePrefab.GetComponent<SpriteRenderer>().sprite;    // Fetch the sprite
 
-        grid.width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;    // Set grid width to the size of the tile
-        grid.height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;   // Same with height
+        if (grid.tilePrefab.GetComponent<Renderer>().bounds.size.x != 1.01f)
+            grid.width = grid.tilePrefab.GetComponent<Renderer>().bounds.size.x;    // Set grid width to the size of the tile
+        else
+            grid.width = 1f;
+        if (grid.tilePrefab.GetComponent<Renderer>().bounds.size.y != 1.01f)
+            grid.height = grid.tilePrefab.GetComponent<Renderer>().bounds.size.y;   // Same with height
+        else
+            grid.height = 1f;
 
         if (grid.mousePreview != null)                                          // If there is a mousepreview
         {
