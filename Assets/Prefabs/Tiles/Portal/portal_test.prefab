@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4938629512766308}
   - component: {fileID: 212952948530506466}
   - component: {fileID: 61379743509553908}
+  - component: {fileID: 114906055353673028}
   m_Layer: 0
   m_Name: portal_test
   m_TagString: Portal
@@ -36,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1438626498127782}
   m_LocalRotation: {x: -0, y: -0, z: 0.00000007154928, w: -1}
   m_LocalPosition: {x: 112.13001, y: 31.2, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -66,6 +67,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25573826}
   m_EdgeRadius: 0
+--- !u!114 &114906055353673028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438626498127782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: 71a8ab51ff7f6e84ea325489c8628c3d, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 71a8ab51ff7f6e84ea325489c8628c3d, type: 3}
+  lightTile: 0
 --- !u!212 &212952948530506466
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,7 +118,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 71a8ab51ff7f6e84ea325489c8628c3d, type: 3}
-  m_Color: {r: 0.63845307, g: 0.6985294, b: 0.4263084, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
