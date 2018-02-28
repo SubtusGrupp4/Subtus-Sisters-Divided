@@ -3,7 +3,7 @@ using UnityEngine;
  
 public class PrefabTools : EditorWindow
 {
-    [MenuItem ("Tools/Prefabs/Revert all selected prefabs")]
+    [MenuItem ("4K Studios Tools/Prefabs/Revert all selected prefabs")]
     static void ResetPrefabs()
     {
 		Transform[] selection = Selection.transforms;
@@ -20,7 +20,7 @@ public class PrefabTools : EditorWindow
          	Debug.Log("Nothing selected");
     }
 
-    [MenuItem("Tools/Prefabs/Replace all selected with prefab")]
+    [MenuItem("4K Studios Tools/Prefabs/Replace all selected with prefab")]
     static void ReplacePrefabs()
     {
         Transform[] selection = Selection.transforms;
@@ -48,7 +48,7 @@ public class PrefabTools : EditorWindow
             Debug.Log("Nothing selected");
     }
 
-    [MenuItem("Tools/Prefabs/Apply all selected prefabs")]
+    [MenuItem("4K Studios Tools/Prefabs/Apply all selected prefabs")]
     static void ApplyPrefabs()
     {
         Transform[] selection = Selection.transforms;
