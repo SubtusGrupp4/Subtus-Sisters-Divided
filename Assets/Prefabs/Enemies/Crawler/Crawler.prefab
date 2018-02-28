@@ -164,7 +164,7 @@ MonoBehaviour:
   flipped: 0
   startState: 2
   engagedState: 0
-  speed: 1
+  speed: 2
   stepRange: 1
   climbRange: 0
   maxSlope: 60

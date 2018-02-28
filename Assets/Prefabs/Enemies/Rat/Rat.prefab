@@ -159,16 +159,18 @@ MonoBehaviour:
   engageOn: []
   bounceOn:
   - Floor
+  - Enemy
+  - MovingFloor
   walkOn:
   - Floor
   flipped: 0
   startState: 2
   engagedState: 0
   speed: 4
-  stepRange: 4
-  climbRange: 3
+  stepRange: 1
+  climbRange: 0
   maxSlope: 60
-  turnRate: 0
+  turnRate: 1
   aggroRange: 0
   checkPoints: []
 --- !u!114 &114803104298512386

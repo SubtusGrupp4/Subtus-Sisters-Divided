@@ -185,7 +185,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isActive)
         {
-            Move();
+            if (!landing)
+                Move();
+
             NormalizeSlope();
         }
     }

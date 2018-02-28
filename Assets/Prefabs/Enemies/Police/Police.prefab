@@ -174,20 +174,21 @@ MonoBehaviour:
   bounceOn:
   - Floor
   - MovingFloor
+  - Enemy
   walkOn:
   - Floor
   - MovingFloor
   flipped: 0
   startState: 2
   engagedState: 1
-  speed: 4
-  stepRange: 3
-  climbRange: 3
+  speed: 3
+  stepRange: 1
+  climbRange: 0
   maxSlope: 75
-  turnRate: 1
-  aggroRange: 14
+  turnRate: 0
+  aggroRange: 6
   checkPoints: []
-  engagedSpeed: 6
+  engagedSpeed: 8
   attentionSpan: 1
 --- !u!212 &212996390384708728
 SpriteRenderer:
