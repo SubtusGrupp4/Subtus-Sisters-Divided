@@ -80,9 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 0
   Type: 1
-  InteractWith:
-  - Pickup
-  - Player
+  InteractWith: []
   StayDown: 0
   HideOnInteraction: 0
   stateOne: {fileID: 21300000, guid: 7c277f1cb672a55409e3e2ccd68254f6, type: 3}

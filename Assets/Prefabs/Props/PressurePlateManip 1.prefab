@@ -121,7 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 0
   Type: 0
-  InteractWith: []
+  InteractWith:
+  - Player
   StayDown: 0
   HideOnInteraction: 1
   stateOne: {fileID: 21300000, guid: 5044f6569d64fc744b1f03884976ac68, type: 3}
