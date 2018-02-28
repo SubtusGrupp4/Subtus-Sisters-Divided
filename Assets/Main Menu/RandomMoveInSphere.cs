@@ -8,7 +8,6 @@ public class RandomMoveInSphere : MonoBehaviour {
     public float strength = 1f;
 
     private Vector3 startPos;
-	[SerializeField]
     private Vector2 randomDir;
 	private float timeSinceRandomRefresh = 1f;
 
@@ -22,7 +21,7 @@ public class RandomMoveInSphere : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		rb.AddForce(startPos - transform.position * strength);
+		rb.AddForce((startPos - transform.position) * strength * 1.5f);
 
 		if(timeSinceRandomRefresh >= 1f) 
 		{

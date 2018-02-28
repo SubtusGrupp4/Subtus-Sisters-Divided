@@ -10,21 +10,15 @@ public class FlickeringLight : MonoBehaviour
     [SerializeField]
     private float maxInterval;
 
-    [Header("Size")]
+    [Header("Intensity")]
     [SerializeField]
-    private float minSize;
+    [Range(0f, 1f)]
+    private float minIntensity;
     [SerializeField]
-    private float maxSize;
-    private float prevSize;
-    private float newSize = 1f;
-
-    [Header("Opacity")]
-    [SerializeField]
-    private float minOpacity;
-    [SerializeField]
-    private float maxOpacity;
-    private float prevOpacity;
-    private float newOpacity = 1f;
+    [Range(0f, 1f)]
+    private float maxIntensity;
+    private float prevIntensity;
+    private float newIntensity = 1f;
 
     private float lerpTimer = 1f;
     private float lerpInterval;
@@ -50,22 +44,20 @@ public class FlickeringLight : MonoBehaviour
     {
         if (lerpTimer < 1f) {
             lerpTimer += Time.deltaTime / lerpInterval;
-            float size = Mathf.Lerp(prevSize, newSize, lerpTimer);
+            float size = Mathf.Lerp(prevIntensity, newIntensity, lerpTimer);
             transform.localScale = new Vector2(size, size);
 
-            float opacity = Mathf.Lerp(prevOpacity, newOpacity, lerpTimer);
+            float opacity = Mathf.Lerp(prevIntensity, newIntensity, lerpTimer);
             sr.color = new Color(1f, 1f, 1f, opacity);
         }
     }
 
     private IEnumerator FlickerTimer(float interval)
     {
-        prevSize = newSize;
-        prevOpacity = newOpacity;
+        prevIntensity = newIntensity;
         lerpTimer = 0f;
         lerpInterval = interval;
-        newSize = Random.Range(minSize, maxSize);
-        newOpacity = Random.Range(minOpacity, maxOpacity);
+        newIntensity = Random.Range(minIntensity, maxIntensity);
 
         yield return new WaitForSeconds(interval);
         StartCoroutine(FlickerTimer(Random.Range(minInterval, maxInterval)));
