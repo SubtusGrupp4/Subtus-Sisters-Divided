@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ReviveSpot : MonoBehaviour
 {
+    [SerializeField]
+    private float bounceAmount = 1f;
+    [SerializeField]
+    private float bounceInterval = 3f;
+    private Vector2 startPos;
     /*
     Transform playerTransform;
 
@@ -21,4 +26,14 @@ public class ReviveSpot : MonoBehaviour
         }
     }
     */
+
+    private void Start()
+    {
+        startPos = transform.position;
+    }
+
+    private void Update()
+    {
+        transform.position = new Vector2(transform.position.x, startPos.y + (Mathf.Sin(Time.time * bounceInterval) * bounceAmount));
+    }
 }
