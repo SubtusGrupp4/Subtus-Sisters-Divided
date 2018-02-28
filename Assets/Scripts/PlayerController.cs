@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     private float X;
     private Vector2 savedVelocity;
     private bool changedMade;
-    private bool inAir;
+    [HideInInspector]
+    public bool inAir;
     float temp;
     private float wallNormal = 0.9f;
 
