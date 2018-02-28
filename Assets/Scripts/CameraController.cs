@@ -68,6 +68,9 @@ public class CameraController : MonoBehaviour
 
         if (maxZoom <= 1f)
             maxZoom = 11f;
+
+        // Place camera on the players
+        transform.position = new Vector2(playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2, 0f);
     }
 
     private void Update()
