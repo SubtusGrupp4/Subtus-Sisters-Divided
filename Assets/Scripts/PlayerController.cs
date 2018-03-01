@@ -172,6 +172,8 @@ public class PlayerController : MonoBehaviour
         {
             landing = false;
         }
+        else
+            landing = true;
         crawling = bodyAnim.GetCrawlState();
 
         if (Player == Controller.Player1)
