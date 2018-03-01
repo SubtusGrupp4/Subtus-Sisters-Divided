@@ -79,12 +79,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string[] resetJumpOn = new string[] { };
 
-    [Header("Sounds")]
-    [SerializeField]
-    private AudioClip jumpSound;
-    [SerializeField]
-    private AudioClip landingSound;
-    private AudioSource audioSource;
+    // FMOD Audio
+    private MovementAudio movementAudio;
 
     [Header("Reviving")]
     [SerializeField]
@@ -162,7 +158,7 @@ public class PlayerController : MonoBehaviour
         inAir = true;
 
         sr = GetComponent<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
+        movementAudio = GetComponent<MovementAudio>();
     }
 
     void Update()
@@ -287,8 +283,7 @@ public class PlayerController : MonoBehaviour
             bodyAnim.Jump();
             armAnim.Jump();
 
-            Debug.Log("audio being played");
-            audioSource.PlayOneShot(jumpSound);
+            movementAudio.Jump();
         }
 
         // Input Manager
@@ -508,7 +503,7 @@ public class PlayerController : MonoBehaviour
                                     bodyAnim.Land();
                                     armAnim.Land();
 
-                                    audioSource.PlayOneShot(landingSound, 0.1f);
+                                    movementAudio.Landing();
                                     landing = true;
 
                                 }
@@ -531,6 +526,9 @@ public class PlayerController : MonoBehaviour
                             armAnim.Falling(false);
                             //
                             //
+
+                            // Send what type of ground the player is standig on
+                            movementAudio.SetGroundType(objHit[j].transform.gameObject.layer);
 
                             quickBreak = true;
                         }
