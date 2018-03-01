@@ -55,6 +55,7 @@ public class TileGrid : MonoBehaviour
     public bool resetAllSprites = false;
     public bool resetTransformList = false;
     public bool addAsChildren = false;
+    public bool SetScaleTo1 = false;
 
     public bool selectTilesWithName = false;
 
@@ -100,11 +101,5 @@ public class TileGrid : MonoBehaviour
 
         Gizmos.DrawLine(new Vector3(-1000000.0f, 0f),
         new Vector3(1000000.0f, 0f));
-
-        Gizmos.DrawLine(new Vector3(-1000000.0f, Camera.main.orthographicSize),
-                new Vector3(1000000.0f, Camera.main.orthographicSize));
-
-        Gizmos.DrawLine(new Vector3(-1000000.0f, -(Camera.main.orthographicSize)),
-                new Vector3(1000000.0f, -(Camera.main.orthographicSize)));
     }
 }

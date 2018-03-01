@@ -219,6 +219,11 @@ public class GridEditor : Editor
             AddTilesAsChildren();
 
         EditorGUI.BeginChangeCheck();
+        grid.SetScaleTo1 = EditorGUILayout.Toggle(new GUIContent("Set scale to 1.01", "[CAN'T UNDO] Takes all gameobjects with a scale value of 1 and makes it 1.01"), grid.SetScaleTo1);
+        if (EditorGUI.EndChangeCheck())
+            SetScaleTo1();
+
+        EditorGUI.BeginChangeCheck();
         grid.selectTilesWithName = EditorGUILayout.Toggle(new GUIContent("Select all with name same as prefab", ""), grid.selectTilesWithName);
         if (EditorGUI.EndChangeCheck())
             SelectTilesWithName(grid.tileSet.prefabs[grid.tileIndex].name);
@@ -400,6 +405,20 @@ public class GridEditor : Editor
             grid.tileTransforms.Add(grid.tiles.transform.GetChild(i));  // add them to the list
 
         grid.resetTransformList = false;
+    }
+
+    private void SetScaleTo1()
+    {
+        foreach(Transform t in grid.tileTransforms)
+        {
+            if (Mathf.Abs(t.localScale.x) == 1f)
+                t.localScale = new Vector3(1.01f * t.localScale.x, t.localScale.y, t.localScale.z);
+            if (Mathf.Abs(t.localScale.y) == 1f)
+                t.localScale = new Vector3(t.localScale.x, 1.01f * t.localScale.y, t.localScale.z);
+
+            t.localScale = new Vector3(t.localScale.x, t.localScale.y, 1.0f);
+        }
+        grid.SetScaleTo1 = false;
     }
 
     private void SelectTilesWithName(string name)
