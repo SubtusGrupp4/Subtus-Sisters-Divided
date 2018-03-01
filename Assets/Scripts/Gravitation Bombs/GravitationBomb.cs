@@ -74,7 +74,7 @@ public class GravitationBomb : MonoBehaviour
 	{
 		
 		deActivate -= Time.deltaTime;
-		if (Input.GetAxis (activateBomb) > 0.5f && buttonPressed) 
+		if ((Input.GetAxis (activateBomb) > 0.5f || Input.GetKeyDown(KeyCode.T)) && buttonPressed) 
 		{
 
 			foreach (GameObject particle in particles) 
@@ -88,7 +88,7 @@ public class GravitationBomb : MonoBehaviour
 			gravitationActivated = true;
 			rb.bodyType = RigidbodyType2D.Static;
 		}
-		if(Input.GetAxis (activateBomb) <= 0 && !buttonPressed)
+		if((Input.GetAxis (activateBomb) <= 0 || Input.GetKeyUp(KeyCode.T)) && !buttonPressed)
 		{
 			ResetGravity (0);
 			Destroy (gameObject);

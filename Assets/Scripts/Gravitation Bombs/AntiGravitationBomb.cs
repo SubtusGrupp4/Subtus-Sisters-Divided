@@ -48,7 +48,7 @@ public class AntiGravitationBomb : MonoBehaviour
 
     void ActivateAntiGravitationBomb()
     {
-        if (Input.GetAxis(activateBomb) > 0.5f && buttonPressed)
+		if ((Input.GetAxis(activateBomb) > 0.5f || Input.GetKeyDown(KeyCode.O))&& buttonPressed)
         {
 			foreach (GameObject particle in particles) 
 			{

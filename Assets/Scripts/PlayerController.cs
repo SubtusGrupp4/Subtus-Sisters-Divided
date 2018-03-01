@@ -172,8 +172,7 @@ public class PlayerController : MonoBehaviour
         {
             landing = false;
         }
-        else
-            landing = true;
+        
         crawling = bodyAnim.GetCrawlState();
 
         if (Player == Controller.Player1)
@@ -276,7 +275,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         // JUMP
-        if (Input.GetAxis(jumpInput) > 0 && (!inAir) && landing == false && crawling == false)
+		if (Input.GetAxis(jumpInput) > 0 && (!inAir) && landing == false && crawling == false && !GetComponent<PullBoxes>().isPulling)
         {
             inAir = true;
             rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;

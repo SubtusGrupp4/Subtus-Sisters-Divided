@@ -4,20 +4,37 @@ using UnityEngine;
 
 public class PullBoxes : MonoBehaviour {
 
-	public float distance = 1f;
-	public LayerMask boxMask;
+	[Tooltip("Changes the box's rigidbodyweight")]
 	public float pushSpeed;
 
+	private float distance;
 	private GameObject box;
 	private Vector2 rayLine;
-	private bool isPulling;
+	[HideInInspector]
+	public bool isPulling;
+
+	private string c1 = "_C1";
+	private string c2 = "_C2";
+
+	private string pushAndPullBox = "Pushing";
 
 	private string tagName = "Box";
 
+	private Controller player;
 	private PlayerController playerController;
 
 	void Start(){
 		playerController = GetComponent<PlayerController> ();
+
+		if (playerController.Player == Controller.Player1) 
+		{
+			pushAndPullBox += c1;
+		}
+		else 
+		{
+			pushAndPullBox += c2;
+		}
+		distance = 1f;
 	}
 
 	void Update () 
@@ -25,9 +42,10 @@ public class PullBoxes : MonoBehaviour {
 		rayLine = new Vector2 (transform.position.x, transform.position.y - 1);
 
 		Physics2D.queriesStartInColliders = false;
-		RaycastHit2D hit = Physics2D.Raycast (rayLine, Vector2.right * transform.localScale.x, distance, boxMask);
+		RaycastHit2D hit = Physics2D.Raycast (rayLine, Vector2.right * transform.localScale.x, distance);
 
-		if (hit.collider != null && hit.collider.gameObject.tag == tagName && (hit.collider.GetComponent<OverEdgeFalling>() != null) && !playerController.inAir) 
+		if (hit.collider != null && hit.collider.gameObject.tag == tagName && (hit.collider.GetComponent<OverEdgeFalling>() != null) 
+			&& !playerController.inAir && (Input.GetKeyDown (KeyCode.G) || Input.GetButtonDown(pushAndPullBox))) 
 		{
 			if (hit.collider.GetComponent<OverEdgeFalling> ().IsGrounded ())
 			{
@@ -42,7 +60,7 @@ public class PullBoxes : MonoBehaviour {
 			//code
 
 		} 
-		else if (/*(Input.GetKeyUp (KeyCode.G) || Input.GetButtonUp(pullBox))*/ hit.collider == null && isPulling) 
+		else if ((Input.GetKeyUp (KeyCode.G) || Input.GetButtonUp(pushAndPullBox)) && isPulling || (isPulling && playerController.inAir)) 
 		{
 			isPulling = false;
 			box.GetComponent<Rigidbody2D> ().mass = 100;

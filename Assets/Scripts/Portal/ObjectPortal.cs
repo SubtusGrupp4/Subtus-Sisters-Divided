@@ -48,6 +48,7 @@ public class ObjectPortal : PortalBehaviour
 		{
 			checkState = !checkState;
 			ChangeSprite ();
+			transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
 			rb.gravityScale = -rb.gravityScale;
 
 		}
