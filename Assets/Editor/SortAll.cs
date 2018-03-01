@@ -11,10 +11,8 @@ public class SortAll : Editor
         GameObject[] gameObjects = FindObjectsOfType<GameObject>();
         foreach(GameObject go in gameObjects)
         {
-            if (go.GetComponent<SpriteRenderer>() != null)
-            {
+            if (go.isStatic && go.GetComponent<SpriteRenderer>() != null)
                 go.GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(go.transform.position.x * go.transform.position.y);
-            }
         }
 	}
 }

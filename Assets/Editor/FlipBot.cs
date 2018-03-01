@@ -16,7 +16,7 @@ public class FlipBot : Editor
             if(go.transform.position.y < -0.1f)
             {
                 go.transform.position = new Vector2(go.transform.position.x, (-go.transform.position.y - 11f));
-                go.transform.localScale = new Vector3(1f, -go.transform.localScale.y, 1f);
+                go.transform.localScale = new Vector3(go.transform.localScale.x, -go.transform.localScale.y, go.transform.localScale.z);
             }
         }
 	}
