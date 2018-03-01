@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 114877929058656616}
   - component: {fileID: 114676271810125542}
   - component: {fileID: 114190269308026364}
+  - component: {fileID: 114440906952355416}
   m_Layer: 0
   m_Name: PlayerTop
   m_TagString: Player
@@ -335,14 +336,10 @@ MonoBehaviour:
   resetJumpOn:
   - Floor
   - MovingFloor
-  lastSafe: {x: 0, y: 0}
-  revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
-    type: 2}
-  dyingAnimationGO: {fileID: 1227121869111286, guid: addf99c6f2dedfb46ad3b9bf9d492fc0,
-    type: 2}
   crawlSpeed: 0
   crawlColliderOffset: {x: 0, y: 0}
   crawlColliderSize: {x: 0, y: 0}
+  lastSafe: {x: 0, y: 0}
 --- !u!114 &114162503053591004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityBomb: {fileID: 1006222317952464, guid: 82cbbd05bec7c8a489c39efb5c405031,
     type: 2}
-  shockwaveBomb: {fileID: 1510888046279538, guid: bc57c5b828ec6844f9200b794388e8b1,
+  shockwaveBomb: {fileID: 1420963257892870, guid: 67a15e731b440d8439aed9acb3294a90,
     type: 2}
   speed: 600
   cooldown: 1.42
@@ -376,11 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4379cc6a3991f774db546798b36ae064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1
-  boxMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  pushSpeed: 2
+  pushSpeed: 50
+  isPulling: 0
 --- !u!114 &114315930396904570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,6 +420,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animGameObject: {fileID: 1885305298513428}
   facing: 1
+--- !u!114 &114440906952355416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221702535368190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc8e07f37f77b14c9f2c57ef9818e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
+    type: 2}
+  dyingAnimationGO: {fileID: 1227121869111286, guid: addf99c6f2dedfb46ad3b9bf9d492fc0,
+    type: 2}
 --- !u!114 &114618732551154816
 MonoBehaviour:
   m_ObjectHideFlags: 1

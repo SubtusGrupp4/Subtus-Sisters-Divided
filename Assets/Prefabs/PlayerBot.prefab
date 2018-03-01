@@ -62,6 +62,8 @@ GameObject:
   - component: {fileID: 114587427707560048}
   - component: {fileID: 114174067668099832}
   - component: {fileID: 114440824730290900}
+  - component: {fileID: 114769637922038836}
+  - component: {fileID: 114861638884894700}
   m_Layer: 0
   m_Name: PlayerBot
   m_TagString: Player
@@ -107,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1842559087543814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06099987, y: -0.03999996, z: 0}
+  m_LocalPosition: {x: 0.061000824, y: -0.03999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4929469156933270}
@@ -120,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351313833732644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.27999973, y: 0.4000001, z: 0}
+  m_LocalPosition: {x: -0.27999878, y: 0.39999962, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4632469363361584}
@@ -134,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -58.38, y: -2.61, z: 0}
+  m_LocalPosition: {x: -58.39, y: -2.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -277,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundType: 0
-  grassEvent: event:/Players/Concrete/Concrete
+  grassEvent: event:/Players/Grass/Grass
   grassGrossEvent: event:/Players/GrassGross/GrassGross
   concreteEvent: event:/Players/Concrete/Concrete
   gravelEvent: event:/Players/Gravel/Gravel
@@ -319,14 +321,38 @@ MonoBehaviour:
   resetJumpOn:
   - Floor
   - MovingFloor
-  lastSafe: {x: 0, y: 0}
-  revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
-    type: 2}
-  dyingAnimationGO: {fileID: 1260716085056240, guid: 1c448e5cfcff1264faa15edf4633ecce,
-    type: 2}
   crawlSpeed: 0
   crawlColliderOffset: {x: 0, y: 0}
   crawlColliderSize: {x: 0, y: 0}
+  lastSafe: {x: 0, y: 0}
+--- !u!114 &114769637922038836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566391204588738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4379cc6a3991f774db546798b36ae064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushSpeed: 50
+  isPulling: 0
+--- !u!114 &114861638884894700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566391204588738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc8e07f37f77b14c9f2c57ef9818e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
+    type: 2}
+  dyingAnimationGO: {fileID: 1260716085056240, guid: 0d6717f871dd14944b8fc4cf53fef963,
+    type: 2}
 --- !u!114 &114954191565589998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a80a7e519bce74a9e6088514ac652c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityBomb: {fileID: 1006222317952464, guid: 82cbbd05bec7c8a489c39efb5c405031,
+  gravityBomb: {fileID: 1086342068457356, guid: f9411e65dec07cd44a915752a643ec16,
     type: 2}
   shockwaveBomb: {fileID: 1304899937324840, guid: 8f9125da6974bae4f909af092d5bfa5e,
     type: 2}

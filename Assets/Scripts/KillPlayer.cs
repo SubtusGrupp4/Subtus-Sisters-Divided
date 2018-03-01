@@ -48,7 +48,7 @@ public class KillPlayer : MonoBehaviour
         // If collide with player, kill the player
         if (obj.transform.tag == "Player")
         {
-            obj.transform.GetComponent<PlayerController>().Die();
+            obj.transform.GetComponent<Reviving>().Die();
 
             bAnim.Attack();
 

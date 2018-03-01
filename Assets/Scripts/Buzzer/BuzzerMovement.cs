@@ -193,7 +193,7 @@ public class BuzzerMovement:MonoBehaviour
     {
         // If collide with player, kill the player
         if (collision.transform.tag == "Player")
-            collision.transform.GetComponent<PlayerController>().Die();
+            collision.transform.GetComponent<Reviving>().Die();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

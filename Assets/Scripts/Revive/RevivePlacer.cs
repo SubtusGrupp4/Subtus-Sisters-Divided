@@ -64,8 +64,6 @@ public class RevivePlacer : MonoBehaviour
                 if (hit.transform != null)
                 {
                     // Criterias for what is hit
-                    if (hit.transform.tag == "Player")
-                        continue;
                     if (hit.transform.tag == "Portal")
                     {
                         transform.position = new Vector2(transform.position.x - 0.5f, 0f);
@@ -87,7 +85,11 @@ public class RevivePlacer : MonoBehaviour
                 {
                     if (passedThrough == true)
                     {
-                        Instantiate(reviveSpot, transform.position, Quaternion.identity);
+                        float spawnHeight = rayDistance / 2f;
+                        if (moveAmount < 0f)
+                            spawnHeight = -spawnHeight;
+
+                        Instantiate(reviveSpot, transform.position - new Vector3(0f, spawnHeight), Quaternion.identity);
                         search = false;
                         Destroy(gameObject);
                     }
