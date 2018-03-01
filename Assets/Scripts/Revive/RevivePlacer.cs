@@ -119,13 +119,6 @@ public class RevivePlacer : MonoBehaviour
         {
             Debug.Log("Hit: " + hit.transform.name + ", pos: " + hit.transform.position);
             // Criterias for what is hit
-            if (hit.transform.tag == "Player")
-            {
-                // Replace with "Continue" in the while loop
-                Debug.Log("Hit player");
-                StartCoroutine(SlowRaycast());
-                yield break;
-            }
             if(hit.transform.tag == "Portal")
             {
                 Debug.Log("Hit portal");

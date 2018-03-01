@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58913934414552734}
   - component: {fileID: 95910521940720820}
   - component: {fileID: 114904227861576304}
-  - component: {fileID: 114332754063650174}
+  - component: {fileID: 114696189685168040}
   m_Layer: 0
   m_Name: Buzzer
   m_TagString: Enemy
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054353198000982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 115.88785, y: -7.611816, z: 0}
+  m_LocalPosition: {x: -20.546627, y: -6.419798, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114332754063650174
+--- !u!114 &114696189685168040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -106,20 +106,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1054353198000982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  CollisionTag: 
-  AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  AllowFadeout: 1
+  Params:
+  - Name: 
+    Value: 0
+  - Name: 
+    Value: 0
 --- !u!114 &114901745029816454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,9 +136,8 @@ MonoBehaviour:
   attackSpeed: 15
   attackDistance: 7
   idleEvent: event:/Carl/Au_Ca_Buzzer_Idle
-  attackEvent: event:/Carl/Au_Ca_Buzzer_Attacking
+  attackEvent: event:/Carl/Au_Ca_Crawler_Attacking
   flyingEvent: event:/Carl/Au_Ca_Buzzer_Flying
-  emitter: {fileID: 114332754063650174}
 --- !u!114 &114904227861576304
 MonoBehaviour:
   m_ObjectHideFlags: 1

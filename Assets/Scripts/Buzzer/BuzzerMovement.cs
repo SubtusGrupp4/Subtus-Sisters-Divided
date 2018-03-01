@@ -58,8 +58,7 @@ public class BuzzerMovement:MonoBehaviour
     [SerializeField]
     private string flyingEvent;
 
-    [SerializeField]
-    private FMODUnity.StudioEventEmitter emitter;
+    private FMODEmitter emitter;
     /*
     [SerializeField]
     private AudioClip attackSound;
@@ -83,9 +82,10 @@ public class BuzzerMovement:MonoBehaviour
         targetPos = buzzerTarget.transform.position;
 
         playerTarget = GameManager.instance.playerBot;
-        emitter = GetComponent<FMODUnity.StudioEventEmitter>();
-        emitter.Event = idleEvent;
-        emitter.Play();
+        emitter = GetComponent<FMODEmitter>();
+
+        //emitter.Event = idleEvent;
+        //emitter.Play();
     }
 
     void Update ()
@@ -104,8 +104,12 @@ public class BuzzerMovement:MonoBehaviour
             sr.flipX = rb.velocity.x < 0f ? true : false;           // Set the sprite being flipped in the direction of travel
         else                // If not attacking
         {
-            //if(emitter.Event != idleEvent)
-               //emitter.Event = idleEvent;
+            if (emitter.Event != idleEvent)
+            {
+                emitter.Stop();
+                emitter.Event = idleEvent;
+                emitter.Play();
+            }
 
             float targetDistance = Vector2.Distance(transform.position, targetPos);     // How far away the buzzer is from the target
 
@@ -169,7 +173,11 @@ public class BuzzerMovement:MonoBehaviour
     private IEnumerator AttackInterval(float time)
     {
         bodyAnim.Attack();      // Start the attacking animation
+
+        //emitter.Stop();
         //emitter.Event = flyingEvent;
+        //emitter.Play();
+
         attacking = true;       // Prevent the movement code from running, and another attack from triggering
         rb.AddForce(new Vector2(0f, -speed * 24f), ForceMode2D.Impulse);    // Move upwards to show the imminent attack
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, 2f);              // Clamp the speed
@@ -178,8 +186,10 @@ public class BuzzerMovement:MonoBehaviour
 
         yield return new WaitForSeconds(time);                              // Wait
 
+        //emitter.Stop();
         //emitter.Event = attackEvent;
         //emitter.Play();
+
         Vector2 attackDir = new Vector2(targetingPos.x - transform.position.x, targetingPos.y - transform.position.y);  // Get the direction towards where the player was
         rb.AddForce(attackDir.normalized * attackSpeed, ForceMode2D.Impulse);   // Fly quickly towards where the player used to be
         sr.flipX = attackDir.x < 0f ? true : false;     // Flip the sprite in the direction of attack

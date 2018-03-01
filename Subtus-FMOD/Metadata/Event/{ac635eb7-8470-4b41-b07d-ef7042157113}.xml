@@ -125,6 +125,10 @@
     </object>
     <object class="MixerBusPanner" id="{5c4db579-b5d0-4d09-9627-db8b1c4f72c6}"/>
     <object class="MixerBusFader" id="{d8815420-14f8-406c-8fbb-c877fe78e7bf}"/>
-    <object class="SpatialiserEffect" id="{5165177c-4d8b-409d-a5b7-5cb41e6abe9f}"/>
+    <object class="SpatialiserEffect" id="{5165177c-4d8b-409d-a5b7-5cb41e6abe9f}">
+        <property name="maximumDistance">
+            <value>40</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{5512a7bb-a335-4894-963b-18054e32611f}"/>
 </objects>
