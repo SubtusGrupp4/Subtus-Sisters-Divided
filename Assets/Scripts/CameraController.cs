@@ -49,6 +49,12 @@ public class CameraController : MonoBehaviour
     private float startZoom;
     private float startYPos;
 
+    [Header("Boundaries")]
+    [SerializeField]
+    private float minX = -10000f;
+    [SerializeField]
+    private float maxX = 10000f;
+
     private void Start()
     {
         // Get the players transforms from the GameManager
@@ -137,6 +143,11 @@ public class CameraController : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
             }
         }
+
+        //if(transform.position.x > maxX - 19.56f)
+            //transform.position = new Vector2(maxX - 19.56f, transform.position.y);
+        if (transform.position.x - 19.56f < minX)
+            transform.position = new Vector3(minX + 19.56f, transform.position.y, -10f);
     }
 
     private void FixedUpdate()
@@ -204,5 +215,22 @@ public class CameraController : MonoBehaviour
         if(GameObject.Find("DialogueManager") != null)
             DialogueManager.instance.moveCamera = false;
         followSpeed = startFollowSpeed;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+
+        Gizmos.DrawLine(new Vector3(minX, Camera.main.orthographicSize),
+        new Vector3(maxX, Camera.main.orthographicSize));
+
+        Gizmos.DrawLine(new Vector3(minX, -(Camera.main.orthographicSize)),
+                new Vector3(maxX, -(Camera.main.orthographicSize)));
+
+                Gizmos.DrawLine(new Vector3(minX, Camera.main.orthographicSize),
+        new Vector3(minX, -Camera.main.orthographicSize));
+
+        Gizmos.DrawLine(new Vector3(maxX, (Camera.main.orthographicSize)),
+                new Vector3(maxX, -(Camera.main.orthographicSize)));
     }
 }
