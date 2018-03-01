@@ -1,0 +1,327 @@
+fileFormatVersion: 2
+guid: caf3dd39ee0bf144e9ab5b5293f55ccb
+timeCreated: 1519896082
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: kara_attack_arm_0
+    21300002: kara_attack_arm_1
+    21300004: kara_attack_arm_2
+    21300006: kara_attack_arm_3
+    21300008: kara_attack_arm_4
+    21300010: kara_attack_arm_5
+    21300012: kara_attack_arm_6
+    21300014: kara_attack_arm_7
+    21300016: kara_attack_arm_8
+    21300018: kara_attack_arm_9
+    21300020: kara_attack_arm_10
+    21300022: kara_attack_arm_11
+    21300024: kara_attack_arm_12
+    21300026: kara_attack_arm_13
+    21300028: kara_attack_arm_14
+    21300030: kara_attack_arm_15
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kara_attack_arm_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2304
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.30258054, y: 0.5105292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2304
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29863214, y: 0.5105292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2304
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29863214, y: 0.5157938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2304
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.3104775, y: 0.51316136}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2304
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.30652905, y: 0.51842594}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.3183741, y: 0.5236904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_6
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.3144257, y: 0.5210581}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_7
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.31047726, y: 0.5210581}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_8
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.3025806, y: 0.51842594}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_9
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1536
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.31047726, y: 0.5157938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29468375, y: 0.5157938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29863214, y: 0.5105292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29863214, y: 0.5105292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_13
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 768
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29073548, y: 0.5157936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_14
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 768
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29468393, y: 0.5105292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kara_attack_arm_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 768
+      alignment: 9
+      pivot: {x: 0.29863214, y: 0.5105291}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

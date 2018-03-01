@@ -44,7 +44,7 @@ InputManager:
     negativeButton: 
     positiveButton: space
     altNegativeButton: 
-    altPositiveButton: joystick 1 button 3
+    altPositiveButton: joystick 1 button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -92,7 +92,7 @@ InputManager:
     negativeButton: 
     positiveButton: down
     altNegativeButton: 
-    altPositiveButton: joystick 2 button 3
+    altPositiveButton: joystick 2 button 0
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -234,7 +234,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 2
+    positiveButton: joystick 1 button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -251,7 +251,7 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
-    altNegativeButton: joystick 2 button 2
+    altNegativeButton: joystick 2 button 1
     altPositiveButton: 
     gravity: 1000
     dead: 0.001
@@ -266,16 +266,16 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 0
+    positiveButton: joystick 1 button 3
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
+    gravity: 1
+    dead: 0.5
+    sensitivity: 1
     snap: 0
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 1
     joyNum: 1
   - serializedVersion: 3
     m_Name: CrawlInput_C2
