@@ -63,7 +63,6 @@ GameObject:
   - component: {fileID: 114174067668099832}
   - component: {fileID: 82446556660860800}
   - component: {fileID: 114440824730290900}
-  - component: {fileID: 114679801980687092}
   m_Layer: 0
   m_Name: PlayerBot
   m_TagString: Player
@@ -136,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64.26, y: -2.351, z: 0}
+  m_LocalPosition: {x: -26.56, y: -5.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -359,11 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundType: 0
-  grassEvent: event:/Footsteps/GrassFootsteps
-  gravelEvent: event:/Footsteps/GravelFootsteps
-  woodEvent: event:/Footsteps/WoodFootsteps
-  grassGrossEvent: event:/Footsteps/GrassGrossFootsteps
-  emitter: {fileID: 0}
+  grassEvent: event:/Players/Grass/Grass
+  grassGrossEvent: event:/Players/GrassGross/GrassGross
+  concreteEvent: event:/Players/Concrete/Concrete
+  gravelEvent: event:/Players/Gravel/Gravel
+  woodEvent: event:/Players/Wood/Wood
 --- !u!114 &114587427707560048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f184ef80db1b8e542a49b94ca74bf9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inAir: 0
   Player: 1
   bodyAnim: {fileID: 0}
   armAnim: {fileID: 0}
@@ -400,8 +400,6 @@ MonoBehaviour:
   resetJumpOn:
   - Floor
   - MovingFloor
-  jumpSound: {fileID: 8300000, guid: 4674572942a35d74b9c756d46fce9153, type: 3}
-  landingSound: {fileID: 8300000, guid: c3ae6d2c236f08b4db13dc5cb07a7de7, type: 3}
   lastSafe: {x: 0, y: 0}
   revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
     type: 2}
@@ -410,17 +408,6 @@ MonoBehaviour:
   crawlSpeed: 0
   crawlColliderOffset: {x: 0, y: 0}
   crawlColliderSize: {x: 0, y: 0}
---- !u!114 &114679801980687092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566391204588738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9562dff22a8f3d1408c74604315e8325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114954191565589998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -502,7 +489,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -630698015
   m_SortingLayer: 1
-  m_SortingOrder: 151
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: deb5a78f4523469458761d773ddfe54a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -544,9 +531,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 126
+  m_SortingLayerID: -630698015
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 08d4488447ae3e7449a5e0a16b2e7da9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -588,9 +575,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 153
+  m_SortingLayerID: -630698015
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300010, guid: 007f5c8b859268b438f183bfe9481268, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -39,7 +39,7 @@ Assets/etc.meta
 #/Subtus-FMOD/Build/
 /Assets/FMODStudioCache.asset
 /Assets/FMODStudioCache.asset.meta
-/Assets/StreamingAssets/*.bank
-/Assets/StreamingAssets/*.bank.meta
+#/Assets/StreamingAssets/*.bank
+#/Assets/StreamingAssets/*.bank.meta
 fmod.log
 fmod_editor.log

@@ -13,65 +13,84 @@ public class MovementAudio : MonoBehaviour
     public GroundType groundType = GroundType.Grass;
 
     [FMODUnity.EventRef]
-    public string grassEvent;
-    [FMODUnity.EventRef]
-    public string gravelEvent;
-    [FMODUnity.EventRef]
-    public string woodEvent;
-    [FMODUnity.EventRef]
-    public string grassGrossEvent;
-
-    public FMOD.Studio.EventInstance eventInstance;
-    public FMOD.Studio.ParameterInstance parameterInstance;
     [SerializeField]
-    FMODUnity.StudioEventEmitter emitter;
+    private string grassEvent;
 
-    //[SerializeField]
-    //private AudioClip[] footsteps;
-    //private AudioSource audioSource;
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string grassGrossEvent;
 
-    private void Start()
-    {
-        //audioSource = GetComponent<AudioSource>();
-    }
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string concreteEvent;
+
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string gravelEvent;
+
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string woodEvent;
 
     public void Footstep()
     {
-        /* Unity solution
-        int rng = Random.Range(0, footsteps.Length);
-        audioSource.clip = footsteps[rng];
-        audioSource.Play();
-        */
+        string eventPath = CheckGroundType();
+        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
+    }
 
-        //Debug.Log("Play Footsteps");
-        //FMODUnity.RuntimeManager.PlayOneShot(eventPath);
+    public void Landing()
+    {
+        string eventPath = CheckGroundType();
+        eventPath += "Landing";
+        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
+    }
 
-        switch(groundType)
+    public void Jump()
+    {
+        string eventPath = CheckGroundType();
+        eventPath += "Jump";
+        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
+    }
+
+    private string CheckGroundType()
+    {
+        string eventPath;
+
+        switch (groundType)
         {
-            case GroundType.Grass:
-                Debug.Log("Grass");
-                FMODUnity.RuntimeManager.PlayOneShot(grassEvent, transform.position);
-                break;
             case GroundType.Gravel:
-                Debug.Log("Gravel");
-                FMODUnity.RuntimeManager.PlayOneShot(gravelEvent, transform.position);
+                eventPath = gravelEvent;
                 break;
             case GroundType.Wood:
-                Debug.Log("Wood");
-                FMODUnity.RuntimeManager.PlayOneShot(woodEvent, transform.position);
+                eventPath = woodEvent;
                 break;
             case GroundType.GrassGross:
-                Debug.Log("Grass Gross");
-                FMODUnity.RuntimeManager.PlayOneShot(grassGrossEvent, transform.position);
+                eventPath = grassGrossEvent;
+                break;
+            default:
+                eventPath = grassEvent;
                 break;
         }
 
-        //eventInstance = FMODUnity.RuntimeManager.CreateInstance(eventName);
-        //eventInstance.getParameter("Grass", out parameterInstance);
-        //eventInstance.start();
-        //parameterInstance.setValue(1f);
+        return eventPath;
+    }
 
-        //emitter.Play();
-        //emitter.SetParameter("Grass", 1f);
+    public void SetGroundType(int layerID)
+    {
+        switch (layerID)
+        {
+            case 9:
+                groundType = GroundType.Gravel;
+                break;
+            case 10:
+                groundType = GroundType.Wood;
+                break;
+            case 11:
+                groundType = GroundType.GrassGross;
+                break;
+            default:
+                groundType = GroundType.Grass;
+                break;
+        }
     }
 }

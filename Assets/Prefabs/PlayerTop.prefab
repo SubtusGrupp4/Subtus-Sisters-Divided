@@ -31,7 +31,6 @@ GameObject:
   - component: {fileID: 114877929058656616}
   - component: {fileID: 114676271810125542}
   - component: {fileID: 114190269308026364}
-  - component: {fileID: 114421360868537000}
   m_Layer: 0
   m_Name: PlayerTop
   m_TagString: Player
@@ -111,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221702535368190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -60.77, y: 2.84, z: 0}
+  m_LocalPosition: {x: -58.6, y: 2.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4124828373953728}
@@ -323,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f184ef80db1b8e542a49b94ca74bf9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inAir: 0
   Player: 0
   bodyAnim: {fileID: 0}
   armAnim: {fileID: 0}
@@ -335,8 +335,6 @@ MonoBehaviour:
   resetJumpOn:
   - Floor
   - MovingFloor
-  jumpSound: {fileID: 8300000, guid: 4674572942a35d74b9c756d46fce9153, type: 3}
-  landingSound: {fileID: 8300000, guid: c3ae6d2c236f08b4db13dc5cb07a7de7, type: 3}
   lastSafe: {x: 0, y: 0}
   revivePlacerPrefab: {fileID: 1552864673559098, guid: 6289ccc4cac85424ea32bb8eb7665ea5,
     type: 2}
@@ -428,17 +426,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animGameObject: {fileID: 1885305298513428}
   facing: 1
---- !u!114 &114421360868537000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1221702535368190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9562dff22a8f3d1408c74604315e8325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114618732551154816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,12 +455,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a7845cdb5f8944eb09e613df5de419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundType: 1
-  grassEvent: event:/Footsteps/GrassFootsteps
-  gravelEvent: event:/Footsteps/GravelFootsteps
-  woodEvent: event:/Footsteps/WoodFootsteps
-  grassGrossEvent: event:/Footsteps/GrassGrossFootsteps
-  emitter: {fileID: 0}
+  groundType: 2
+  grassEvent: event:/Players/Grass/Grass
+  grassGrossEvent: event:/Players/GrassGross/GrassGross
+  concreteEvent: event:/Players/Concrete/Concrete
+  gravelEvent: event:/Players/Gravel/Gravel
+  woodEvent: event:/Players/Wood/Wood
 --- !u!114 &114783988198582998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,9 +516,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -170
+  m_SortingLayerID: -630698015
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: aadd1281f633b9c44816668d81469d50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -575,7 +562,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -630698015
   m_SortingLayer: 1
-  m_SortingOrder: -173
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 74ca79a1fdb3a124681deaaa49acbab4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -617,9 +604,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -189
+  m_SortingLayerID: -630698015
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 67529184f8ab3fd44a0ec5d571de146d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
