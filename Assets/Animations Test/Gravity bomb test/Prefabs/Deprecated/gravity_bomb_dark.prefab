@@ -238,6 +238,7 @@ MonoBehaviour:
   - Pickup
   - Player
   - MovingFloor
+  particles: []
 --- !u!198 &198130943980986294
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -136,7 +136,9 @@ MonoBehaviour:
   Sounds: 0
   ActivationSound: {fileID: 0}
   DeactivationSound: {fileID: 0}
-  objects: []
+  objects:
+  - obj: {fileID: 0}
+    OffSet: {x: 0, y: 0, z: 0}
 --- !u!212 &212969143328343108
 SpriteRenderer:
   m_ObjectHideFlags: 1

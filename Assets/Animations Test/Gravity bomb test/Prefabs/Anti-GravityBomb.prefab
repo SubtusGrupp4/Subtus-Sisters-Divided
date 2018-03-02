@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d254e4b4056892499ca0c8ad41c4e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 4
   explosionForce: 450
   duration: 5
   particles:
@@ -175,7 +175,6 @@ MonoBehaviour:
   tagNames:
   - Enemy
   - Pickup
-  - Player
   - Box
 --- !u!198 &198614017947931998
 ParticleSystem:

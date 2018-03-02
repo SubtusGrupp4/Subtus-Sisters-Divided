@@ -20,9 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4723995782533658}
   - component: {fileID: 212025862446134360}
-  - component: {fileID: 114338497035911180}
   - component: {fileID: 60965833413354224}
-  - component: {fileID: 50650710948152934}
   - component: {fileID: 114181524820871020}
   m_Layer: 0
   m_Name: key
@@ -38,32 +36,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317615055739762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.065903, y: -7.395669, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 41.118958, y: -4.63, z: 0}
+  m_LocalScale: {x: 3.492622, y: 3.492622, z: 3.4926217}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50650710948152934
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1317615055739762}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!60 &60965833413354224
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -112,20 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 0
   DestroyOnUse: 0
---- !u!114 &114338497035911180
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1317615055739762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06a0821fc0e91c42aa7e3701091acd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 517b52ac39b9b0b41bd6aa06b479c679, type: 3}
-  - {fileID: 21300002, guid: 517b52ac39b9b0b41bd6aa06b479c679, type: 3}
 --- !u!212 &212025862446134360
 SpriteRenderer:
   m_ObjectHideFlags: 1
