@@ -101,14 +101,8 @@ public class Pickup : MonoBehaviour
 
     public void PickItUp(GameObject obj)
     {
-
-      
             pickedUp = obj.transform;
             isPickedUp = true;
-
-      
- 
-
     }
     public void DropIt()
     {
