@@ -7,9 +7,15 @@ public class FMODEmitter : MonoBehaviour
     [Header("Custom FMOD Emitter")]
     [FMODUnity.EventRef]
     public string Event = "";
-    public bool is3D = true;
 
-    public FMODUnity.ParamRef[] startingParameters = new FMODUnity.ParamRef[0];
+    [Header("3D Settings")]
+    public bool is3D = true;
+    public bool OverrideAttenuation = true;
+    public float OverrideMinDistance = 1.0f;
+    public float OverrideMaxDistance = 20.0f;
+
+    [Header("Parameters")]
+    public FMODUnity.ParamRef[] initialParameters = new FMODUnity.ParamRef[0];
 
     private FMOD.Studio.EventInstance instance;
 
@@ -31,6 +37,12 @@ public class FMODEmitter : MonoBehaviour
             Transform transform = GetComponent<Transform>();
             instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
             FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
+        }
+
+        if (is3D && OverrideAttenuation)
+        {
+            instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MINIMUM_DISTANCE, OverrideMinDistance);
+            instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, OverrideMaxDistance);
         }
 
         instance.start();
