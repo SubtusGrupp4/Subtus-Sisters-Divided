@@ -85,7 +85,6 @@ public class BuzzerMovement:MonoBehaviour
         emitter = GetComponent<FMODEmitter>();
 
         emitter.SetEvent(idleEvent);
-        emitter.Play();
     }
 
     void Update ()
