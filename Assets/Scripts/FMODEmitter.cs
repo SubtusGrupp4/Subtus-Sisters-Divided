@@ -7,128 +7,57 @@ public class FMODEmitter : MonoBehaviour
     [Header("Custom FMOD Emitter")]
     [FMODUnity.EventRef]
     public string Event = "";
-    public bool TriggerOnce = false;
-    public bool AllowFadeout = true;
+    public bool is3D = true;
+
     public FMODUnity.ParamRef[] startingParameters = new FMODUnity.ParamRef[0];
 
-    private FMOD.Studio.EventDescription eventDescription;
-    public FMOD.Studio.EventDescription EventDescription { get { return eventDescription; } }
-
     private FMOD.Studio.EventInstance instance;
-    public FMOD.Studio.EventInstance EventInstance { get { return instance; } }
-
-    private bool hasTriggered = false;
-    private bool isQuitting = false;
-
-    void Awake()
-    {
-        FMODUnity.RuntimeUtils.EnforceLibraryOrder();
-        if (Event != "")
-            Play();
-    }
-
-    void OnApplicationQuit()
-    {
-        isQuitting = true;
-    }
-
-    void OnDestroy()
-    {
-        if (!isQuitting)
-            if (instance.isValid())
-                FMODUnity.RuntimeManager.DetachInstanceFromGameObject(instance);
-    }
-
-    void Lookup()
-    {
-        eventDescription = FMODUnity.RuntimeManager.GetEventDescription(Event);
-    }
 
     public void SetEvent(string Event)
     {
+        Debug.Log("Changed FMOD Emitter event to:" + Event);
         this.Event = Event;
     }
 
     public void Play()
     {
-        Debug.Log("Play FMOD Emitter");
-        if (TriggerOnce && hasTriggered)
-            return;
+        Debug.Log("Play FMOD Emitter. Event: " + Event);
+        instance = FMODUnity.RuntimeManager.CreateInstance(Event);
 
-        if (String.IsNullOrEmpty(Event))
-            return;
-
-        if (!eventDescription.isValid())
-            Lookup();
-
-        bool isOneshot = false;
-        if (!Event.StartsWith("snapshot", StringComparison.CurrentCultureIgnoreCase))
-            eventDescription.isOneshot(out isOneshot);
-        bool is3D;
-        eventDescription.is3D(out is3D);
-
-        if (!instance.isValid())
-            instance.clearHandle();
-
-        // Let previous oneshot instances play out
-        if (isOneshot && instance.isValid())
+        // Only want to update if we need to set 3D attributes
+        if (is3D)
         {
-            instance.release();
-            instance.clearHandle();
+            Rigidbody2D rigidBody2D = GetComponent<Rigidbody2D>();
+            Transform transform = GetComponent<Transform>();
+            instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
         }
-
-        if (!instance.isValid())
-        {
-            eventDescription.createInstance(out instance);
-
-            // Only want to update if we need to set 3D attributes
-            if (is3D)
-            {
-                var rigidBody = GetComponent<Rigidbody>();
-                var rigidBody2D = GetComponent<Rigidbody2D>();
-                var transform = GetComponent<Transform>();
-                if (rigidBody)
-                {
-                    instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, rigidBody));
-                    FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody);
-                }
-                else
-                {
-                    instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
-                    FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
-                }
-            }
-        }
-
-        foreach (var param in startingParameters)
-            instance.setParameterValue(param.Name, param.Value);
 
         instance.start();
-
-        hasTriggered = true;
-
     }
 
     public void Stop()
     {
-        Debug.Log("Stop FMOD Emitter");
-        if (instance.isValid())
-        {
-            instance.stop(AllowFadeout ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT : FMOD.Studio.STOP_MODE.IMMEDIATE);
-            instance.release();
-            instance.clearHandle();
-        }
+        Debug.Log("Stop FMOD Emitter. Event: " + Event);
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        instance.release();
+    }
+
+    public void Kill()
+    {
+        Debug.Log("Kill FMOD Emitter. Event: " + Event);
+        instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        instance.release();
     }
 
     public void SetParameter(string name, float value)
     {
-        if (instance.isValid())
-            instance.setParameterValue(name, value);
+        instance.setParameterValue(name, value);
     }
 
     public bool IsPlaying()
     {
-        if (instance.isValid() && instance.isValid())
+        if (instance.isValid())
         {
             FMOD.Studio.PLAYBACK_STATE playbackState;
             instance.getPlaybackState(out playbackState);

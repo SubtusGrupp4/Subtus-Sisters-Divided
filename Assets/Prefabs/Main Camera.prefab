@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541369210040188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.5, y: 0, z: -10}
+  m_LocalPosition: {x: -9.6, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4658466928059590}
@@ -133,7 +133,7 @@ MonoBehaviour:
   yZoomOffset: 4
   minZoom: 7
   maxZoom: 11
-  zoomTime: 5
+  zoomTime: 2
   minX: -66
   maxX: 343
 --- !u!114 &114943889207963490

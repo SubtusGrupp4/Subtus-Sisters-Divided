@@ -110,13 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: 
-  TriggerOnce: 0
-  AllowFadeout: 1
-  Params:
-  - Name: 
-    Value: 0
-  - Name: 
-    Value: 0
+  startingParameters: []
+  is3D: 1
 --- !u!114 &114901745029816454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,7 +131,7 @@ MonoBehaviour:
   attackSpeed: 15
   attackDistance: 7
   idleEvent: event:/Carl/Au_Ca_Buzzer_Idle
-  attackEvent: event:/Carl/Au_Ca_Crawler_Attacking
+  attackEvent: event:/Carl/Au_Ca_Buzzer_Attacking
   flyingEvent: event:/Carl/Au_Ca_Buzzer_Flying
 --- !u!114 &114904227861576304
 MonoBehaviour:
@@ -184,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -882
   m_Sprite: {fileID: 21300000, guid: 2a38475e3e8e03744b8f05eeb70aa764, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

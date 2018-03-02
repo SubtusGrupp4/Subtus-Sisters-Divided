@@ -84,8 +84,8 @@ public class BuzzerMovement:MonoBehaviour
         playerTarget = GameManager.instance.playerBot;
         emitter = GetComponent<FMODEmitter>();
 
-        //emitter.Event = idleEvent;
-        //emitter.Play();
+        emitter.SetEvent(idleEvent);
+        emitter.Play();
     }
 
     void Update ()
@@ -106,7 +106,7 @@ public class BuzzerMovement:MonoBehaviour
         {
             if (emitter.Event != idleEvent)
             {
-                emitter.Stop();
+                emitter.Kill();
                 emitter.Event = idleEvent;
                 emitter.Play();
             }
@@ -174,9 +174,9 @@ public class BuzzerMovement:MonoBehaviour
     {
         bodyAnim.Attack();      // Start the attacking animation
 
-        //emitter.Stop();
-        //emitter.Event = flyingEvent;
-        //emitter.Play();
+        emitter.Kill();
+        emitter.SetEvent(flyingEvent);
+        emitter.Play();
 
         attacking = true;       // Prevent the movement code from running, and another attack from triggering
         rb.AddForce(new Vector2(0f, -speed * 24f), ForceMode2D.Impulse);    // Move upwards to show the imminent attack
@@ -186,9 +186,9 @@ public class BuzzerMovement:MonoBehaviour
 
         yield return new WaitForSeconds(time);                              // Wait
 
-        //emitter.Stop();
-        //emitter.Event = attackEvent;
-        //emitter.Play();
+        emitter.Kill();
+        emitter.SetEvent(attackEvent);
+        emitter.Play();
 
         Vector2 attackDir = new Vector2(targetingPos.x - transform.position.x, targetingPos.y - transform.position.y);  // Get the direction towards where the player was
         rb.AddForce(attackDir.normalized * attackSpeed, ForceMode2D.Impulse);   // Fly quickly towards where the player used to be
