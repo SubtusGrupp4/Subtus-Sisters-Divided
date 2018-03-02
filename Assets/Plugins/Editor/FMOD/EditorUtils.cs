@@ -18,7 +18,7 @@ namespace FMODUnity
     }
 
     [InitializeOnLoad]
-    class EditorUtils : MonoBehaviour
+    public class EditorUtils : MonoBehaviour
     {
         public static void CheckResult(FMOD.RESULT result)
         {

@@ -289,9 +289,11 @@ namespace FMODUnity
             {
                 int end = emitter.Params.Length;
                 Array.Resize<ParamRef>(ref emitter.Params, end + 1);
-                emitter.Params[end] = new ParamRef();
-                emitter.Params[end].Name = name;
-                emitter.Params[end].Value = value;
+                emitter.Params[end] = new ParamRef
+                {
+                    Name = name,
+                    Value = value
+                };
             }
         }
 

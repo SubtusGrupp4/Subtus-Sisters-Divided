@@ -7,17 +7,26 @@ public class FMODEmitter : MonoBehaviour
     [Header("Custom FMOD Emitter")]
     [FMODUnity.EventRef]
     public string Event = "";
+    public bool playOnStart = false;
 
     [Header("3D Settings")]
     public bool is3D = true;
     public bool OverrideAttenuation = true;
+    [Range(0f, 1000f)]
     public float OverrideMinDistance = 1.0f;
+    [Range(0f, 1000f)]
     public float OverrideMaxDistance = 20.0f;
 
-    [Header("Parameters")]
-    public FMODUnity.ParamRef[] initialParameters = new FMODUnity.ParamRef[0];
+    [Header("Initial Parameters")]
+    public FMODUnity.ParamRef[] parameters = new FMODUnity.ParamRef[0];
 
     private FMOD.Studio.EventInstance instance;
+
+    public void Start()
+    {
+        if (playOnStart)
+            Play();
+    }
 
     public void SetEvent(string Event)
     {

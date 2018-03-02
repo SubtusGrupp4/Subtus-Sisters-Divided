@@ -15,7 +15,7 @@ public class AudioZone : MonoBehaviour
 
     [SerializeField]
     [Tooltip("What emitter to target and change.")]
-    FMODUnity.StudioEventEmitter emitter;
+    private FMODEmitter emitter;
 
     [Header("Parameters")]
     [SerializeField]
@@ -39,15 +39,15 @@ public class AudioZone : MonoBehaviour
 
     private void Start()
     {
-        if (resetOnExit && !setStartOnEnter)
+        if (resetOnExit && !setStartOnEnter && emitter != null && emitter.Event != null)
         {
             oldParameters.Clear();
-            for (int i = 0; i < emitter.Params.Length; i++)
+            for (int i = 0; i < emitter.parameters.Length; i++)
             {
                 Parameter p = new Parameter
                 {
-                    name = emitter.Params[i].Name,
-                    value = emitter.Params[i].Value
+                    name = emitter.parameters[i].Name,
+                    value = emitter.parameters[i].Value
                 };
 
                 oldParameters.Add(p);
@@ -60,12 +60,12 @@ public class AudioZone : MonoBehaviour
         if (fetchParameters)
         {
             parameters.Clear();
-            for (int i = 0; i < emitter.Params.Length; i++)
+            for (int i = 0; i < emitter.parameters.Length; i++)
             {
                 Parameter p = new Parameter
                 {
-                    name = emitter.Params[i].Name,
-                    value = emitter.Params[i].Value
+                    name = emitter.parameters[i].Name,
+                    value = emitter.parameters[i].Value
                 };
 
                 parameters.Add(p);
@@ -86,12 +86,12 @@ public class AudioZone : MonoBehaviour
             if (resetOnExit && setStartOnEnter)
             {
                 oldParameters.Clear();
-                for (int i = 0; i < emitter.Params.Length; i++)
+                for (int i = 0; i < emitter.parameters.Length; i++)
                 {
                     Parameter p = new Parameter
                     {
-                        name = emitter.Params[i].Name,
-                        value = emitter.Params[i].Value
+                        name = emitter.parameters[i].Name,
+                        value = emitter.parameters[i].Value
                     };
 
                     oldParameters.Add(p);
