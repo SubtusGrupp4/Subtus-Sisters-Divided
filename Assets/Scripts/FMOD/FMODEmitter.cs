@@ -86,4 +86,16 @@ public class FMODEmitter : MonoBehaviour
         }
         return false;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(transform.position, "FMODEmitter.tiff", true);
+
+        if (OverrideAttenuation)
+        {
+            Gizmos.color = new Color(1f, 1f, 1f, 0.4f);
+            Gizmos.DrawWireSphere(transform.position, OverrideMinDistance);
+            Gizmos.DrawWireSphere(transform.position, OverrideMaxDistance);
+        }
+    }
 }
