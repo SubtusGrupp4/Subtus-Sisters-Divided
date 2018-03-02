@@ -43,3 +43,4 @@ Assets/etc.meta
 #/Assets/StreamingAssets/*.bank.meta
 fmod.log
 fmod_editor.log
+ProjectSettings/ProjectVersion.txt
