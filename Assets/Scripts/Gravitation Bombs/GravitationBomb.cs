@@ -24,23 +24,34 @@ public class GravitationBomb : MonoBehaviour
 	private GameObject[] particles;
 	private List<GameObject> particleClones;
 
+	private GameObject[] ignoreObject;
 	private List<GameObject> pullObjects;
 	private Rigidbody2D rb;
+	private float rotationSpeed;
+
 	private bool buttonPressed;
 	private bool targetting;
 	private bool gravitationActivated;
 	private int decreaseGravity;
 	private string activateBomb = "Fire_Bomb_C2";
 
+
+
 	void Start () 
 	{
 		particleClones = new List<GameObject> ();
 		rb = GetComponent<Rigidbody2D> ();
 		pullObjects = new List<GameObject> ();
+
+		ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
+		foreach (GameObject IO in ignoreObject)
+			Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.GetComponent<Collider2D>(), true);
+
 		buttonPressed = true;
 		gravitationActivated = false;
 		targetting = false;
 		decreaseGravity = 0;
+		rotationSpeed = 360f;
 	}
 
 	void Update () 
@@ -139,6 +150,8 @@ public class GravitationBomb : MonoBehaviour
 			
 			foreach (GameObject toPull in pullObjects) 
 			{
+				toPull.GetComponent<Rigidbody2D> ().MoveRotation (toPull.GetComponent<Rigidbody2D>().rotation + rotationSpeed*Time.fixedDeltaTime);
+
 				float distanceSquared = Mathf.Sqrt (Vector3.Distance (transform.position, toPull.transform.position));
 				float force = pullForce*(rb.mass* toPull.GetComponent<Rigidbody2D>().mass)/ distanceSquared;
 

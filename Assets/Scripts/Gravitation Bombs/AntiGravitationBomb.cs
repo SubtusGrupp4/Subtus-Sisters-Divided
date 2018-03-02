@@ -22,6 +22,7 @@ public class AntiGravitationBomb : MonoBehaviour
     [GiveTag]
     private string[] tagNames;
 
+	private GameObject[] ignoreObject;
     private List<GameObject> pullObjects;
     private Rigidbody2D rb;
     private bool buttonPressed;
@@ -31,7 +32,10 @@ public class AntiGravitationBomb : MonoBehaviour
 
     void Start()
     {
-
+		ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
+		foreach (GameObject IO in ignoreObject)
+			Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.GetComponent<Collider2D>(), true);
+		
         rb = GetComponent<Rigidbody2D>();
         pullObjects = new List<GameObject>();
         buttonPressed = true;
@@ -42,6 +46,7 @@ public class AntiGravitationBomb : MonoBehaviour
 
     void Update()
     {
+		
         ActivateAntiGravitationBomb();
 
     }

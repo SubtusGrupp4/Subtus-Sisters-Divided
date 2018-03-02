@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OverEdgeFalling : MonoBehaviour
 {
-	
+	private GameObject[] ignoreObject;
 
 	private Collider2D col;
 	private SpriteRenderer sp;
@@ -13,19 +13,26 @@ public class OverEdgeFalling : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D> ();
-		col = GetComponent<BoxCollider2D> ();
+		col = GetComponent<Collider2D> ();
 		sp = GetComponent<SpriteRenderer> ();
-
+		ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
 	}
 
 	void Update()
 	{
-		if (!IsGrounded ()) {
+		if (!IsGrounded ()) 
+		{
 			rb.mass = 100;
 			if (GetComponent<FixedJoint2D> ().enabled) {
 				rb.velocity = new Vector2 (0, rb.velocity.y);
 			}
 			GetComponent<FixedJoint2D> ().enabled = false;
+			foreach (GameObject IO in ignoreObject)
+				Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.col, true);
+		} else 
+		{
+			foreach (GameObject IO in ignoreObject)
+				Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.col, false);
 		}
 		
 	}
