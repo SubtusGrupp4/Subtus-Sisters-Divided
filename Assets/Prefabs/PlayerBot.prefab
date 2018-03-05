@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 114440824730290900}
   - component: {fileID: 114769637922038836}
   - component: {fileID: 114861638884894700}
+  - component: {fileID: 114012148373138204}
   m_Layer: 0
   m_Name: PlayerBot
   m_TagString: Player
@@ -136,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.73, y: -2.5, z: 0}
+  m_LocalPosition: {x: -27.92, y: -4.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -230,6 +231,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114012148373138204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566391204588738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11835e7ebd1f7434eb7d63a99d2e6433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114165090641416622
 MonoBehaviour:
   m_ObjectHideFlags: 1
