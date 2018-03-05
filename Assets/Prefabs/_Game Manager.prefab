@@ -108,7 +108,8 @@ GameObject:
   - component: {fileID: 114193923815130308}
   - component: {fileID: 114929873639814728}
   - component: {fileID: 114524765385161442}
-  - component: {fileID: 114977623922114586}
+  - component: {fileID: 114728939933573240}
+  - component: {fileID: 114223599383112612}
   m_Layer: 0
   m_Name: _Game Manager
   m_TagString: Untagged
@@ -183,7 +184,6 @@ MonoBehaviour:
   isPaused: 0
   player1A: 0
   player2A: 0
-  isFrozen: 0
 --- !u!114 &114206466745933932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,6 +200,38 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114223599383112612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990975449614780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29720b7280fd86144852d6258a0e3aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 114728939933573240}
+  parameters:
+  - name: Hi-hat uptempo
+    value: 0
+  - name: 'Bas 1 '
+    value: 0
+  - name: Hi-hat
+    value: 0
+  - name: Bot
+    value: 0
+  - name: 'Bas 2 '
+    value: 0
+  - name: Top
+    value: 0
+  - name: Hi-hat echo
+    value: 0
+  - name: 'Drums '
+    value: 0
+  resetOnExit: 0
+  setStartOnEnter: 0
+  fetchParameters: 0
 --- !u!114 &114242111165246340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,6 +406,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc3f17643e5d00489eededad3145b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114728939933573240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990975449614780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Simon/Mu_S_Merina
+  playOnStart: 0
+  is3D: 1
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  parameters:
+  - Name: Hi-hat uptempo
+    Value: 0
+  - Name: 'Bas 1 '
+    Value: 0
+  - Name: Hi-hat
+    Value: 0
+  - Name: Bot
+    Value: 0
+  - Name: 'Bas 2 '
+    Value: 0
+  - Name: Top
+    Value: 0
+  - Name: Hi-hat echo
+    Value: 0
+  - Name: 'Drums '
+    Value: 0
 --- !u!114 &114864711973879772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,28 +484,6 @@ MonoBehaviour:
   botSafepoint: {fileID: 0}
   topCheckpoint: {fileID: 0}
   botCheckpoint: {fileID: 0}
---- !u!114 &114977623922114586
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1990975449614780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/Music Loop
-  PlayEvent: 1
-  StopEvent: 2
-  CollisionTag: 
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!222 &222224649631526826
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -512,7 +556,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449308946439688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 90, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224829769979920612}
@@ -548,7 +592,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072529210852774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.029999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224142348829169010}
@@ -566,7 +610,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100314028725556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224157160583269726}
