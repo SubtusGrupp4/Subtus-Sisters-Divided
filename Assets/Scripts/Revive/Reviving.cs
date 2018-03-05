@@ -104,5 +104,7 @@ public class Reviving : MonoBehaviour {
 
         playerTop.GetComponent<PlayerController>().isActive = true;
         playerBot.GetComponent<PlayerController>().isActive = true;
+
+        SafepointManager.instance.SetSafepointsAsCheckpoints();
     }
 }

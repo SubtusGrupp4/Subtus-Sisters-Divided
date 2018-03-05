@@ -87,6 +87,8 @@ public class SafepointManager : MonoBehaviour {
             // Null these to enable checking more of them.
             topSafepoint = null;
             botSafepoint = null;
+
+            SetSafepointsAsCheckpoints();
         }
     }
     
@@ -106,6 +108,12 @@ public class SafepointManager : MonoBehaviour {
             topCheckpoint = checkpoint;
         else
             botCheckpoint = checkpoint;
+    }
+
+    public void SetSafepointsAsCheckpoints()
+    {
+        topCheckpoint = currentTopSafepoint;
+        botCheckpoint = currentBotSafepoint;
     }
 
     public void PlacePlayerOnCheckpoint(Transform player)
