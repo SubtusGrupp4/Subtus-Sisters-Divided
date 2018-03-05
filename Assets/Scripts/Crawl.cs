@@ -29,7 +29,7 @@ public class Crawl : MonoBehaviour
         playerCont = GetComponent<PlayerController>();
 
 
-        if (playerCont.Player == Controller.Player1)
+        if (playerCont.player == Controller.Player1)
         {
             inputString += "_C1";
         }

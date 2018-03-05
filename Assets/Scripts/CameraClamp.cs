@@ -28,14 +28,19 @@ public class CameraClamp : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {  
+    {
+        FetchCameraInfo();
+
+        ClampObject(pTop);
+        ClampObject(pBot);
+    }
+
+    private void FetchCameraInfo()
+    {
         height = 2f * myCam.orthographicSize;
         width = height * myCam.aspect;
 
         camPos = myCam.transform.position;
-
-        ClampObject(pTop);
-        ClampObject(pBot);
     }
 
     public void ClampObject(GameObject obj)

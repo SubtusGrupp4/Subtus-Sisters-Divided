@@ -21,11 +21,14 @@ public class PlayerController : MonoBehaviour
     private bool changedMade;
     [HideInInspector]
     public bool inAir;
+    private float timeUntilAirborn = 0.1f;
+    private float airbornTimer;
+    private bool jumpAxisInUse;
     float temp;
     private float wallNormal = 0.9f;
 
     // Input Manager 
-    public Controller Player;
+    public Controller player;
     [NonSerialized]
     public string controllerCode;
 
@@ -57,6 +60,8 @@ public class PlayerController : MonoBehaviour
     bool landing;
     [HideInInspector]
     public bool crawling;
+    [HideInInspector]
+    public bool pulling;
 
     private SpriteRenderer sr;
 
@@ -70,10 +75,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpVelocity;
     [SerializeField]
-    private AirControl AirControl;
+    private AirControl airControl;
     [SerializeField]
     [Range(0, 1)]
-    private float AirControlPrecentage;
+    private float airControlPrecentage;
 
     [GiveTag]
     [SerializeField]
@@ -84,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Crawling")]
     private bool insideCrawling = false;
-    private bool axisInUse = false;
+    private bool crawlAxisInUse = false;
 
     public float crawlSpeed;
     private float savedSpeed;
@@ -128,7 +133,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
 
 
-        if (Player == Controller.Player1)
+        if (player == Controller.Player1)
         {
             controllerCode = controllerOne;
             flipped = false;
@@ -162,10 +167,10 @@ public class PlayerController : MonoBehaviour
 
         if (bodyAnim.GetLandState() == false)
             landing = false;
-        
+
         crawling = bodyAnim.GetCrawlState();
 
-        if (Player == Controller.Player1)
+        if (player == Controller.Player1)
             ToggleCrawl();
 
     }
@@ -173,8 +178,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isActive)
         {
-            if (!landing)
-                Move();
+
+            Move();
 
             NormalizeSlope();
         }
@@ -201,16 +206,16 @@ public class PlayerController : MonoBehaviour
             speed = savedSpeed;
         }
 
-        if (Input.GetAxisRaw(crawlInput) > 0 && !axisInUse)
+        if (Input.GetAxisRaw(crawlInput) > 0 && !crawlAxisInUse)
         {
             Collider2D[] allObjs;
             bool blocked = false;
-            axisInUse = true;
+            crawlAxisInUse = true;
 
             if (!crawling)
-                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + crawlColliderOffset + new Vector2(0, 0.3f), crawlColliderSize, 0);
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + crawlColliderOffset + new Vector2(0, 0.01f), crawlColliderSize, 0);
             else
-                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + savedColliderOffSet + new Vector2(0, 0.3f), savedColliderSize, 0);
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + savedColliderOffSet + new Vector2(0, 0.01f), savedColliderSize, 0);
             /*
             // We want to difference between transiton to crawl, and is currently crawling.
             if (!crawling)
@@ -258,24 +263,33 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetAxisRaw(crawlInput) == 0)
         {
             // axisInUse is used to make sure that you dont trigger it alot when you hold down the button.
-            axisInUse = false;
+            crawlAxisInUse = false;
         }
     }
 
+    private void Jump()
+    {
+        inAir = true;
+        rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;
+
+        bodyAnim.Jump();
+        armAnim.Jump();
+
+        movementAudio.Jump();
+    }
     private void Move()
     {
         // JUMP
-		if (Input.GetAxis(jumpInput) > 0 && (!inAir) && landing == false && crawling == false && !GetComponent<PullBoxes>().isPulling)
+        if (Input.GetAxis(jumpInput) > 0 && !jumpAxisInUse)
         {
-            inAir = true;
-            rigidbody2D.velocity = Vector2.up * flippValue * jumpVelocity;
-
-
-            bodyAnim.Jump();
-            armAnim.Jump();
-
-            movementAudio.Jump();
+            jumpAxisInUse = true;
+            if (!inAir && !landing && !crawling && !pulling)
+            {
+                Jump();              
+            }
         }
+        else if(Input.GetAxis(jumpInput) == 0)
+            jumpAxisInUse = false;
 
         // Input Manager
         X = Input.GetAxis(horAx); // Valute between 0 and 1 from input manager.
@@ -323,25 +337,25 @@ public class PlayerController : MonoBehaviour
     private void ControllingAir()
     {
         // Full Controll
-        if (AirControl == AirControl.Full && inAir)
-            temp *= speed * AirControlPrecentage;
+        if (airControl == AirControl.Full && inAir)
+            temp *= speed * airControlPrecentage;
 
         // Semi Controll 
-        if (inAir && AirControl != AirControl.Full)
+        if (inAir && airControl != AirControl.Full)
         {
             // If it's not Semi it's No controll, in which case it will just use, temp = savedvelocity.
-            if (AirControl == AirControl.Semi)
+            if (airControl == AirControl.Semi)
             {
                 if (temp > 0) // go right
                 {
                     if (savedVelocity.x < 0 && !changedMade)
                     {
-                        savedVelocity.x += savedVelocity.x * AirControlPrecentage * -1;
+                        savedVelocity.x += savedVelocity.x * airControlPrecentage * -1;
                         changedMade = true;
                     }
                     else if (savedVelocity.x == 0 && !changedMade)
                     {
-                        savedVelocity.x += temp * speed * AirControlPrecentage;
+                        savedVelocity.x += temp * speed * airControlPrecentage;
                         changedMade = true;
                     }
                 }
@@ -349,12 +363,12 @@ public class PlayerController : MonoBehaviour
                 {
                     if (savedVelocity.x > 0 && !changedMade)
                     {
-                        savedVelocity.x += savedVelocity.x * AirControlPrecentage * -1;
+                        savedVelocity.x += savedVelocity.x * airControlPrecentage * -1;
                         changedMade = true;
                     }
                     else if (savedVelocity.x == 0 && !changedMade)
                     {
-                        savedVelocity.x += temp * speed * AirControlPrecentage;
+                        savedVelocity.x += temp * speed * airControlPrecentage;
                         changedMade = true;
                     }
 
@@ -368,16 +382,21 @@ public class PlayerController : MonoBehaviour
     {
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
 
-        bool tempInAir = true;
+
+        airbornTimer += Time.deltaTime;
 
         // transform.parent = null;
-
-        //
-        //
-        bodyAnim.Falling(true);
-        armAnim.Falling(true);
-        //
-        //
+        bool tempInAir = false;
+        if (airbornTimer > timeUntilAirborn)
+        {
+            tempInAir = true;
+            //
+            //
+            bodyAnim.Falling(true);
+            armAnim.Falling(true);
+            //
+            //
+        }
 
         for (int i = 0; i < resetJumpOn.Length; i++)
         {
@@ -421,7 +440,6 @@ public class PlayerController : MonoBehaviour
 
                                     movementAudio.Landing();
                                     landing = true;
-
                                 }
 
                                 // play land animation
@@ -435,6 +453,7 @@ public class PlayerController : MonoBehaviour
                             // inAir = false;
                             tempInAir = false;
                             lastSafe = transform.position;
+                            airbornTimer = 0;
 
                             //
                             //

@@ -62,7 +62,7 @@ public class InstantiateGravityBomb : MonoBehaviour
         reloaded = true;
         setCooldown = cooldown;
 
-        if (playerController.Player == Controller.Player1)
+        if (playerController.player == Controller.Player1)
         {
             controllerCode = controllerOne;
             fireBomb = shockwaveBomb;

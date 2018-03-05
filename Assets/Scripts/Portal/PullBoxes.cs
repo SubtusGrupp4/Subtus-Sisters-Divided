@@ -26,7 +26,7 @@ public class PullBoxes : MonoBehaviour {
 	void Start(){
 		playerController = GetComponent<PlayerController> ();
 
-		if (playerController.Player == Controller.Player1) 
+		if (playerController.player == Controller.Player1) 
 		{
 			pushAndPullBox += c1;
 		}
@@ -50,6 +50,8 @@ public class PullBoxes : MonoBehaviour {
 			if (hit.collider.GetComponent<OverEdgeFalling> ().IsGrounded ())
 			{
 				isPulling = true;
+                playerController.pulling = true;
+
 				box = hit.collider.gameObject;
 				box.GetComponent<Rigidbody2D> ().mass = pushSpeed;
 				box.GetComponent<FixedJoint2D> ().enabled = true;
