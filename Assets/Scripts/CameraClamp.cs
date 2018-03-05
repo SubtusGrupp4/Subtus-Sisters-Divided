@@ -19,8 +19,8 @@ public class CameraClamp : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        myCam = FindObjectOfType<CameraController>().gameObject.GetComponent<Camera>();
-        gM = FindObjectOfType<GameManager>();
+        myCam = Camera.main;
+        gM = GameManager.instance;
 
         pTop = gM.playerTop.transform.gameObject;
         pBot = gM.playerBot.transform.gameObject;
@@ -48,7 +48,7 @@ public class CameraClamp : MonoBehaviour
         Vector3 pos = obj.transform.position;
 
         float X = obj.transform.position.x;
-        pos.x = Mathf.Clamp(X, myCam.transform.position.x - (width * 0.5f), myCam.transform.position.x + (width * 0.5f));
+        pos.x = Mathf.Clamp(X, myCam.transform.position.x - (width * 0.5f) + 0.5f, myCam.transform.position.x + (width * 0.5f) - 1f);
         obj.transform.position = pos;
     }
 }
