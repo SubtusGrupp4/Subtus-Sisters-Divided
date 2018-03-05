@@ -258,13 +258,17 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Assign the correct name text, image and dialogue text boxes
-        nameText = panel.GetChild(0).GetComponent<TextMeshProUGUI>();
-        image = panel.GetChild(1).GetComponent<Image>();
+        if(panel.GetChild(0).GetComponent<TextMeshProUGUI>() != null)
+            nameText = panel.GetChild(0).GetComponent<TextMeshProUGUI>();
+        if(panel.GetChild(1).GetComponent<Image>() != null)
+            image = panel.GetChild(1).GetComponent<Image>();
         dialogueText = panel.GetChild(2).GetComponent<TextMeshProUGUI>();
 
         // Display the name and image
-        nameText.text = dialogues[di].npcName;
-        image.sprite = dialogues[di].npcSprite;
+        if(nameText != null)
+            nameText.text = dialogues[di].npcName;
+        if(image != null)
+            image.sprite = dialogues[di].npcSprite;
 
         // Empty all strings, clearing them from previous values
         dialogueText.text = string.Empty;
