@@ -54,10 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minInterval: 0.5
   maxInterval: 1
-  minSize: 0.8
-  maxSize: 1
-  minOpacity: 0.7
-  maxOpacity: 1
+  minIntensity: 0.8
+  maxIntensity: 1
+  sizeMultiplier: 1
   useSwitchingSprites: 1
   sprites:
   - {fileID: 21300000, guid: ce315ae93f4a9c94cabfcbc730b59495, type: 3}
