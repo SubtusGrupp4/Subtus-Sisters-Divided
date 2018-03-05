@@ -309,15 +309,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inAir: 0
-  Player: 1
+  player: 1
   bodyAnim: {fileID: 0}
   armAnim: {fileID: 0}
   isActive: 0
   crawling: 0
+  pulling: 0
   speed: 5
   jumpVelocity: 14
-  AirControl: 0
-  AirControlPrecentage: 1
+  airControl: 0
+  airControlPrecentage: 1
   resetJumpOn:
   - Floor
   - MovingFloor

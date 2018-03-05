@@ -65,7 +65,9 @@ public class PullBoxes : MonoBehaviour {
 		else if ((Input.GetKeyUp (KeyCode.G) || Input.GetButtonUp(pushAndPullBox)) && isPulling || (isPulling && playerController.inAir)) 
 		{
 			isPulling = false;
-			box.GetComponent<Rigidbody2D> ().mass = 100;
+            playerController.pulling = false;
+
+            box.GetComponent<Rigidbody2D> ().mass = 100;
 			box.GetComponent<Rigidbody2D> ().velocity = new Vector2(0, box.GetComponent<Rigidbody2D>().velocity.y);
 			box.GetComponent<FixedJoint2D> ().enabled = false;
 		}
