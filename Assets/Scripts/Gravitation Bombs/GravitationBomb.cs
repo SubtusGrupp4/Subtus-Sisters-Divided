@@ -150,8 +150,8 @@ public class GravitationBomb : MonoBehaviour
 			
 			foreach (GameObject toPull in pullObjects) 
 			{
-				toPull.GetComponent<Rigidbody2D> ().MoveRotation (toPull.GetComponent<Rigidbody2D>().rotation + rotationSpeed*Time.fixedDeltaTime);
-
+				toPull.GetComponent<Rigidbody2D> ().MoveRotation (toPull.GetComponent<Rigidbody2D> ().rotation + rotationSpeed * Time.fixedDeltaTime);
+			
 				float distanceSquared = Mathf.Sqrt (Vector3.Distance (transform.position, toPull.transform.position));
 				float force = pullForce*(rb.mass* toPull.GetComponent<Rigidbody2D>().mass)/ distanceSquared;
 

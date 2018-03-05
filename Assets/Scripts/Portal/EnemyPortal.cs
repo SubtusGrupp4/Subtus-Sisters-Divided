@@ -6,8 +6,8 @@ public class EnemyPortal : PortalBehaviour
 {
 
 	[Header ("Scripts")]
-	public MonoBehaviour enemyScript2;
 	public MonoBehaviour enemyScript;
+	public MonoBehaviour enemyScript2;
 	public MonoBehaviour friendlyScript;
 
 	[Header("AnimatorController")]
@@ -51,7 +51,7 @@ public class EnemyPortal : PortalBehaviour
 	{
 		q++;
 		Debug.Log(enabler);
-		if (startBool) 
+		if (!startBool) 
 		{
 			this.GetComponent<Animator> ().runtimeAnimatorController = original as RuntimeAnimatorController;
 			transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y, transform.localScale.z);
