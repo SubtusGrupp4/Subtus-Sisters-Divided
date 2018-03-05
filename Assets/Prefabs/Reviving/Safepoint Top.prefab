@@ -487,6 +487,7 @@ MonoBehaviour:
   showLine: 1
   color: {r: 1, g: 1, b: 0, a: 1}
   lineHeight: 11
+  eventPath: event:/CheckpointActivate
 --- !u!198 &198025761589384796
 ParticleSystem:
   m_ObjectHideFlags: 1
