@@ -11,14 +11,15 @@ public class FlickeringLight : MonoBehaviour
     private float maxInterval;
 
     [Header("Intensity")]
-    [SerializeField]
     [Range(0f, 1f)]
-    private float minIntensity;
-    [SerializeField]
+    public float minIntensity;
     [Range(0f, 1f)]
-    private float maxIntensity;
+    public float maxIntensity;
     private float prevIntensity;
     private float newIntensity = 1f;
+
+    [SerializeField]
+    private float sizeMultiplier = 1f;
 
     private float lerpTimer = 1f;
     private float lerpInterval;
@@ -37,6 +38,11 @@ public class FlickeringLight : MonoBehaviour
         if (useSwitchingSprites)
             if (transform.position.y < 0f)
                 sr.sprite = sprites[1];
+
+        newIntensity = Random.Range(minIntensity, maxIntensity);
+        transform.localScale = new Vector2(newIntensity * sizeMultiplier, newIntensity * sizeMultiplier);
+        sr.color = new Color(1f, 1f, 1f, newIntensity);
+
         StartCoroutine(FlickerTimer(Random.Range(minInterval, maxInterval)));
     }
 
@@ -45,7 +51,7 @@ public class FlickeringLight : MonoBehaviour
         if (lerpTimer < 1f) {
             lerpTimer += Time.deltaTime / lerpInterval;
             float size = Mathf.Lerp(prevIntensity, newIntensity, lerpTimer);
-            transform.localScale = new Vector2(size, size);
+            transform.localScale = new Vector2(size * sizeMultiplier, size * sizeMultiplier);
 
             float opacity = Mathf.Lerp(prevIntensity, newIntensity, lerpTimer);
             sr.color = new Color(1f, 1f, 1f, opacity);

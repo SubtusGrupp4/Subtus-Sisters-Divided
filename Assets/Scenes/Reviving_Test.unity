@@ -1412,11 +1412,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4104182937267980, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -30.53
+      value: -28.25
       objectReference: {fileID: 0}
     - target: {fileID: 4104182937267980, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.88
+      value: 3.56
       objectReference: {fileID: 0}
     - target: {fileID: 4104182937267980, guid: e292e485d55d39b498951a8c1e011230, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4846,8 +4846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ca266ebc4a6c94cb3e1af2c282ab9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vec: {x: 0, y: 0}
-  offset: 0
 --- !u!1001 &1019628898
 Prefab:
   m_ObjectHideFlags: 0
@@ -5525,6 +5523,7 @@ MonoBehaviour:
   resetAllSprites: 0
   resetTransformList: 0
   addAsChildren: 0
+  SetScaleTo1: 0
   selectTilesWithName: 0
   didUndo: 0
 --- !u!4 &1117857286
@@ -5688,7 +5687,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4032584879311944, guid: 0e8ca450256283649a339b863835d9cf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -23.38
+      value: -10.56
       objectReference: {fileID: 0}
     - target: {fileID: 4032584879311944, guid: 0e8ca450256283649a339b863835d9cf, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6320,11 +6319,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4929469156933270, guid: c4f07d902bdbf6b418818c9c4b7a6960, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -30.051666
+      value: -27.92
       objectReference: {fileID: 0}
     - target: {fileID: 4929469156933270, guid: c4f07d902bdbf6b418818c9c4b7a6960, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.233577
+      value: -4.03
       objectReference: {fileID: 0}
     - target: {fileID: 4929469156933270, guid: c4f07d902bdbf6b418818c9c4b7a6960, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6726,8 +6725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ca266ebc4a6c94cb3e1af2c282ab9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vec: {x: 0, y: 0}
-  offset: 0
 --- !u!61 &1369129486
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7593,6 +7590,16 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -4.86
       objectReference: {fileID: 0}
+    - target: {fileID: 198104553448879304, guid: 3e45efe55b393c3449428d9d452d7f22,
+        type: 2}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198104553448879304, guid: 3e45efe55b393c3449428d9d452d7f22,
+        type: 2}
+      propertyPath: randomSeed
+      value: -259601255
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e45efe55b393c3449428d9d452d7f22, type: 2}
   m_IsPrefabParent: 0
@@ -8235,8 +8242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ca266ebc4a6c94cb3e1af2c282ab9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vec: {x: 0, y: 0}
-  offset: 0
 --- !u!61 &1635906092
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9374,11 +9379,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4279315177320664, guid: 60f0b1687ab712b4f9444e2987515095, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -17.61
+      value: -10.91
       objectReference: {fileID: 0}
     - target: {fileID: 4279315177320664, guid: 60f0b1687ab712b4f9444e2987515095, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.33
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 4279315177320664, guid: 60f0b1687ab712b4f9444e2987515095, type: 2}
       propertyPath: m_LocalPosition.z

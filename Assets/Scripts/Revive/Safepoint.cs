@@ -5,14 +5,12 @@ using UnityEngine;
 public class Safepoint : MonoBehaviour 
 {
     [Header("Activation")]
-    [SerializeField]
-    private Sprite collectedSprite;
-    protected Sprite startSprite;
+    public ParticleSystem triggered;
+    public ParticleSystem activated;
+    public FlickeringLight flickeringLight;
 
     [HideInInspector]
     public bool isCurrent = false;
-
-    protected SpriteRenderer sr;
 
     [Header("Exit Timer")]
     [HideInInspector]
@@ -25,8 +23,7 @@ public class Safepoint : MonoBehaviour
 
     private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
-        startSprite = GetComponent<SpriteRenderer>().sprite;    // Save the initial sprite. Used for switching back
+        ChangeParticleSystems(0f, 0f);
     }
 
     private void Update()
@@ -41,7 +38,7 @@ public class Safepoint : MonoBehaviour
             {
                 // When it is done, deactivate the safepoint and change the sprite
                 SafepointManager.instance.SetAsDeactivated(transform);
-                sr.sprite = startSprite;
+                ChangeParticleSystems(0f, 0f);
                 timer = 0f;
             }
         }
@@ -53,7 +50,7 @@ public class Safepoint : MonoBehaviour
 		{
             playerExited = false;                                   // Stop the timer
             timer = 1f;                                             // Reset the timer
-            sr.sprite = collectedSprite;                            // Change the sprite
+            ChangeParticleSystems(9f, 0f);
             SafepointManager.instance.SetAsActivated(transform);    // Tell the manager that his safepoint is activated
         }
 	}
@@ -62,5 +59,26 @@ public class Safepoint : MonoBehaviour
     {
         if (other.tag == "Player" && !isCurrent)                    // If a player exits the trigger
             playerExited = true;                                    // Start the timer
+    }
+
+    public void ChangeParticleSystems(float t, float a)
+    {
+        var emission = triggered.emission;
+        emission.rateOverTime = t;
+        emission = activated.emission;
+        emission.rateOverTime = a;
+
+        if(t > 0.1f)
+            ChangeFlickeringLight(0.3f, 0.4f);
+        else if(a > 0.1f)
+            ChangeFlickeringLight(0.5f, 0.6f);
+        else if(t < 0.1f && a < 0.1f)
+            ChangeFlickeringLight(0f, 0f);
+    }
+
+    private void ChangeFlickeringLight(float min, float max)
+    {
+        flickeringLight.minIntensity = min;
+        flickeringLight.maxIntensity = max;
     }
 }

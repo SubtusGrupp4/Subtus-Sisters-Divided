@@ -17,6 +17,11 @@ public class SafepointParent : Safepoint
     [SerializeField]
     private float lineHeight = 11f; // The distance from 0 on Y to the tip of the rays
 
+    [Header("Both activated FMOD Event")]
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string eventPath;
+
     private void OnDrawGizmos()
     {
         child = transform.GetChild(0);                                                                      // Get the child safepoint
@@ -37,8 +42,8 @@ public class SafepointParent : Safepoint
     // Called by the manager when a new pair is found
     public void ResetSafepoint()
     {
-        sr.sprite = startSprite;
-        child.GetComponent<SpriteRenderer>().sprite = startSprite; 
+        ChangeParticleSystems(0f, 0f);
+        child.GetComponent<Safepoint>().ChangeParticleSystems(0f, 0f);
         isCurrent = false;
         child.GetComponent<Safepoint>().isCurrent = false;
     }
@@ -50,7 +55,13 @@ public class SafepointParent : Safepoint
         playerExited = false;
         timer = 0f;
         isCurrent = true;
+
+        ChangeParticleSystems(0f, 9f);
+        child.GetComponent<Safepoint>().ChangeParticleSystems(0f, 9f);
+
         child.GetComponent<Safepoint>().playerExited = false;
         child.GetComponent<Safepoint>().isCurrent = true;
+
+        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
     }
 }
