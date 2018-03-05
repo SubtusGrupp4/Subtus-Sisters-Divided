@@ -5,18 +5,19 @@ using UnityEngine;
 public class ReviveSpot : MonoBehaviour
 {
     [SerializeField]
-    private float bounceAmount = 1f;
-    [SerializeField]
-    private float bounceInterval = 3f;
-    private Vector2 startPos;
+    private ParticleSystem stars;
 
     private void Start()
     {
-        startPos = transform.position;
-    }
+        if(transform.position.y < 0f)
+        {
+            transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.x);
 
-    private void Update()
-    {
-        transform.position = new Vector2(transform.position.x, startPos.y + (Mathf.Sin(Time.time * bounceInterval) * bounceAmount));
+            var main = stars.main;
+            var constantMin = main.startSpeed.constantMin;
+            var constantMax = main.startSpeed.constantMax;
+            constantMin = -main.startSpeed.constantMin;
+            constantMax = -main.startSpeed.constantMax;
+        }
     }
 }
