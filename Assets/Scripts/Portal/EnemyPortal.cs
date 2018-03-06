@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPortal : PortalBehaviour 
 {
-
+	/*
 	[Header ("Scripts")]
 	public MonoBehaviour enemyScript;
 	public MonoBehaviour enemyScript2;
@@ -75,4 +75,14 @@ public class EnemyPortal : PortalBehaviour
 		//Invoke ("Invoker", 0.1f);
 		ReverseComponents ();
 	}
+
+*/
+	public GameObject particleEffect;
+	public override void OnPortalContact()
+	{
+		GameObject clone = Instantiate (particleEffect, transform.position, Quaternion.identity);
+		Destroy (clone, 1f);
+		Destroy (gameObject);
+	}
+
 }
