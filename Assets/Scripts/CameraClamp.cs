@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraClamp : MonoBehaviour
 {
+    [SerializeField]
+    private bool doClamp = true;
 
     private Camera myCam;
     private GameManager gM;
@@ -29,10 +31,13 @@ public class CameraClamp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FetchCameraInfo();
+        if (doClamp)
+        {
+            FetchCameraInfo();
 
-        ClampObject(pTop);
-        ClampObject(pBot);
+            ClampObject(pTop);
+            ClampObject(pBot);
+        }
     }
 
     private void FetchCameraInfo()
@@ -50,5 +55,11 @@ public class CameraClamp : MonoBehaviour
         float X = obj.transform.position.x;
         pos.x = Mathf.Clamp(X, myCam.transform.position.x - (width * 0.5f) + 0.5f, myCam.transform.position.x + (width * 0.5f) - 1f);
         obj.transform.position = pos;
+    }
+
+    public void SetClamp(bool clamp)
+    {
+        Debug.Log("SetClamp(" + clamp + ");");
+        doClamp = clamp;
     }
 }

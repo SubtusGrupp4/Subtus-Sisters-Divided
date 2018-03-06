@@ -161,8 +161,11 @@ public class CameraController : MonoBehaviour
             // Move camera towards the midpoint of the players
             if (camDistance > deadZone)
                 transform.Translate(new Vector2((camDistance - deadZone) / followSpeed, 0.0f), Space.Self);      // Move Right
-            else if (camDistance < -deadZone && camDistance < -deadZone)
+            else if (camDistance < -deadZone)
                 transform.Translate(new Vector2((camDistance + deadZone) / followSpeed, 0.0f), Space.Self);      // Move Left
+
+            if(camDistance > 0.1f || camDistance < -0.1f)
+                GetComponent<CameraClamp>().SetClamp(true);
         }
         else if (State == CameraState.FollowingOne)
         {
@@ -174,7 +177,6 @@ public class CameraController : MonoBehaviour
                 transform.Translate(new Vector2(camDistance / followSpeed, 0.0f), Space.Self);      // Move Right
             else
                 transform.Translate(new Vector2(camDistance / followSpeed, 0.0f), Space.Self);      // Move Left
-
         }
         else if(State == CameraState.Moving)    // TODO: Fix this, accessed by DialogueManager
         {
