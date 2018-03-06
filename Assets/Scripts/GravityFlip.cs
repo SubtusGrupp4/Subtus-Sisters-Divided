@@ -13,8 +13,15 @@ public class GravityFlip : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale *= -1f;
-        transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y * -1f);
+        if (transform.position.y < 0f)
+        {
+            if (flipGravity)
+            {
+                rb = GetComponent<Rigidbody2D>();
+                rb.gravityScale *= -1f;
+            }
+            if (flipLocalScale)
+                transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y * -1f);
+        }
 	}
 }

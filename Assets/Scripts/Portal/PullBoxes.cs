@@ -39,9 +39,12 @@ public class PullBoxes : MonoBehaviour {
 
 	void Update () 
 	{
-		rayLine = new Vector2 (transform.position.x, transform.position.y - 1);
+        if(playerController.player == Controller.Player1)
+		    rayLine = new Vector2 (transform.position.x, transform.position.y - 1f);
+        else
+            rayLine = new Vector2(transform.position.x, transform.position.y + 1.5f);
 
-		Physics2D.queriesStartInColliders = false;
+        Physics2D.queriesStartInColliders = false;
 		RaycastHit2D hit = Physics2D.Raycast (rayLine, Vector2.right * transform.localScale.x, distance);
 
 		if (hit.collider != null && hit.collider.gameObject.tag == tagName && (hit.collider.GetComponent<OverEdgeFalling>() != null) 
