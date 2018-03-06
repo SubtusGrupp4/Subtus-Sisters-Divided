@@ -16,7 +16,7 @@ public enum AirControl
 public class PlayerController : MonoBehaviour
 {
     // Saved State for Different Jumping states.
-    private float X;
+    public float X;
     private Vector2 savedVelocity;
     private bool changedMade;
     [HideInInspector]

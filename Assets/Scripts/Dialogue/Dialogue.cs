@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerIndex
+{
+    Both, Player1, Player2
+}
+
 // This script serves as a single dialogue box
 // It will be read in the DialogueManager and displayed on the UI
 // TODO: Add tooltips on what everything does
 public class Dialogue : MonoBehaviour {
     [Header("Input Settings")]
-    public int playerIndex = 0;
+    public PlayerIndex playerIndex;
 
     [Header("UI Settings")]
     public string npcName;

@@ -71,6 +71,9 @@ public class DialogueManager : MonoBehaviour
     private bool fadeOutDone = false;
     private bool doFadeOut = false;
 
+    private bool player1Pressed = false;
+    private bool player2Pressed = false;
+
     private void Awake()
     {
         CreateSingleton();
@@ -120,22 +123,22 @@ public class DialogueManager : MonoBehaviour
         if (dialogues != null)
         {
             // playerIndex is what player is required to press a button to interact with the dialogue
-            switch (dialogues[di].playerIndex )
+            switch (dialogues[di].playerIndex)
             {
-                case 0:
-                    // TODO: If any input
-                    if(Input.GetAxis("Jump_C1") > 0.1f || Input.GetAxis("Jump_C2") > 0.1f)
-                        InputGet();
+                case PlayerIndex.Both:
+                    if(!player1Pressed && !player2Pressed)
+                        if(Input.GetAxis("Jump_C1") > 0.1f || Input.GetAxis("Jump_C2") > 0.1f)
+                            InputGet();
                     break;
-                case 1:
-                    // TODO: If input from Player 1
-                    if (Input.GetAxis("Jump_C1") > 0.1f)
-                        InputGet();
+                case PlayerIndex.Player1:
+                    if(!player1Pressed)
+                        if (Input.GetAxis("Jump_C1") > 0.1f)
+                            InputGet();
                     break;
-                case 2:
-                    // TODO: If input from Player 2
-                    if (Input.GetAxis("Jump_C2") > 0.1f)
-                        InputGet();
+                case PlayerIndex.Player2:
+                    if(!player2Pressed)
+                        if (Input.GetAxis("Jump_C2") > 0.1f)
+                            InputGet();
                     break;
             }
             if (sentenceToWrite.Length > charIndex)         // If there are more characters to write than are currently displayed
@@ -201,6 +204,9 @@ public class DialogueManager : MonoBehaviour
                 }
             }
         }
+
+        player1Pressed = (Input.GetAxis("Jump_C1") > 0.1f);
+        player2Pressed = (Input.GetAxis("Jump_C2") > 0.1f);
     }
 
     // If the button to skip is pressed, not dependant on which player, that is handled in Update()
@@ -227,7 +233,7 @@ public class DialogueManager : MonoBehaviour
         isBusy = true;
 
         // Enable the correct dialogue canvas, depending on the player index
-        if (dialogues[di].playerIndex == 0)
+        if (dialogues[di].playerIndex == PlayerIndex.Both)
         {
             mDialogueCanvas.enabled = true;
             rDialogueCanvas.enabled = false;
@@ -235,7 +241,7 @@ public class DialogueManager : MonoBehaviour
 
             panel = mDialogueCanvas.transform.GetChild(0);
         }
-        else if (dialogues[di].playerIndex == 1)
+        else if (dialogues[di].playerIndex == PlayerIndex.Player1)
         {
             mDialogueCanvas.enabled = false;
             lDialogueCanvas.enabled = true;
@@ -243,7 +249,7 @@ public class DialogueManager : MonoBehaviour
 
             panel = lDialogueCanvas.transform.GetChild(0);
         }
-        else if (dialogues[di].playerIndex == 2)
+        else if (dialogues[di].playerIndex == PlayerIndex.Player2)
         {
             mDialogueCanvas.enabled = false;
             rDialogueCanvas.enabled = true;
