@@ -160,7 +160,6 @@ MonoBehaviour:
   deActivate: 5
   tagNames:
   - Enemy
-  - Pickup
   - Box
   particles:
   - {fileID: 1702725205683486, guid: 1a57d50f24b8c714a8634ca6641d0af6, type: 2}
