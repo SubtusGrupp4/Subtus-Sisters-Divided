@@ -6,6 +6,8 @@ public class ReviveSpot : MonoBehaviour
 {
     [SerializeField]
     private ParticleSystem stars;
+    [SerializeField]
+    private ParticleSystem lines;
 
     private void Start()
     {
@@ -19,5 +21,11 @@ public class ReviveSpot : MonoBehaviour
             constantMin = -main.startSpeed.constantMin;
             constantMax = -main.startSpeed.constantMax;
         }
+    }
+
+    public void SetParticleEmission(float amount)
+    {
+        var emission = lines.emission;
+        emission.rateOverTime = amount;
     }
 }

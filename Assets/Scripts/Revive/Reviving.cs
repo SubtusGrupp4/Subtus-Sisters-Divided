@@ -52,13 +52,19 @@ public class Reviving : MonoBehaviour {
         if (collision.transform.tag == "Portal")
             Die();
         if (collision.transform.tag == "Revive")
+        {
             reviveTransform = collision.transform;
+            reviveTransform.GetComponent<ReviveSpot>().SetParticleEmission(1f);
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.tag == "Revive")
+        {
+            reviveTransform.GetComponent<ReviveSpot>().SetParticleEmission(0f);
             reviveTransform = null;
+        }
     }
 
     public void Die()
