@@ -15,6 +15,7 @@ TagManager:
   - ManipulateFloor
   - Revive
   - Box
+  - ReviveBlock
   layers:
   - Default
   - TransparentFX

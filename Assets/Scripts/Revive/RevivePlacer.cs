@@ -71,7 +71,15 @@ public class RevivePlacer : MonoBehaviour
                         continue;
                     }
                     if (hit.collider.isTrigger)
-                        continue;
+                    {
+                        if (hit.transform.tag != "Player" || hit.transform.tag == "ReviveBlock")
+                        {
+                            passedThrough = false;
+                            continue;
+                        }
+                    }
+                    if (hit.transform.tag == "Player")
+                        search = true;
 
                     if (hit.transform.position.y < 0f && moveAmount > 0f)
                         continue;
@@ -82,18 +90,18 @@ public class RevivePlacer : MonoBehaviour
                 }
 
                 if (hit.transform == null)
-                {
                     if (passedThrough == true)
-                    {
-                        float spawnHeight = rayDistance / 2f;
-                        if (moveAmount < 0f)
-                            spawnHeight = -spawnHeight;
-
-                        Instantiate(reviveSpot, transform.position - new Vector3(0f, spawnHeight), Quaternion.identity);
                         search = false;
-                        Destroy(gameObject);
-                    }
-                }
+            }
+
+            if(!search)
+            {
+                float spawnHeight = rayDistance / 2f;
+                if (moveAmount < 0f)
+                    spawnHeight = -spawnHeight;
+
+                Instantiate(reviveSpot, transform.position - new Vector3(0f, spawnHeight), Quaternion.identity);
+                Destroy(gameObject);
             }
         }
     }
