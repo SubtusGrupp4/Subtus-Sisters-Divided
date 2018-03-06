@@ -52,8 +52,9 @@ public class InputAction : MonoBehaviour
     void Update()
     {
         // Get Ipnut
-        if (Input.GetAxisRaw(inputString) > 0 && !axisInUse)
-        {
+        if (Input.GetAxisRaw(inputString) != 0 && !axisInUse)
+        {           
+            axisInUse = true;
             // If we have the key we want to drop it
             if (isWielding)
             {
@@ -83,8 +84,8 @@ public class InputAction : MonoBehaviour
 
     private GameObject Actions(string[] tags)
     {
-        axisInUse = true;
-      
+       ;
+       
         bool blocked = false;
         Collider2D[] allObjs = Physics2D.OverlapCircleAll(transform.position, range);
         {
