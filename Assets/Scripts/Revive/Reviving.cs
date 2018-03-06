@@ -13,28 +13,59 @@ public class Reviving : MonoBehaviour {
     [SerializeField]
     private GameObject dyingAnimationGO;
 
+    private bool yIsPressedC1 = false;
+    private bool yIsPressedC2 = false;
+
+    private Transform reviveTransform;
+
     private void Start()
     {
         pc = GetComponent<PlayerController>();
     }
 
+    private void Update()
+    {
+        if (pc.player == Controller.Player1 && reviveTransform != null)
+        {
+            if (Input.GetAxisRaw("Y_C1") > 0.1f && !yIsPressedC1)
+            {
+                Revive();
+                yIsPressedC1 = true;
+            }
+            else if (yIsPressedC1)
+                yIsPressedC1 = false;
+        }
+        else if (reviveTransform != null)
+        {
+            if (Input.GetAxisRaw("Y_C2") > 0.1f && !yIsPressedC2)
+            {
+                Revive();
+                yIsPressedC1 = true;
+            }
+            else if (yIsPressedC2)
+                yIsPressedC2 = false;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Portal")
-        {
             Die();
-        }
-        else if (collision.transform.tag == "Revive")
-        {
-            Revive();
-            Destroy(collision.gameObject);
-        }
+        if (collision.transform.tag == "Revive")
+            reviveTransform = collision.transform;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Revive")
+            reviveTransform = null;
     }
 
     public void Die()
     {
         if (pc.isActive)
         {
+            Camera.main.GetComponent<CameraClamp>().SetClamp(false);
             pc.isActive = false;
             gameObject.SetActive(false);
 
@@ -62,6 +93,9 @@ public class Reviving : MonoBehaviour {
 
     private void Revive()
     {
+        // Destroy ReviveSpot
+        Destroy(reviveTransform.gameObject);
+
         Transform player;
 
         if (pc.player == Controller.Player1)
@@ -80,6 +114,8 @@ public class Reviving : MonoBehaviour {
 
     private void BothDead()
     {
+        Camera.main.GetComponent<CameraClamp>().SetClamp(false);
+
         // Delete all revive objects, if there are any
         GameObject[] revives = GameObject.FindGameObjectsWithTag("Revive");
         foreach (GameObject revive in revives)
