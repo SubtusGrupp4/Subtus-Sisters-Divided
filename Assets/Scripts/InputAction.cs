@@ -150,7 +150,7 @@ public class InputAction : MonoBehaviour
                             */
                             return (allObjs[i].gameObject);
 
-                            ;
+                            
                         }
                     }
                 }

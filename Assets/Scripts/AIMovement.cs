@@ -366,7 +366,7 @@ public class AIMovement : MonoBehaviour
             Debug.Log("Slope" + CheckSlope());
 
             Debug.Log("Ledge" + CheckLedge()); */
-            rigidbody2D.AddForce(new Vector2(10, 50));
+            rigidbody2D.AddForce(new Vector2(10, 70 * flipValue));
         }
 
         float xDistance = target.transform.position.x - transform.position.x; // positive value = right, negative = left
