@@ -174,7 +174,6 @@ MonoBehaviour:
   - {fileID: 1527653109992404, guid: 12963556841d793499cf8ff25089e09c, type: 2}
   tagNames:
   - Enemy
-  - Pickup
   - Box
 --- !u!198 &198614017947931998
 ParticleSystem:
