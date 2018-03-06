@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4130668592414890}
   - component: {fileID: 212651552753064884}
   - component: {fileID: 114180036446291262}
-  - component: {fileID: 114277846716718624}
   - component: {fileID: 61534536992172506}
+  - component: {fileID: 114710919818550790}
   m_Layer: 0
   m_Name: pressurePlate
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: c88cf641388e7ab43ba40b3863ba7ac0, type: 3}
   - {fileID: 21300002, guid: c88cf641388e7ab43ba40b3863ba7ac0, type: 3}
---- !u!114 &114277846716718624
+--- !u!114 &114710919818550790
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -90,26 +90,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649964616745068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53e5792ff99b2d14182e1d4d4250b5f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b9892049f0233b4fa4dd394b7ead79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 0
   Type: 0
-  InteractWith:
-  - Player
+  InteractWith: []
   StayDown: 0
   HideOnInteraction: 0
-  stateOne: {fileID: 21300000, guid: 5044f6569d64fc744b1f03884976ac68, type: 3}
-  stateTwo: {fileID: 21300004, guid: 5044f6569d64fc744b1f03884976ac68, type: 3}
+  stateOne: {fileID: 0}
+  stateTwo: {fileID: 0}
   useItemIndex: 0
   itemIndex: 0
-  useTriggerIndex: 1
+  useTriggerIndex: 0
   TriggerIndex: 0
   TriggerCount: 0
   triggerCounter: 0
   Sounds: 0
   ActivationSound: {fileID: 0}
   DeactivationSound: {fileID: 0}
+  Objs: []
 --- !u!212 &212651552753064884
 SpriteRenderer:
   m_ObjectHideFlags: 1
