@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114803104298512386}
   - component: {fileID: 114118780176167208}
   - component: {fileID: 61011371305488594}
+  - component: {fileID: 114605032783777668}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -173,6 +174,19 @@ MonoBehaviour:
   turnRate: 1
   aggroRange: 0
   checkPoints: []
+--- !u!114 &114605032783777668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127109019429044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1195cd29e371d0c4db54b275d40eb968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffect: {fileID: 1691474578161754, guid: 3498d14958f1aea408625d0c710ea232,
+    type: 2}
 --- !u!114 &114803104298512386
 MonoBehaviour:
   m_ObjectHideFlags: 1

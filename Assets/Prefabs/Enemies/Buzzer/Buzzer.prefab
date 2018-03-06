@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 95910521940720820}
   - component: {fileID: 114904227861576304}
   - component: {fileID: 114696189685168040}
+  - component: {fileID: 114737175742025118}
   m_Layer: 0
   m_Name: Buzzer
   m_TagString: Enemy
@@ -116,6 +117,19 @@ MonoBehaviour:
   OverrideMinDistance: 1
   OverrideMaxDistance: 40
   parameters: []
+--- !u!114 &114737175742025118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054353198000982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1195cd29e371d0c4db54b275d40eb968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffect: {fileID: 1691474578161754, guid: 3498d14958f1aea408625d0c710ea232,
+    type: 2}
 --- !u!114 &114901745029816454
 MonoBehaviour:
   m_ObjectHideFlags: 1
