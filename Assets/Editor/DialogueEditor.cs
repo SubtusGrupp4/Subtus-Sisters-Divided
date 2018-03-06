@@ -17,7 +17,7 @@ public class DialogueEditor : Editor {
     public override void OnInspectorGUI()
     {
         EditorGUILayout.LabelField("Input Settings", EditorStyles.boldLabel);
-        d.playerIndex = EditorGUILayout.IntField(new GUIContent("Player Input Index", "What players input will count on this dialogue. 0 = Both. 1 = Player 1. 2 = Player 2. This also determines the placement of the dialogue box. 0 = Middle, 1 = Top Left, 2 = Bottom Right."), d.playerIndex);
+        d.playerIndex = (PlayerIndex)EditorGUILayout.EnumPopup(new GUIContent("Player Input Index", "What players input will be able to skipt his dialogue. Also determines the position of the dialogue box."), d.playerIndex);
 
         EditorGUILayout.LabelField("UI Settings", EditorStyles.boldLabel);
         d.npcName = EditorGUILayout.TextField(new GUIContent("NPC Name", "Will be displayed at the top as the name."), d.npcName);
