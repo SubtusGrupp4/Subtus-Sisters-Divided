@@ -35,7 +35,7 @@ public class Portal : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D otherObj)
 	{
-		if (otherObj.gameObject.GetComponent<PortalBehaviour>() != null) 
+		if (otherObj.gameObject.GetComponent<EnemyPortal>() != null) 
 			otherObj.GetComponent<EnemyPortal> ().OnPortalContact ();
 
 	}
