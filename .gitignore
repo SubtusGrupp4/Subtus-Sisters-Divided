@@ -33,14 +33,11 @@ sysinfo.txt
 Assets/etc.meta
 
 # FMOD
-/Subtus-FMOD/.cache/
-/Subtus-FMOD/.unsaved/
-#/Subtus-FMOD/Metadata/
-#/Subtus-FMOD/Build/
+/Subtus-FMOD/
 /Assets/FMODStudioCache.asset
 /Assets/FMODStudioCache.asset.meta
 #/Assets/StreamingAssets/*.bank
 #/Assets/StreamingAssets/*.bank.meta
 fmod.log
 fmod_editor.log
-ProjectSettings/ProjectVersion.txt
+/ProjectSettings/ProjectVersion.txt
