@@ -15,7 +15,7 @@ public class DisplayIconTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player" && icon == null)
         {
             icon = Instantiate(buttonIcon, transform.position + offset, Quaternion.identity).transform;
             icon.GetComponent<ButtonIcon>().Initialize(buttonType);
@@ -24,7 +24,7 @@ public class DisplayIconTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player" && icon != null)
             Destroy(icon);
     }
 
