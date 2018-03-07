@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 114929873639814728}
   - component: {fileID: 114524765385161442}
   - component: {fileID: 114728939933573240}
-  - component: {fileID: 114223599383112612}
   m_Layer: 0
   m_Name: _Game Manager
   m_TagString: Untagged
@@ -173,13 +172,14 @@ MonoBehaviour:
   playerBot: {fileID: 0}
   playerTopPrefab: {fileID: 1221702535368190, guid: e292e485d55d39b498951a8c1e011230,
     type: 2}
-  playerBotPrefab: {fileID: 1566391204588738, guid: 34f731e3c500af84f998bece194f7854,
+  playerBotPrefab: {fileID: 1566391204588738, guid: c4f07d902bdbf6b418818c9c4b7a6960,
     type: 2}
   onePlayerDead: 1
   resolutionX: 1920
   resolutionY: 1080
   resetKey: 114
   pauseKey: 27
+  killKey: 107
   pauseMenu: {fileID: 223036283649358172}
   isPaused: 0
   player1A: 0
@@ -200,38 +200,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114223599383112612
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1990975449614780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29720b7280fd86144852d6258a0e3aeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emitter: {fileID: 114728939933573240}
-  parameters:
-  - name: Hi-hat uptempo
-    value: 0
-  - name: 'Bas 1 '
-    value: 0
-  - name: Hi-hat
-    value: 0
-  - name: Bot
-    value: 0
-  - name: 'Bas 2 '
-    value: 0
-  - name: Top
-    value: 0
-  - name: Hi-hat echo
-    value: 0
-  - name: 'Drums '
-    value: 0
-  resetOnExit: 0
-  setStartOnEnter: 0
-  fetchParameters: 0
 --- !u!114 &114242111165246340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,7 +524,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449308946439688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 90, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224829769979920612}
@@ -592,7 +560,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072529210852774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.029999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224142348829169010}
@@ -610,7 +578,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100314028725556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224157160583269726}
