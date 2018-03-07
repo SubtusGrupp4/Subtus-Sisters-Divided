@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345fb8958130e54aa8bb801df951b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 2
+  buttonType: 1
   buttonIcon: {fileID: 1201335773688786, guid: cffc9b418049f65478dc0156801a1bf1, type: 2}
   offset: {x: 0, y: 2, z: 0}
 --- !u!114 &114426161712400362
