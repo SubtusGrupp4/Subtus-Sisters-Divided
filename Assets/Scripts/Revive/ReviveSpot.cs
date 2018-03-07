@@ -8,8 +8,6 @@ public class ReviveSpot : MonoBehaviour
     private ParticleSystem stars;
     [SerializeField]
     private ParticleSystem lines;
-    [SerializeField]
-    private SpriteRenderer buttonIcon;
 
     private void Start()
     {
@@ -29,6 +27,5 @@ public class ReviveSpot : MonoBehaviour
     {
         var emission = lines.emission;
         emission.rateOverTime = amount;
-        buttonIcon.enabled = (amount < 0.1f) ? false : true;
     }
 }
