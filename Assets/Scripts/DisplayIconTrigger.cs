@@ -36,4 +36,10 @@ public class DisplayIconTrigger : MonoBehaviour
             else
                 icon.position = transform.position - offset;
     }
+
+    public void DestroyIcon()
+    {
+        if (icon != null)
+            Destroy(icon);
+    }
 }
