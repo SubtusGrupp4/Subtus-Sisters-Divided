@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114082185008717622}
   - component: {fileID: 61211914237562796}
   - component: {fileID: 114066050197473610}
-  - component: {fileID: 60791800845005980}
+  - component: {fileID: 61693463894736150}
   m_Layer: 0
   m_Name: Crawler
   m_TagString: Enemy
@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1302186382472754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 266.85098, y: -1.5912151, z: -0.13671875}
+  m_LocalPosition: {x: 21.81, y: 8.84, z: -0.13671875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,8 +68,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &60791800845005980
-PolygonCollider2D:
+--- !u!61 &61211914237562796
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -90,15 +90,10 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.67, y: -0.45}
-      - {x: -0.14, y: -0.65}
-      - {x: 1.06, y: -0.51}
-      - {x: 0.91, y: -0.06}
-      - {x: 0.02, y: 0.16}
-      - {x: -1.43, y: 0.04}
---- !u!61 &61211914237562796
+  serializedVersion: 2
+  m_Size: {x: 2.7675476, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &61693463894736150
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,7 +116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.8400002, y: 1.1487613}
+  m_Size: {x: 3.4600003, y: 1.2650001}
   m_EdgeRadius: 0
 --- !u!95 &95884976577127228
 Animator:
@@ -181,7 +176,7 @@ MonoBehaviour:
   - Box
   walkOn:
   - Floor
-  flipped: 1
+  flipped: 0
   startState: 2
   engagedState: 0
   speed: 2
