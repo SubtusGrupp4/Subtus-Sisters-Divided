@@ -59,7 +59,6 @@ public class CameraClamp : MonoBehaviour
 
     public void SetClamp(bool clamp)
     {
-        Debug.Log("SetClamp(" + clamp + ");");
         doClamp = clamp;
     }
 }
