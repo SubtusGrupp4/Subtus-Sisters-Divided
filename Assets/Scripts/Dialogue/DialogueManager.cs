@@ -38,6 +38,8 @@ public class DialogueManager : MonoBehaviour
     [Header("Input")]
     [SerializeField]
     private string inputString;
+    [SerializeField]
+    private float waitTimeAfterAllWritten = 1f;
 
     private TextMeshProUGUI nameText;
     private Image image;
@@ -150,23 +152,11 @@ public class DialogueManager : MonoBehaviour
                 if (dialogues[di].fadeIn && !fadeInDone)    // Prevent characters being typed if the boxes are fading
                     return;
 
-                if (typeTime < 1f)  // Typing timer
-                    typeTime += Time.deltaTime / (actualTypeSpeed / 100f);  // Use the typeSpeed as hundreds of a seconds
-                else                // If the timer is done
-                {
-                    char toWrite = sentenceToWrite[charIndex];  // Get the current character to be added to the string
-
-                    writtenSentence += toWrite;                 // Add it to the string
-                    dialogueText.text = writtenSentence;        // Set the text in the dialogue box to the current string
-                    charIndex++;                                // Increment the character index
-                    typeTime = 0f;                              // Reset the timer
-                    if (dialogues[di].typeSounds && toWrite != ' ')     // If sounds are enabled and the character is not a space
-                    {
-                        int typeSoundIndex = Random.Range(0, typingSounds.Length);  // Get a random typing sound from the array TODO: Make this not repeating the previous sound
-                        audioSources[1].clip = typingSounds[typeSoundIndex];        // Play the selected sound
-                        audioSources[1].Play();
-                    }
-                }
+                StartCoroutine(TypeTimer(actualTypeSpeed / 100f));
+            }
+            else    // If done writing
+            {
+                StartCoroutine(SkipTimer());
             }
             // If there is dialogue to write, and the panel should fade in but not currently out
             if(dialogues != null && dialogues[di].fadeIn && !doFadeOut)
@@ -211,6 +201,33 @@ public class DialogueManager : MonoBehaviour
 
         player1Pressed = (Input.GetAxis(inputString + "_C1") > 0.1f);
         player2Pressed = (Input.GetAxis(inputString + "_C2") > 0.1f);
+    }
+
+    private IEnumerator TypeTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        if (charIndex < sentenceToWrite.Length)
+        {
+            char toWrite = sentenceToWrite[charIndex];  // Get the current character to be added to the string
+
+            writtenSentence += toWrite;                 // Add it to the string
+            dialogueText.text = writtenSentence;        // Set the text in the dialogue box to the current string
+            charIndex++;                            // Increment the character index
+            if (dialogues[di].typeSounds && toWrite != ' ')     // If sounds are enabled and the character is not a space
+            {
+                int typeSoundIndex = Random.Range(0, typingSounds.Length);  // Get a random typing sound from the array TODO: Make this not repeating the previous sound
+                audioSources[1].clip = typingSounds[typeSoundIndex];        // Play the selected sound
+                audioSources[1].Play();
+            }
+        }
+    }
+
+    private IEnumerator SkipTimer()
+    {
+        yield return new WaitForSeconds(waitTimeAfterAllWritten);
+        if (sentenceToWrite.Length <= charIndex)
+            DisplayNextSentence();
     }
 
     // If the button to skip is pressed, not dependant on which player, that is handled in Update()
@@ -345,9 +362,9 @@ public class DialogueManager : MonoBehaviour
 
     private void BetweenNextDialogue()
     {
-        if (dialogues[di].fadeOut)  // Fade out, if it is supposed to
+        if (dialogues[di] != null && dialogues[di].fadeOut)  // Fade out, if it is supposed to
             doFadeOut = true;
-        else                        // Otherwise just skip to the next dialogue
+        else    // Otherwise just skip to the next dialogue
             DisplayNextDialogue();
     }
 
