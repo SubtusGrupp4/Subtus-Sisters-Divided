@@ -127,6 +127,11 @@ GameObject:
   - component: {fileID: 61362751228386204}
   - component: {fileID: 114420442967286214}
   - component: {fileID: 114257518050112678}
+  - component: {fileID: 114228838958373840}
+  - component: {fileID: 114778998695614412}
+  - component: {fileID: 114246606660296354}
+  - component: {fileID: 114974702029116352}
+  - component: {fileID: 114584912578328302}
   m_Layer: 0
   m_Name: DialogueTrigger_Conversation
   m_TagString: Untagged
@@ -273,8 +278,8 @@ Transform:
   - {fileID: 4674483317389286}
   - {fileID: 4565124100954988}
   - {fileID: 4181236767762888}
-  - {fileID: 4426349309665654}
   - {fileID: 4784366517319694}
+  - {fileID: 4426349309665654}
   - {fileID: 4844582048258888}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -290,7 +295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4370687139235728}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4549732540998462
 Transform:
@@ -364,11 +369,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817489038590688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 262.3604, y: 0, z: 0}
+  m_LocalPosition: {x: 207.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4370687139235728}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4844582048258888
 Transform:
@@ -828,7 +833,7 @@ MonoBehaviour:
   customTag: 0
   dialogues: []
   onlyTriggerOnce: 1
---- !u!114 &114257518050112678
+--- !u!114 &114228838958373840
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -839,13 +844,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIndex: 0
-  npcName: Nebris
-  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  playerIndex: 2
+  npcName: Kara
+  npcSprite: {fileID: 21300000, guid: 8f1fd08778272794681f3146d4058aa4, type: 3}
   sentences:
-  - 'If you want to get through the doors, you need to use a key. Pick up a key by
-    using B. '
-  - It should be obvious...
+  - I'm here Merina, just calm down.
   voiceOver: 0
   audioClips: []
   typeSounds: 1
@@ -859,7 +862,73 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114246606660296354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 2
+  npcName: Kara
+  npcSprite: {fileID: 21300000, guid: 8f1fd08778272794681f3146d4058aa4, type: 3}
+  sentences:
+  - We'll find a way back, I promise.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114257518050112678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 1
+  npcName: Merina
+  npcSprite: {fileID: 21300000, guid: c9572f0970a7aa24bbafd57eab306e30, type: 3}
+  sentences:
+  - Kara... are you sill there?
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1162,6 +1231,38 @@ MonoBehaviour:
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
+--- !u!114 &114584912578328302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 2
+  npcName: Kara
+  npcSprite: {fileID: 21300000, guid: a4be235a17accf240a23c8de7988b6e0, type: 3}
+  sentences: []
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
 --- !u!114 &114594668906399118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1305,6 +1406,39 @@ MonoBehaviour:
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
+--- !u!114 &114778998695614412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 1
+  npcName: Merina
+  npcSprite: {fileID: 21300000, guid: c453a2f3cf2dc034ca6ed4a5291eb802, type: 3}
+  sentences:
+  - I don't like this.. I don't want us to be apart.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
 --- !u!114 &114783492932906724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1367,3 +1501,36 @@ MonoBehaviour:
   customTag: 0
   dialogues: []
   onlyTriggerOnce: 1
+--- !u!114 &114974702029116352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 1
+  npcName: Merina
+  npcSprite: {fileID: 21300000, guid: c9572f0970a7aa24bbafd57eab306e30, type: 3}
+  sentences:
+  - But how? The voice said it was impossible...
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
