@@ -8,11 +8,15 @@ public class InstantiateChildOnPlay : MonoBehaviour {
     private GameObject childPrefab;
     [SerializeField]
     private Vector3 offset;
+    [SerializeField]
+    private Material darkAdd;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Transform child = Instantiate(childPrefab, transform).transform;
         child.localPosition = offset;
+        if(child.position.y < 0f)
+            child.GetComponent<SpriteRenderer>().material = darkAdd;
 	}
 	
 	// Update is called once per frame

@@ -72,6 +72,7 @@ MonoBehaviour:
   childPrefab: {fileID: 1214627659247462, guid: 5747994437f30c444b1bb001a21436df,
     type: 2}
   offset: {x: 0, y: 1.7, z: 0}
+  darkAdd: {fileID: 2100000, guid: 6aaef772d8359c240a894e86397d7f31, type: 2}
 --- !u!212 &212909224232885198
 SpriteRenderer:
   m_ObjectHideFlags: 1
