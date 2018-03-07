@@ -48,6 +48,8 @@ public class StudioEventEmitterEditor : Editor
                 emitter.playOnStart = EditorGUILayout.Toggle("Play on Start", emitter.playOnStart);
                 EditorGUILayout.Space();
 
+                emitter.is3D = EditorGUILayout.Toggle("Is 3D", emitter.is3D);
+
                 EditorGUI.BeginDisabledGroup(editorEvent == null || !editorEvent.Is3D);
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.PrefixLabel("Override Attenuation");

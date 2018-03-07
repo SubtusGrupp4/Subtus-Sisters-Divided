@@ -22,10 +22,13 @@ public class FMODEmitter : MonoBehaviour
 
     private FMOD.Studio.EventInstance instance;
 
-    public void Start()
+    public void Awake()
     {
         if (playOnStart)
+        {
+            SetEvent(Event);
             Play();
+        }
     }
 
     public void SetEvent(string Event)
