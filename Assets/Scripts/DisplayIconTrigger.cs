@@ -24,8 +24,8 @@ public class DisplayIconTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Player" && icon != null)
-            Destroy(icon);
+        if (collision.transform.tag == "Player")
+            DestroyIcon();
     }
 
     private void Update()
@@ -40,6 +40,6 @@ public class DisplayIconTrigger : MonoBehaviour
     public void DestroyIcon()
     {
         if (icon != null)
-            Destroy(icon);
+            Destroy(icon.gameObject);
     }
 }
