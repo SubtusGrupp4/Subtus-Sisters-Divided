@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour {
             Debug.LogError("PlayerBotPrefab not assigned on Start() in GameManager!");
 
         pauseMenu.gameObject.SetActive(false);
+        onePlayerDead = false;
     }
 
     private void Update () {
