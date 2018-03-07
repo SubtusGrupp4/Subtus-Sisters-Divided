@@ -28,4 +28,10 @@ public class ReviveSpot : MonoBehaviour
         var emission = lines.emission;
         emission.rateOverTime = amount;
     }
+
+    public void DestroySelf()
+    {
+        GetComponent<DisplayIconTrigger>().DestroyIcon();
+        Destroy(gameObject);
+    }
 }

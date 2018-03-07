@@ -100,7 +100,7 @@ public class Reviving : MonoBehaviour {
     private void Revive()
     {
         // Destroy ReviveSpot
-        Destroy(reviveTransform.gameObject);
+        reviveTransform.GetComponent<ReviveSpot>().DestroySelf();
 
         Transform player;
 
