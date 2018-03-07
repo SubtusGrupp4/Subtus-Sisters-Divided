@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054353198000982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.546627, y: -6.419798, z: 0}
+  m_LocalPosition: {x: 115.88785, y: -7.611816, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,9 +113,9 @@ MonoBehaviour:
   Event: event:/Carl/Au_Ca_Buzzer_Idle
   playOnStart: 1
   is3D: 1
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 40
+  OverrideAttenuation: 1
+  OverrideMinDistance: 10
+  OverrideMaxDistance: 30
   parameters: []
 --- !u!114 &114737175742025118
 MonoBehaviour:

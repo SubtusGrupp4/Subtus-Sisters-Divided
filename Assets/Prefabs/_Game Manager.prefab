@@ -174,7 +174,7 @@ MonoBehaviour:
     type: 2}
   playerBotPrefab: {fileID: 1566391204588738, guid: c4f07d902bdbf6b418818c9c4b7a6960,
     type: 2}
-  onePlayerDead: 1
+  onePlayerDead: 0
   resolutionX: 1920
   resolutionY: 1080
   resetKey: 114
