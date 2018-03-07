@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class AudioZonesStandard : MonoBehaviour
+public class AudioZoneStandard : MonoBehaviour
 {
     [System.Serializable]
     private struct Parameter
