@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1302186382472754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.77, y: 6.05, z: -0.13671875}
+  m_LocalPosition: {x: 266.85098, y: -1.5912151, z: -0.13671875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,9 +95,9 @@ PolygonCollider2D:
     - - {x: -1.67, y: -0.45}
       - {x: -0.14, y: -0.65}
       - {x: 1.06, y: -0.51}
-      - {x: 0.91, y: 0.42}
-      - {x: 0.02, y: 0.58}
-      - {x: -1.43, y: 0.34}
+      - {x: 0.91, y: -0.06}
+      - {x: 0.02, y: 0.16}
+      - {x: -1.43, y: 0.04}
 --- !u!61 &61211914237562796
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -178,9 +178,10 @@ MonoBehaviour:
   engageOn: []
   bounceOn:
   - Floor
+  - Box
   walkOn:
   - Floor
-  flipped: 0
+  flipped: 1
   startState: 2
   engagedState: 0
   speed: 2
