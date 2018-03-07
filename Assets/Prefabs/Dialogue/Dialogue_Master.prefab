@@ -674,7 +674,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 11}
+  m_Size: {x: 3, y: 11}
   m_EdgeRadius: 0
 --- !u!114 &114006651264571302
 MonoBehaviour:
@@ -1097,7 +1097,9 @@ MonoBehaviour:
   npcName: Kara
   npcSprite: {fileID: 21300000, guid: 8812f595421dbbb42983e5ba14d14731, type: 3}
   sentences:
-  - This feels lika a safe place.
+  - 'This feels like a safe place.
+
+    (Press [X] to progress through the dialogue.)'
   voiceOver: 0
   audioClips: []
   typeSounds: 0
@@ -1111,7 +1113,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
