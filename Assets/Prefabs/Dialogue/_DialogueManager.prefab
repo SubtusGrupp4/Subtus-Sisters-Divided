@@ -1843,8 +1843,9 @@ MonoBehaviour:
   mDialogueCanvas: {fileID: 223671422689095538}
   rDialogueCanvas: {fileID: 223996765028571060}
   lDialogueCanvas: {fileID: 223891432955717106}
+  inputString: X
   freezeCamera: 0
-  typeSpeed: 4
+  typeSpeed: 2
   typingSounds:
   - {fileID: 8300000, guid: 2bb580c757504bf4d8eb050824d88316, type: 3}
   - {fileID: 8300000, guid: 7e24eaab7d07fac4898f17bd83254d4d, type: 3}

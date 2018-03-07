@@ -35,6 +35,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private Canvas lDialogueCanvas;
 
+    [Header("Input")]
+    [SerializeField]
+    private string inputString;
+
     private TextMeshProUGUI nameText;
     private Image image;
     private TextMeshProUGUI dialogueText;
@@ -127,17 +131,17 @@ public class DialogueManager : MonoBehaviour
             {
                 case PlayerIndex.Both:
                     if(!player1Pressed && !player2Pressed)
-                        if(Input.GetAxis("Jump_C1") > 0.1f || Input.GetAxis("Jump_C2") > 0.1f)
+                        if(Input.GetAxis(inputString + "_C1") > 0.1f || Input.GetAxis(inputString + "_C2") > 0.1f)
                             InputGet();
                     break;
                 case PlayerIndex.Player1:
                     if(!player1Pressed)
-                        if (Input.GetAxis("Jump_C1") > 0.1f)
+                        if (Input.GetAxis(inputString + "_C1") > 0.1f)
                             InputGet();
                     break;
                 case PlayerIndex.Player2:
                     if(!player2Pressed)
-                        if (Input.GetAxis("Jump_C2") > 0.1f)
+                        if (Input.GetAxis(inputString + "_C2") > 0.1f)
                             InputGet();
                     break;
             }
@@ -205,8 +209,8 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        player1Pressed = (Input.GetAxis("Jump_C1") > 0.1f);
-        player2Pressed = (Input.GetAxis("Jump_C2") > 0.1f);
+        player1Pressed = (Input.GetAxis(inputString + "_C1") > 0.1f);
+        player2Pressed = (Input.GetAxis(inputString + "_C2") > 0.1f);
     }
 
     // If the button to skip is pressed, not dependant on which player, that is handled in Update()
