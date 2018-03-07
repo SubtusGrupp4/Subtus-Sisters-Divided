@@ -705,7 +705,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -815,7 +815,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -862,7 +862,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -895,7 +895,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -928,7 +928,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -997,7 +997,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1229,7 +1229,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   npcName: Kara
   npcSprite: {fileID: 21300000, guid: a4be235a17accf240a23c8de7988b6e0, type: 3}
   sentences:
-  - What happens if I touch it? Is it dangerous?
+  - What happens if I get close? Is it dangerous?
   voiceOver: 0
   audioClips: []
   typeSounds: 0
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1437,7 +1437,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   moveCameraX: 0
   moveCameraSpeed: 1
   moveCameraWait: 0
-  hide: 1
+  hide: 0
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
