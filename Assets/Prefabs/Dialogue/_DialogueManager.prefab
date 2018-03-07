@@ -1844,14 +1844,14 @@ MonoBehaviour:
   rDialogueCanvas: {fileID: 223996765028571060}
   lDialogueCanvas: {fileID: 223891432955717106}
   freezeCamera: 0
-  typeSpeed: 8
+  typeSpeed: 4
   typingSounds:
   - {fileID: 8300000, guid: 2bb580c757504bf4d8eb050824d88316, type: 3}
   - {fileID: 8300000, guid: 7e24eaab7d07fac4898f17bd83254d4d, type: 3}
   - {fileID: 8300000, guid: 1fc48750f211a8140bfb54f55e3dc71c, type: 3}
   - {fileID: 8300000, guid: 93c3e3319aaad0644b50ae9a9461e671, type: 3}
   - {fileID: 8300000, guid: 1aaede4400cc83448add86a16fb1661c, type: 3}
-  typingVolume: 0.1
+  typingVolume: 0
 --- !u!114 &114920750101371528
 MonoBehaviour:
   m_ObjectHideFlags: 1

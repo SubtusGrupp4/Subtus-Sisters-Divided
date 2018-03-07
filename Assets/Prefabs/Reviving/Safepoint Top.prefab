@@ -480,7 +480,7 @@ MonoBehaviour:
   flickeringLight: {fileID: 114185027020760654}
   isCurrent: 0
   playerExited: 0
-  exitTime: 1
+  exitTime: 0.5
   timer: 1
   childOffset: {x: 0, y: 0}
   child: {fileID: 4076966320808526}

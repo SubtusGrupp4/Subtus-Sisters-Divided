@@ -1,0 +1,1369 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1082840345601584}
+  m_IsPrefabParent: 1
+--- !u!1 &1011829079282276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4991311852698872}
+  - component: {fileID: 61758790190520894}
+  - component: {fileID: 114808822180877910}
+  - component: {fileID: 114543962575732588}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Portals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1017347109317550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4660981573507584}
+  - component: {fileID: 61708968429698564}
+  - component: {fileID: 114665025898627578}
+  - component: {fileID: 114274821062111772}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Crawling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1082840345601584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4370687139235728}
+  m_Layer: 0
+  m_Name: Dialogue_Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1362492672565476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4181236767762888}
+  - component: {fileID: 61798845075742168}
+  - component: {fileID: 114025697775695722}
+  - component: {fileID: 114727161885423528}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Doors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1397647054083594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4241262021937922}
+  - component: {fileID: 61355053754643762}
+  - component: {fileID: 114912937107719756}
+  - component: {fileID: 114502736471414400}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Boxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1449336800028644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4844582048258888}
+  - component: {fileID: 61236701181100878}
+  - component: {fileID: 114658786866665612}
+  - component: {fileID: 114665771445807236}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Levers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1485634799623706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4565124100954988}
+  - component: {fileID: 61362751228386204}
+  - component: {fileID: 114420442967286214}
+  - component: {fileID: 114257518050112678}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Conversation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1688364992953950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4674483317389286}
+  - component: {fileID: 61929858216816730}
+  - component: {fileID: 114540608327284490}
+  - component: {fileID: 114459889462325672}
+  - component: {fileID: 114322910724451648}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Rats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1791203637662570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4426349309665654}
+  - component: {fileID: 61311730295706488}
+  - component: {fileID: 114202064843187936}
+  - component: {fileID: 114173038709223416}
+  - component: {fileID: 114006651264571302}
+  - component: {fileID: 114387140085073422}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Police
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1812391763158286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4719378345856632}
+  - component: {fileID: 61949162738716752}
+  - component: {fileID: 114594668906399118}
+  - component: {fileID: 114468896889470914}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Safepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1817489038590688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4784366517319694}
+  - component: {fileID: 61264500973921764}
+  - component: {fileID: 114117019935784150}
+  - component: {fileID: 114551949432111776}
+  m_Layer: 0
+  m_Name: DialogueTrigger_Pressure_Plates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1879014933431144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4549732540998462}
+  - component: {fileID: 61757123411893544}
+  - component: {fileID: 114164822532943166}
+  - component: {fileID: 114783492932906724}
+  - component: {fileID: 114607254983678644}
+  - component: {fileID: 114164057298735288}
+  m_Layer: 0
+  m_Name: DialogueTrigger_First_Monster_Revive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4181236767762888
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362492672565476}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 135.4609, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4241262021937922
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397647054083594}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 55.18, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4370687139235728
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1082840345601584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4719378345856632}
+  - {fileID: 4549732540998462}
+  - {fileID: 4660981573507584}
+  - {fileID: 4991311852698872}
+  - {fileID: 4241262021937922}
+  - {fileID: 4674483317389286}
+  - {fileID: 4565124100954988}
+  - {fileID: 4181236767762888}
+  - {fileID: 4426349309665654}
+  - {fileID: 4784366517319694}
+  - {fileID: 4844582048258888}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4426349309665654
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791203637662570}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 238.44, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4549732540998462
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879014933431144}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -33.31, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4565124100954988
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 95.75, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4660981573507584
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017347109317550}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.42, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4674483317389286
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688364992953950}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 61.11, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4719378345856632
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812391763158286}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -48.920456, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4784366517319694
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817489038590688}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 262.3604, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4844582048258888
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449336800028644}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 334.21207, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4991311852698872
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011829079282276}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 21.11, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4370687139235728}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61236701181100878
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449336800028644}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 22}
+  m_EdgeRadius: 0
+--- !u!61 &61264500973921764
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817489038590688}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -5.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 11}
+  m_EdgeRadius: 0
+--- !u!61 &61311730295706488
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791203637662570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 11}
+  m_EdgeRadius: 0
+--- !u!61 &61355053754643762
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397647054083594}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 22}
+  m_EdgeRadius: 0
+--- !u!61 &61362751228386204
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 22}
+  m_EdgeRadius: 0
+--- !u!61 &61708968429698564
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017347109317550}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 11}
+  m_EdgeRadius: 0
+--- !u!61 &61757123411893544
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879014933431144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -5.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 11}
+  m_EdgeRadius: 0
+--- !u!61 &61758790190520894
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011829079282276}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 22}
+  m_EdgeRadius: 0
+--- !u!61 &61798845075742168
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362492672565476}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 22}
+  m_EdgeRadius: 0
+--- !u!61 &61929858216816730
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688364992953950}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 5.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 11}
+  m_EdgeRadius: 0
+--- !u!61 &61949162738716752
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812391763158286}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -5.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 11}
+  m_EdgeRadius: 0
+--- !u!114 &114006651264571302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791203637662570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 1
+  npcName: Merina
+  npcSprite: {fileID: 21300000, guid: c453a2f3cf2dc034ca6ed4a5291eb802, type: 3}
+  sentences:
+  - What? Aren't they here to help?!
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114025697775695722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362492672565476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114117019935784150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817489038590688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114164057298735288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879014933431144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - "Normally yes, but I\u2019m working really hard to help you two."
+  - Instead of dying your sister will have to find and collect your spirit by pressing
+    [Y], then you'll come back.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 0
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 0
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114164822532943166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879014933431144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114173038709223416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791203637662570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - The police officers will try to stop you, little girl.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114202064843187936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791203637662570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114257518050112678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - 'If you want to get through the doors, you need to use a key. Pick up a key by
+    using B. '
+  - It should be obvious...
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 0
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114274821062111772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017347109317550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - Why don't you try crawling? You who are so little, it shouldn't be a problem.
+    Just hold [LT].
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 0
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114322910724451648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688364992953950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - Why don't you use the thing I gave you?  Use the [LEFT JOYSTICK] to throw it and
+    [RT] to activate.
+  - One pushes monsters away, one pulls them in.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114387140085073422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791203637662570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - "Not right now, currently they are just trying to keep you from your sister. Poor
+    child, you better avoid them or you\u2019ll never see her again."
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114420442967286214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485634799623706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114459889462325672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688364992953950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 1
+  npcName: Merina
+  npcSprite: {fileID: 21300000, guid: 0982634d6974d0b428753f1ad4cf89a8, type: 3}
+  sentences:
+  - Aah! I hate rats!
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114468896889470914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812391763158286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 2
+  npcName: Kara
+  npcSprite: {fileID: 21300000, guid: 8812f595421dbbb42983e5ba14d14731, type: 3}
+  sentences:
+  - This feels lika a safe place.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 0
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114502736471414400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397647054083594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - I do think you can imagine what to do with those boxes.
+  - Use [B] to push or drag them.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 0
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114540608327284490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688364992953950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114543962575732588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011829079282276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - 'I would avoid those if I were you. If something falls through, you''ll never
+    know what will come out on the other side. '
+  - 'Then again, you may be able to use them to your advantage. '
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114551949432111776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817489038590688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - "Why don\u2019t you step on that and see what happens?"
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114594668906399118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812391763158286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114607254983678644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879014933431144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 2
+  npcName: Kara
+  npcSprite: {fileID: 21300000, guid: a4be235a17accf240a23c8de7988b6e0, type: 3}
+  sentences:
+  - What happens if I touch it? Is it dangerous?
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 0
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114658786866665612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449336800028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114665025898627578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017347109317550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114665771445807236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449336800028644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - Press [B] to pull that lever, something might change in the world.
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 0
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114727161885423528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362492672565476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - 'If you want to get through the doors, you need to use a key. Pick up small items
+    by pressing [B]. '
+  - This should be obvious...
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 0
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114783492932906724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879014933431144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 21300000, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  sentences:
+  - "Oh no, do you see that thing? That\u2019s a monster, and it will hurt you if
+    you come too close."
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 0
+  waitTime: 0
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  hide: 1
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+--- !u!114 &114808822180877910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011829079282276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
+--- !u!114 &114912937107719756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397647054083594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095c344064eefa40af824dcd2350a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customTag: 0
+  dialogues: []
+  onlyTriggerOnce: 1
