@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
     private KeyCode resetKey;
     [SerializeField]
     private KeyCode pauseKey;
+    [SerializeField]
+    private KeyCode killKey;
 
     [Header("Pausing")]
     [SerializeField]
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour {
     private void Update () {
         RestartKey();
         PauseKey();
+        KillKey();
 
         if(isPaused)
         {
@@ -106,10 +109,21 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(pauseKey))
         {
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+            Application.Quit();
+            //pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
             // Use something else instead
             //Time.timeScale = pauseMenu.gameObject.activeSelf ? 0f : 1f;
-            isPaused = pauseMenu.gameObject.activeSelf;
+            //isPaused = pauseMenu.gameObject.activeSelf;
+        }
+    }
+
+    private void KillKey()
+    {
+        if(Input.GetKeyDown(killKey))
+        {
+            playerTop.GetComponent<Reviving>().Die();
+            onePlayerDead = true;
+            playerBot.GetComponent<Reviving>().Die();
         }
     }
 
