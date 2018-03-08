@@ -119,6 +119,9 @@ public class DialogueManager : MonoBehaviour
     // Get the dialogue scripts from the trigger
     public void FetchDialogue(Dialogue[] dialogues)
     {
+        if (isBusy)
+            EndDialogue();
+
         this.dialogues = dialogues;     // Assign the dialogues
         StartDialogue();                // Start processing the dialogue
     }
@@ -156,7 +159,7 @@ public class DialogueManager : MonoBehaviour
             }
             else    // If done writing
             {
-                StartCoroutine(SkipTimer());
+                //StartCoroutine(SkipTimer());
             }
             // If there is dialogue to write, and the panel should fade in but not currently out
             if(dialogues != null && dialogues[di].fadeIn && !doFadeOut)
@@ -277,11 +280,6 @@ public class DialogueManager : MonoBehaviour
             lDialogueCanvas.enabled = false;
 
             panel = rDialogueCanvas.transform.GetChild(0);
-        }
-        else
-        {
-            Debug.LogError("Player Index invalid value, must be 0, 1 or 2");
-            return;
         }
 
         // Assign the correct name text, image and dialogue text boxes
