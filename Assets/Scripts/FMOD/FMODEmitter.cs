@@ -33,13 +33,13 @@ public class FMODEmitter : MonoBehaviour
 
     public void SetEvent(string Event)
     {
-        Debug.Log("Changed FMOD Emitter event to:" + Event);
+        //Debug.Log("Changed FMOD Emitter event to:" + Event);
         this.Event = Event;
     }
 
     public void Play()
     {
-        Debug.Log("Play FMOD Emitter. Event: " + Event);
+        //Debug.Log("Play FMOD Emitter. Event: " + Event);
         instance = FMODUnity.RuntimeManager.CreateInstance(Event);
 
         // Only want to update if we need to set 3D attributes
@@ -62,14 +62,14 @@ public class FMODEmitter : MonoBehaviour
 
     public void Stop()
     {
-        Debug.Log("Stop FMOD Emitter. Event: " + Event);
+        //Debug.Log("Stop FMOD Emitter. Event: " + Event);
         instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         instance.release();
     }
 
     public void Kill()
     {
-        Debug.Log("Kill FMOD Emitter. Event: " + Event);
+        //Debug.Log("Kill FMOD Emitter. Event: " + Event);
         instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         instance.release();
     }

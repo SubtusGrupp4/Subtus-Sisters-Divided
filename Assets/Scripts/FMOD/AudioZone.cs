@@ -22,7 +22,7 @@ public class AudioZone : MonoBehaviour
     [Tooltip("Each parameter will change the corresponding parameter in FMOD")]
     private List<Parameter> parameters;
 
-    private List<Parameter> oldParameters;
+    private List<Parameter> oldParameters = new List<Parameter>();
 
     [Header("Settings")]
     [SerializeField]
@@ -107,7 +107,7 @@ public class AudioZone : MonoBehaviour
             Debug.Log("Player exited AudioZone");
             if (resetOnExit)
                 foreach (Parameter p in oldParameters)
-                emitter.SetParameter(p.name, p.value);
+                    emitter.SetParameter(p.name, p.value);
         }
     }
 }

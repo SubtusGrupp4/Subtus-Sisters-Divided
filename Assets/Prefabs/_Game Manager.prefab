@@ -107,8 +107,7 @@ GameObject:
   - component: {fileID: 4315638588875236}
   - component: {fileID: 114193923815130308}
   - component: {fileID: 114929873639814728}
-  - component: {fileID: 114524765385161442}
-  - component: {fileID: 114728939933573240}
+  - component: {fileID: 114148793439813684}
   m_Layer: 0
   m_Name: _Game Manager
   m_TagString: Untagged
@@ -157,6 +156,40 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114148793439813684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990975449614780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Simon/Mu_S_Level1
+  playOnStart: 1
+  is3D: 0
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  parameters:
+  - Name: Top
+    Value: 0
+  - Name: Lowpass IN
+    Value: 0
+  - Name: Hi-hat echo
+    Value: 0
+  - Name: Hi-hat
+    Value: 0
+  - Name: Kick
+    Value: 0
+  - Name: Hi-hat uptempo
+    Value: 0
+  - Name: Bot
+    Value: 0
+  - Name: Bas
+    Value: 0
 --- !u!114 &114193923815130308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,51 +396,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114524765385161442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1990975449614780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc3f17643e5d00489eededad3145b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114728939933573240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1990975449614780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/Simon/Mu_S_Merina
-  playOnStart: 0
-  is3D: 1
-  OverrideAttenuation: 1
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
-  parameters:
-  - Name: Hi-hat uptempo
-    Value: 0
-  - Name: 'Bas 1 '
-    Value: 0
-  - Name: Hi-hat
-    Value: 0
-  - Name: Bot
-    Value: 0
-  - Name: 'Bas 2 '
-    Value: 0
-  - Name: Top
-    Value: 0
-  - Name: Hi-hat echo
-    Value: 0
-  - Name: 'Drums '
-    Value: 0
 --- !u!114 &114864711973879772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -524,7 +512,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449308946439688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 90, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224829769979920612}
@@ -560,7 +548,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072529210852774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.029999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224142348829169010}
@@ -578,7 +566,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100314028725556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224157160583269726}
