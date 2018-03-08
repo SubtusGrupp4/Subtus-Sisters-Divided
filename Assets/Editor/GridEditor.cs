@@ -376,13 +376,15 @@ public class GridEditor : Editor
         int amount = 0;
         foreach (GameObject obj in allObjects)
         {
-            if (obj.transform.tag == "Floor" ||
-                obj.GetComponent<CombinedTile>() != null ||
+            if (obj.transform.tag == "Floor")
+            {
+                if (obj.GetComponent<CombinedTile>() != null ||
                 obj.GetComponent<PlatformEffector2D>() != null ||
                 obj.GetComponent<CheckAdjacent>() != null)
-            {
-                obj.transform.parent = grid.tiles.transform;
-                amount++;
+                {
+                    obj.transform.parent = grid.tiles.transform;
+                    amount++;
+                }
             }
         }
         Debug.Log(amount + " tiles added to Tiles as children.");
