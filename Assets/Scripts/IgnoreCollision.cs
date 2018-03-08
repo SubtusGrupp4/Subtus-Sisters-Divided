@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class IgnoreCollision : MonoBehaviour {
 
-	private GameObject[] ignoreObject;
+	private List<GameObject> ignoreObjects;
 
-	// Use this for initialization
-	void Start () {
-		ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
-		foreach (GameObject IO in ignoreObject)
-			Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.GetComponent<Collider2D>(), true);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    [GiveTag]
+    [SerializeField]
+    private string[] tagsToIgnore = new string[] { };
+
+    // Use this for initialization
+    void Start ()
+    {
+        foreach(string tag in tagsToIgnore)
+        {
+            GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+            foreach(GameObject obj in objects)
+                ignoreObjects.Add(obj);
+        }
 		
+		foreach (GameObject obj in ignoreObjects)
+			Physics2D.IgnoreCollision (obj.GetComponent<Collider2D> (), this.GetComponent<Collider2D>(), true);
 	}
 }
