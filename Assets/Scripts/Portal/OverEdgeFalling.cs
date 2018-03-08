@@ -22,15 +22,22 @@ public class OverEdgeFalling : MonoBehaviour
 	{
 		if (!IsGrounded ()) 
 		{
+            // Don't show the button icon, since it isn't interactable in the air
+            GetComponent<DisplayIconTrigger>().SetShowIcon(false);
+
 			rb.mass = 100;
-			if (GetComponent<FixedJoint2D> ().enabled) {
+            if (GetComponent<FixedJoint2D> ().enabled) {
 				rb.velocity = new Vector2 (0, rb.velocity.y);
 			}
 			GetComponent<FixedJoint2D> ().enabled = false;
 			foreach (GameObject IO in ignoreObject)
 				Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.col, true);
-		} else 
+		}
+        else 
 		{
+            // Show the button icon
+            GetComponent<DisplayIconTrigger>().SetShowIcon(true);
+
 			foreach (GameObject IO in ignoreObject)
 				Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.col, false);
 		}
