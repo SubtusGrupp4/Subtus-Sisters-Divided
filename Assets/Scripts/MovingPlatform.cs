@@ -21,8 +21,15 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        goingTo = movement.GoingWhere();
-        goingTo *= movement.speed * Time.deltaTime;
+        if (movement != null)
+        {
+            goingTo = movement.GoingWhere();
+            goingTo *= movement.speed * Time.deltaTime;
+        }
+        else
+        {
+            Debug.LogWarning("AIMovement not assigned on MovingPlatform, object: " + transform.name);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D obj)

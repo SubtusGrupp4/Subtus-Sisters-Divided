@@ -8,7 +8,9 @@ public class SafepointManager : MonoBehaviour {
 	public static SafepointManager instance;
 
     // Used for respawning both the players. Stays activated
+    [HideInInspector]
     public Transform currentTopSafepoint;
+    [HideInInspector]
     public Transform currentBotSafepoint;
 
     // Got from Safepoints being triggered. Will deactivate if one is empty or not a matching pair.
@@ -18,7 +20,9 @@ public class SafepointManager : MonoBehaviour {
     public Transform botSafepoint;
 
     // Used as the spawning point if only one player dies but is revived
+    [HideInInspector]
     public Transform topCheckpoint;
+    [HideInInspector]
     public Transform botCheckpoint;
 
     // References to the players. Fetched from GameManager
