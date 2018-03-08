@@ -84,7 +84,6 @@ public class GridEditor : Editor
 
             if (grid.mirror)
             {
-                grid.mirrorOffset = EditorGUILayout.FloatField(new GUIContent("Mirror Offset", "Offsets the Y axis. Basically raises and lowers the mirroring point."), grid.mirrorOffset);
                 grid.mirrorSprite = EditorGUILayout.Toggle(new GUIContent("Mirror Sprites", "Enables the sprites of the mirrored object to be automatically switched."), grid.mirrorSprite);
                 grid.removeMirrored = EditorGUILayout.Toggle(new GUIContent("Remove Mirror", "Remove tiles on both sides."), grid.removeMirrored);
                 grid.useMirrored = false;
@@ -396,7 +395,7 @@ public class GridEditor : Editor
         foreach (Transform tile in grid.tileTransforms)                                                     // For each tile transform,
         {
             if (tile.GetComponent<SpriteRenderer>() != null && tile.GetComponent<CombinedTile>() != null)   // if they have a SpriteRenderer and CombinedTile,
-                if (tile.position.y < grid.mirrorOffset)
+                if (tile.position.y < 0f)
                     tile.GetComponent<CombinedTile>().SetTileLight(false);                                  // set to the dark version if under 0,
                 else
                     tile.GetComponent<CombinedTile>().SetTileLight(true);                                   // or the light version if over 0
@@ -588,14 +587,14 @@ public class GridEditor : Editor
 
                 if (grid.mirror)                                                                            // If mirroring
                 {
-                    grid.mousePreview.GetComponent<CombinedTile>().FlipY(mousePos.y < grid.mirrorOffset);   // Flip the mouse preview tile if under 0
+                    grid.mousePreview.GetComponent<CombinedTile>().FlipY(mousePos.y < 0f);   // Flip the mouse preview tile if under 0
 
                     if (grid.mirrorSprite)                                                                                          // If the sprite is to be switched on the mirror side
                     {
                         if (grid.tilePrefab.GetComponent<CombinedTile>() != null)                                                   // If the tile has the CombinedTile script
                         {
                             grid.mousePreview.GetComponent<CombinedTile>().SetSameAs(grid.tilePrefab.GetComponent<CombinedTile>()); // Get the values from the tile and assign them to the preview
-                            if (mousePos.y < grid.mirrorOffset)
+                            if (mousePos.y < 0f)
                                 grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(false);                                 // Set to dark if under 0,
                             else
                                 grid.mousePreview.GetComponent<CombinedTile>().SetTileLight(true);                                  // or to light if over 0
@@ -649,7 +648,7 @@ public class GridEditor : Editor
                 aligned = mousePos;
 
             if (grid.mirror)    // If mirroring, store the mirrored vector of aligned
-                mirrored = new Vector2(aligned.x, -aligned.y + grid.mirrorOffset * 2f);
+                mirrored = new Vector2(aligned.x, -aligned.y);
 
             if (grid.tiles == null) // If there is no parent object for the tiles
             {
@@ -668,6 +667,9 @@ public class GridEditor : Editor
             {
 
                 spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
+                Debug.Log("spawnGO on " + new Vector2(aligned.x, aligned.y));
+                if (aligned == Vector3.zero)
+                    Debug.LogError("spawnGO on 0");
                 spawnGO.transform.position = new Vector2(aligned.x, aligned.y);
                 spawnGO.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
                 spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
@@ -687,9 +689,12 @@ public class GridEditor : Editor
 
             }
 
-            if (grid.mirror && TileOnPosition(mirrored) == -1 || grid.overlap)
+            if (grid.mirror && TileOnPosition(mirrored) == -1 || grid.overlap && grid.mirror)
             {
                 mirrorGO =(GameObject) PrefabUtility.InstantiatePrefab(prefab.gameObject);
+                Debug.Log("mirrorGo on " + new Vector2(mirrored.x, mirrored.y));
+                if (mirrored == Vector3.zero)
+                    Debug.LogError("mirrorGo on 0");
                 mirrorGO.transform.position = new Vector2(mirrored.x, mirrored.y);
                 mirrorGO.transform.rotation = Quaternion.Euler(0f, 0f, -grid.rotationZ);
                 mirrorGO.isStatic = grid.isStatic;
@@ -725,19 +730,22 @@ public class GridEditor : Editor
 
                 grid.tileTransforms.Add(mirrorGO.transform);
 
-                if (mousePos.y < grid.mirrorOffset)
+                if (spawnGO.GetComponent<CombinedTile>() != null)
                 {
-                    if (spawnGO != null)
-                        spawnGO.GetComponent<CombinedTile>().FlipY(true);
-                    if (mirrorGO != null)
-                        mirrorGO.GetComponent<CombinedTile>().FlipY(false);
-                }
-                else
-                {
-                    if (spawnGO != null)
-                        spawnGO.GetComponent<CombinedTile>().FlipY(false);
-                    if (mirrorGO != null)
-                        mirrorGO.GetComponent<CombinedTile>().FlipY(true);
+                    if (mousePos.y < 0f)
+                    {
+                        if (spawnGO != null)
+                            spawnGO.GetComponent<CombinedTile>().FlipY(true);
+                        if (mirrorGO != null)
+                            mirrorGO.GetComponent<CombinedTile>().FlipY(false);
+                    }
+                    else
+                    {
+                        if (spawnGO != null)
+                            spawnGO.GetComponent<CombinedTile>().FlipY(false);
+                        if (mirrorGO != null)
+                            mirrorGO.GetComponent<CombinedTile>().FlipY(true);
+                    }
                 }
             }
             else if (grid.useMirrored && TileOnPosition(mirrored) == -1 || grid.overlap)
@@ -782,7 +790,7 @@ public class GridEditor : Editor
 
         if (grid.mirror && grid.removeMirrored)
         {
-            tileOnPositionIndex = TileOnPosition(new Vector2(aligned.x, -aligned.y + grid.mirrorOffset * 2f));
+            tileOnPositionIndex = TileOnPosition(new Vector2(aligned.x, -aligned.y));
 
             if (tileOnPositionIndex != -1)
             {
@@ -813,7 +821,11 @@ public class GridEditor : Editor
             float y = thisToCollider.y;
             float lengthSquared = x * x + y * y;
 
-            float r =(grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x + grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.y) / 4f;
+            float r;
+            if (grid.tileTransforms[i].GetComponent<Renderer>() != null)
+                r = (grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.x + grid.tileTransforms[i].GetComponent<Renderer>().bounds.size.y) / 4f;
+            else
+                r = 0.5f;
 
             if (lengthSquared < r * r)
                 return i;
