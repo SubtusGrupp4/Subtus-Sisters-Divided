@@ -93,6 +93,7 @@ MonoBehaviour:
   range: 10
   explosionForce: 450
   duration: 5
+  particles: []
   tagNames:
   - Enemy
   - Pickup
