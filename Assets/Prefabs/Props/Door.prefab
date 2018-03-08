@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4723122014130578}
   - component: {fileID: 212906606914242128}
-  - component: {fileID: 114009052291925796}
   - component: {fileID: 61237834083360212}
   - component: {fileID: 251005975330680288}
   - component: {fileID: 114104001917614624}
+  - component: {fileID: 114275470071287376}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -69,20 +69,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &114009052291925796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723522263642970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06a0821fc0e91c42aa7e3701091acd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 3e398afcfc0ebea4c9d4fe3a32a77fcc, type: 3}
-  - {fileID: 21300002, guid: 3e398afcfc0ebea4c9d4fe3a32a77fcc, type: 3}
 --- !u!114 &114104001917614624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,10 +86,26 @@ MonoBehaviour:
   timeUntilClose: 0
   useItemIndex: 0
   itemIndex: 0
-  openImage: {fileID: 21300000, guid: 91e31fe06351859459bbd4d7a3e2759f, type: 3}
-  closedImage: {fileID: 21300000, guid: 3e398afcfc0ebea4c9d4fe3a32a77fcc, type: 3}
+  openImage: {fileID: 21300000, guid: 0f8deffaf68d5ca48a6b90548bca7115, type: 3}
+  closedImage: {fileID: 21300000, guid: a5e7180d590b9c044aa53e8d05cbaa99, type: 3}
   openDoorSound: {fileID: 0}
   closeDoorSound: {fileID: 0}
+--- !u!114 &114275470071287376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723522263642970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: a5e7180d590b9c044aa53e8d05cbaa99, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 668fc7b9eaed16544b3b2859bf86837f, type: 3}
+  lightTile: 0
 --- !u!212 &212906606914242128
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -138,7 +140,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e398afcfc0ebea4c9d4fe3a32a77fcc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a5e7180d590b9c044aa53e8d05cbaa99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -29,7 +29,7 @@ GameObject:
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4379564451889250
 Transform:
@@ -93,11 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightSprites:
   - {fileID: 21300012, guid: 7d42fc8d785c1a942a92a78357775248, type: 3}
-  - {fileID: 21300018, guid: 7d42fc8d785c1a942a92a78357775248, type: 3}
   darkSprites:
   - {fileID: 21300014, guid: 1d885de3463385342a13302166f95638, type: 3}
-  - {fileID: 21300018, guid: 1d885de3463385342a13302166f95638, type: 3}
-  - {fileID: 21300022, guid: 1d885de3463385342a13302166f95638, type: 3}
   lightTile: 0
 --- !u!212 &212564462395622622
 SpriteRenderer:

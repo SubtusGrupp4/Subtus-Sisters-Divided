@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Name: Props
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 4525994108453440, guid: 520a16263cdfe5a449b327c6366531a6, type: 2}
-  - {fileID: 4494389771267640, guid: 846ac17244e371d4e88b63c5ef116c90, type: 2}
-  - {fileID: 4690909683386140, guid: 287b1dd64c53e834c9f6de0f1da7ddb4, type: 2}
-  - {fileID: 4671445556767880, guid: 4d71d6b1d66789f4d85156016793bb57, type: 2}
-  - {fileID: 4873734429406506, guid: 9b34899cc90442b4d8637d54593dc55a, type: 2}
-  - {fileID: 4723995782533658, guid: 64bb9e2bf68f21243a3a3286d40557f5, type: 2}
-  - {fileID: 4130668592414890, guid: 8740a0a974baf084ba3deec31a27d836, type: 2}
   - {fileID: 4930663965171768, guid: 3d19bf9600d61c940a9146ab63c49b8e, type: 2}
+  - {fileID: 4286524353653054, guid: 2a09c534deecb2344941ed0a509b9cac, type: 2}
+  - {fileID: 4286524353653054, guid: 2d1e75f05ff0e1f4bbd8aa7189f07f37, type: 2}
+  - {fileID: 4286524353653054, guid: 3b08408180e6a9f4eb78ab31772759c5, type: 2}
+  - {fileID: 4723122014130578, guid: ea6ba08ef7ad2a44badaaa72eb377010, type: 2}
+  - {fileID: 4158266461157750, guid: 9b34899cc90442b4d8637d54593dc55a, type: 2}
+  - {fileID: 4723995782533658, guid: 64bb9e2bf68f21243a3a3286d40557f5, type: 2}
+  - {fileID: 4301509305366522, guid: 0e638d168f189934d86989a8e72aa3ce, type: 2}
+  - {fileID: 4258438011838322, guid: 5c2d3b62e8b1b624981aa6c8481f0117, type: 2}
+  isStatic: 0

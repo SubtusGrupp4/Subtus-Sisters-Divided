@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7d42fc8d785c1a942a92a78357775248
-timeCreated: 1519304216
+timeCreated: 1520514133
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -18,6 +18,10 @@ TextureImporter:
     21300022: Light_Tiles_11
     21300024: Light_Tiles_12
     21300026: Light_Tiles_13
+    21300028: Light_Tiles_14
+    21300030: Light_Tiles_15
+    21300032: Light_Tiles_16
+    21300034: Light_Tiles_17
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -286,8 +290,64 @@ TextureImporter:
       name: Light_Tiles_13
       rect:
         serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Light_Tiles_14
+      rect:
+        serializedVersion: 2
         x: 1792
         y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Light_Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Light_Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Light_Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
         width: 256
         height: 256
       alignment: 0

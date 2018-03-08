@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212694859992501960}
   - component: {fileID: 61898388585520764}
   - component: {fileID: 114742437461299892}
+  - component: {fileID: 114165696968103590}
   m_Layer: 0
   m_Name: LeverDoor
   m_TagString: Lever
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962543871636540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.45, y: 2.03, z: 0}
+  m_LocalPosition: {x: 350.54602, y: -45.550335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,6 +68,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.47618377}
   m_EdgeRadius: 0
+--- !u!114 &114165696968103590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962543871636540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: 7c277f1cb672a55409e3e2ccd68254f6, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: d8b124f8ec955b447acf9d5b2a40854a, type: 3}
+  lightTile: 0
 --- !u!114 &114742437461299892
 MonoBehaviour:
   m_ObjectHideFlags: 1

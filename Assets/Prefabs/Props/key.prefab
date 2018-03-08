@@ -25,8 +25,10 @@ GameObject:
   - component: {fileID: 114206637043048104}
   - component: {fileID: 50261659039072652}
   - component: {fileID: 114135093074521688}
+  - component: {fileID: 114052189478646508}
+  - component: {fileID: 114226318102391274}
   m_Layer: 0
-  m_Name: key
+  m_Name: Key
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317615055739762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 145.05, y: 4.82, z: 0}
+  m_LocalPosition: {x: 354.60846, y: -45.798046, z: 0}
   m_LocalScale: {x: 3.492622, y: 3.492622, z: 3.4926217}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,6 +102,19 @@ PolygonCollider2D:
       - {x: 0.0859375, y: -0.04296875}
       - {x: 0.0859375, y: -0.046875}
       - {x: 0.08203125, y: -0.04296875}
+--- !u!114 &114052189478646508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317615055739762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec5042711a7600448863006768d93c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToIgnore:
+  - Player
 --- !u!114 &114135093074521688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,8 +152,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833b54a830099ce46af39afee6074eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: {fileID: 21300000, guid: 517b52ac39b9b0b41bd6aa06b479c679, type: 3}
+  original: {fileID: 21300000, guid: bde17dba035028745b9c87b676ca7933, type: 3}
   reversed: {fileID: 21300000, guid: 597236bbbb87b1b48a64ea43e7d3280c, type: 3}
+--- !u!114 &114226318102391274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317615055739762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: bde17dba035028745b9c87b676ca7933, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 597236bbbb87b1b48a64ea43e7d3280c, type: 3}
+  lightTile: 0
 --- !u!212 &212025862446134360
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -173,7 +204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 517b52ac39b9b0b41bd6aa06b479c679, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bde17dba035028745b9c87b676ca7933, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

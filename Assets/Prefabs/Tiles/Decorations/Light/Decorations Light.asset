@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ad430eaa27d37488f46d9eb69c7739, type: 3}
+  m_Name: Decorations Light
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 4822585244209306, guid: 73401eb6d1793ed45adaca39c3a0ed81, type: 2}
+  - {fileID: 4273932199063436, guid: 0061a327707d5424ca266bc89fd71bfe, type: 2}
+  - {fileID: 4433474078792140, guid: 628826c43e482604cb2ead9876e742f9, type: 2}
+  - {fileID: 4169218629518130, guid: 0e6304119d615844aa7fe8b0ad005826, type: 2}
+  - {fileID: 4051722783885566, guid: 514ca8bdeb98c944694382e204ab8e5a, type: 2}
+  - {fileID: 4354678680833366, guid: 013e2a2baf6ffc9469986e552980047d, type: 2}
+  - {fileID: 4625578427513568, guid: 354d7080c3e5e5447bb4486abaf2b743, type: 2}
+  - {fileID: 4471163711031856, guid: 613cd831272cc044587b4d1957763139, type: 2}
+  - {fileID: 4252021729286800, guid: 96f8300b9850dae41815b01488b240ee, type: 2}
+  - {fileID: 4523133268714810, guid: bc86e5a85da04b742af60fc394175a03, type: 2}
+  - {fileID: 4952440026425726, guid: a797edccf58fb32469701f34224964c9, type: 2}
+  isStatic: 1

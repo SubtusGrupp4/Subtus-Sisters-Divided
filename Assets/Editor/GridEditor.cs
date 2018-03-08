@@ -150,14 +150,19 @@ public class GridEditor : Editor
 
         grid.hideInHierarchy = EditorGUILayout.Toggle(new GUIContent("Hide in Hierarchy", "Placed tiles will be invisible in the Hierarchy window. They are still visible in the debug variables."), grid.hideInHierarchy);
 
+        EditorGUILayout.Space();
+
         // Tileset
         EditorGUI.BeginChangeCheck();
         TileSet newTileSet =(TileSet) EditorGUILayout.ObjectField("Tileset", grid.tileSet, typeof(TileSet), false); // Tileset field
         if (EditorGUI.EndChangeCheck())
         {
             grid.tileSet = newTileSet;
+            grid.isStatic = newTileSet.isStatic;
             SetTile();
         }
+
+        EditorGUILayout.Space();
 
         if (grid.tileSet != null)   // If a tileset is selected
         {
@@ -171,7 +176,6 @@ public class GridEditor : Editor
                 values[i] = i;                                                                  // Store the index i in the values array at index i
             }
 
-            grid.sortingOrder = EditorGUILayout.IntField("Sorting Order:", grid.sortingOrder);  // Sorting Order field
             grid.tileIndex = EditorGUILayout.IntPopup("Select Tile", oldIndex, names, values);  // Int Popup with the tiles
 
             if (EditorGUI.EndChangeCheck())
@@ -661,16 +665,16 @@ public class GridEditor : Editor
             if (TileOnPosition(aligned) == -1 || grid.overlap)                                      // If there is no object on the "aligned" position, or overlap is enabled
             {
 
-                spawnGO =(GameObject) PrefabUtility.InstantiatePrefab(prefab.gameObject);
+                spawnGO = (GameObject)PrefabUtility.InstantiatePrefab(prefab.gameObject);
                 spawnGO.transform.position = new Vector2(aligned.x, aligned.y);
                 spawnGO.transform.rotation = Quaternion.Euler(0f, 0f, grid.rotationZ);
                 spawnGO.GetComponent<SpriteRenderer>().color = grid.tileColor;
-                spawnGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
+                spawnGO.isStatic = grid.isStatic;
 
                 if (grid.flipX)
                     spawnGO.transform.localScale = new Vector2(-Mathf.Abs(spawnGO.transform.localScale.x), spawnGO.transform.localScale.y);
 
-                if (grid.hideInHierarchy)
+                if (grid.hideInHierarchy && grid.isStatic)
                     spawnGO.transform.parent = grid.tiles.transform;
                 else
                     spawnGO.transform.parent = grid.transform;
@@ -686,7 +690,7 @@ public class GridEditor : Editor
                 mirrorGO =(GameObject) PrefabUtility.InstantiatePrefab(prefab.gameObject);
                 mirrorGO.transform.position = new Vector2(mirrored.x, mirrored.y);
                 mirrorGO.transform.rotation = Quaternion.Euler(0f, 0f, -grid.rotationZ);
-                mirrorGO.GetComponent<SpriteRenderer>().sortingOrder = grid.sortingOrder;
+                mirrorGO.isStatic = grid.isStatic;
 
                 if (grid.flipX)
                     mirrorGO.transform.localScale = new Vector2(-Mathf.Abs(mirrorGO.transform.localScale.x), mirrorGO.transform.localScale.y);

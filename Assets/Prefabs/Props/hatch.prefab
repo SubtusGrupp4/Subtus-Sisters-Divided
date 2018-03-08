@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4158266461157750}
   - component: {fileID: 212365034649847568}
-  - component: {fileID: 114560302265523326}
   - component: {fileID: 114238814908346206}
   - component: {fileID: 61240398250110116}
   - component: {fileID: 251308037857707176}
+  - component: {fileID: 114510259391335332}
   m_Layer: 0
-  m_Name: hatch
+  m_Name: Hatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   closedImage: {fileID: 21300000, guid: 988d165a4a48d174a9951d25161a9947, type: 3}
   openDoorSound: {fileID: 0}
   closeDoorSound: {fileID: 0}
---- !u!114 &114560302265523326
+--- !u!114 &114510259391335332
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -98,9 +98,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1374779869109194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 3b11995e86bddb149a8d4da8db687204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightSprites:
+  - {fileID: 21300000, guid: 988d165a4a48d174a9951d25161a9947, type: 3}
+  darkSprites:
+  - {fileID: 21300000, guid: 5956126713857e447a8c83d81ba8fcfe, type: 3}
+  lightTile: 0
 --- !u!212 &212365034649847568
 SpriteRenderer:
   m_ObjectHideFlags: 1

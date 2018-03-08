@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ad430eaa27d37488f46d9eb69c7739, type: 3}
+  m_Name: Decorations Dark
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 4253553633136922, guid: 4e48c59801673ae45abd30b5c0d70dc7, type: 2}
+  - {fileID: 4883129144473172, guid: c0b77f7f63d2c4c46b7a7371f3cd9768, type: 2}
+  - {fileID: 4464130353024378, guid: af3cb69108d11774fbe8db18c4430693, type: 2}
+  - {fileID: 4564053380867190, guid: 795d19f0233282a4c98eb71d6a50f304, type: 2}
+  - {fileID: 4074015628050614, guid: efc80a72a6a334749a24879a22bb4732, type: 2}
+  - {fileID: 4710975227142322, guid: 56abb5a6a8d0fc64baff529409beb5ff, type: 2}
+  - {fileID: 4257737098087126, guid: c7d13f38dbc471e43a01122796fcda2c, type: 2}
+  - {fileID: 4500424644453380, guid: 4640de5cf4c87b14e8d651da839a0204, type: 2}
+  - {fileID: 4008287538048748, guid: 4657dc524ae34464fad6d593ad8476a6, type: 2}
+  - {fileID: 4406881627694228, guid: da5d4787b48ca694589f494d287fdfd7, type: 2}
+  - {fileID: 4556387819546664, guid: 9cc04006c2c74d449a47098eaacebb1e, type: 2}
+  isStatic: 1

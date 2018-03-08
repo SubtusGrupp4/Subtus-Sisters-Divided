@@ -46,8 +46,6 @@ public class TileGrid : MonoBehaviour
 
     public int tileIndex = 0;
 
-    public int sortingOrder = 0;
-
     public bool hideFlag = true;
 
     public bool checkAdjacent = false;
@@ -60,6 +58,8 @@ public class TileGrid : MonoBehaviour
     public bool selectTilesWithName = false;
 
     public bool didUndo = false;
+
+    public bool isStatic = true;
 
     private void OnEnable()
     {
