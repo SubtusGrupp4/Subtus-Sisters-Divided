@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 114157756893009226}
   - component: {fileID: 114728803591559300}
   m_Layer: 10
-  m_Name: Box
+  m_Name: box
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
