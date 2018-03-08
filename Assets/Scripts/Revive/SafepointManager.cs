@@ -8,9 +8,7 @@ public class SafepointManager : MonoBehaviour {
 	public static SafepointManager instance;
 
     // Used for respawning both the players. Stays activated
-    [HideInInspector]
     public Transform currentTopSafepoint;
-    [HideInInspector]
     public Transform currentBotSafepoint;
 
     // Got from Safepoints being triggered. Will deactivate if one is empty or not a matching pair.
@@ -20,9 +18,7 @@ public class SafepointManager : MonoBehaviour {
     public Transform botSafepoint;
 
     // Used as the spawning point if only one player dies but is revived
-    [HideInInspector]
     public Transform topCheckpoint;
-    [HideInInspector]
     public Transform botCheckpoint;
 
     // References to the players. Fetched from GameManager
@@ -144,5 +140,32 @@ public class SafepointManager : MonoBehaviour {
             else
                 player.position = botCheckpoint.position;   // Else, just spawn on the checkpoint
         }
+    }
+
+    public void RespawnTransition()
+    {
+        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.Transitioning);
+    }
+
+    public void SpawnPlayers()
+    {
+        // Get the player transforms
+        Transform playerTop = GameManager.instance.playerTop;
+        Transform playerBot = GameManager.instance.playerBot;
+
+        // Activate them
+        playerTop.gameObject.SetActive(true);
+        playerBot.gameObject.SetActive(true);
+
+        // Place them on the current safepoints
+        playerTop.transform.position = currentTopSafepoint.position;
+        playerBot.transform.position = currentBotSafepoint.position;
+
+        GameManager.instance.onePlayerDead = false;
+
+        playerTop.GetComponent<PlayerController>().isActive = true;
+        playerBot.GetComponent<PlayerController>().isActive = true;
+
+        SetSafepointsAsCheckpoints();
     }
 }

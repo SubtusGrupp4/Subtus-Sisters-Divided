@@ -128,15 +128,21 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public float PreventDividingByZero(float value) 
+    public float PreventZero(float value) 
     {
         value = value < 0.01f ? 0.01f : value;
         return value;
     }
 
-    public float PreventDividingByZero(float value, float min)
+    public float PreventZero(float value, float min)
     {
         value = value < min ? min : value;
+        return value;
+    }
+
+    public float PreventZero(float value, float min, float newValue)
+    {
+        value = value < min ? newValue : value;
         return value;
     }
 }

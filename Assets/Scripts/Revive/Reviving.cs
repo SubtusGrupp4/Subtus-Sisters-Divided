@@ -127,26 +127,7 @@ public class Reviving : MonoBehaviour {
         foreach (GameObject revive in revives)
             Destroy(revive);
 
-        // Get the player transforms
-        Transform playerTop = GameManager.instance.playerTop;
-        Transform playerBot = GameManager.instance.playerBot;
-
-        // Activate them
-        playerTop.gameObject.SetActive(true);
-        playerBot.gameObject.SetActive(true);
-
-        // Place them on the current safepoints
-        playerTop.transform.position = SafepointManager.instance.currentTopSafepoint.position;
-        playerBot.transform.position = SafepointManager.instance.currentBotSafepoint.position;
-
-        // Set the camera to follow both
-        Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth, transform);
-
-        GameManager.instance.onePlayerDead = false;
-
-        playerTop.GetComponent<PlayerController>().isActive = true;
-        playerBot.GetComponent<PlayerController>().isActive = true;
-
-        SafepointManager.instance.SetSafepointsAsCheckpoints();
+        // Set the camera to transition towards the safepoints
+        SafepointManager.instance.RespawnTransition();
     }
 }

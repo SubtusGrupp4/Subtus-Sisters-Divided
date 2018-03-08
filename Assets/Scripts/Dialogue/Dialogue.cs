@@ -50,6 +50,6 @@ public class Dialogue : MonoBehaviour {
 
     private void Start()
     {
-        GameManager.instance.PreventDividingByZero(moveCameraSpeed, 1f);
+        GameManager.instance.PreventZero(moveCameraSpeed, 1f);
     }
 }
