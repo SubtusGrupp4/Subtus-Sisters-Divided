@@ -27,4 +27,5 @@ MonoBehaviour:
   - {fileID: 4344020963024270, guid: 1b148ae9efb013a4884d00851882376d, type: 2}
   - {fileID: 4051651067914738, guid: e0859b54c9d3c524b806c939b53e2cc6, type: 2}
   - {fileID: 4135065175960466, guid: e7efd729d6fa7d440af3321a8cd49984, type: 2}
+  - {fileID: 4055756642081312, guid: 86cfb80a24984aa4391a04112c56a72d, type: 2}
   isStatic: 1
