@@ -16,6 +16,7 @@ public enum AirControl
 public class PlayerController : MonoBehaviour
 {
     // Saved State for Different Jumping states.
+    [HideInInspector]
     public float X;
     private Vector2 savedVelocity;
     private bool changedMade;
@@ -74,6 +75,9 @@ public class PlayerController : MonoBehaviour
     private float speed;
     [SerializeField]
     private float jumpVelocity;
+    [SerializeField]
+    private float landTime;
+    private float landCounter;
     [SerializeField]
     private AirControl airControl;
     [SerializeField]
@@ -165,13 +169,16 @@ public class PlayerController : MonoBehaviour
         if (isActive)
             ResetJump();
 
-        if (bodyAnim.GetLandState() == false)
-            landing = false;
+        /*   if (bodyAnim.GetLandState() == false)
+               landing = false; */
 
         crawling = bodyAnim.GetCrawlState();
 
         if (player == Controller.Player1)
             ToggleCrawl();
+
+        if (!inAir)
+            LandCounter();
 
     }
     private void FixedUpdate()
@@ -182,6 +189,19 @@ public class PlayerController : MonoBehaviour
             Move();
 
             NormalizeSlope();
+        }
+    }
+
+    void LandCounter()
+    {
+        if (landing)
+        {
+            landCounter += Time.deltaTime;
+            if (landCounter >= landTime)
+            {
+                landing = false;
+                landCounter = 0;
+            }
         }
     }
 
@@ -285,10 +305,10 @@ public class PlayerController : MonoBehaviour
             jumpAxisInUse = true;
             if (!inAir && !landing && !crawling && !pulling)
             {
-                Jump();              
+                Jump();
             }
         }
-        else if(Input.GetAxis(jumpInput) == 0)
+        else if (Input.GetAxis(jumpInput) == 0)
             jumpAxisInUse = false;
 
 
@@ -441,6 +461,7 @@ public class PlayerController : MonoBehaviour
 
                                     movementAudio.Landing();
                                     landing = true;
+
                                 }
 
                                 // play land animation
