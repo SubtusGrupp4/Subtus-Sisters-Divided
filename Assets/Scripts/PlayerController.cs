@@ -40,10 +40,10 @@ public class PlayerController : MonoBehaviour
     private string verAx = "Vertical";
     private string jumpInput = "Jump";
     private string crawlInput = "CrawlInput";
-    private float distanceGraceForJump = 0.02f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
+    private float distanceGraceForJump = 0.09f; // how faar outside the boxcollider do you want the ray to travel when reseting jump?
 
     // Components
-    private CapsuleCollider2D myBox;
+    private BoxCollider2D myBox;
     private float capsuleRadiusX;
     private float capsuleRadiusY;
     private float capsuleOffSetX;
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        myBox = GetComponent<CapsuleCollider2D>();
+        myBox = GetComponent<BoxCollider2D>();
 
         capsuleRadiusX = myBox.size.x * transform.localScale.x / 2;
         capsuleRadiusY = myBox.size.y * transform.localScale.y / 2;
@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
             // Collider
             myBox.size = crawlColliderSize;
             myBox.offset = crawlColliderOffset;
-            myBox.direction = CapsuleDirection2D.Horizontal;
+          //  myBox.direction = CapsuleDirection2D.Horizontal;
 
             speed = crawlSpeed;
         }
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
             // Collider
             myBox.size = savedColliderSize;
             myBox.offset = savedColliderOffSet;
-            myBox.direction = CapsuleDirection2D.Vertical;
+          //  myBox.direction = CapsuleDirection2D.Vertical;
 
             speed = savedSpeed;
         }
@@ -464,8 +464,6 @@ public class PlayerController : MonoBehaviour
 
                                 }
 
-                                // play land animation
-
                             }
 
                             /*
@@ -506,7 +504,7 @@ public class PlayerController : MonoBehaviour
 
     void NormalizeSlope()
     {
-        float slopeFriction = 0.11f;
+        float slopeFriction = 1f;
         // Small optimization (if first ray hit we dont raycast a second time).
         bool slope = false;
 
@@ -516,8 +514,12 @@ public class PlayerController : MonoBehaviour
             // Attempt vertical normalization
             for (int i = 0; i < resetJumpOn.Length; i++)
             {
-                objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flippValue),
-                    Mathf.Abs((myBox.size.y * GetComponent<Transform>().localScale.y)) / 2 + distanceGraceForJump);
+               // objHit = Physics2D.RaycastAll(transform.position, new Vector2(l, -flippValue),
+                //    Mathf.Abs((myBox.size.y * GetComponent<Transform>().localScale.y)) / 2 + distanceGraceForJump);
+
+                objHit = Physics2D.RaycastAll(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue, 0),
+                    -Vector2.up * flippValue,
+                capsuleRadiusY + distanceGraceForJump);
 
                 for (int j = 0; j < objHit.Length; j++)
                 {
@@ -548,7 +550,8 @@ public class PlayerController : MonoBehaviour
                         pos.y += offSet;
                         transform.position = pos;
 
-                        inAir = false;
+                        Debug.Log("NormalizeSlope");
+
                         slope = true;
 
                     }
