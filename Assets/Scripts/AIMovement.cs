@@ -131,7 +131,7 @@ public class AIMovement : MonoBehaviour
         rayDistanceHypot = Mathf.Sqrt(rayDistanceHypot);
         rayDistanceHypot += 0.0f; // offSet.
 
-       // rayDistanceHypot = 0.7f;
+        // rayDistanceHypot = 0.7f;
 
 
 
@@ -139,12 +139,12 @@ public class AIMovement : MonoBehaviour
         rayOffSetX = GetComponent<BoxCollider2D>().size.x * transform.localScale.x / 2;
         rayOffSetY = GetComponent<BoxCollider2D>().size.y * transform.localScale.y / 2;
         boxOffSetY = GetComponent<BoxCollider2D>().offset.y;
-        boxOffSetX = Mathf.Abs(GetComponent<BoxCollider2D>().offset.x);
+        boxOffSetX = GetComponent<BoxCollider2D>().offset.x *-1;
 
         slopeRayOffset = rayOffSetY;
 
         //Xray
-        rayDistanceX = (GetComponent<BoxCollider2D>().size.x * transform.localScale.x / 2);
+        rayDistanceX = Mathf.Abs((GetComponent<BoxCollider2D>().size.x * transform.localScale.x / 2));
 
         if (flipped)
             Flip();
@@ -187,6 +187,7 @@ public class AIMovement : MonoBehaviour
 
     public void Freeze(bool autoActivate, float time)
     {
+        Debug.Log("FREEZE");
         if (!frozen && time != 0)
         {
             savedState = currentState;
@@ -199,7 +200,7 @@ public class AIMovement : MonoBehaviour
 
         if (time != 0)
         {
-           
+
             Debug.Log("time" + time);
             StartCoroutine(FreezeWait(time));
         }
@@ -207,23 +208,27 @@ public class AIMovement : MonoBehaviour
 
     public void UnFreeze()
     {
+        Debug.Log("UNFREZE");
         currentState = savedState;
         frozen = false;
     }
 
     public void Die()
     {
+        Debug.Log("DIE");
         isDead = true;
     }
 
     private void TurnAnim(float time)
     {
+        Debug.Log("TURNING ANIMATION");
         bAnim.Turning(true);
         StartCoroutine(TurnWait(time));
     }
 
     public void Stun(float time)
     {
+        Debug.Log("STUN");
         StartCoroutine(StunWait(time));
 
         stunned = true;
@@ -255,11 +260,11 @@ public class AIMovement : MonoBehaviour
         //
         for (int l = -1; l < 2; l += 2)
         {
-            objHit = Physics2D.RaycastAll(transform.position + new Vector3(((rayOffSetX - 0.1f) * l) + (boxOffSetX  * directionMultiplier.x), boxOffSetY * flipValue, 0),
+            objHit = Physics2D.RaycastAll(transform.position + new Vector3(((rayOffSetX - 0.1f) * l) + (boxOffSetX * directionMultiplier.x), boxOffSetY * flipValue, 0),
                 -Vector2.up * flipValue,
                 rayOffSetY + distanceGraceForFalling);
 
-            Debug.DrawRay(transform.position + new Vector3(((rayOffSetX - 0.1f) * l) + (boxOffSetX *directionMultiplier.x), boxOffSetY * flipValue, 0), -Vector2.up * flipValue, Color.grey);
+            Debug.DrawRay(transform.position + new Vector3(((rayOffSetX - 0.1f) * l) + (boxOffSetX * directionMultiplier.x), boxOffSetY * flipValue, 0), -Vector2.up * flipValue, Color.grey);
 
             for (int i = 0; i < walkOn.Length; i++)
             {
@@ -370,6 +375,7 @@ public class AIMovement : MonoBehaviour
 
             Debug.Log("Ledge" + CheckLedge()); */
             rigidbody2D.AddForce(new Vector2(10, 70 * flipValue));
+            
         }
 
         float xDistance = target.transform.position.x - transform.position.x; // positive value = right, negative = left
@@ -403,6 +409,9 @@ public class AIMovement : MonoBehaviour
     protected void OneDirmove()
     {
         //
+
+        Debug.Log(" ONDE DIR MOVE");
+
         if (bAnim != null)
             bAnim.Walking(directionMultiplier, true);
         //
@@ -410,8 +419,9 @@ public class AIMovement : MonoBehaviour
         // PRO HACKER 
         if (rigidbody2D.velocity == Vector2.zero)
         {
-
-            rigidbody2D.AddForce(new Vector2(10  * directionMultiplier.x, 45));
+            Debug.Log("HACK");
+            // rigidbody2D.AddForce(new Vector2(10 * directionMultiplier.x, 77));
+            transform.position = transform.position + new Vector3( 0, 0.03f * flipValue, 0);
         }
 
 
@@ -423,36 +433,44 @@ public class AIMovement : MonoBehaviour
 
         if (!isFalling)
         {
+            Debug.Log("Is Not Falling");
+
 
             if (CheckWall(transform.position))
             {
-                if (CheckJump())
-                {
-                    // DOING JUMP 
-                    isFalling = true;
-                }
-                else
+                Debug.Log("WALL");
+
+                  if (CheckJump())
+                  {
+                      // DOING JUMP 
+                      isFalling = true;
+                  } 
+                 else
                 {
                     Bounce();
 
-                    Freeze(false, turnRate);
-                    TurnAnim(turnRate);
+                      Freeze(false, turnRate);
+                      TurnAnim(turnRate);
                 }
             }
             else if (CheckSlope() == false)
             {
+                Debug.Log("NO SLOPE");
                 if (CheckLedge())
                 {
+                    Debug.Log("LEDGE");
                     Bounce();
 
-                    Freeze(false, turnRate);
-                    TurnAnim(turnRate);
+                    //  Freeze(false, turnRate);
+                    //  TurnAnim(turnRate);
 
                 }
 
             }
 
             NormalizeSlope();
+
+            
 
         }
     }
@@ -509,24 +527,44 @@ public class AIMovement : MonoBehaviour
     protected bool CheckWall(Vector3 pos)
     {
         bool walls = false;
+        Vector3 ree = new Vector3(0
+            //-0.65f
+            ,
+            0, 0);
 
-        objHit = Physics2D.RaycastAll(pos + new Vector3(boxOffSetX + directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
+        objHit = Physics2D.RaycastAll(pos + ree + new Vector3(boxOffSetX * directionMultiplier.x  + rayDistanceX * directionMultiplier.x , boxOffSetY * flipValue, 0),
             new Vector2(directionMultiplier.x, 0),
-            0.5f );
+            0.1f);
 
-        Debug.DrawRay(pos + new Vector3(boxOffSetX * directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
+        Debug.DrawRay(pos + ree + new Vector3(boxOffSetX * directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
             new Vector2(directionMultiplier.x, 0),
             Color.green);
 
+        float distanceXXX;
+        bool blocked = false;
+
         for (int i = 0; i < objHit.Length; i++)
         {
+            if (blocked)
+                break;
+
             for (int j = 0; j < bounceOn.Length; j++)
             {
                 if (objHit[i].transform.tag == bounceOn[j])
                 {
                     if ((Mathf.Abs(objHit[i].normal.x) >= maxSlope))
                     {
+                        distanceXXX = Vector3.Distance(pos + new Vector3(boxOffSetX + directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
+                            objHit[i].transform.position);
+
+                        Debug.Log("DISTANCE WALL" + distanceXXX);
+                        Debug.Log("WALL" + objHit[i].transform.gameObject);
                         walls = true;
+                    }
+                    else
+                    {
+                        blocked = true;
+                        break;
                     }
                 }
             }
@@ -540,7 +578,7 @@ public class AIMovement : MonoBehaviour
 
         objHit = Physics2D.RaycastAll(transform.position + new Vector3((rayOffSetX + 1.1f) * directionMultiplier.x + boxOffSetX * directionMultiplier.x, (-slopeRayOffset * flipValue) - (0.1f * flipValue) + (boxOffSetY * flipValue), 0),
             -Vector2.right * directionMultiplier.x,
-            rayDistanceX * 3);
+            rayDistanceX * 6);
 
         Debug.DrawRay(transform.position + new Vector3((rayOffSetX + 1.1f) * directionMultiplier.x + boxOffSetX * directionMultiplier.x, (-slopeRayOffset * flipValue) - (0.1f * flipValue) + (boxOffSetY * flipValue), 0), -Vector2.right * directionMultiplier.x, Color.blue);
 
@@ -566,7 +604,7 @@ public class AIMovement : MonoBehaviour
     {
         bool floors = true;
 
-        objHit = Physics2D.RaycastAll(transform.position + new Vector3(((rayOffSetX * directionMultiplier.x )) + (boxOffSetX * directionMultiplier.x), boxOffSetY * flipValue, 0)
+        objHit = Physics2D.RaycastAll(transform.position + new Vector3(((rayOffSetX * directionMultiplier.x)) + (boxOffSetX * directionMultiplier.x), boxOffSetY * flipValue, 0)
             , -Vector2.up * flipValue,
             stepRange);
 
