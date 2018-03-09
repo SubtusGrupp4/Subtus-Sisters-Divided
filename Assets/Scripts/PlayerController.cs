@@ -106,7 +106,6 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public Vector2 lastSafe;
-    private Reviving reviveScript;
 
     void Awake()
     {
@@ -161,7 +160,6 @@ public class PlayerController : MonoBehaviour
 
         sr = GetComponent<SpriteRenderer>();
         movementAudio = GetComponent<MovementAudio>();
-        reviveScript = GetComponent<Reviving>();
     }
 
     void Update()
