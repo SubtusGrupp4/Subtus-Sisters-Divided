@@ -748,7 +748,7 @@ public class GridEditor : Editor
                     }
                 }
             }
-            else if (grid.useMirrored && TileOnPosition(mirrored) == -1 || grid.overlap)
+            else if (grid.useMirrored && TileOnPosition(mirrored) == -1 || grid.overlap && grid.useMirrored)
             {
                 if (spawnGO != null && spawnGO.GetComponent<CombinedTile>() != null)
                     spawnGO.GetComponent<CombinedTile>().SetTileLight(false);
