@@ -187,7 +187,7 @@ public class AIMovement : MonoBehaviour
 
     public void Freeze(bool autoActivate, float time)
     {
-        Debug.Log("FREEZE");
+       
         if (!frozen && time != 0)
         {
             savedState = currentState;
@@ -200,35 +200,29 @@ public class AIMovement : MonoBehaviour
 
         if (time != 0)
         {
-
-            Debug.Log("time" + time);
             StartCoroutine(FreezeWait(time));
         }
     }
 
     public void UnFreeze()
     {
-        Debug.Log("UNFREZE");
         currentState = savedState;
         frozen = false;
     }
 
     public void Die()
     {
-        Debug.Log("DIE");
         isDead = true;
     }
 
     private void TurnAnim(float time)
     {
-        Debug.Log("TURNING ANIMATION");
         bAnim.Turning(true);
         StartCoroutine(TurnWait(time));
     }
 
     public void Stun(float time)
     {
-        Debug.Log("STUN");
         StartCoroutine(StunWait(time));
 
         stunned = true;
@@ -360,23 +354,7 @@ public class AIMovement : MonoBehaviour
             bAnim.Walking(directionMultiplier, true);
         //
 
-        if (rigidbody2D.velocity == Vector2.zero)
-        {
-            /*
-            Debug.Log("got stuck" + rigidbody2D.velocity);
-
-            Debug.Log("Direction" + directionMultiplier);
-
-            Debug.Log("Falling" + isFalling);
-
-            Debug.Log("Wall" + CheckWall());
-
-            Debug.Log("Slope" + CheckSlope());
-
-            Debug.Log("Ledge" + CheckLedge()); */
-            rigidbody2D.AddForce(new Vector2(10, 70 * flipValue));
-            
-        }
+        StuckDebugg();
 
         float xDistance = target.transform.position.x - transform.position.x; // positive value = right, negative = left
 
@@ -410,19 +388,12 @@ public class AIMovement : MonoBehaviour
     {
         //
 
-        Debug.Log(" ONDE DIR MOVE");
 
         if (bAnim != null)
             bAnim.Walking(directionMultiplier, true);
         //
 
-        // PRO HACKER 
-        if (rigidbody2D.velocity == Vector2.zero)
-        {
-            Debug.Log("HACK");
-            // rigidbody2D.AddForce(new Vector2(10 * directionMultiplier.x, 77));
-            transform.position = transform.position + new Vector3( 0, 0.03f * flipValue, 0);
-        }
+        StuckDebugg();
 
 
         //  rigidbody2D.AddForce(speed * directionMultiplier * Time.deltaTime * accerlation);
@@ -433,12 +404,8 @@ public class AIMovement : MonoBehaviour
 
         if (!isFalling)
         {
-            Debug.Log("Is Not Falling");
-
-
             if (CheckWall(transform.position))
             {
-                Debug.Log("WALL");
 
                   if (CheckJump())
                   {
@@ -455,15 +422,12 @@ public class AIMovement : MonoBehaviour
             }
             else if (CheckSlope() == false)
             {
-                Debug.Log("NO SLOPE");
                 if (CheckLedge())
                 {
-                    Debug.Log("LEDGE");
                     Bounce();
 
-                    //  Freeze(false, turnRate);
-                    //  TurnAnim(turnRate);
-
+                      Freeze(false, turnRate);
+                      TurnAnim(turnRate);
                 }
 
             }
@@ -481,6 +445,7 @@ public class AIMovement : MonoBehaviour
         if (bAnim != null)
             bAnim.Walking(directionMultiplier, true);
         //
+        StuckDebugg();
 
         if (Vector2.Distance(transform.position, checkPointPos[checkPointIndex]) <= patrollGrace)
         {
@@ -557,8 +522,6 @@ public class AIMovement : MonoBehaviour
                         distanceXXX = Vector3.Distance(pos + new Vector3(boxOffSetX + directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
                             objHit[i].transform.position);
 
-                        Debug.Log("DISTANCE WALL" + distanceXXX);
-                        Debug.Log("WALL" + objHit[i].transform.gameObject);
                         walls = true;
                     }
                     else
@@ -634,8 +597,8 @@ public class AIMovement : MonoBehaviour
         for (int i = 1; i <= climbRange; i++)
         {
             if (!CheckWall(new Vector3(transform.position.x, // X
-                  transform.position.y + (i * flipValue),                 // Y
-                  transform.position.z)))                   // Z
+                  transform.position.y + (i * flipValue),    // Y
+                  transform.position.z)))                    // Z
             {
                 height = i;
                 CalculateJump(height);
@@ -643,9 +606,6 @@ public class AIMovement : MonoBehaviour
                 break;
             }
         }
-
-        // Loopa från min höjd, uppåt, mer smooth hop??
-
         return jump;
     }
     protected void CalculateJump(float height)
@@ -654,7 +614,7 @@ public class AIMovement : MonoBehaviour
         //   height;
         float offSetValue;
         offSetValue = rayOffSetY + 0.5f;
-        // U^2 = V^2 - 2as
+        // U^2 = V^2 - 2as     = Free fall calc
         float jumpVelocity;
         float gravity;
         gravity = -9.81f; // a
@@ -732,6 +692,16 @@ public class AIMovement : MonoBehaviour
             }
             if (slope)
                 break;
+        }
+    }
+
+    void StuckDebugg()
+    {
+        // PRO HACKER 
+        if (rigidbody2D.velocity == Vector2.zero)
+        {
+            // rigidbody2D.AddForce(new Vector2(10 * directionMultiplier.x, 77));
+            transform.position = transform.position + new Vector3(0, 0.03f * flipValue, 0);
         }
     }
 

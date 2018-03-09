@@ -169,6 +169,8 @@ public class PlayerController : MonoBehaviour
         if (isActive)
             ResetJump();
 
+        // If u wanna bind landing to animation
+
         /*   if (bodyAnim.GetLandState() == false)
                landing = false; */
 
@@ -558,4 +560,5 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
 }
