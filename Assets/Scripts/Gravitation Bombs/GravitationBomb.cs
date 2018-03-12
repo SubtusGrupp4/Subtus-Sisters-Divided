@@ -2,186 +2,190 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravitationBomb : MonoBehaviour 
+public class GravitationBomb : MonoBehaviour
 {
-	
-	[Header("Attributes")]
-	[SerializeField]
-	private int range;
-	[SerializeField]
-	private int pullForce;
-	[SerializeField]
-	private float duration;
-	[SerializeField]
-	private float deActivate;
-	[Header("tags from objects to pull")]
-	[GiveTag]
-	[SerializeField]
-	private string[] tagNames;
 
-	[Header("Particles")]
-	[SerializeField]
-	private GameObject[] particles;
-	private List<GameObject> particleClones;
+    [Header("Attributes")]
+    [SerializeField]
+    private int range;
+    [SerializeField]
+    private int pullForce;
+    [SerializeField]
+    private float duration;
+    [SerializeField]
+    private float deActivate;
+    [Header("tags from objects to pull")]
+    [GiveTag]
+    [SerializeField]
+    private string[] tagNames;
 
-	private GameObject[] ignoreObject;
-	private List<GameObject> pullObjects;
-	private Rigidbody2D rb;
-	private float rotationSpeed;
+    [Header("Particles")]
+    [SerializeField]
+    private GameObject[] particles;
+    private List<GameObject> particleClones;
 
-	private bool buttonPressed;
-	private bool targetting;
-	private bool gravitationActivated;
-	private int decreaseGravity;
-	private string activateBomb = "Fire_Bomb_C2";
+    private GameObject[] ignoreObject;
+    private List<GameObject> pullObjects;
+    private Rigidbody2D rb;
+    private float rotationSpeed;
+
+    private bool buttonPressed;
+    private bool targetting;
+    private bool gravitationActivated;
+    private int decreaseGravity;
+    private string activateBomb = "Fire_Bomb_C2";
 
 
 
-	void Start () 
-	{
-		particleClones = new List<GameObject> ();
-		rb = GetComponent<Rigidbody2D> ();
-		pullObjects = new List<GameObject> ();
+    void Start()
+    {
+        particleClones = new List<GameObject>();
+        rb = GetComponent<Rigidbody2D>();
+        pullObjects = new List<GameObject>();
 
-		ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
-		foreach (GameObject IO in ignoreObject)
-			Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.GetComponent<Collider2D>(), true);
+        ignoreObject = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject IO in ignoreObject)
+            Physics2D.IgnoreCollision(IO.GetComponent<Collider2D>(), this.GetComponent<Collider2D>(), true);
 
-		buttonPressed = true;
-		gravitationActivated = false;
-		targetting = false;
-		decreaseGravity = 0;
-		rotationSpeed = 360f;
-	}
+        buttonPressed = true;
+        gravitationActivated = false;
+        targetting = false;
+        decreaseGravity = 0;
+        rotationSpeed = 360f;
+    }
 
-	void Update () 
-	{
-		
-		ActivateGravitationBomb ();
-		TargetInRange ();
-		TargetOutsideRange ();
-		DestroyAfterDuration ();
-	}
+    void Update()
+    {
 
-	void FixedUpdate()
-	{
-		GravitationPull ();
-	}
+        ActivateGravitationBomb();
+        TargetInRange();
+        TargetOutsideRange();
+        DestroyAfterDuration();
+    }
 
-	void DestroyAfterDuration()
-	{
-		if (!buttonPressed)
-		{
-			duration -= Time.deltaTime;
-			if (duration < 0) 
-			{
-				ResetGravity (0);
-				Destroy (gameObject);
-			}
-		}
-	}
-		
-	void ActivateGravitationBomb()
-	{
-		
-		deActivate -= Time.deltaTime;
-		if ((Input.GetAxis (activateBomb) > 0.5f || Input.GetKeyDown(KeyCode.T)) && buttonPressed) 
-		{
+    void FixedUpdate()
+    {
+        GravitationPull();
+    }
 
-			foreach (GameObject particle in particles) 
-			{
-				GameObject clone = (Instantiate (particle, transform.position, Quaternion.identity));
-				particleClones.Add (clone);
-			}
+    void DestroyAfterDuration()
+    {
+        if (!buttonPressed)
+        {
+            duration -= Time.deltaTime;
+            if (duration < 0)
+            {
+                ResetGravity(0);
+                Destroy(gameObject);
+            }
+        }
+    }
 
-			buttonPressed = false;
-			targetting = true;
-			gravitationActivated = true;
-			rb.bodyType = RigidbodyType2D.Static;
-		}
-		if((Input.GetAxis (activateBomb) <= 0 || Input.GetKeyUp(KeyCode.T)) && !buttonPressed)
-		{
-			ResetGravity (0);
-			Destroy (gameObject);
-		}
-		if (deActivate < 0) 
-		{
-			Destroy (gameObject);
-		}
-	}
+    void ActivateGravitationBomb()
+    {
 
-	void TargetInRange()
-	{
-		if (targetting) 
-		{
-			foreach (string tag in tagNames) 
-			{
-				GameObject[] o = GameObject.FindGameObjectsWithTag (tag);
-				foreach (GameObject targetObjects in o) 
-				{
-					float inRange = Vector3.Distance (transform.position, targetObjects.transform.position);
-					if (range > inRange) 
-						{
-						pullObjects.Add (targetObjects);
-					}
-				}
-			}
-			targetting = false;
-		}
-	}
+        deActivate -= Time.deltaTime;
+        if ((Input.GetAxis(activateBomb) > 0.5f || Input.GetKeyDown(KeyCode.T)) && buttonPressed)
+        {
 
-	void TargetOutsideRange()
-	{
-		
-		for (int i = 0; i < pullObjects.Count; i++) 
-		{
-			float inRange = Vector3.Distance (transform.position, pullObjects[i].transform.position);
-			if (range < inRange) 
-			{
-				pullObjects.Remove (pullObjects[i]);
-			}
-		}
-	}
+            foreach (GameObject particle in particles)
+            {
+                GameObject clone = (Instantiate(particle, transform.position, Quaternion.identity));
+                particleClones.Add(clone);
+            }
 
-	void GravitationPull()
-	{
-		if (gravitationActivated) 
-		{
-			
-			foreach (GameObject toPull in pullObjects) 
-			{
-				toPull.GetComponent<Rigidbody2D> ().MoveRotation (toPull.GetComponent<Rigidbody2D> ().rotation + rotationSpeed * Time.fixedDeltaTime);
-			
-				float distanceSquared = Mathf.Sqrt (Vector3.Distance (transform.position, toPull.transform.position));
-				float force = pullForce*(rb.mass* toPull.GetComponent<Rigidbody2D>().mass)/ distanceSquared;
+            buttonPressed = false;
+            targetting = true;
+            gravitationActivated = true;
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+        if ((Input.GetAxis(activateBomb) <= 0 || Input.GetKeyUp(KeyCode.T)) && !buttonPressed)
+        {
+            ResetGravity(0);
+            Destroy(gameObject);
+        }
+        if (deActivate < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-				Vector2 distance = transform.position - toPull.transform.position;
-				Vector2 forceDirection = (transform.position - toPull.transform.position).normalized;
-				Vector2 forceVector = forceDirection * force;
-				if (distance.y < 1 && distance.x < 1) 
-				{
-					decreaseGravity++;
-					toPull.GetComponent<Rigidbody2D> ().AddForce(forceVector / -decreaseGravity);
-				}
-				toPull.GetComponent<Rigidbody2D>().AddForce (forceVector);
-			}
-		}
-	}
+    void TargetInRange()
+    {
+        if (targetting)
+        {
+            foreach (string tag in tagNames)
+            {
+                GameObject[] o = GameObject.FindGameObjectsWithTag(tag);
+                foreach (GameObject targetObjects in o)
+                {
+                    float inRange = Vector3.Distance(transform.position, targetObjects.transform.position);
+                    if (range > inRange)
+                    {
+                        pullObjects.Add(targetObjects);
+                    }
+                }
+            }
+            targetting = false;
+        }
+    }
 
-	void ResetGravity(int integer)
-	{
-		foreach (GameObject toPull in pullObjects) 
-		{
-			toPull.GetComponent<Rigidbody2D> ().velocity = new Vector2(toPull.GetComponent<Rigidbody2D>().velocity.x*integer, toPull.GetComponent<Rigidbody2D>().velocity.y*integer);
-		}
-	}
-	void OnDestroy()
-	{
-		foreach (GameObject particle in particleClones) 
-		{
-			Destroy (particle);
-		}
-	}
+    void TargetOutsideRange()
+    {
+
+        for (int i = 0; i < pullObjects.Count; i++)
+        {
+            float inRange = Vector3.Distance(transform.position, pullObjects[i].transform.position);
+            if (range < inRange)
+            {
+                pullObjects.Remove(pullObjects[i]);
+            }
+        }
+    }
+
+    void GravitationPull()
+    {
+        if (gravitationActivated)
+        {
+
+            foreach (GameObject toPull in pullObjects)
+            {
+                toPull.GetComponent<Rigidbody2D>().MoveRotation(toPull.GetComponent<Rigidbody2D>().rotation + rotationSpeed * Time.fixedDeltaTime);
+
+                float distanceSquared = Mathf.Sqrt(Vector3.Distance(transform.position, toPull.transform.position));
+                float force = pullForce * (rb.mass * toPull.GetComponent<Rigidbody2D>().mass) / distanceSquared;
+
+                Vector2 distance = transform.position - toPull.transform.position;
+                Vector2 forceDirection = (transform.position - toPull.transform.position).normalized;
+                Vector2 forceVector = forceDirection * force;
+                if (distance.y < 1 && distance.x < 1)
+                {
+                    decreaseGravity++;
+                    toPull.GetComponent<Rigidbody2D>().AddForce(forceVector / -decreaseGravity);
+                }
+                if (toPull.GetComponent<AIMovement>())
+                    toPull.GetComponent<AIMovement>().Stun(0.1f);
+
+
+                toPull.GetComponent<Rigidbody2D>().AddForce(forceVector);
+            }
+        }
+    }
+
+    void ResetGravity(int integer)
+    {
+        foreach (GameObject toPull in pullObjects)
+        {
+            toPull.GetComponent<Rigidbody2D>().velocity = new Vector2(toPull.GetComponent<Rigidbody2D>().velocity.x * integer, toPull.GetComponent<Rigidbody2D>().velocity.y * integer);
+        }
+    }
+    void OnDestroy()
+    {
+        foreach (GameObject particle in particleClones)
+        {
+            Destroy(particle);
+        }
+    }
 
 }
 

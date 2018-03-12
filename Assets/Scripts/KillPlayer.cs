@@ -28,7 +28,6 @@ public class KillPlayer : MonoBehaviour
             if (bAnim.GetComponent<Animator>().GetBool(BasicAnimator.animAttack) == false)
             {
                 AImove.UnFreeze();
-
             }
         }
     }

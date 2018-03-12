@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4726345772379176}
   - component: {fileID: 212232259675249842}
   - component: {fileID: 60430781135682908}
-  - component: {fileID: 61904008734226648}
   - component: {fileID: 114117828783613454}
   - component: {fileID: 114159531897059664}
   - component: {fileID: 251054994383969250}
+  - component: {fileID: 68611950133832258}
   m_Layer: 0
   m_Name: Comb_LeftBot_1
   m_TagString: Floor
@@ -73,8 +73,8 @@ PolygonCollider2D:
       - {x: 0.5, y: 0.5}
       - {x: 0.5, y: -0.5}
       - {x: -0.41389847, y: 0.18493652}
---- !u!61 &61904008734226648
-BoxCollider2D:
+--- !u!68 &68611950133832258
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -86,18 +86,13 @@ BoxCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: -0.5}
+  - {x: -0.5, y: 0.5}
+  - {x: 0.5, y: 0.5}
+  - {x: 0.5, y: -0.5}
+  - {x: -0.5, y: -0.5}
 --- !u!114 &114117828783613454
 MonoBehaviour:
   m_ObjectHideFlags: 1

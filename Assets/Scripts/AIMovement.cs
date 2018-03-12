@@ -64,6 +64,8 @@ public class AIMovement : MonoBehaviour
     protected bool frozen;
     private bool autoActivate;
     protected bool stunned;
+    private float stunTimer;
+
     protected float distanceGraceForFalling = 0.2f;
 
 
@@ -157,6 +159,7 @@ public class AIMovement : MonoBehaviour
     {
         //  Activate();
         //   Deactivate();
+        StunCountDown();
 
         if (!isDead && !stunned)
         {
@@ -223,9 +226,21 @@ public class AIMovement : MonoBehaviour
 
     public void Stun(float time)
     {
-        StartCoroutine(StunWait(time));
+        if (time > stunTimer)
+            stunTimer = time;
 
         stunned = true;
+    }
+
+    private void StunCountDown()
+    {
+        if (stunned)
+        {
+            stunTimer -= Time.deltaTime;
+
+            if (stunTimer <= 0)
+                stunned = false;
+        }
     }
     IEnumerator StunWait(float waitTime)
     {

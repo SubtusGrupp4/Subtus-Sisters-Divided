@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4750968450261154}
   - component: {fileID: 212226960469814116}
-  - component: {fileID: 61077985562648452}
   - component: {fileID: 114092394431164652}
   - component: {fileID: 251174858877648754}
+  - component: {fileID: 68628504195989992}
   m_Layer: 0
   m_Name: Dark_CobbleLeft_1
   m_TagString: Untagged
@@ -43,8 +43,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61077985562648452
-BoxCollider2D:
+--- !u!68 &68628504195989992
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -56,18 +56,13 @@ BoxCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: -0.5}
+  - {x: -0.5, y: 0.5}
+  - {x: 0.5, y: 0.5}
+  - {x: 0.5, y: -0.5}
+  - {x: -0.5, y: -0.5}
 --- !u!114 &114092394431164652
 MonoBehaviour:
   m_ObjectHideFlags: 1

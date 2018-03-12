@@ -533,7 +533,8 @@ public class PlayerController : MonoBehaviour
                         slopeFriction *= Mathf.Abs(objHit[j].normal.x);
 
                         Rigidbody2D body = GetComponent<Rigidbody2D>();
-                        // Apply the opposite force against the slope force 
+                        // Apply the opposite force against the slope force
+                        // essentially slow down the charcthers X movement, based on the steepness of the slope.
                         body.velocity = new Vector2(body.velocity.x - (objHit[j].normal.x * slopeFriction), body.velocity.y);
 
                         //Move Player up or down to compensate for the slope below them
@@ -542,10 +543,12 @@ public class PlayerController : MonoBehaviour
                         //              "-1"          normalen     *       hastigheten          *       deltatime     *  hastigheten - (1 / -1)
                         offSet += (flippValue * -1) * objHit[j].normal.x * Mathf.Abs(body.velocity.x) * Time.deltaTime * (body.velocity.x - objHit[j].normal.x > 0 ? 1f : -1f);
 
+                        /*
                         if (offSet * flippValue > 0)
                             offSet *= 0.5f;
                         else
                             offSet *= 2;
+                           */ 
 
                         pos.y += offSet;
                         transform.position = pos;

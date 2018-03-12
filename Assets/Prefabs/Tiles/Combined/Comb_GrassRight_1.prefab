@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4607222590369396}
   - component: {fileID: 212984581006358568}
-  - component: {fileID: 61229959849730062}
   - component: {fileID: 114096078587158614}
   - component: {fileID: 114323607872678712}
   - component: {fileID: 251567762005039560}
+  - component: {fileID: 68407003291991158}
   m_Layer: 0
   m_Name: Comb_GrassRight_1
   m_TagString: Floor
@@ -44,8 +44,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61229959849730062
-BoxCollider2D:
+--- !u!68 &68407003291991158
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -57,18 +57,13 @@ BoxCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: -0.5}
+  - {x: -0.5, y: 0.5}
+  - {x: 0.5, y: 0.5}
+  - {x: 0.5, y: -0.5}
+  - {x: -0.5, y: -0.5}
 --- !u!114 &114096078587158614
 MonoBehaviour:
   m_ObjectHideFlags: 1

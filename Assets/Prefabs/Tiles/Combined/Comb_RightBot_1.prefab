@@ -20,11 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4810083502617486}
   - component: {fileID: 212387875045535204}
-  - component: {fileID: 60723604449849622}
-  - component: {fileID: 61081132436805038}
   - component: {fileID: 114499209618590842}
   - component: {fileID: 114120933536933916}
   - component: {fileID: 251430667936617730}
+  - component: {fileID: 68528885212550394}
   m_Layer: 0
   m_Name: Comb_RightBot_1
   m_TagString: Floor
@@ -45,36 +44,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60723604449849622
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1243655030775548}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: -0.5}
-      - {x: 0.4217453, y: 0.16814804}
-      - {x: 0.5, y: 0.5}
-      - {x: -0.5, y: 0.5}
---- !u!61 &61081132436805038
-BoxCollider2D:
+--- !u!68 &68528885212550394
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -86,18 +57,13 @@ BoxCollider2D:
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: -0.5}
+  - {x: -0.5, y: 0.5}
+  - {x: 0.5, y: 0.5}
+  - {x: 0.5, y: -0.5}
+  - {x: -0.5, y: -0.5}
 --- !u!114 &114120933536933916
 MonoBehaviour:
   m_ObjectHideFlags: 1
