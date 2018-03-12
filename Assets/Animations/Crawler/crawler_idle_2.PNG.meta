@@ -1,120 +1,120 @@
 fileFormatVersion: 2
-guid: c25ab583a97a0fd47a5d08b472a3de35
-timeCreated: 1519305496
+guid: 031b925ad2ea64b47a47b65559f25341
+timeCreated: 1520848678
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: crawler_idle_1_0
-    21300002: crawler_idle_1_1
-    21300004: crawler_idle_1_2
-    21300006: crawler_idle_1_3
-    21300008: crawler_idle_1_4
-    21300010: crawler_idle_1_5
-    21300012: crawler_idle_1_6
-    21300014: crawler_idle_1_7
-    21300016: crawler_idle_1_8
-    21300018: crawler_idle_1_9
-    21300020: crawler_idle_1_10
-    21300022: crawler_idle_1_11
-    21300024: crawler_idle_1_12
-    21300026: crawler_idle_1_13
-    21300028: crawler_idle_1_14
-    21300030: crawler_idle_1_15
-    21300032: crawler_idle_1_16
-    21300034: crawler_idle_1_17
-    21300036: crawler_idle_1_18
-    21300038: crawler_idle_1_19
-    21300040: crawler_idle_1_20
-    21300042: crawler_idle_1_21
-    21300044: crawler_idle_1_22
-    21300046: crawler_idle_1_23
-    21300048: crawler_idle_1_24
-    21300050: crawler_idle_1_25
-    21300052: crawler_idle_1_26
-    21300054: crawler_idle_1_27
-    21300056: crawler_idle_1_28
-    21300058: crawler_idle_1_29
-    21300060: crawler_idle_1_30
-    21300062: crawler_idle_1_31
-    21300064: crawler_idle_1_32
-    21300066: crawler_idle_1_33
-    21300068: crawler_idle_1_34
-    21300070: crawler_idle_1_35
-    21300072: crawler_idle_1_36
-    21300074: crawler_idle_1_37
-    21300076: crawler_idle_1_38
-    21300078: crawler_idle_1_39
-    21300080: crawler_idle_1_40
-    21300082: crawler_idle_1_41
-    21300084: crawler_idle_1_42
-    21300086: crawler_idle_1_43
-    21300088: crawler_idle_1_44
-    21300090: crawler_idle_1_45
-    21300092: crawler_idle_1_46
-    21300094: crawler_idle_1_47
-    21300096: crawler_idle_1_48
-    21300098: crawler_idle_1_49
-    21300100: crawler_idle_1_50
-    21300102: crawler_idle_1_51
-    21300104: crawler_idle_1_52
-    21300106: crawler_idle_1_53
-    21300108: crawler_idle_1_54
-    21300110: crawler_idle_1_55
-    21300112: crawler_idle_1_56
-    21300114: crawler_idle_1_57
-    21300116: crawler_idle_1_58
-    21300118: crawler_idle_1_59
-    21300120: crawler_idle_1_60
-    21300122: crawler_idle_1_61
-    21300124: crawler_idle_1_62
-    21300126: crawler_idle_1_63
-    21300128: crawler_idle_1_64
-    21300130: crawler_idle_1_65
-    21300132: crawler_idle_1_66
-    21300134: crawler_idle_1_67
-    21300136: crawler_idle_1_68
-    21300138: crawler_idle_1_69
-    21300140: crawler_idle_1_70
-    21300142: crawler_idle_1_71
-    21300144: crawler_idle_1_72
-    21300146: crawler_idle_1_73
-    21300148: crawler_idle_1_74
-    21300150: crawler_idle_1_75
-    21300152: crawler_idle_1_76
-    21300154: crawler_idle_1_77
-    21300156: crawler_idle_1_78
-    21300158: crawler_idle_1_79
-    21300160: crawler_idle_1_80
-    21300162: crawler_idle_1_81
-    21300164: crawler_idle_1_82
-    21300166: crawler_idle_1_83
-    21300168: crawler_idle_1_84
-    21300170: crawler_idle_1_85
-    21300172: crawler_idle_1_86
-    21300174: crawler_idle_1_87
-    21300176: crawler_idle_1_88
-    21300178: crawler_idle_1_89
-    21300180: crawler_idle_1_90
-    21300182: crawler_idle_1_91
-    21300184: crawler_idle_1_92
-    21300186: crawler_idle_1_93
-    21300188: crawler_idle_1_94
-    21300190: crawler_idle_1_95
-    21300192: crawler_idle_1_96
-    21300194: crawler_idle_1_97
-    21300196: crawler_idle_1_98
-    21300198: crawler_idle_1_99
-    21300200: crawler_idle_1_100
-    21300202: crawler_idle_1_101
-    21300204: crawler_idle_1_102
-    21300206: crawler_idle_1_103
-    21300208: crawler_idle_1_104
-    21300210: crawler_idle_1_105
-    21300212: crawler_idle_1_106
-    21300214: crawler_idle_1_107
-    21300216: crawler_idle_1_108
-    21300218: crawler_idle_1_109
-    21300220: crawler_idle_1_110
+    21300000: crawler_idle_2_0
+    21300002: crawler_idle_2_1
+    21300004: crawler_idle_2_2
+    21300006: crawler_idle_2_3
+    21300008: crawler_idle_2_4
+    21300010: crawler_idle_2_5
+    21300012: crawler_idle_2_6
+    21300014: crawler_idle_2_7
+    21300016: crawler_idle_2_8
+    21300018: crawler_idle_2_9
+    21300020: crawler_idle_2_10
+    21300022: crawler_idle_2_11
+    21300024: crawler_idle_2_12
+    21300026: crawler_idle_2_13
+    21300028: crawler_idle_2_14
+    21300030: crawler_idle_2_15
+    21300032: crawler_idle_2_16
+    21300034: crawler_idle_2_17
+    21300036: crawler_idle_2_18
+    21300038: crawler_idle_2_19
+    21300040: crawler_idle_2_20
+    21300042: crawler_idle_2_21
+    21300044: crawler_idle_2_22
+    21300046: crawler_idle_2_23
+    21300048: crawler_idle_2_24
+    21300050: crawler_idle_2_25
+    21300052: crawler_idle_2_26
+    21300054: crawler_idle_2_27
+    21300056: crawler_idle_2_28
+    21300058: crawler_idle_2_29
+    21300060: crawler_idle_2_30
+    21300062: crawler_idle_2_31
+    21300064: crawler_idle_2_32
+    21300066: crawler_idle_2_33
+    21300068: crawler_idle_2_34
+    21300070: crawler_idle_2_35
+    21300072: crawler_idle_2_36
+    21300074: crawler_idle_2_37
+    21300076: crawler_idle_2_38
+    21300078: crawler_idle_2_39
+    21300080: crawler_idle_2_40
+    21300082: crawler_idle_2_41
+    21300084: crawler_idle_2_42
+    21300086: crawler_idle_2_43
+    21300088: crawler_idle_2_44
+    21300090: crawler_idle_2_45
+    21300092: crawler_idle_2_46
+    21300094: crawler_idle_2_47
+    21300096: crawler_idle_2_48
+    21300098: crawler_idle_2_49
+    21300100: crawler_idle_2_50
+    21300102: crawler_idle_2_51
+    21300104: crawler_idle_2_52
+    21300106: crawler_idle_2_53
+    21300108: crawler_idle_2_54
+    21300110: crawler_idle_2_55
+    21300112: crawler_idle_2_56
+    21300114: crawler_idle_2_57
+    21300116: crawler_idle_2_58
+    21300118: crawler_idle_2_59
+    21300120: crawler_idle_2_60
+    21300122: crawler_idle_2_61
+    21300124: crawler_idle_2_62
+    21300126: crawler_idle_2_63
+    21300128: crawler_idle_2_64
+    21300130: crawler_idle_2_65
+    21300132: crawler_idle_2_66
+    21300134: crawler_idle_2_67
+    21300136: crawler_idle_2_68
+    21300138: crawler_idle_2_69
+    21300140: crawler_idle_2_70
+    21300142: crawler_idle_2_71
+    21300144: crawler_idle_2_72
+    21300146: crawler_idle_2_73
+    21300148: crawler_idle_2_74
+    21300150: crawler_idle_2_75
+    21300152: crawler_idle_2_76
+    21300154: crawler_idle_2_77
+    21300156: crawler_idle_2_78
+    21300158: crawler_idle_2_79
+    21300160: crawler_idle_2_80
+    21300162: crawler_idle_2_81
+    21300164: crawler_idle_2_82
+    21300166: crawler_idle_2_83
+    21300168: crawler_idle_2_84
+    21300170: crawler_idle_2_85
+    21300172: crawler_idle_2_86
+    21300174: crawler_idle_2_87
+    21300176: crawler_idle_2_88
+    21300178: crawler_idle_2_89
+    21300180: crawler_idle_2_90
+    21300182: crawler_idle_2_91
+    21300184: crawler_idle_2_92
+    21300186: crawler_idle_2_93
+    21300188: crawler_idle_2_94
+    21300190: crawler_idle_2_95
+    21300192: crawler_idle_2_96
+    21300194: crawler_idle_2_97
+    21300196: crawler_idle_2_98
+    21300198: crawler_idle_2_99
+    21300200: crawler_idle_2_100
+    21300202: crawler_idle_2_101
+    21300204: crawler_idle_2_102
+    21300206: crawler_idle_2_103
+    21300208: crawler_idle_2_104
+    21300210: crawler_idle_2_105
+    21300212: crawler_idle_2_106
+    21300214: crawler_idle_2_107
+    21300216: crawler_idle_2_108
+    21300218: crawler_idle_2_109
+    21300220: crawler_idle_2_110
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -153,7 +153,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -171,7 +171,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -181,7 +181,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -191,13 +191,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crawler_idle_1_0
+      name: crawler_idle_2_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 4606
-        width: 692
-        height: 251
+        x: 0
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,13 +205,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_1
+      name: crawler_idle_2_1
       rect:
         serializedVersion: 2
-        x: 798
-        y: 4606
-        width: 692
-        height: 251
+        x: 768
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,13 +219,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_2
+      name: crawler_idle_2_2
       rect:
         serializedVersion: 2
-        x: 1566
-        y: 4606
-        width: 692
-        height: 251
+        x: 1536
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,13 +233,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_3
+      name: crawler_idle_2_3
       rect:
         serializedVersion: 2
-        x: 2334
-        y: 4606
-        width: 692
-        height: 252
+        x: 2304
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,13 +247,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_4
+      name: crawler_idle_2_4
       rect:
         serializedVersion: 2
-        x: 3102
-        y: 4606
-        width: 692
-        height: 252
+        x: 3072
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,13 +261,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_5
+      name: crawler_idle_2_5
       rect:
         serializedVersion: 2
-        x: 3870
-        y: 4606
-        width: 692
-        height: 252
+        x: 3840
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,13 +275,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_6
+      name: crawler_idle_2_6
       rect:
         serializedVersion: 2
-        x: 4638
-        y: 4606
-        width: 692
-        height: 252
+        x: 4608
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,13 +289,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_7
+      name: crawler_idle_2_7
       rect:
         serializedVersion: 2
-        x: 5406
-        y: 4606
-        width: 692
-        height: 252
+        x: 5376
+        y: 6656
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,13 +303,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_8
+      name: crawler_idle_2_8
       rect:
         serializedVersion: 2
-        x: 6174
-        y: 4606
-        width: 692
-        height: 252
+        x: 0
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,13 +317,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_9
+      name: crawler_idle_2_9
       rect:
         serializedVersion: 2
-        x: 6942
-        y: 4606
-        width: 692
-        height: 253
+        x: 768
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,13 +331,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_10
+      name: crawler_idle_2_10
       rect:
         serializedVersion: 2
-        x: 7710
-        y: 4606
-        width: 692
-        height: 253
+        x: 1536
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,13 +345,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_11
+      name: crawler_idle_2_11
       rect:
         serializedVersion: 2
-        x: 8478
-        y: 4606
-        width: 692
-        height: 253
+        x: 2304
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -359,13 +359,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_12
+      name: crawler_idle_2_12
       rect:
         serializedVersion: 2
-        x: 30
-        y: 4095
-        width: 692
-        height: 253
+        x: 3072
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,13 +373,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_13
+      name: crawler_idle_2_13
       rect:
         serializedVersion: 2
-        x: 799
-        y: 4095
-        width: 691
-        height: 253
+        x: 3840
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,13 +387,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_14
+      name: crawler_idle_2_14
       rect:
         serializedVersion: 2
-        x: 1567
-        y: 4095
-        width: 691
-        height: 254
+        x: 4608
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -401,13 +401,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_15
+      name: crawler_idle_2_15
       rect:
         serializedVersion: 2
-        x: 2335
-        y: 4095
-        width: 691
-        height: 254
+        x: 5376
+        y: 6144
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,13 +415,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_16
+      name: crawler_idle_2_16
       rect:
         serializedVersion: 2
-        x: 3103
-        y: 4095
-        width: 691
-        height: 254
+        x: 0
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -429,13 +429,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_17
+      name: crawler_idle_2_17
       rect:
         serializedVersion: 2
-        x: 3871
-        y: 4095
-        width: 691
-        height: 255
+        x: 768
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -443,13 +443,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_18
+      name: crawler_idle_2_18
       rect:
         serializedVersion: 2
-        x: 4639
-        y: 4095
-        width: 691
-        height: 255
+        x: 1536
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,13 +457,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_19
+      name: crawler_idle_2_19
       rect:
         serializedVersion: 2
-        x: 5407
-        y: 4095
-        width: 691
-        height: 255
+        x: 2304
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -471,13 +471,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_20
+      name: crawler_idle_2_20
       rect:
         serializedVersion: 2
-        x: 6175
-        y: 4095
-        width: 691
-        height: 256
+        x: 3072
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -485,13 +485,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_21
+      name: crawler_idle_2_21
       rect:
         serializedVersion: 2
-        x: 6943
-        y: 4095
-        width: 691
-        height: 256
+        x: 3840
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,13 +499,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_22
+      name: crawler_idle_2_22
       rect:
         serializedVersion: 2
-        x: 7711
-        y: 4095
-        width: 691
-        height: 256
+        x: 4608
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,13 +513,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_23
+      name: crawler_idle_2_23
       rect:
         serializedVersion: 2
-        x: 8479
-        y: 4095
-        width: 691
-        height: 257
+        x: 5376
+        y: 5632
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -527,13 +527,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_24
+      name: crawler_idle_2_24
       rect:
         serializedVersion: 2
-        x: 32
-        y: 3583
-        width: 690
-        height: 257
+        x: 0
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -541,13 +541,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_25
+      name: crawler_idle_2_25
       rect:
         serializedVersion: 2
-        x: 799
-        y: 3583
-        width: 691
-        height: 257
+        x: 768
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -555,13 +555,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_26
+      name: crawler_idle_2_26
       rect:
         serializedVersion: 2
-        x: 1567
-        y: 3583
-        width: 691
-        height: 257
+        x: 1536
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -569,13 +569,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_27
+      name: crawler_idle_2_27
       rect:
         serializedVersion: 2
-        x: 2336
-        y: 3583
-        width: 690
-        height: 258
+        x: 2304
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -583,13 +583,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_28
+      name: crawler_idle_2_28
       rect:
         serializedVersion: 2
-        x: 3103
-        y: 3583
-        width: 691
-        height: 258
+        x: 3072
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -597,13 +597,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_29
+      name: crawler_idle_2_29
       rect:
         serializedVersion: 2
-        x: 3871
-        y: 3583
-        width: 691
-        height: 258
+        x: 3840
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -611,13 +611,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_30
+      name: crawler_idle_2_30
       rect:
         serializedVersion: 2
-        x: 4639
-        y: 3583
-        width: 691
-        height: 259
+        x: 4608
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -625,13 +625,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_31
+      name: crawler_idle_2_31
       rect:
         serializedVersion: 2
-        x: 5407
-        y: 3583
-        width: 691
-        height: 259
+        x: 5376
+        y: 5120
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -639,13 +639,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_32
+      name: crawler_idle_2_32
       rect:
         serializedVersion: 2
-        x: 6175
-        y: 3583
-        width: 691
-        height: 259
+        x: 0
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -653,13 +653,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_33
+      name: crawler_idle_2_33
       rect:
         serializedVersion: 2
-        x: 6943
-        y: 3583
-        width: 691
-        height: 260
+        x: 768
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -667,13 +667,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_34
+      name: crawler_idle_2_34
       rect:
         serializedVersion: 2
-        x: 7711
-        y: 3583
-        width: 691
-        height: 261
+        x: 1536
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -681,13 +681,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_35
+      name: crawler_idle_2_35
       rect:
         serializedVersion: 2
-        x: 8479
-        y: 3583
-        width: 691
-        height: 261
+        x: 2304
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -695,13 +695,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_36
+      name: crawler_idle_2_36
       rect:
         serializedVersion: 2
-        x: 31
-        y: 3071
-        width: 691
-        height: 261
+        x: 3072
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -709,13 +709,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_37
+      name: crawler_idle_2_37
       rect:
         serializedVersion: 2
-        x: 799
-        y: 3071
-        width: 691
-        height: 262
+        x: 3840
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -723,13 +723,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_38
+      name: crawler_idle_2_38
       rect:
         serializedVersion: 2
-        x: 1567
-        y: 3071
-        width: 691
-        height: 262
+        x: 4608
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -737,13 +737,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_39
+      name: crawler_idle_2_39
       rect:
         serializedVersion: 2
-        x: 2335
-        y: 3071
-        width: 691
-        height: 262
+        x: 5376
+        y: 4608
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -751,13 +751,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_40
+      name: crawler_idle_2_40
       rect:
         serializedVersion: 2
-        x: 3103
-        y: 3071
-        width: 691
-        height: 262
+        x: 0
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -765,13 +765,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_41
+      name: crawler_idle_2_41
       rect:
         serializedVersion: 2
-        x: 3871
-        y: 3071
-        width: 690
-        height: 263
+        x: 768
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -779,13 +779,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_42
+      name: crawler_idle_2_42
       rect:
         serializedVersion: 2
-        x: 4639
-        y: 3071
-        width: 691
-        height: 263
+        x: 1536
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -793,13 +793,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_43
+      name: crawler_idle_2_43
       rect:
         serializedVersion: 2
-        x: 5407
-        y: 3071
-        width: 691
-        height: 263
+        x: 2304
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -807,13 +807,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_44
+      name: crawler_idle_2_44
       rect:
         serializedVersion: 2
-        x: 6175
-        y: 3071
-        width: 690
-        height: 264
+        x: 3072
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -821,13 +821,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_45
+      name: crawler_idle_2_45
       rect:
         serializedVersion: 2
-        x: 6944
-        y: 3071
-        width: 690
-        height: 264
+        x: 3840
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -835,13 +835,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_46
+      name: crawler_idle_2_46
       rect:
         serializedVersion: 2
-        x: 7711
-        y: 3071
-        width: 691
-        height: 264
+        x: 4608
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -849,13 +849,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_47
+      name: crawler_idle_2_47
       rect:
         serializedVersion: 2
-        x: 8479
-        y: 3071
-        width: 690
-        height: 264
+        x: 5376
+        y: 4096
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -863,13 +863,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_48
+      name: crawler_idle_2_48
       rect:
         serializedVersion: 2
-        x: 31
-        y: 2559
-        width: 691
-        height: 264
+        x: 0
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -877,13 +877,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_49
+      name: crawler_idle_2_49
       rect:
         serializedVersion: 2
-        x: 799
-        y: 2559
-        width: 691
-        height: 264
+        x: 768
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -891,13 +891,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_50
+      name: crawler_idle_2_50
       rect:
         serializedVersion: 2
-        x: 1567
-        y: 2559
-        width: 690
-        height: 264
+        x: 1536
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -905,13 +905,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_51
+      name: crawler_idle_2_51
       rect:
         serializedVersion: 2
-        x: 2336
-        y: 2559
-        width: 690
-        height: 264
+        x: 2304
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -919,13 +919,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_52
+      name: crawler_idle_2_52
       rect:
         serializedVersion: 2
-        x: 3103
-        y: 2559
-        width: 691
-        height: 264
+        x: 3072
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -933,13 +933,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_53
+      name: crawler_idle_2_53
       rect:
         serializedVersion: 2
-        x: 3871
-        y: 2559
-        width: 690
-        height: 264
+        x: 3840
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -947,13 +947,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_54
+      name: crawler_idle_2_54
       rect:
         serializedVersion: 2
-        x: 4640
-        y: 2559
-        width: 690
-        height: 264
+        x: 4608
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -961,13 +961,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_55
+      name: crawler_idle_2_55
       rect:
         serializedVersion: 2
-        x: 5407
-        y: 2559
-        width: 691
-        height: 264
+        x: 5376
+        y: 3584
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -975,13 +975,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_56
+      name: crawler_idle_2_56
       rect:
         serializedVersion: 2
-        x: 6175
-        y: 2559
-        width: 690
-        height: 264
+        x: 0
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -989,13 +989,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_57
+      name: crawler_idle_2_57
       rect:
         serializedVersion: 2
-        x: 6944
-        y: 2559
-        width: 690
-        height: 265
+        x: 768
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1003,13 +1003,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_58
+      name: crawler_idle_2_58
       rect:
         serializedVersion: 2
-        x: 7712
-        y: 2559
-        width: 690
-        height: 264
+        x: 1536
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1017,13 +1017,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_59
+      name: crawler_idle_2_59
       rect:
         serializedVersion: 2
-        x: 8479
-        y: 2559
-        width: 690
-        height: 264
+        x: 2304
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1031,13 +1031,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_60
+      name: crawler_idle_2_60
       rect:
         serializedVersion: 2
-        x: 32
-        y: 2047
-        width: 690
-        height: 264
+        x: 3072
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1045,13 +1045,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_61
+      name: crawler_idle_2_61
       rect:
         serializedVersion: 2
-        x: 799
-        y: 2047
-        width: 691
-        height: 264
+        x: 3840
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1059,13 +1059,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_62
+      name: crawler_idle_2_62
       rect:
         serializedVersion: 2
-        x: 1567
-        y: 2047
-        width: 690
-        height: 264
+        x: 4608
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1073,13 +1073,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_63
+      name: crawler_idle_2_63
       rect:
         serializedVersion: 2
-        x: 2336
-        y: 2047
-        width: 690
-        height: 264
+        x: 5376
+        y: 3072
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1087,13 +1087,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_64
+      name: crawler_idle_2_64
       rect:
         serializedVersion: 2
-        x: 3103
-        y: 2047
-        width: 691
-        height: 264
+        x: 0
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1101,13 +1101,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_65
+      name: crawler_idle_2_65
       rect:
         serializedVersion: 2
-        x: 3871
-        y: 2047
-        width: 690
-        height: 263
+        x: 768
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1115,13 +1115,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_66
+      name: crawler_idle_2_66
       rect:
         serializedVersion: 2
-        x: 4640
-        y: 2047
-        width: 690
-        height: 263
+        x: 1536
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1129,13 +1129,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_67
+      name: crawler_idle_2_67
       rect:
         serializedVersion: 2
-        x: 5407
-        y: 2047
-        width: 691
-        height: 263
+        x: 2304
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1143,13 +1143,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_68
+      name: crawler_idle_2_68
       rect:
         serializedVersion: 2
-        x: 6175
-        y: 2047
-        width: 690
-        height: 263
+        x: 3072
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1157,13 +1157,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_69
+      name: crawler_idle_2_69
       rect:
         serializedVersion: 2
-        x: 6943
-        y: 2047
-        width: 691
-        height: 263
+        x: 3840
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1171,13 +1171,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_70
+      name: crawler_idle_2_70
       rect:
         serializedVersion: 2
-        x: 7711
-        y: 2047
-        width: 691
-        height: 262
+        x: 4608
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1185,13 +1185,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_71
+      name: crawler_idle_2_71
       rect:
         serializedVersion: 2
-        x: 8479
-        y: 2047
-        width: 690
-        height: 262
+        x: 5376
+        y: 2560
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1199,13 +1199,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_72
+      name: crawler_idle_2_72
       rect:
         serializedVersion: 2
-        x: 31
-        y: 1535
-        width: 691
-        height: 262
+        x: 0
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1213,13 +1213,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_73
+      name: crawler_idle_2_73
       rect:
         serializedVersion: 2
-        x: 799
-        y: 1535
-        width: 691
-        height: 261
+        x: 768
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1227,13 +1227,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_74
+      name: crawler_idle_2_74
       rect:
         serializedVersion: 2
-        x: 1566
-        y: 1535
-        width: 692
-        height: 261
+        x: 1536
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1241,13 +1241,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_75
+      name: crawler_idle_2_75
       rect:
         serializedVersion: 2
-        x: 2334
-        y: 1535
-        width: 692
-        height: 261
+        x: 2304
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1255,13 +1255,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_76
+      name: crawler_idle_2_76
       rect:
         serializedVersion: 2
-        x: 3102
-        y: 1535
-        width: 692
-        height: 260
+        x: 3072
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1269,13 +1269,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_77
+      name: crawler_idle_2_77
       rect:
         serializedVersion: 2
-        x: 3870
-        y: 1535
-        width: 692
-        height: 260
+        x: 3840
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1283,13 +1283,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_78
+      name: crawler_idle_2_78
       rect:
         serializedVersion: 2
-        x: 4638
-        y: 1535
-        width: 692
-        height: 260
+        x: 4608
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1297,13 +1297,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_79
+      name: crawler_idle_2_79
       rect:
         serializedVersion: 2
-        x: 5406
-        y: 1535
-        width: 692
-        height: 260
+        x: 5376
+        y: 2048
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1311,13 +1311,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_80
+      name: crawler_idle_2_80
       rect:
         serializedVersion: 2
-        x: 6174
-        y: 1535
-        width: 692
-        height: 259
+        x: 0
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1325,13 +1325,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_81
+      name: crawler_idle_2_81
       rect:
         serializedVersion: 2
-        x: 6942
-        y: 1535
-        width: 692
-        height: 259
+        x: 768
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1339,13 +1339,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_82
+      name: crawler_idle_2_82
       rect:
         serializedVersion: 2
-        x: 7710
-        y: 1535
-        width: 692
-        height: 259
+        x: 1536
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1353,13 +1353,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_83
+      name: crawler_idle_2_83
       rect:
         serializedVersion: 2
-        x: 8478
-        y: 1535
-        width: 692
-        height: 258
+        x: 2304
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1367,13 +1367,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_84
+      name: crawler_idle_2_84
       rect:
         serializedVersion: 2
-        x: 30
-        y: 1023
-        width: 692
-        height: 258
+        x: 3072
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1381,13 +1381,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_85
+      name: crawler_idle_2_85
       rect:
         serializedVersion: 2
-        x: 798
-        y: 1023
-        width: 692
-        height: 257
+        x: 3840
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1395,13 +1395,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_86
+      name: crawler_idle_2_86
       rect:
         serializedVersion: 2
-        x: 1566
-        y: 1023
-        width: 692
-        height: 257
+        x: 4608
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1409,13 +1409,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_87
+      name: crawler_idle_2_87
       rect:
         serializedVersion: 2
-        x: 2334
-        y: 1023
-        width: 692
-        height: 257
+        x: 5376
+        y: 1536
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1423,13 +1423,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_88
+      name: crawler_idle_2_88
       rect:
         serializedVersion: 2
-        x: 3102
-        y: 1023
-        width: 692
-        height: 256
+        x: 0
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1437,13 +1437,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_89
+      name: crawler_idle_2_89
       rect:
         serializedVersion: 2
-        x: 3870
-        y: 1023
-        width: 692
-        height: 256
+        x: 768
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1451,13 +1451,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_90
+      name: crawler_idle_2_90
       rect:
         serializedVersion: 2
-        x: 4638
-        y: 1023
-        width: 692
-        height: 255
+        x: 1536
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1465,13 +1465,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_91
+      name: crawler_idle_2_91
       rect:
         serializedVersion: 2
-        x: 5406
-        y: 1023
-        width: 692
-        height: 255
+        x: 2304
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1479,13 +1479,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_92
+      name: crawler_idle_2_92
       rect:
         serializedVersion: 2
-        x: 6174
-        y: 1023
-        width: 692
-        height: 254
+        x: 3072
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1493,13 +1493,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_93
+      name: crawler_idle_2_93
       rect:
         serializedVersion: 2
-        x: 6942
-        y: 1023
-        width: 692
-        height: 254
+        x: 3840
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1507,13 +1507,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_94
+      name: crawler_idle_2_94
       rect:
         serializedVersion: 2
-        x: 7710
-        y: 1023
-        width: 692
-        height: 254
+        x: 4608
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1521,13 +1521,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_95
+      name: crawler_idle_2_95
       rect:
         serializedVersion: 2
-        x: 8478
-        y: 1023
-        width: 692
-        height: 253
+        x: 5376
+        y: 1024
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1535,13 +1535,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_96
+      name: crawler_idle_2_96
       rect:
         serializedVersion: 2
-        x: 30
-        y: 510
-        width: 692
-        height: 254
+        x: 0
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1549,13 +1549,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_97
+      name: crawler_idle_2_97
       rect:
         serializedVersion: 2
-        x: 798
-        y: 510
-        width: 692
-        height: 254
+        x: 768
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1563,13 +1563,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_98
+      name: crawler_idle_2_98
       rect:
         serializedVersion: 2
-        x: 1566
-        y: 510
-        width: 692
-        height: 253
+        x: 1536
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1577,13 +1577,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_99
+      name: crawler_idle_2_99
       rect:
         serializedVersion: 2
-        x: 2334
-        y: 510
-        width: 692
-        height: 253
+        x: 2304
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1591,13 +1591,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_100
+      name: crawler_idle_2_100
       rect:
         serializedVersion: 2
-        x: 3102
-        y: 510
-        width: 692
-        height: 253
+        x: 3072
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1605,13 +1605,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_101
+      name: crawler_idle_2_101
       rect:
         serializedVersion: 2
-        x: 3870
-        y: 510
-        width: 692
-        height: 253
+        x: 3840
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1619,13 +1619,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_102
+      name: crawler_idle_2_102
       rect:
         serializedVersion: 2
-        x: 4638
-        y: 510
-        width: 692
-        height: 253
+        x: 4608
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1633,13 +1633,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_103
+      name: crawler_idle_2_103
       rect:
         serializedVersion: 2
-        x: 5406
-        y: 510
-        width: 692
-        height: 252
+        x: 5376
+        y: 512
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1647,69 +1647,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_104
+      name: crawler_idle_2_104
       rect:
         serializedVersion: 2
-        x: 6174
-        y: 510
-        width: 692
-        height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_idle_1_105
-      rect:
-        serializedVersion: 2
-        x: 6942
-        y: 510
-        width: 692
-        height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_idle_1_106
-      rect:
-        serializedVersion: 2
-        x: 7710
-        y: 510
-        width: 692
-        height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_idle_1_107
-      rect:
-        serializedVersion: 2
-        x: 8478
-        y: 510
-        width: 692
-        height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_idle_1_108
-      rect:
-        serializedVersion: 2
-        x: 30
+        x: 0
         y: 0
-        width: 692
-        height: 250
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1717,13 +1661,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_109
+      name: crawler_idle_2_105
       rect:
         serializedVersion: 2
-        x: 798
+        x: 768
         y: 0
-        width: 692
-        height: 249
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1731,13 +1675,69 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_idle_1_110
+      name: crawler_idle_2_106
       rect:
         serializedVersion: 2
-        x: 1566
+        x: 1536
         y: 0
-        width: 691
-        height: 249
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_idle_2_107
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_idle_2_108
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_idle_2_109
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_idle_2_110
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 0
+        width: 768
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

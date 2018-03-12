@@ -1,101 +1,99 @@
 fileFormatVersion: 2
-guid: 0338b1593c17f7344a3de28484749487
-timeCreated: 1519306323
+guid: 96775ad411015e344b1cacd0190ea310
+timeCreated: 1520848032
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: crawler_attack_1_0
-    21300002: crawler_attack_1_1
-    21300004: crawler_attack_1_2
-    21300006: crawler_attack_1_3
-    21300008: crawler_attack_1_4
-    21300010: crawler_attack_1_5
-    21300012: crawler_attack_1_6
-    21300014: crawler_attack_1_7
-    21300016: crawler_attack_1_8
-    21300018: crawler_attack_1_9
-    21300020: crawler_attack_1_10
-    21300022: crawler_attack_1_11
-    21300024: crawler_attack_1_12
-    21300026: crawler_attack_1_13
-    21300028: crawler_attack_1_14
-    21300030: crawler_attack_1_15
-    21300032: crawler_attack_1_16
-    21300034: crawler_attack_1_17
-    21300036: crawler_attack_1_18
-    21300038: crawler_attack_1_19
-    21300040: crawler_attack_1_20
-    21300042: crawler_attack_1_21
-    21300044: crawler_attack_1_22
-    21300046: crawler_attack_1_23
-    21300048: crawler_attack_1_24
-    21300050: crawler_attack_1_25
-    21300052: crawler_attack_1_26
-    21300054: crawler_attack_1_27
-    21300056: crawler_attack_1_28
-    21300058: crawler_attack_1_29
-    21300060: crawler_attack_1_30
-    21300062: crawler_attack_1_31
-    21300064: crawler_attack_1_32
-    21300066: crawler_attack_1_33
-    21300068: crawler_attack_1_34
-    21300070: crawler_attack_1_35
-    21300072: crawler_attack_1_36
-    21300074: crawler_attack_1_37
-    21300076: crawler_attack_1_38
-    21300078: crawler_attack_1_39
-    21300080: crawler_attack_1_40
-    21300082: crawler_attack_1_41
-    21300084: crawler_attack_1_42
-    21300086: crawler_attack_1_43
-    21300088: crawler_attack_1_44
-    21300090: crawler_attack_1_45
-    21300092: crawler_attack_1_46
-    21300094: crawler_attack_1_47
-    21300096: crawler_attack_1_48
-    21300098: crawler_attack_1_49
-    21300100: crawler_attack_1_50
-    21300102: crawler_attack_1_51
-    21300104: crawler_attack_1_52
-    21300106: crawler_attack_1_53
-    21300108: crawler_attack_1_54
-    21300110: crawler_attack_1_55
-    21300112: crawler_attack_1_56
-    21300114: crawler_attack_1_57
-    21300116: crawler_attack_1_58
-    21300118: crawler_attack_1_59
-    21300120: crawler_attack_1_60
-    21300122: crawler_attack_1_61
-    21300124: crawler_attack_1_62
-    21300126: crawler_attack_1_63
-    21300128: crawler_attack_1_64
-    21300130: crawler_attack_1_65
-    21300132: crawler_attack_1_66
-    21300134: crawler_attack_1_67
-    21300136: crawler_attack_1_68
-    21300138: crawler_attack_1_69
-    21300140: crawler_attack_1_70
-    21300142: crawler_attack_1_71
-    21300144: crawler_attack_1_72
-    21300146: crawler_attack_1_73
-    21300148: crawler_attack_1_74
-    21300150: crawler_attack_1_75
-    21300152: crawler_attack_1_76
-    21300154: crawler_attack_1_77
-    21300156: crawler_attack_1_78
-    21300158: crawler_attack_1_79
-    21300160: crawler_attack_1_80
-    21300162: crawler_attack_1_81
-    21300164: crawler_attack_1_82
-    21300166: crawler_attack_1_83
-    21300168: crawler_attack_1_84
-    21300170: crawler_attack_1_85
-    21300172: crawler_attack_1_86
-    21300174: crawler_attack_1_87
-    21300176: crawler_attack_1_88
-    21300178: crawler_attack_1_89
-    21300180: crawler_attack_1_90
-    21300182: crawler_attack_1_91
+    21300000: crawler_attack_2_0
+    21300002: crawler_attack_2_1
+    21300004: crawler_attack_2_2
+    21300006: crawler_attack_2_3
+    21300008: crawler_attack_2_4
+    21300010: crawler_attack_2_5
+    21300012: crawler_attack_2_6
+    21300014: crawler_attack_2_7
+    21300016: crawler_attack_2_8
+    21300018: crawler_attack_2_9
+    21300020: crawler_attack_2_10
+    21300022: crawler_attack_2_11
+    21300024: crawler_attack_2_12
+    21300026: crawler_attack_2_13
+    21300028: crawler_attack_2_14
+    21300030: crawler_attack_2_15
+    21300032: crawler_attack_2_16
+    21300034: crawler_attack_2_17
+    21300036: crawler_attack_2_18
+    21300038: crawler_attack_2_19
+    21300040: crawler_attack_2_20
+    21300042: crawler_attack_2_21
+    21300044: crawler_attack_2_22
+    21300046: crawler_attack_2_23
+    21300048: crawler_attack_2_24
+    21300050: crawler_attack_2_25
+    21300052: crawler_attack_2_26
+    21300054: crawler_attack_2_27
+    21300056: crawler_attack_2_28
+    21300058: crawler_attack_2_29
+    21300060: crawler_attack_2_30
+    21300062: crawler_attack_2_31
+    21300064: crawler_attack_2_32
+    21300066: crawler_attack_2_33
+    21300068: crawler_attack_2_34
+    21300070: crawler_attack_2_35
+    21300072: crawler_attack_2_36
+    21300074: crawler_attack_2_37
+    21300076: crawler_attack_2_38
+    21300078: crawler_attack_2_39
+    21300080: crawler_attack_2_40
+    21300082: crawler_attack_2_41
+    21300084: crawler_attack_2_42
+    21300086: crawler_attack_2_43
+    21300088: crawler_attack_2_44
+    21300090: crawler_attack_2_45
+    21300092: crawler_attack_2_46
+    21300094: crawler_attack_2_47
+    21300096: crawler_attack_2_48
+    21300098: crawler_attack_2_49
+    21300100: crawler_attack_2_50
+    21300102: crawler_attack_2_51
+    21300104: crawler_attack_2_52
+    21300106: crawler_attack_2_53
+    21300108: crawler_attack_2_54
+    21300110: crawler_attack_2_55
+    21300112: crawler_attack_2_56
+    21300114: crawler_attack_2_57
+    21300116: crawler_attack_2_58
+    21300118: crawler_attack_2_59
+    21300120: crawler_attack_2_60
+    21300122: crawler_attack_2_61
+    21300124: crawler_attack_2_62
+    21300126: crawler_attack_2_63
+    21300128: crawler_attack_2_64
+    21300130: crawler_attack_2_65
+    21300132: crawler_attack_2_66
+    21300134: crawler_attack_2_67
+    21300136: crawler_attack_2_68
+    21300138: crawler_attack_2_69
+    21300140: crawler_attack_2_70
+    21300142: crawler_attack_2_71
+    21300144: crawler_attack_2_72
+    21300146: crawler_attack_2_73
+    21300148: crawler_attack_2_74
+    21300150: crawler_attack_2_75
+    21300152: crawler_attack_2_76
+    21300154: crawler_attack_2_77
+    21300156: crawler_attack_2_78
+    21300158: crawler_attack_2_79
+    21300160: crawler_attack_2_80
+    21300162: crawler_attack_2_81
+    21300164: crawler_attack_2_82
+    21300166: crawler_attack_2_83
+    21300168: crawler_attack_2_84
+    21300170: crawler_attack_2_85
+    21300172: crawler_attack_2_86
+    21300174: crawler_attack_2_87
+    21300176: crawler_attack_2_88
+    21300178: crawler_attack_2_89
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -152,7 +150,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -162,7 +160,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -172,1261 +170,1261 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crawler_attack_1_0
+      name: crawler_attack_2_0
       rect:
         serializedVersion: 2
-        x: 31
+        x: 0
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_1
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_2
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_3
+      rect:
+        serializedVersion: 2
+        x: 2307
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_4
+      rect:
+        serializedVersion: 2
+        x: 3076
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_5
+      rect:
+        serializedVersion: 2
+        x: 3845
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_6
+      rect:
+        serializedVersion: 2
+        x: 4614
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_7
+      rect:
+        serializedVersion: 2
+        x: 5383
+        y: 5632
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_9
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_10
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_11
+      rect:
+        serializedVersion: 2
+        x: 2307
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_12
+      rect:
+        serializedVersion: 2
+        x: 3076
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_13
+      rect:
+        serializedVersion: 2
+        x: 3845
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_14
+      rect:
+        serializedVersion: 2
+        x: 4614
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_15
+      rect:
+        serializedVersion: 2
+        x: 5383
+        y: 5120
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_17
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_18
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_19
+      rect:
+        serializedVersion: 2
+        x: 2307
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_20
+      rect:
+        serializedVersion: 2
+        x: 3076
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_21
+      rect:
+        serializedVersion: 2
+        x: 3845
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_22
+      rect:
+        serializedVersion: 2
+        x: 4614
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_23
+      rect:
+        serializedVersion: 2
+        x: 5383
+        y: 4608
+        width: 769
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: crawler_attack_2_24
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 4096
-        width: 678
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_1
+      name: crawler_attack_2_25
       rect:
         serializedVersion: 2
-        x: 800
+        x: 769
         y: 4096
-        width: 677
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_2
+      name: crawler_attack_2_26
       rect:
         serializedVersion: 2
-        x: 1569
+        x: 1538
         y: 4096
-        width: 672
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_3
+      name: crawler_attack_2_27
       rect:
         serializedVersion: 2
-        x: 2337
+        x: 2307
         y: 4096
-        width: 667
-        height: 251
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_4
+      name: crawler_attack_2_28
       rect:
         serializedVersion: 2
-        x: 3104
+        x: 3076
         y: 4096
-        width: 662
-        height: 250
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_5
+      name: crawler_attack_2_29
       rect:
         serializedVersion: 2
-        x: 3869
+        x: 3845
         y: 4096
-        width: 658
-        height: 250
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_6
+      name: crawler_attack_2_30
       rect:
         serializedVersion: 2
-        x: 4634
+        x: 4614
         y: 4096
-        width: 656
-        height: 249
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_7
+      name: crawler_attack_2_31
       rect:
         serializedVersion: 2
-        x: 5400
+        x: 5383
         y: 4096
-        width: 654
-        height: 259
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_8
+      name: crawler_attack_2_32
       rect:
         serializedVersion: 2
-        x: 6168
-        y: 4096
-        width: 653
-        height: 274
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_9
-      rect:
-        serializedVersion: 2
-        x: 6940
-        y: 4096
-        width: 650
-        height: 288
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_10
-      rect:
-        serializedVersion: 2
-        x: 27
+        x: 0
         y: 3584
-        width: 643
-        height: 301
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_11
+      name: crawler_attack_2_33
       rect:
         serializedVersion: 2
-        x: 807
+        x: 769
         y: 3584
-        width: 634
-        height: 320
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_12
+      name: crawler_attack_2_34
       rect:
         serializedVersion: 2
-        x: 1586
+        x: 1538
         y: 3584
-        width: 628
-        height: 336
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_13
+      name: crawler_attack_2_35
       rect:
         serializedVersion: 2
-        x: 2351
+        x: 2307
         y: 3584
-        width: 636
-        height: 347
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_14
+      name: crawler_attack_2_36
       rect:
         serializedVersion: 2
-        x: 3116
+        x: 3076
         y: 3584
-        width: 645
-        height: 355
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_15
+      name: crawler_attack_2_37
       rect:
         serializedVersion: 2
-        x: 3876
+        x: 3845
         y: 3584
-        width: 659
-        height: 357
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_16
+      name: crawler_attack_2_38
       rect:
         serializedVersion: 2
-        x: 4632
+        x: 4614
         y: 3584
-        width: 677
-        height: 352
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_17
+      name: crawler_attack_2_39
       rect:
         serializedVersion: 2
-        x: 5401
+        x: 5383
         y: 3584
-        width: 681
-        height: 339
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_18
+      name: crawler_attack_2_40
       rect:
         serializedVersion: 2
-        x: 6168
-        y: 3584
-        width: 687
-        height: 319
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_19
-      rect:
-        serializedVersion: 2
-        x: 6933
-        y: 3584
-        width: 693
-        height: 297
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_20
-      rect:
-        serializedVersion: 2
-        x: 10
+        x: 0
         y: 3072
-        width: 697
-        height: 274
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_21
+      name: crawler_attack_2_41
       rect:
         serializedVersion: 2
-        x: 778
+        x: 769
         y: 3072
-        width: 700
-        height: 249
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_22
+      name: crawler_attack_2_42
       rect:
         serializedVersion: 2
-        x: 1549
+        x: 1538
         y: 3072
-        width: 698
-        height: 242
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_23
+      name: crawler_attack_2_43
       rect:
         serializedVersion: 2
-        x: 2322
+        x: 2307
         y: 3072
-        width: 694
-        height: 241
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_24
+      name: crawler_attack_2_44
       rect:
         serializedVersion: 2
-        x: 3094
+        x: 3076
         y: 3072
-        width: 692
-        height: 240
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_25
+      name: crawler_attack_2_45
       rect:
         serializedVersion: 2
-        x: 3863
+        x: 3845
         y: 3072
-        width: 692
-        height: 241
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_26
+      name: crawler_attack_2_46
       rect:
         serializedVersion: 2
-        x: 4631
+        x: 4614
         y: 3072
-        width: 693
-        height: 241
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_27
+      name: crawler_attack_2_47
       rect:
         serializedVersion: 2
-        x: 5400
+        x: 5383
         y: 3072
-        width: 693
-        height: 242
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_28
+      name: crawler_attack_2_48
       rect:
         serializedVersion: 2
-        x: 6168
-        y: 3072
-        width: 694
-        height: 242
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_29
-      rect:
-        serializedVersion: 2
-        x: 6936
-        y: 3072
-        width: 695
-        height: 243
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_30
-      rect:
-        serializedVersion: 2
-        x: 15
+        x: 0
         y: 2560
-        width: 695
-        height: 244
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_31
+      name: crawler_attack_2_49
       rect:
         serializedVersion: 2
-        x: 784
+        x: 769
         y: 2560
-        width: 695
-        height: 244
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_32
+      name: crawler_attack_2_50
       rect:
         serializedVersion: 2
-        x: 1553
+        x: 1538
         y: 2560
-        width: 695
-        height: 245
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_33
+      name: crawler_attack_2_51
       rect:
         serializedVersion: 2
-        x: 2322
+        x: 2307
         y: 2560
-        width: 695
-        height: 246
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_34
+      name: crawler_attack_2_52
       rect:
         serializedVersion: 2
-        x: 3091
+        x: 3076
         y: 2560
-        width: 695
-        height: 247
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_35
+      name: crawler_attack_2_53
       rect:
         serializedVersion: 2
-        x: 3861
+        x: 3845
         y: 2560
-        width: 694
-        height: 247
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_36
+      name: crawler_attack_2_54
       rect:
         serializedVersion: 2
-        x: 4630
+        x: 4614
         y: 2560
-        width: 694
-        height: 248
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_37
+      name: crawler_attack_2_55
       rect:
         serializedVersion: 2
-        x: 5400
+        x: 5383
         y: 2560
-        width: 693
-        height: 249
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_38
+      name: crawler_attack_2_56
       rect:
         serializedVersion: 2
-        x: 6169
-        y: 2560
-        width: 693
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_39
-      rect:
-        serializedVersion: 2
-        x: 6938
-        y: 2560
-        width: 693
-        height: 250
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_40
-      rect:
-        serializedVersion: 2
-        x: 18
+        x: 0
         y: 2048
-        width: 692
-        height: 251
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_41
+      name: crawler_attack_2_57
       rect:
         serializedVersion: 2
-        x: 788
+        x: 769
         y: 2048
-        width: 691
-        height: 251
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_42
+      name: crawler_attack_2_58
       rect:
         serializedVersion: 2
-        x: 1557
+        x: 1538
         y: 2048
-        width: 691
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_43
+      name: crawler_attack_2_59
       rect:
         serializedVersion: 2
-        x: 2326
+        x: 2307
         y: 2048
-        width: 691
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_44
+      name: crawler_attack_2_60
       rect:
         serializedVersion: 2
-        x: 3096
+        x: 3076
         y: 2048
-        width: 690
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_45
+      name: crawler_attack_2_61
       rect:
         serializedVersion: 2
-        x: 3865
+        x: 3845
         y: 2048
-        width: 690
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_46
+      name: crawler_attack_2_62
       rect:
         serializedVersion: 2
-        x: 4635
+        x: 4614
         y: 2048
-        width: 689
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_47
+      name: crawler_attack_2_63
       rect:
         serializedVersion: 2
-        x: 5404
+        x: 5383
         y: 2048
-        width: 689
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_48
+      name: crawler_attack_2_64
       rect:
         serializedVersion: 2
-        x: 6173
-        y: 2048
-        width: 689
-        height: 253
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_49
-      rect:
-        serializedVersion: 2
-        x: 6943
-        y: 2048
-        width: 688
-        height: 253
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_50
-      rect:
-        serializedVersion: 2
-        x: 22
+        x: 0
         y: 1536
-        width: 689
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_51
+      name: crawler_attack_2_65
       rect:
         serializedVersion: 2
-        x: 791
+        x: 769
         y: 1536
-        width: 689
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_52
+      name: crawler_attack_2_66
       rect:
         serializedVersion: 2
-        x: 1561
+        x: 1538
         y: 1536
-        width: 688
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_53
+      name: crawler_attack_2_67
       rect:
         serializedVersion: 2
-        x: 2330
+        x: 2307
         y: 1536
-        width: 688
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_54
+      name: crawler_attack_2_68
       rect:
         serializedVersion: 2
-        x: 3099
+        x: 3076
         y: 1536
-        width: 688
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_55
+      name: crawler_attack_2_69
       rect:
         serializedVersion: 2
-        x: 3869
+        x: 3845
         y: 1536
-        width: 687
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_56
+      name: crawler_attack_2_70
       rect:
         serializedVersion: 2
-        x: 4638
+        x: 4614
         y: 1536
-        width: 687
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_57
+      name: crawler_attack_2_71
       rect:
         serializedVersion: 2
-        x: 5407
+        x: 5383
         y: 1536
-        width: 687
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_58
+      name: crawler_attack_2_72
       rect:
         serializedVersion: 2
-        x: 6177
-        y: 1536
-        width: 686
-        height: 253
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_59
-      rect:
-        serializedVersion: 2
-        x: 6946
-        y: 1536
-        width: 685
-        height: 253
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_60
-      rect:
-        serializedVersion: 2
-        x: 25
+        x: 0
         y: 1024
-        width: 685
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_61
+      name: crawler_attack_2_73
       rect:
         serializedVersion: 2
-        x: 795
+        x: 769
         y: 1024
-        width: 684
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_62
+      name: crawler_attack_2_74
       rect:
         serializedVersion: 2
-        x: 1564
+        x: 1538
         y: 1024
-        width: 684
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_63
+      name: crawler_attack_2_75
       rect:
         serializedVersion: 2
-        x: 2333
+        x: 2307
         y: 1024
-        width: 684
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_64
+      name: crawler_attack_2_76
       rect:
         serializedVersion: 2
-        x: 3102
+        x: 3076
         y: 1024
-        width: 684
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_65
+      name: crawler_attack_2_77
       rect:
         serializedVersion: 2
-        x: 3872
+        x: 3845
         y: 1024
-        width: 683
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_66
+      name: crawler_attack_2_78
       rect:
         serializedVersion: 2
-        x: 4641
+        x: 4614
         y: 1024
-        width: 683
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_67
+      name: crawler_attack_2_79
       rect:
         serializedVersion: 2
-        x: 5410
+        x: 5383
         y: 1024
-        width: 683
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_68
+      name: crawler_attack_2_80
       rect:
         serializedVersion: 2
-        x: 6180
-        y: 1024
-        width: 682
-        height: 253
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_69
-      rect:
-        serializedVersion: 2
-        x: 6949
-        y: 1024
-        width: 682
-        height: 253
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_70
-      rect:
-        serializedVersion: 2
-        x: 28
+        x: 0
         y: 512
-        width: 682
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_71
+      name: crawler_attack_2_81
       rect:
         serializedVersion: 2
-        x: 798
+        x: 769
         y: 512
-        width: 681
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_72
+      name: crawler_attack_2_82
       rect:
         serializedVersion: 2
-        x: 1567
+        x: 1538
         y: 512
-        width: 681
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_73
+      name: crawler_attack_2_83
       rect:
         serializedVersion: 2
-        x: 2336
+        x: 2307
         y: 512
-        width: 681
-        height: 253
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_74
+      name: crawler_attack_2_84
       rect:
         serializedVersion: 2
-        x: 3105
+        x: 3076
         y: 512
-        width: 681
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_75
+      name: crawler_attack_2_85
       rect:
         serializedVersion: 2
-        x: 3875
+        x: 3845
         y: 512
-        width: 680
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_76
+      name: crawler_attack_2_86
       rect:
         serializedVersion: 2
-        x: 4644
+        x: 4614
         y: 512
-        width: 680
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_77
+      name: crawler_attack_2_87
       rect:
         serializedVersion: 2
-        x: 5413
+        x: 5383
         y: 512
-        width: 680
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_78
+      name: crawler_attack_2_88
       rect:
         serializedVersion: 2
-        x: 6182
-        y: 512
-        width: 680
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_79
-      rect:
-        serializedVersion: 2
-        x: 6951
-        y: 512
-        width: 680
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_80
-      rect:
-        serializedVersion: 2
-        x: 31
+        x: 0
         y: 0
-        width: 679
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: crawler_attack_1_81
+      name: crawler_attack_2_89
       rect:
         serializedVersion: 2
-        x: 800
+        x: 769
         y: 0
-        width: 679
-        height: 252
+        width: 769
+        height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_82
-      rect:
-        serializedVersion: 2
-        x: 1569
-        y: 0
-        width: 679
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_83
-      rect:
-        serializedVersion: 2
-        x: 2338
-        y: 0
-        width: 679
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_84
-      rect:
-        serializedVersion: 2
-        x: 3107
-        y: 0
-        width: 679
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_85
-      rect:
-        serializedVersion: 2
-        x: 3876
-        y: 0
-        width: 678
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_86
-      rect:
-        serializedVersion: 2
-        x: 4645
-        y: 0
-        width: 678
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_87
-      rect:
-        serializedVersion: 2
-        x: 5414
-        y: 0
-        width: 678
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_88
-      rect:
-        serializedVersion: 2
-        x: 6183
-        y: 0
-        width: 678
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: crawler_attack_1_89
-      rect:
-        serializedVersion: 2
-        x: 6952
-        y: 0
-        width: 678
-        height: 252
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
