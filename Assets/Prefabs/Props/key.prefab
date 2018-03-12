@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114135093074521688}
   - component: {fileID: 114052189478646508}
   - component: {fileID: 114226318102391274}
+  - component: {fileID: 114616836124547188}
   m_Layer: 0
   m_Name: key
   m_TagString: Pickup
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToIgnore:
   - Player
+  - Enemy
 --- !u!114 &114135093074521688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,6 +172,19 @@ MonoBehaviour:
   darkSprites:
   - {fileID: 21300000, guid: 597236bbbb87b1b48a64ea43e7d3280c, type: 3}
   lightTile: 0
+--- !u!114 &114616836124547188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317615055739762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969e350ea698ca34eb259022a27e371b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPath: event:/Players/Grass/GrassLanding
+  magnitude: 2
 --- !u!212 &212025862446134360
 SpriteRenderer:
   m_ObjectHideFlags: 1

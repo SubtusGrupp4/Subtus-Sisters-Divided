@@ -30,8 +30,9 @@ public class OverEdgeFalling : MonoBehaviour
 				rb.velocity = new Vector2 (0, rb.velocity.y);
 			}
 			GetComponent<FixedJoint2D> ().enabled = false;
+
 			foreach (GameObject IO in ignoreObject)
-				Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.col, true);
+				Physics2D.IgnoreCollision (IO.GetComponent<BoxCollider2D> (), col, true);
 		}
         else 
 		{
@@ -39,7 +40,7 @@ public class OverEdgeFalling : MonoBehaviour
             GetComponent<DisplayIconTrigger>().SetShowIcon(true);
 
 			foreach (GameObject IO in ignoreObject)
-				Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.col, false);
+                Physics2D.IgnoreCollision (IO.GetComponent<BoxCollider2D> (), col, false);
 		}
 		
 	}
