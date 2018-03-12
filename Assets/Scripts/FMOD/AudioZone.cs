@@ -37,6 +37,9 @@ public class AudioZone : MonoBehaviour
     [Tooltip("This will clear the parameters and fetch all parameters from FMOD. If it doesn't update, play and then stop the game. It should fetch the parameters. If it still doesn't, make sure that under 'Initial Paremeters' in the event emitter component, that all parameters are checked.")]
     private bool fetchParameters = true;
 
+    [SerializeField]
+    private bool useGizmos = true;
+
     private void Start()
     {
         if (resetOnExit && !setStartOnEnter && emitter != null && emitter.Event != null)
@@ -108,6 +111,24 @@ public class AudioZone : MonoBehaviour
             if (resetOnExit)
                 foreach (Parameter p in oldParameters)
                     emitter.SetParameter(p.name, p.value);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (useGizmos)
+        {
+            BoxCollider2D bc = GetComponent<BoxCollider2D>();
+
+            Vector3 topRight = new Vector3(bc.bounds.size.x / 2f, bc.bounds.size.y / 2f);
+            Vector3 botRight = new Vector3(bc.bounds.size.x / 2f, -(bc.bounds.size.y / 2f));
+
+            Vector3 topLeft = new Vector3(-(bc.bounds.size.x / 2f), bc.bounds.size.y / 2f);
+            Vector3 botLeft = new Vector3(-(bc.bounds.size.x / 2f), -(bc.bounds.size.y / 2f));
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(topLeft + transform.position, botLeft + transform.position);
+            Gizmos.DrawLine(topRight + transform.position, botRight + transform.position);
         }
     }
 }
