@@ -14,7 +14,7 @@ public class ArrowPointTo : MonoBehaviour
     [SerializeField]
     Vector2 direction;
 
-    public bool showArrow = false;
+    private bool showArrow = false;
 
     private SpriteRenderer sr;
 
@@ -34,18 +34,16 @@ public class ArrowPointTo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (showArrow)
-        {
-            float x = Input.GetAxisRaw(rightXAxis);
-            float y = Input.GetAxisRaw(rightYAxis);
+    	float x = Input.GetAxisRaw(rightXAxis);
+        float y = Input.GetAxisRaw(rightYAxis);
 
-            if (y < 0f)
-                x = -x;
+        if (y < 0f)
+			x = -x;
 
-            direction = new Vector2(x, y);
-            Quaternion rotation = Quaternion.LookRotation(direction.normalized, Vector2.right);
-            transform.rotation = new Quaternion(0f, 0f, rotation.x, rotation.w);
-        }
+        direction = new Vector2(x, y);
+        Quaternion rotation = Quaternion.LookRotation(direction.normalized, Vector2.right);
+        transform.rotation = new Quaternion(0f, 0f, rotation.x, rotation.w);
+        
     }
 
     public void ShowArrow(bool show)
