@@ -172,7 +172,7 @@ MonoBehaviour:
   stepRange: 1
   climbRange: 0
   maxSlope: 60
-  turnRate: 0
+  turnRate: 3
   aggroRange: 0
   checkPoints: []
 --- !u!114 &114792231417795300
