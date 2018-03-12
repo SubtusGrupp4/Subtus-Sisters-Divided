@@ -115,11 +115,10 @@ public class InstantiateGravityBomb : MonoBehaviour
 		
 		sensitivity = Mathf.Sqrt ((Direction.x * Direction.x) + (Direction.y * Direction.y));
 
-		if (sensitivity > 0.3f) {
+		if (sensitivity > 0.3f && reloaded)
 			arrow.GetComponent<ArrowPointTo> ().ShowArrow (true);
-		} else{
+        else
 			arrow.GetComponent<ArrowPointTo>().ShowArrow(false);
-		}
 
 		if (sensitivity > 0.90f && reloaded) {
 			

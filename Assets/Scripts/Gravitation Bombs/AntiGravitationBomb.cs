@@ -25,7 +25,6 @@ public class AntiGravitationBomb : MonoBehaviour
 	private GameObject[] ignoreObject;
     private List<GameObject> pullObjects;
     private Rigidbody2D rb;
-    private bool buttonPressed;
     private bool targetting;
     private bool antiGravitationActivated;
     private string activateBomb = "Fire_Bomb_C1";
@@ -38,7 +37,6 @@ public class AntiGravitationBomb : MonoBehaviour
 		
         rb = GetComponent<Rigidbody2D>();
         pullObjects = new List<GameObject>();
-        buttonPressed = true;
         antiGravitationActivated = false;
         targetting = false;
 
@@ -53,14 +51,13 @@ public class AntiGravitationBomb : MonoBehaviour
 
     void ActivateAntiGravitationBomb()
     {
-		if ((Input.GetAxis(activateBomb) > 0.5f || Input.GetKeyDown(KeyCode.O))&& buttonPressed)
+		if ((Input.GetAxis(activateBomb) != 0f || Input.GetKeyDown(KeyCode.O)))
         {
 			foreach (GameObject particle in particles) 
 			{
 				GameObject clone = Instantiate (particle, transform.position, Quaternion.identity);
 				Destroy (clone, 2f);
 			}
-            buttonPressed = false;
             targetting = true;
             TargetInRange();
             antiGravitationActivated = true;

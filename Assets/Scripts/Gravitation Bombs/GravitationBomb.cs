@@ -45,7 +45,7 @@ public class GravitationBomb : MonoBehaviour
 
         ignoreObject = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject IO in ignoreObject)
-            Physics2D.IgnoreCollision(IO.GetComponent<Collider2D>(), this.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(IO.GetComponent<BoxCollider2D>(), this.GetComponent<Collider2D>(), true);
 
         buttonPressed = true;
         gravitationActivated = false;
@@ -85,7 +85,7 @@ public class GravitationBomb : MonoBehaviour
     {
 
         deActivate -= Time.deltaTime;
-        if ((Input.GetAxis(activateBomb) > 0.5f || Input.GetKeyDown(KeyCode.T)) && buttonPressed)
+        if ((Input.GetAxis(activateBomb) != 0f || Input.GetKeyDown(KeyCode.T)) && buttonPressed)
         {
 
             foreach (GameObject particle in particles)
@@ -99,7 +99,7 @@ public class GravitationBomb : MonoBehaviour
             gravitationActivated = true;
             rb.bodyType = RigidbodyType2D.Static;
         }
-        if ((Input.GetAxis(activateBomb) <= 0 || Input.GetKeyUp(KeyCode.T)) && !buttonPressed)
+        if ((Input.GetAxis(activateBomb) == 0f || Input.GetKeyUp(KeyCode.T)) && !buttonPressed)
         {
             ResetGravity(0);
             Destroy(gameObject);
@@ -114,6 +114,8 @@ public class GravitationBomb : MonoBehaviour
     {
         if (targetting)
         {
+            pullObjects.Clear();
+
             foreach (string tag in tagNames)
             {
                 GameObject[] o = GameObject.FindGameObjectsWithTag(tag);
@@ -127,7 +129,14 @@ public class GravitationBomb : MonoBehaviour
                 }
             }
             targetting = false;
+            StartCoroutine(TargetingTimer());
         }
+    }
+
+    private IEnumerator TargetingTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
+        targetting = true;
     }
 
     void TargetOutsideRange()
