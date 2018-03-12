@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 114769637922038836}
   - component: {fileID: 114861638884894700}
   - component: {fileID: 114012148373138204}
+  - component: {fileID: 61382578469589184}
   m_Layer: 0
   m_Name: PlayerBot 1
   m_TagString: Player
@@ -137,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.869987, y: -4.549999, z: 0}
+  m_LocalPosition: {x: -59.09, y: -3.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -165,13 +166,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!61 &61382578469589184
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566391204588738}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.11433029, y: -0.38108802}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 3.84}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.44114685, y: 2.8644142}
+  m_EdgeRadius: 0
 --- !u!70 &70667158153152876
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -330,6 +356,7 @@ MonoBehaviour:
   pulling: 0
   speed: 5
   jumpVelocity: 14
+  landTime: 0
   airControl: 0
   airControlPrecentage: 1
   resetJumpOn:
