@@ -107,7 +107,11 @@ public class Reviving : MonoBehaviour {
         if (pc.player == Controller.Player1)
             player = GameManager.instance.playerBot;
         else
+        {
             player = GameManager.instance.playerTop;
+            player.GetComponent<PlayerController>().crawling = false;
+        }
+
 
         SafepointManager.instance.PlacePlayerOnCheckpoint(player);
         player.gameObject.SetActive(true);
@@ -127,6 +131,7 @@ public class Reviving : MonoBehaviour {
         foreach (GameObject revive in revives)
             Destroy(revive);
 
+        GameManager.instance.playerTop.GetComponent<PlayerController>().crawling = false;
         // Set the camera to transition towards the safepoints
         SafepointManager.instance.RespawnTransition();
     }
