@@ -196,6 +196,7 @@ public class GridEditor : Editor
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Function Buttons", EditorStyles.boldLabel); // Used as buttons for several functions
+        /*
         EditorGUI.BeginChangeCheck();
         grid.checkAdjacent = EditorGUILayout.Toggle(new GUIContent("Check Adjacent", "[CAN'T UNDO] Calls the function to disabe colliders on occluded objects."), grid.checkAdjacent);
         if (EditorGUI.EndChangeCheck())
@@ -205,6 +206,7 @@ public class GridEditor : Editor
         grid.restoreColliders = EditorGUILayout.Toggle(new GUIContent("Restore Colliders", "[CAN'T UNDO] Restores the colliders on all tiles."), grid.restoreColliders);
         if (EditorGUI.EndChangeCheck())
             RestoreColliders();
+        */
 
         EditorGUI.BeginChangeCheck();
         grid.resetAllSprites = EditorGUILayout.Toggle(new GUIContent("Reset All Sprites", "[CAN'T UNDO] Uses the position to set the appropriate sprite."), grid.resetAllSprites);
@@ -265,6 +267,8 @@ public class GridEditor : Editor
         }
     }
 
+
+    /*
     // Function called from a button
     // Used for disabling surrounded colliders
     private void CheckAdjacentBlocks()
@@ -279,13 +283,16 @@ public class GridEditor : Editor
         }
         foreach (Transform tile in chosen)                                                  // For each chosen transform,
         {
-            BoxCollider2D[] colliders = tile.GetComponents<BoxCollider2D>();                // get the box colliders
-            foreach (BoxCollider2D collider in colliders)                                   // For each box collider,
+            if (tile.GetComponents<EdgeCollider2D>() != null)
             {
-                if (collider.enabled)                                                       // if they are enabled,
+                EdgeCollider2D[] colliders = tile.GetComponents<EdgeCollider2D>();                // get the box colliders
+                foreach (EdgeCollider2D collider in colliders)                                   // For each box collider,
                 {
-                    collider.enabled = false;                                               // disable them
-                    Debug.Log("Disabled colliders");
+                    if (collider.enabled)                                                       // if they are enabled,
+                    {
+                        collider.enabled = false;                                               // disable them
+                        Debug.Log("Disabled colliders");
+                    }
                 }
             }
             PlatformEffector2D[] effectors = tile.GetComponents<PlatformEffector2D>();
@@ -321,13 +328,25 @@ public class GridEditor : Editor
         }
         foreach (Transform tile in chosen)
         {
-            BoxCollider2D[] colliders = tile.GetComponents<BoxCollider2D>();
-            foreach (BoxCollider2D collider in colliders)
+            if (tile.GetComponents<EdgeCollider2D>() != null)
             {
-                if (collider.enabled)
+                EdgeCollider2D[] colliders = tile.GetComponents<EdgeCollider2D>();
+                foreach (EdgeCollider2D collider in colliders)
                 {
-                    collider.enabled = false;
-                    Debug.Log("Disabled colliders");
+                    if (collider.enabled)
+                    {
+                        collider.enabled = false;
+                        Debug.Log("Disabled colliders");
+                    }
+                }
+            }
+            PlatformEffector2D[] effectors = tile.GetComponents<PlatformEffector2D>();
+            foreach (PlatformEffector2D e in effectors)
+            {
+                if (e.enabled)
+                {
+                    e.enabled = false;
+                    Debug.Log("Disabled effectors");
                 }
             }
         }
@@ -338,13 +357,25 @@ public class GridEditor : Editor
     {
         foreach (Transform tile in grid.tileTransforms)                         // For each tile transform,
         {
-            BoxCollider2D[] colliders = tile.GetComponents<BoxCollider2D>();    // get the box colliders
-            foreach (BoxCollider2D collider in colliders)                       // For each box collider,
+            if (tile.GetComponents<EdgeCollider2D>() != null)
             {
-                if (!collider.enabled)                                          // if they are disabled,
+                EdgeCollider2D[] colliders = tile.GetComponents<EdgeCollider2D>();    // get the box colliders
+                foreach (EdgeCollider2D collider in colliders)                       // For each box collider,
                 {
-                    collider.enabled = true;                                    // enable them
-                    Debug.Log("Enabled colliders");
+                    if (!collider.enabled)                                          // if they are disabled,
+                    {
+                        collider.enabled = true;                                    // enable them
+                        Debug.Log("Enabled colliders");
+                    }
+                }
+            }
+            PlatformEffector2D[] effectors = tile.GetComponents<PlatformEffector2D>();
+            foreach (PlatformEffector2D e in effectors)
+            {
+                if (!e.enabled)
+                {
+                    e.enabled = true;
+                    Debug.Log("Enabled effectors");
                 }
             }
         }
@@ -357,17 +388,30 @@ public class GridEditor : Editor
         Transform[] selection = Selection.transforms;
         foreach (Transform tile in selection)
         {
-            Collider2D[] colliders = tile.GetComponents<Collider2D>();
-            foreach (Collider2D collider in colliders)
+            if (tile.GetComponents<EdgeCollider2D>() != null)
             {
-                if (!collider.enabled)
+                EdgeCollider2D[] colliders = tile.GetComponents<EdgeCollider2D>();
+                foreach (EdgeCollider2D collider in colliders)
                 {
-                    collider.enabled = true;
-                    Debug.Log("Enabled colliders");
+                    if (!collider.enabled)
+                    {
+                        collider.enabled = true;
+                        Debug.Log("Enabled colliders");
+                    }
+                }
+            }
+            PlatformEffector2D[] effectors = tile.GetComponents<PlatformEffector2D>();
+            foreach (PlatformEffector2D e in effectors)
+            {
+                if (!e.enabled)
+                {
+                    e.enabled = true;
+                    Debug.Log("Enabled effectors");
                 }
             }
         }
     }
+    */
 
     void AddTilesAsChildren()
     {
