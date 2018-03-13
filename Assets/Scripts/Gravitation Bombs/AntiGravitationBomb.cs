@@ -77,6 +77,7 @@ public class AntiGravitationBomb : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Static;
 
             FMODUnity.RuntimeManager.PlayOneShot(activate, transform.position);
+            GetComponent<AudioOnCollision>().enabled = false;
 
             Destroy(gameObject);
         }
