@@ -7,6 +7,7 @@ public class KillPlayer : MonoBehaviour
 
     BasicAnimator bAnim;
     AIMovement AImove;
+    private bool attacking;
 
     // Use this for initialization
     void Start()
@@ -23,10 +24,11 @@ public class KillPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bAnim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(BasicAnimator.attackAnimName) && bAnim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !bAnim.GetComponent<Animator>().IsInTransition(0))
         {
-            if (bAnim.GetComponent<Animator>().GetBool(BasicAnimator.animAttack) == false)
+            if (bAnim.GetComponent<Animator>().GetBool(BasicAnimator.animAttack) == false && attacking)
             {
+                attacking = false;
+                Debug.Log("Animation Doneish");
                 AImove.UnFreeze();
             }
         }
@@ -48,9 +50,11 @@ public class KillPlayer : MonoBehaviour
         if (obj.transform.tag == "Player")
         {
             obj.transform.GetComponent<Reviving>().Die();
+           // obj.transform.GetComponent<Reviving>().die
 
             bAnim.Attack();
-
+            attacking = true;
+            Debug.Log("KILL PLAYER");
             AImove.Freeze(false, 0);
         }
     }

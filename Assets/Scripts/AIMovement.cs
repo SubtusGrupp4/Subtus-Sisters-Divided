@@ -103,16 +103,12 @@ public class AIMovement : MonoBehaviour
     //
     protected BasicAnimator bAnim;
     //
-
-    private EnemyAudio enemyAudio;
-
     protected virtual void Awake()
     {
         if (GetComponent<BasicAnimator>())
             bAnim = GetComponent<BasicAnimator>();
 
         currentState = startState;
-        enemyAudio = GetComponent<EnemyAudio>();
 
         if (GetComponent<Rigidbody2D>())
             rigidbody2D = GetComponent<Rigidbody2D>();
@@ -145,7 +141,7 @@ public class AIMovement : MonoBehaviour
         rayOffSetX = GetComponent<BoxCollider2D>().size.x * transform.localScale.x / 2;
         rayOffSetY = GetComponent<BoxCollider2D>().size.y * transform.localScale.y / 2;
         boxOffSetY = GetComponent<BoxCollider2D>().offset.y;
-        boxOffSetX = GetComponent<BoxCollider2D>().offset.x *-1;
+        boxOffSetX = GetComponent<BoxCollider2D>().offset.x * -1;
 
         slopeRayOffset = rayOffSetY;
 
@@ -183,9 +179,10 @@ public class AIMovement : MonoBehaviour
     {
         if (!stunned)
         {
-            if (!isDead && !frozen && !isFalling)
+            if (!isDead && !frozen)
             {
                 Move();
+                Debug.Log("MOVIGN IS TRU + state is " + currentState);
 
             }
             CheckFalling();
@@ -194,10 +191,12 @@ public class AIMovement : MonoBehaviour
 
     public void Freeze(bool autoActivate, float time)
     {
-       
-        if (!frozen && time != 0)
+        Debug.Log("Freeze");
+
+        if (!frozen)
         {
             savedState = currentState;
+            Debug.Log(savedState);
             currentState = MovementEnum.Idle;
             rigidbody2D.velocity = Vector2.zero;
 
@@ -213,6 +212,8 @@ public class AIMovement : MonoBehaviour
 
     public void UnFreeze()
     {
+        Debug.Log("UnFreeze");
+        Debug.Log("svaedSTAte " + savedState);
         currentState = savedState;
         frozen = false;
     }
@@ -295,10 +296,7 @@ public class AIMovement : MonoBehaviour
 
                             //
                             if (bAnim != null)
-                            {
                                 bAnim.Falling(false);
-                                enemyAudio.ChangeState(EnemyAudioState.Falling);
-                            }
                             //
                             break;
                         }
@@ -347,25 +345,23 @@ public class AIMovement : MonoBehaviour
 
         if (currentState == MovementEnum.Stalking)
         {
-            enemyAudio.ChangeState(EnemyAudioState.Walking);
             StalkingMove();
+
         }
 
         else if (currentState == MovementEnum.OneDirBounce)
         {
-            enemyAudio.ChangeState(EnemyAudioState.Walking);
+
             OneDirmove();
         }
 
         else if (currentState == MovementEnum.Patrolling)
         {
-            enemyAudio.ChangeState(EnemyAudioState.Walking);
             PatrollingMove();
         }
 
         else if (currentState == MovementEnum.Idle)
         {
-            enemyAudio.ChangeState(EnemyAudioState.Idle);
             IdleMove();
         }
 
@@ -431,17 +427,15 @@ public class AIMovement : MonoBehaviour
             if (CheckWall(transform.position))
             {
 
-                  if (CheckJump())
-                  {
-                      // DOING JUMP 
-                      isFalling = true;
-                  } 
-                 else
+                if (CheckJump())
+                {
+                    // DOING JUMP 
+                    isFalling = true;
+                }
+                else
                 {
                     Bounce();
 
-                      Freeze(false, turnRate);
-                      TurnAnim(turnRate);
                 }
             }
             else if (CheckSlope() == false)
@@ -450,15 +444,12 @@ public class AIMovement : MonoBehaviour
                 {
                     Bounce();
 
-                      Freeze(false, turnRate);
-                      TurnAnim(turnRate);
+
                 }
 
             }
 
             NormalizeSlope();
-
-            
 
         }
     }
@@ -521,7 +512,7 @@ public class AIMovement : MonoBehaviour
             ,
             0, 0);
 
-        objHit = Physics2D.RaycastAll(pos + ree + new Vector3(boxOffSetX * directionMultiplier.x  + rayDistanceX * directionMultiplier.x , boxOffSetY * flipValue, 0),
+        objHit = Physics2D.RaycastAll(pos + ree + new Vector3(boxOffSetX * directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
             new Vector2(directionMultiplier.x, 0),
             0.1f);
 
@@ -529,6 +520,7 @@ public class AIMovement : MonoBehaviour
             new Vector2(directionMultiplier.x, 0),
             Color.green);
 
+        float distanceXXX;
         bool blocked = false;
 
         for (int i = 0; i < objHit.Length; i++)
@@ -541,7 +533,12 @@ public class AIMovement : MonoBehaviour
                 if (objHit[i].transform.tag == bounceOn[j])
                 {
                     if ((Mathf.Abs(objHit[i].normal.x) >= maxSlope))
+                    {
+                        distanceXXX = Vector3.Distance(pos + new Vector3(boxOffSetX + directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
+                            objHit[i].transform.position);
+
                         walls = true;
+                    }
                     else
                     {
                         blocked = true;
@@ -570,7 +567,9 @@ public class AIMovement : MonoBehaviour
                 if (objHit[i].transform.tag == walkOn[j])
                 {
                     if (Mathf.Abs(objHit[i].normal.x) > minSlope && (Mathf.Abs(objHit[i].normal.x) < maxSlope))
+                    {
                         slopes = true;
+                    }
                 }
             }
         }
@@ -647,6 +646,13 @@ public class AIMovement : MonoBehaviour
     protected void Bounce()
     {
         directionMultiplier *= -1;
+
+        if (turnRate != 0)
+        {
+            Debug.Log("Turning2");
+            Freeze(false, turnRate);
+            TurnAnim(turnRate);
+        }
     }
     protected void Flip()
     {
