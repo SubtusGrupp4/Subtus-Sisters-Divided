@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 61102808492496344}
   - component: {fileID: 114301891425821956}
   - component: {fileID: 61651945524774202}
+  - component: {fileID: 114550923685617972}
+  - component: {fileID: 114355206804846730}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Enemy
@@ -148,6 +150,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffect: {fileID: 1691474578161754, guid: 3498d14958f1aea408625d0c710ea232,
     type: 2}
+--- !u!114 &114355206804846730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284856570872486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: 
+  playOnStart: 0
+  is3D: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  parameters: []
+--- !u!114 &114550923685617972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284856570872486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4631589fc43a4c4c97f0a98655e6eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioState: 0
+  idleEvent: 
+  walkingEvent: event:/Players/Grass/Grass
+  attackEvent: event:/Mario/Enemy/Rat attack
+  fallingEvent: event:/Mario/Enemy/Rat falling
 --- !u!114 &114725340640989346
 MonoBehaviour:
   m_ObjectHideFlags: 1

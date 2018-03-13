@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 61235764867089260}
   - component: {fileID: 114289116344412696}
   - component: {fileID: 114123107256946014}
+  - component: {fileID: 114183541842577064}
+  - component: {fileID: 114761221180828652}
   m_Layer: 0
   m_Name: Police
   m_TagString: Enemy
@@ -148,6 +150,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffect: {fileID: 1691474578161754, guid: 3498d14958f1aea408625d0c710ea232,
     type: 2}
+--- !u!114 &114183541842577064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967850137404754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4631589fc43a4c4c97f0a98655e6eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioState: 0
+  idleEvent: 
+  walkingEvent: event:/Mario/Enemy/Police footsteps grass
+  attackEvent: 
+  fallingEvent: 
 --- !u!114 &114289116344412696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,6 +190,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animGameObject: {fileID: 1967850137404754}
   facing: 1
+--- !u!114 &114761221180828652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967850137404754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: 
+  playOnStart: 0
+  is3D: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  parameters: []
 --- !u!114 &114800699194534338
 MonoBehaviour:
   m_ObjectHideFlags: 1

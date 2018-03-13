@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 61211914237562796}
   - component: {fileID: 114066050197473610}
   - component: {fileID: 61693463894736150}
+  - component: {fileID: 114273929674327644}
+  - component: {fileID: 114793896643122136}
   m_Layer: 0
   m_Name: Crawler
   m_TagString: Enemy
@@ -186,6 +188,22 @@ MonoBehaviour:
   turnRate: 0
   aggroRange: 0
   checkPoints: []
+--- !u!114 &114273929674327644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1302186382472754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4631589fc43a4c4c97f0a98655e6eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioState: 0
+  idleEvent: event:/Carl/Au_Ca_Crawler_Idle
+  walkingEvent: event:/Carl/Au_Ca_Crawler_Walking
+  attackEvent: event:/Carl/Au_Ca_Crawler_Attacking
+  fallingEvent: event:/Carl/Au_Ca_Crawler_Falling
 --- !u!114 &114684464768220210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +217,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animGameObject: {fileID: 1302186382472754}
   facing: -1
+--- !u!114 &114793896643122136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1302186382472754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Carl/Au_Ca_Crawler_Idle
+  playOnStart: 0
+  is3D: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  parameters: []
 --- !u!212 &212565886486862124
 SpriteRenderer:
   m_ObjectHideFlags: 1

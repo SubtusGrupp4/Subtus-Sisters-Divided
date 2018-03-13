@@ -103,12 +103,16 @@ public class AIMovement : MonoBehaviour
     //
     protected BasicAnimator bAnim;
     //
+
+    private EnemyAudio enemyAudio;
+
     protected virtual void Awake()
     {
         if (GetComponent<BasicAnimator>())
             bAnim = GetComponent<BasicAnimator>();
 
         currentState = startState;
+        enemyAudio = GetComponent<EnemyAudio>();
 
         if (GetComponent<Rigidbody2D>())
             rigidbody2D = GetComponent<Rigidbody2D>();
@@ -179,7 +183,7 @@ public class AIMovement : MonoBehaviour
     {
         if (!stunned)
         {
-            if (!isDead && !frozen)
+            if (!isDead && !frozen && !isFalling)
             {
                 Move();
 
@@ -291,7 +295,10 @@ public class AIMovement : MonoBehaviour
 
                             //
                             if (bAnim != null)
+                            {
                                 bAnim.Falling(false);
+                                enemyAudio.ChangeState(EnemyAudioState.Falling);
+                            }
                             //
                             break;
                         }
@@ -340,23 +347,25 @@ public class AIMovement : MonoBehaviour
 
         if (currentState == MovementEnum.Stalking)
         {
+            enemyAudio.ChangeState(EnemyAudioState.Walking);
             StalkingMove();
-
         }
 
         else if (currentState == MovementEnum.OneDirBounce)
         {
-
+            enemyAudio.ChangeState(EnemyAudioState.Walking);
             OneDirmove();
         }
 
         else if (currentState == MovementEnum.Patrolling)
         {
+            enemyAudio.ChangeState(EnemyAudioState.Walking);
             PatrollingMove();
         }
 
         else if (currentState == MovementEnum.Idle)
         {
+            enemyAudio.ChangeState(EnemyAudioState.Idle);
             IdleMove();
         }
 
@@ -520,7 +529,6 @@ public class AIMovement : MonoBehaviour
             new Vector2(directionMultiplier.x, 0),
             Color.green);
 
-        float distanceXXX;
         bool blocked = false;
 
         for (int i = 0; i < objHit.Length; i++)
@@ -533,12 +541,7 @@ public class AIMovement : MonoBehaviour
                 if (objHit[i].transform.tag == bounceOn[j])
                 {
                     if ((Mathf.Abs(objHit[i].normal.x) >= maxSlope))
-                    {
-                        distanceXXX = Vector3.Distance(pos + new Vector3(boxOffSetX + directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
-                            objHit[i].transform.position);
-
                         walls = true;
-                    }
                     else
                     {
                         blocked = true;
@@ -567,9 +570,7 @@ public class AIMovement : MonoBehaviour
                 if (objHit[i].transform.tag == walkOn[j])
                 {
                     if (Mathf.Abs(objHit[i].normal.x) > minSlope && (Mathf.Abs(objHit[i].normal.x) < maxSlope))
-                    {
                         slopes = true;
-                    }
                 }
             }
         }
