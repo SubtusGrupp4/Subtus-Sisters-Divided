@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 114728803591559300}
   - component: {fileID: 114135039996014676}
   m_Layer: 10
-  m_Name: Box
+  m_Name: box
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventPath: event:/Players/Wood/WoodLanding
   magnitude: 2
+  isActive: 1
 --- !u!114 &114157756893009226
 MonoBehaviour:
   m_ObjectHideFlags: 1

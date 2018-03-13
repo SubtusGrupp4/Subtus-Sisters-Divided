@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114616836124547188}
   - component: {fileID: 50963223252814110}
   m_Layer: 0
-  m_Name: Key
+  m_Name: key
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventPath: event:/Players/Grass/GrassLanding
   magnitude: 2
+  isActive: 1
 --- !u!212 &212025862446134360
 SpriteRenderer:
   m_ObjectHideFlags: 1
