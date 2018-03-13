@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 50218289404465942}
   - component: {fileID: 114495002026745236}
   - component: {fileID: 114321911796588648}
+  - component: {fileID: 114675924956563318}
+  - component: {fileID: 114181195610780838}
   m_Layer: 0
   m_Name: GravityBomb
   m_TagString: Untagged
@@ -173,6 +175,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114181195610780838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086342068457356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969e350ea698ca34eb259022a27e371b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPath: event:/Carl/Au_Ca_Kara_Weapon_Bounce
+  magnitude: 2
 --- !u!114 &114321911796588648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +209,10 @@ MonoBehaviour:
   particles:
   - {fileID: 1702725205683486, guid: 1a57d50f24b8c714a8634ca6641d0af6, type: 2}
   - {fileID: 1336522416242256, guid: 712f325469751a84485237283fcce0e1, type: 2}
+  thrown: event:/Carl/Au_Ca_Kara_Weapon_Throw
+  loop: event:/Carl/Au_Ca_Kara_Weapon_Loop
+  activate: event:/Carl/Au_Ca_Kara_Weapon_Activate
+  deactivate: event:/Carl/Au_Ca_Kara_Weapon_Detonate
 --- !u!114 &114495002026745236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,6 +226,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   original: {fileID: 0}
   reversed: {fileID: 0}
+--- !u!114 &114675924956563318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086342068457356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Carl/Au_Ca_Kara_Weapon_Loop
+  playOnStart: 0
+  is3D: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+  parameters: []
 --- !u!198 &198599097023153870
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -35,23 +35,42 @@ public class GravitationBomb : MonoBehaviour
     private int decreaseGravity;
     private string activateBomb = "Fire_Bomb_C2";
 
+    [Header("FMOD Audio")]
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string thrown;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string loop;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string activate;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string deactivate;
+
+    private FMODEmitter emitter;
+
 
 
     void Start()
     {
+        emitter = GetComponent<FMODEmitter>();
         particleClones = new List<GameObject>();
         rb = GetComponent<Rigidbody2D>();
         pullObjects = new List<GameObject>();
 
         ignoreObject = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject IO in ignoreObject)
-            Physics2D.IgnoreCollision(IO.GetComponent<BoxCollider2D>(), this.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(IO.GetComponent<BoxCollider2D>(), GetComponent<CircleCollider2D>(), true);
 
         buttonPressed = true;
         gravitationActivated = false;
         targetting = false;
         decreaseGravity = 0;
         rotationSpeed = 360f;
+
+        FMODUnity.RuntimeManager.PlayOneShot(thrown, transform.position);
     }
 
     void Update()
@@ -98,14 +117,22 @@ public class GravitationBomb : MonoBehaviour
             targetting = true;
             gravitationActivated = true;
             rb.bodyType = RigidbodyType2D.Static;
+
+            FMODUnity.RuntimeManager.PlayOneShot(activate, transform.position);
+            emitter.SetEvent(loop);
+            emitter.Play();
         }
         if ((Input.GetAxis(activateBomb) == 0f || Input.GetKeyUp(KeyCode.T)) && !buttonPressed)
         {
             ResetGravity(0);
+            emitter.Stop();
+            FMODUnity.RuntimeManager.PlayOneShot(deactivate, transform.position);
             Destroy(gameObject);
         }
         if (deActivate < 0)
         {
+            emitter.Stop();
+            FMODUnity.RuntimeManager.PlayOneShot(deactivate, transform.position);
             Destroy(gameObject);
         }
     }
@@ -156,7 +183,6 @@ public class GravitationBomb : MonoBehaviour
     {
         if (gravitationActivated)
         {
-
             foreach (GameObject toPull in pullObjects)
             {
                 toPull.GetComponent<Rigidbody2D>().MoveRotation(toPull.GetComponent<Rigidbody2D>().rotation + rotationSpeed * Time.fixedDeltaTime);
@@ -195,7 +221,6 @@ public class GravitationBomb : MonoBehaviour
             Destroy(particle);
         }
     }
-
 }
 
 

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 50128041657418348}
   - component: {fileID: 114964056136560778}
   - component: {fileID: 114030968489187704}
+  - component: {fileID: 114661525122279982}
   m_Layer: 0
   m_Name: Anti-GravityBomb
   m_TagString: GravitationBomb
@@ -187,6 +188,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   original: {fileID: 0}
   reversed: {fileID: 0}
+--- !u!114 &114661525122279982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1420963257892870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969e350ea698ca34eb259022a27e371b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPath: event:/Mario/Gravitybomb/Bounce
+  magnitude: 2
 --- !u!114 &114964056136560778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,6 +220,8 @@ MonoBehaviour:
   tagNames:
   - Enemy
   - Box
+  thrown: event:/Mario/Gravitybomb/Throw
+  activate: event:/Mario/Gravitybomb/Explotion
 --- !u!114 &114978810026506130
 MonoBehaviour:
   m_ObjectHideFlags: 1

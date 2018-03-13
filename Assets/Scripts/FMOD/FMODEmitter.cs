@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections.Generic;
+using System.Collections;
 
 public class FMODEmitter : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class FMODEmitter : MonoBehaviour
 
     [Header("3D Settings")]
     public bool is3D = true;
-    public bool OverrideAttenuation = true;
+    public bool OverrideAttenuation = false;
     [Range(0f, 1000f)]
     public float OverrideMinDistance = 1.0f;
     [Range(0f, 1000f)]
@@ -100,5 +100,32 @@ public class FMODEmitter : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, OverrideMinDistance);
             Gizmos.DrawWireSphere(transform.position, OverrideMaxDistance);
         }
+    }
+
+    public float GetLength(string eventPath)
+    {
+        if (instance.isValid())
+        {
+            FMOD.Studio.EventDescription eventDescription;
+            eventDescription = FMODUnity.RuntimeManager.GetEventDescription(eventPath);
+            int length;
+            eventDescription.getLength(out length);
+            return length / 1000f;
+        }
+        else
+            return -1f;
+    }
+
+    public void ChangeAfterTime(float time, string eventPath)
+    {
+        StartCoroutine(LengthTimer(time, eventPath));
+    }
+
+    private IEnumerator LengthTimer(float time, string eventPath)
+    {
+        yield return new WaitForSeconds(time);
+        Stop();
+        SetEvent(eventPath);
+        Play();
     }
 }

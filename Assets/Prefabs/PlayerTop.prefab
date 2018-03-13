@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212514255094665304}
   - component: {fileID: 50889720628123838}
   - component: {fileID: 114075432480208920}
-  - component: {fileID: 70385678077974916}
   - component: {fileID: 114398310093014814}
   - component: {fileID: 95287651329241354}
   - component: {fileID: 114315930396904570}
@@ -33,7 +32,6 @@ GameObject:
   - component: {fileID: 114440906952355416}
   - component: {fileID: 114000819981330180}
   - component: {fileID: 61235791482143752}
-  - component: {fileID: 320821957984625970}
   m_Layer: 0
   m_Name: PlayerTop
   m_TagString: Player
@@ -193,21 +191,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.364933, y: 1.9045291}
   m_EdgeRadius: 0
---- !u!70 &70385678077974916
-CapsuleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1221702535368190}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0042324066, y: -0.31026667}
-  m_Size: {x: 0.865221, y: 1.9005333}
-  m_Direction: 0
 --- !u!95 &95100411252176778
 Animator:
   serializedVersion: 3
@@ -317,9 +300,10 @@ MonoBehaviour:
     type: 2}
   shockwaveBomb: {fileID: 1420963257892870, guid: 67a15e731b440d8439aed9acb3294a90,
     type: 2}
+  arrow: {fileID: 0}
   speed: 600
   cooldown: 1.42
-  sensitivity: 0.303
+  direction: {x: 0, y: 0}
   arm: {fileID: 1885305298513428}
   throwArm: {fileID: 1412240866182594}
   playerAnim: {fileID: 114315930396904570}
@@ -588,21 +572,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!320 &320821957984625970
-PlayableDirector:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1221702535368190}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 0}
-    value: {fileID: 1221702535368190}
-  m_ExposedReferences:
-    m_References: []

@@ -29,9 +29,20 @@ public class AntiGravitationBomb : MonoBehaviour
     private bool antiGravitationActivated;
     private string activateBomb = "Fire_Bomb_C1";
 
+    [Header("FMOD Audio")]
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string thrown;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string activate;
+
+    private FMODEmitter emitter;
+
     void Start()
     {
-		ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
+        emitter = GetComponent<FMODEmitter>();
+        ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
 		foreach (GameObject IO in ignoreObject)
 			Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.GetComponent<Collider2D>(), true);
 		
@@ -40,6 +51,7 @@ public class AntiGravitationBomb : MonoBehaviour
         antiGravitationActivated = false;
         targetting = false;
 
+        FMODUnity.RuntimeManager.PlayOneShot(thrown, transform.position);
     }
 
     void Update()
@@ -63,6 +75,9 @@ public class AntiGravitationBomb : MonoBehaviour
             antiGravitationActivated = true;
             AntiGravitationPull();
             rb.bodyType = RigidbodyType2D.Static;
+
+            FMODUnity.RuntimeManager.PlayOneShot(activate, transform.position);
+
             Destroy(gameObject);
         }
         Destroy(gameObject, duration);
