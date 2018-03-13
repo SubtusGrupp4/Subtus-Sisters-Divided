@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
-  playOnStart: 0
+  Event: event:/Players/Grass/Grass
+  playOnStart: 1
   is3D: 1
   OverrideAttenuation: 0
   OverrideMinDistance: 1

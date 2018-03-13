@@ -9,6 +9,8 @@ public class KillPlayer : MonoBehaviour
     AIMovement AImove;
     private bool attacking;
 
+    private EnemyAudio enemyAudio;
+
     // Use this for initialization
     void Start()
     {
@@ -18,7 +20,7 @@ public class KillPlayer : MonoBehaviour
         if (GetComponent<AIMovement>())
             AImove = GetComponent<AIMovement>();
 
-
+        enemyAudio = GetComponent<EnemyAudio>();
     }
 
     // Update is called once per frame
@@ -51,7 +53,6 @@ public class KillPlayer : MonoBehaviour
         {
             obj.transform.GetComponent<Reviving>().Die();
            // obj.transform.GetComponent<Reviving>().die
-
             bAnim.Attack();
             attacking = true;
             Debug.Log("KILL PLAYER");
