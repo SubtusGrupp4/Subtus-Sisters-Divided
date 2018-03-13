@@ -52,9 +52,15 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         if (playerTop == null)
+        {
             Debug.LogError("PlayerTop not assigned on Start() in GameManager!");
+            playerTop = GameObject.Find("PlayerTop").transform;
+        }
         if (playerBot == null)
+        {
             Debug.LogError("PlayerBot not assigned on Start() in GameManager!");
+            playerBot = GameObject.Find("PlayerBot").transform;
+        }
         if (playerTopPrefab == null)
             Debug.LogError("PlayerTopPrefab not assigned on Start() in GameManager!");
         if (playerBotPrefab == null)

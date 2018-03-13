@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyAudioState
-{
-    Idle, Walking, Attack, Falling
-}
-
 public class EnemyAudio : MonoBehaviour
 {
-    [SerializeField]
-    private EnemyAudioState audioState;
-
     private FMODEmitter emitter;
 
     [FMODUnity.EventRef]
@@ -33,8 +25,52 @@ public class EnemyAudio : MonoBehaviour
     void Start ()
     {
         emitter = GetComponent<FMODEmitter>();
+        emitter.Play();
 	}
 
+    public void Idle()
+    {
+        if(idleEvent != "")
+        {
+            emitter.Stop();
+            emitter.SetEvent(idleEvent);
+            emitter.Play();
+            Debug.Log(transform.name + " idle");
+        }
+    }
+
+    public void Footstep()
+    {
+        if(walkingEvent != "")
+        {
+            emitter.Stop();
+            emitter.SetEvent(walkingEvent);
+            emitter.Play();
+            Debug.Log(transform.name + " footstep");
+        }
+    }
+
+    public void Attack()
+    {
+        if(attackEvent != "")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(attackEvent, transform.position);
+            Debug.Log(transform.name + " attack");
+        }
+    }
+
+    public void Falling()
+    {
+        if(fallingEvent != "")
+        {
+            emitter.Stop();
+            emitter.SetEvent(fallingEvent);
+            emitter.Play();
+            Debug.Log(transform.name + " falling");
+        }
+    }
+
+    /*
     public void ChangeState(EnemyAudioState state)
     {
         string eventPath;
@@ -63,10 +99,12 @@ public class EnemyAudio : MonoBehaviour
 
         if (audioState != state)
         {
+            Debug.Log("Playing " + eventPath);
             audioState = state;
             emitter.Stop();
             emitter.SetEvent(eventPath);
             emitter.Play();
         }
     }
+    */
 }
