@@ -137,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.09, y: -3.28, z: 0}
+  m_LocalPosition: {x: -59.159264, y: -3.0204875, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -422,7 +422,7 @@ MonoBehaviour:
     type: 2}
   arrow: {fileID: 0}
   speed: 600
-  cooldown: 0.1
+  cooldown: 1.5
   direction: {x: 0, y: 0}
   arm: {fileID: 1842559087543814}
   throwArm: {fileID: 1351313833732644}
