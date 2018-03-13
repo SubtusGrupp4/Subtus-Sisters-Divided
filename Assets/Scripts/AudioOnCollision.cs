@@ -11,11 +11,11 @@ public class AudioOnCollision : MonoBehaviour {
     [SerializeField]
     private float magnitude = 2f;
 
+    public bool isActive = true;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.relativeVelocity.magnitude > magnitude)
-        {
+        if(isActive && collision.relativeVelocity.magnitude > magnitude)
             FMODUnity.RuntimeManager.PlayOneShotAttached(eventPath, gameObject);
-        }
     }
 }

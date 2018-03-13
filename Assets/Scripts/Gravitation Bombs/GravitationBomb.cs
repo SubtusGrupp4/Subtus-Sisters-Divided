@@ -121,7 +121,7 @@ public class GravitationBomb : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot(activate, transform.position);
             emitter.SetEvent(loop);
             emitter.Play();
-            GetComponent<AudioOnCollision>().enabled = false;
+            GetComponent<AudioOnCollision>().isActive = false;
         }
         if ((Input.GetAxis(activateBomb) == 0f || Input.GetKeyUp(KeyCode.T)) && !buttonPressed)
         {
