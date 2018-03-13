@@ -17,11 +17,6 @@ public class SafepointParent : Safepoint
     [SerializeField]
     private float lineHeight = 11f; // The distance from 0 on Y to the tip of the rays
 
-    [Header("Both activated FMOD Event")]
-    [SerializeField]
-    [FMODUnity.EventRef]
-    private string eventPath;
-
     private void OnDrawGizmos()
     {
         child = transform.GetChild(0);                                                                      // Get the child safepoint
@@ -62,6 +57,6 @@ public class SafepointParent : Safepoint
         child.GetComponent<Safepoint>().playerExited = false;
         child.GetComponent<Safepoint>().isCurrent = true;
 
-        FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot(bothActivated, transform.position);
     }
 }

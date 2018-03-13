@@ -21,6 +21,14 @@ public class Safepoint : MonoBehaviour
     [Range(0f, 1f)]
     protected float timer = 1f;     // Do not change
 
+    [Header("FMOD Events")]
+    [SerializeField]
+    [FMODUnity.EventRef]
+    protected string bothActivated;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string oneActivated;
+
     private void Start()
     {
         ChangeParticleSystems(0f, 0f);
@@ -51,6 +59,10 @@ public class Safepoint : MonoBehaviour
             playerExited = false;                                   // Stop the timer
             timer = 1f;                                             // Reset the timer
             ChangeParticleSystems(9f, 0f);
+
+            if (transform != SafepointManager.instance.topSafepoint && transform != SafepointManager.instance.botSafepoint)
+                    FMODUnity.RuntimeManager.PlayOneShot(oneActivated, transform.position);
+
             SafepointManager.instance.SetAsActivated(transform);    // Tell the manager that his safepoint is activated
         }
 	}
