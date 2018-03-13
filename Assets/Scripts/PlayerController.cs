@@ -233,9 +233,9 @@ public class PlayerController : MonoBehaviour
             crawlAxisInUse = true;
 
             if (!crawling)
-                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + crawlColliderOffset + new Vector2(0, 0.11f), crawlColliderSize, 0);
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + crawlColliderOffset + new Vector2(0, 0.09f), crawlColliderSize, 0);
             else
-                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + savedColliderOffSet + new Vector2(0, 0.11f), savedColliderSize, 0);
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + savedColliderOffSet + new Vector2(0, 0.09f), savedColliderSize, 0);
             /*
             // We want to difference between transiton to crawl, and is currently crawling.
             if (!crawling)
