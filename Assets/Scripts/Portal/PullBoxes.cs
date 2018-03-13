@@ -28,7 +28,6 @@ public class PullBoxes : MonoBehaviour
     private BasicAnimator body;
     private float joyStickInput;
 
-
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -51,7 +50,8 @@ public class PullBoxes : MonoBehaviour
     void Update()
     {
         PullOrPush();
-	
+
+
         if (playerController.player == Controller.Player1)
             rayLine = new Vector2(transform.position.x, transform.position.y - 1f);
         else
@@ -65,26 +65,30 @@ public class PullBoxes : MonoBehaviour
         {
 
 
-			if (hit.collider.GetComponent<OverEdgeFalling> ().IsGrounded ()) 
-			{
-				isPulling = true;
-				playerController.pulling = true;
+            if (hit.collider.GetComponent<OverEdgeFalling>().IsGrounded())
+            {
+                isPulling = true;
+                playerController.pulling = true;
 
-				Debug.Log ("1");
+                Debug.Log("1");
 
-				box = hit.collider.gameObject;
-				box.GetComponent<Rigidbody2D> ().mass = pushSpeed;
-				box.GetComponent<FixedJoint2D> ().enabled = true;
-				box.GetComponent<FixedJoint2D> ().connectedBody = this.GetComponent<Rigidbody2D> ();
+                box = hit.collider.gameObject;
+                box.GetComponent<Rigidbody2D>().mass = pushSpeed;
+                box.GetComponent<FixedJoint2D>().enabled = true;
+                box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
 
-				Debug.Log ("2");
+                Debug.Log("2");
 
 
-				Debug.Log ("3");
-			}
+                Debug.Log("3");
+            }
+            //code
+            //cant jump while pulling/pushing
+            //code
+
         }
-		else if ((Input.GetKeyUp(KeyCode.G) || Input.GetButtonUp(pushAndPullBox)) && isPulling || (isPulling && playerController.inAir))
-		{
+        else if ((Input.GetKeyUp(KeyCode.G) || Input.GetButtonUp(pushAndPullBox)) && isPulling || (isPulling && playerController.inAir))
+        {
             isPulling = false;
             playerController.pulling = false;
 
@@ -98,30 +102,7 @@ public class PullBoxes : MonoBehaviour
             box.GetComponent<Rigidbody2D>().velocity = new Vector2(0, box.GetComponent<Rigidbody2D>().velocity.y);
             box.GetComponent<FixedJoint2D>().enabled = false;
         }
-		if (!isPulling) 
-		{
-			playerController.pulling = false;
-
-			body.Pull(false);
-			arm.Pull(false);
-
-			body.Push(false);
-			arm.Push(false);
-		}
-
     }
-
-	public void EnableController()
-	{
-		GetComponent<PlayerController> ().enabled = false;
-		Invoke ("DisableController", 0.5f);
-	}
-
-	public void DisableController()
-	{
-		GetComponent<PlayerController> ().enabled = true;
-	}
-
 
     void OnDrawGizmos()
     {
@@ -176,6 +157,7 @@ public class PullBoxes : MonoBehaviour
             }
 
         }
-			
+
+
     }
 }

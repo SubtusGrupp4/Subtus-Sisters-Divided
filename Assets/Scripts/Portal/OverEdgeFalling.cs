@@ -10,7 +10,6 @@ public class OverEdgeFalling : MonoBehaviour
 	private SpriteRenderer sp;
 	private Rigidbody2D rb;
 
-
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D> ();
@@ -25,15 +24,10 @@ public class OverEdgeFalling : MonoBehaviour
 		{
             // Don't show the button icon, since it isn't interactable in the air
             GetComponent<DisplayIconTrigger>().SetShowIcon(false);
+
 			rb.mass = 100;
             if (GetComponent<FixedJoint2D> ().enabled) {
 				rb.velocity = new Vector2 (0, rb.velocity.y);
-				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PullBoxes> ().isPulling = false;
-				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PlayerController> ().bodyAnim.Walking (Vector2.zero, true);
-				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PlayerController> ().armAnim.Walking (Vector2.zero, true);
-				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PullBoxes> ().EnableController ();
-				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-
 			}
 			GetComponent<FixedJoint2D> ().enabled = false;
 
@@ -48,8 +42,6 @@ public class OverEdgeFalling : MonoBehaviour
 			foreach (GameObject IO in ignoreObject)
                 Physics2D.IgnoreCollision (IO.GetComponent<BoxCollider2D> (), col, false);
 		}
-
-
 		
 	}
 
