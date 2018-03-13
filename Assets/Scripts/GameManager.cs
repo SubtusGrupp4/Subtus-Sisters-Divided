@@ -69,7 +69,14 @@ public class GameManager : MonoBehaviour {
         PauseKey();
         KillKey();
 
-        if(isPaused)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            SceneManager.LoadScene(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            SceneManager.LoadScene(1);
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            SceneManager.LoadScene(2);
+
+        if (isPaused)
         {
             // Holding A to fill the progress bars
             if (Input.GetAxis("Jump_C1") > 0f || Input.GetKey(KeyCode.U))

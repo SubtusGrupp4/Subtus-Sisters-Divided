@@ -23,11 +23,11 @@ GameObject:
   - component: {fileID: 60965833413354224}
   - component: {fileID: 114181524820871020}
   - component: {fileID: 114206637043048104}
-  - component: {fileID: 50261659039072652}
   - component: {fileID: 114135093074521688}
   - component: {fileID: 114052189478646508}
   - component: {fileID: 114226318102391274}
   - component: {fileID: 114616836124547188}
+  - component: {fileID: 50963223252814110}
   m_Layer: 0
   m_Name: key
   m_TagString: Pickup
@@ -41,14 +41,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317615055739762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 354.60846, y: -45.798046, z: 0}
-  m_LocalScale: {x: 3.492622, y: 3.492622, z: 3.4926217}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 137.04, y: -6.66, z: 0}
+  m_LocalScale: {x: 3.492622, y: -3.492622, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50261659039072652
+--- !u!50 &50963223252814110
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: -1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b627ebd4784bbc4e9119167e2b3c55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipGravity: 1
+  flipGravity: 0
   flipLocalScale: 1
 --- !u!114 &114181524820871020
 MonoBehaviour:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 0
-  DestroyOnUse: 0
+  DestroyOnUse: 1
 --- !u!114 &114206637043048104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +219,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bde17dba035028745b9c87b676ca7933, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 597236bbbb87b1b48a64ea43e7d3280c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
