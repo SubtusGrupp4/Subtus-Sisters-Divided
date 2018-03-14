@@ -396,7 +396,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.75
     functionName: Idle
     data: 
     objectReferenceParameter: {fileID: 0}

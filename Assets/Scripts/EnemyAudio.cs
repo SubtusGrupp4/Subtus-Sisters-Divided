@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyAudio : MonoBehaviour
 {
-    private FMODEmitter emitter;
+    [SerializeField]
+    private FMODEmitter[] emitters;
 
     [FMODUnity.EventRef]
     [SerializeField]
@@ -32,19 +33,26 @@ public class EnemyAudio : MonoBehaviour
 
     void Start ()
     {
-        emitter = GetComponent<FMODEmitter>();
-        emitter.Play();
+        emitters = GetComponents<FMODEmitter>();
+        Loop();
 	}
 
     public void Idle()
     {
         if(idleEvent != "")
         {
-            if (emitter.Event != idleEvent)
+            if (emitters[0].Event != loopEvent)
             {
-                emitter.Stop();
-                emitter.SetEvent(idleEvent);
-                emitter.Play();
+                emitters[0].Stop();
+                emitters[0].SetEvent(idleEvent);
+                emitters[0].Play();
+
+                if (emitters[1] != null)
+                {
+                    emitters[1].Stop();
+                    float time = emitters[0].GetLength(idleEvent);
+                    StartCoroutine(LoopTimer(time));
+                }
             }
         }
     }
@@ -61,8 +69,12 @@ public class EnemyAudio : MonoBehaviour
     {
         if(attackEvent != "")
         {
-            emitter.Stop();
-            FMODUnity.RuntimeManager.PlayOneShot(attackEvent, transform.position);
+            emitters[0].Stop();
+            emitters[0].SetEvent(attackEvent);
+            emitters[0].Play();
+
+            float time = emitters[0].GetLength(attackEvent);
+            StartCoroutine(LoopTimer(time));
         }
     }
 
@@ -70,7 +82,15 @@ public class EnemyAudio : MonoBehaviour
     {
         if(fallingEvent != "")
         {
-            FMODUnity.RuntimeManager.PlayOneShot(fallingEvent, transform.position);
+            emitters[0].Stop();
+            emitters[0].SetEvent(fallingEvent);
+            emitters[0].Play();
+
+            if (emitters[1] != null)
+            {
+                float time = emitters[0].GetLength(fallingEvent);
+                StartCoroutine(LoopTimer(time));
+            }
         }
     }
 
@@ -84,15 +104,22 @@ public class EnemyAudio : MonoBehaviour
 
     public void Loop()
     {
-        if(loopEvent != "")
+        if (loopEvent != "")
         {
-            if (emitter.Event != loopEvent)
+            if (emitters[1] != null)
             {
-                emitter.Stop();
-                emitter.SetEvent(loopEvent);
-                emitter.Play();
+                emitters[1].Stop();
+                emitters[1].SetEvent(loopEvent);
+                emitters[1].Play();
             }
         }
+    }
+
+    private IEnumerator LoopTimer(float time)
+    {
+        emitters[1].Stop();
+        yield return new WaitForSeconds(time);
+        Loop();
     }
 
     /*

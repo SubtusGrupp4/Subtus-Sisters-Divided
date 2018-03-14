@@ -185,8 +185,9 @@ public class AIMovement : MonoBehaviour
                 Debug.Log("MOVIGN IS TRU + state is " + currentState);
 
             }
-            CheckFalling();
+          
         }
+        CheckFalling();
     }
 
     public void Freeze(bool autoActivate, float time)
