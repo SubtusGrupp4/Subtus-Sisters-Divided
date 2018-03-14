@@ -7,7 +7,9 @@ public class PullBoxes : MonoBehaviour
 
     [Tooltip("Changes the box's rigidbodyweight")]
     public float pushSpeed;
-
+	[Tooltip("How long is the character going to stop when pushing box over edge")]
+	[Range(0, 2)]
+	public float delayTime;
     private float distance;
     private GameObject box;
     private Vector2 rayLine;
@@ -102,8 +104,31 @@ public class PullBoxes : MonoBehaviour
             box.GetComponent<Rigidbody2D>().velocity = new Vector2(0, box.GetComponent<Rigidbody2D>().velocity.y);
             box.GetComponent<FixedJoint2D>().enabled = false;
         }
+
+		if (!isPulling) 
+		{
+			playerController.pulling = false;
+
+			body.Pull(false);
+			arm.Pull(false);
+
+			body.Push(false);
+			arm.Push(false);
+		}
+
     }
 
+	public void EnableController()
+	{
+		GetComponent<PlayerController> ().enabled = false;
+		Invoke ("DisableController", 1f);
+	}
+
+	public void DisableController()
+	{
+		GetComponent<PlayerController> ().enabled = true;
+	}
+		
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
