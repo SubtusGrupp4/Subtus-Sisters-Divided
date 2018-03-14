@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
 
     [Header("Game Variables")]
     public bool onePlayerDead = false;
+    [SerializeField]
+    private Transform DialogueManager;
 
     [Header("Screen")]
     [SerializeField]
@@ -68,6 +70,8 @@ public class GameManager : MonoBehaviour {
 
         pauseMenu.gameObject.SetActive(false);
         onePlayerDead = false;
+
+        DialogueManager.gameObject.SetActive(true);
     }
 
     private void Update () {

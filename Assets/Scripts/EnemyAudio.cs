@@ -22,6 +22,14 @@ public class EnemyAudio : MonoBehaviour
     [SerializeField]
     private string fallingEvent;
 
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string growlEvent;
+
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string loopEvent;
+
     void Start ()
     {
         emitter = GetComponent<FMODEmitter>();
@@ -32,10 +40,12 @@ public class EnemyAudio : MonoBehaviour
     {
         if(idleEvent != "")
         {
-            emitter.Stop();
-            emitter.SetEvent(idleEvent);
-            emitter.Play();
-            Debug.Log(transform.name + " idle");
+            if (emitter.Event != idleEvent)
+            {
+                emitter.Stop();
+                emitter.SetEvent(idleEvent);
+                emitter.Play();
+            }
         }
     }
 
@@ -43,10 +53,7 @@ public class EnemyAudio : MonoBehaviour
     {
         if(walkingEvent != "")
         {
-            emitter.Stop();
-            emitter.SetEvent(walkingEvent);
-            emitter.Play();
-            Debug.Log(transform.name + " footstep");
+            FMODUnity.RuntimeManager.PlayOneShot(walkingEvent, transform.position);
         }
     }
 
@@ -54,8 +61,8 @@ public class EnemyAudio : MonoBehaviour
     {
         if(attackEvent != "")
         {
+            emitter.Stop();
             FMODUnity.RuntimeManager.PlayOneShot(attackEvent, transform.position);
-            Debug.Log(transform.name + " attack");
         }
     }
 
@@ -63,10 +70,28 @@ public class EnemyAudio : MonoBehaviour
     {
         if(fallingEvent != "")
         {
-            emitter.Stop();
-            emitter.SetEvent(fallingEvent);
-            emitter.Play();
-            Debug.Log(transform.name + " falling");
+            FMODUnity.RuntimeManager.PlayOneShot(fallingEvent, transform.position);
+        }
+    }
+
+    public void Growl()
+    {
+        if (fallingEvent != "")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(growlEvent, transform.position);
+        }
+    }
+
+    public void Loop()
+    {
+        if(loopEvent != "")
+        {
+            if (emitter.Event != loopEvent)
+            {
+                emitter.Stop();
+                emitter.SetEvent(loopEvent);
+                emitter.Play();
+            }
         }
     }
 
