@@ -22,6 +22,8 @@ public class FMODEmitter : MonoBehaviour
 
     private FMOD.Studio.EventInstance instance;
 
+    private FMOD.Studio.EventDescription eventDescription;
+
     public void Awake()
     {
         if (playOnStart)
@@ -90,15 +92,18 @@ public class FMODEmitter : MonoBehaviour
         return false;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawIcon(transform.position, "FMODEmitter.tiff", true);
 
-        if (OverrideAttenuation)
+        if (is3D && OverrideAttenuation)
         {
-            Gizmos.color = new Color(1f, 1f, 1f, 0.4f);
-            Gizmos.DrawWireSphere(transform.position, OverrideMinDistance);
-            Gizmos.DrawWireSphere(transform.position, OverrideMaxDistance);
+            Gizmos.color = new Color(0.6f, 0.6f, 1f, 0.8f);
+            if (OverrideAttenuation)
+            {
+                Gizmos.DrawWireSphere(transform.position, OverrideMinDistance);
+                Gizmos.DrawWireSphere(transform.position, OverrideMaxDistance);
+            }
         }
     }
 
@@ -106,7 +111,6 @@ public class FMODEmitter : MonoBehaviour
     {
         if (instance.isValid())
         {
-            FMOD.Studio.EventDescription eventDescription;
             eventDescription = FMODUnity.RuntimeManager.GetEventDescription(eventPath);
             int length;
             eventDescription.getLength(out length);

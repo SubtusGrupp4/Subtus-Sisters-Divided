@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This might need a better name
-public class Reviving : MonoBehaviour {
+public class Reviving : MonoBehaviour
+{
 
     private PlayerController pc;
 
@@ -12,6 +13,9 @@ public class Reviving : MonoBehaviour {
     private GameObject revivePlacer;
     [SerializeField]
     private GameObject dyingAnimationGO;
+
+    [HideInInspector]
+    public GameObject deathAnimationObject;
 
     private bool yIsPressedC1 = false;
     private bool yIsPressedC2 = false;
@@ -82,11 +86,11 @@ public class Reviving : MonoBehaviour {
             }
             else
             {
-                GameObject dead;
-                dead = Instantiate(dyingAnimationGO, transform.position, transform.rotation);
-                dead.transform.localScale = transform.localScale;
 
-                Destroy(dead, dead.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+                deathAnimationObject = Instantiate(dyingAnimationGO, transform.position, transform.rotation);
+                deathAnimationObject.transform.localScale = transform.localScale;
+
+                // Destroy(deathAnimationObject, deathAnimationObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
                 Vector2 spawnPos = new Vector2(pc.lastSafe.x, 0f);
                 revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
@@ -116,6 +120,8 @@ public class Reviving : MonoBehaviour {
         SafepointManager.instance.PlacePlayerOnCheckpoint(player);
         player.gameObject.SetActive(true);
         player.GetComponent<PlayerController>().isActive = true;
+        // Destroy animation
+        Destroy(player.GetComponent<Reviving>().deathAnimationObject);
 
         Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
 
@@ -134,5 +140,19 @@ public class Reviving : MonoBehaviour {
         GameManager.instance.playerTop.GetComponent<PlayerController>().crawling = false;
         // Set the camera to transition towards the safepoints
         SafepointManager.instance.RespawnTransition();
+
+
+        Transform player;
+
+        if (pc.player == Controller.Player1)
+            player = GameManager.instance.playerBot;
+        else
+            player = GameManager.instance.playerTop;
+
+            Destroy(player.GetComponent<Reviving>().deathAnimationObject);
+
+        Destroy(deathAnimationObject);
+
+        // Destroy both animations ?
     }
 }

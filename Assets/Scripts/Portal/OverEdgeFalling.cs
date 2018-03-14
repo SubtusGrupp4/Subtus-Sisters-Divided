@@ -28,6 +28,12 @@ public class OverEdgeFalling : MonoBehaviour
 			rb.mass = 100;
             if (GetComponent<FixedJoint2D> ().enabled) {
 				rb.velocity = new Vector2 (0, rb.velocity.y);
+				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PullBoxes> ().isPulling = false;
+				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PlayerController> ().bodyAnim.Walking (Vector2.zero, true);
+				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PlayerController> ().armAnim.Walking (Vector2.zero, true);
+				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<PullBoxes> ().EnableController ();
+				GetComponent<FixedJoint2D> ().connectedBody.gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+
 			}
 			GetComponent<FixedJoint2D> ().enabled = false;
 

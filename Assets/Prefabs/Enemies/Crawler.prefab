@@ -200,9 +200,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleEvent: event:/Carl/Au_Ca_Crawler_Idle
-  walkingEvent: event:/Carl/Au_Ca_Crawler_Walking
+  walkingEvent: event:/Carl/Crawler_waking_footstep_01
   attackEvent: event:/Carl/Au_Ca_Crawler_Attacking
   fallingEvent: event:/Carl/Au_Ca_Crawler_Falling
+  growlEvent: event:/Carl/Crawler_walking_growl_01
+  loopEvent: event:/Carl/Crawler_walking_gross_loop_01
 --- !u!114 &114684464768220210
 MonoBehaviour:
   m_ObjectHideFlags: 1
