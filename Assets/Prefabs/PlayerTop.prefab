@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushSpeed: 25
+  delayTime: 1
   isPulling: 0
 --- !u!114 &114315930396904570
 MonoBehaviour:
