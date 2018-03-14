@@ -16,6 +16,6 @@ public class AudioOnCollision : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(isActive && collision.relativeVelocity.magnitude > magnitude)
-            FMODUnity.RuntimeManager.PlayOneShotAttached(eventPath, gameObject);
+            FMODUnity.RuntimeManager.PlayOneShot(eventPath, transform.position);
     }
 }

@@ -20,9 +20,11 @@ public class StudioEventEmitterEditor : Editor
         var ev = serializedObject.FindProperty("Event");
         var param = serializedObject.FindProperty("parameters");
         var fadeout = serializedObject.FindProperty("AllowFadeout");
+        /*
         var overrideAtt = serializedObject.FindProperty("OverrideAttenuation");
         var minDistance = serializedObject.FindProperty("OverrideMinDistance");
         var maxDistance = serializedObject.FindProperty("OverrideMaxDistance");
+        */
 
         EditorGUI.BeginChangeCheck();
 
@@ -30,6 +32,7 @@ public class StudioEventEmitterEditor : Editor
 
         FMODUnity.EditorEventRef editorEvent = FMODUnity.EventManager.EventFromPath(ev.stringValue);
 
+        /*
         if (EditorGUI.EndChangeCheck())
         {
             FMODUnity.EditorUtils.UpdateParamsOnEmitter(serializedObject, ev.stringValue);
@@ -40,6 +43,7 @@ public class StudioEventEmitterEditor : Editor
                 maxDistance.floatValue = editorEvent.MaxDistance;
             }
         }
+        */
 
         // Attenuation
         if (editorEvent != null)
@@ -50,6 +54,7 @@ public class StudioEventEmitterEditor : Editor
 
                 emitter.is3D = EditorGUILayout.Toggle("Is 3D", emitter.is3D);
 
+                /*
                 EditorGUI.BeginDisabledGroup(editorEvent == null || !editorEvent.Is3D);
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.PrefixLabel("Override Attenuation");
@@ -72,6 +77,7 @@ public class StudioEventEmitterEditor : Editor
                 EditorGUI.EndDisabledGroup();
                 EditorGUILayout.EndHorizontal();
                 EditorGUI.EndDisabledGroup();
+                */
             }
 
             param.isExpanded = EditorGUILayout.Foldout(param.isExpanded, "Initial Parameter Values");

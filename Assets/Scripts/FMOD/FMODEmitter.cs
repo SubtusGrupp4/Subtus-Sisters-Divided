@@ -11,11 +11,13 @@ public class FMODEmitter : MonoBehaviour
 
     [Header("3D Settings")]
     public bool is3D = true;
+    /*
     public bool OverrideAttenuation = false;
     [Range(0f, 1000f)]
     public float OverrideMinDistance = 1.0f;
     [Range(0f, 1000f)]
     public float OverrideMaxDistance = 20.0f;
+    */
 
     [Header("Initial Parameters")]
     public FMODUnity.ParamRef[] parameters = new FMODUnity.ParamRef[0];
@@ -28,8 +30,11 @@ public class FMODEmitter : MonoBehaviour
     {
         if (playOnStart)
         {
-            SetEvent(Event);
-            Play();
+            if (Event != "")
+            {
+                SetEvent(Event);
+                Play();
+            }
         }
     }
 
@@ -53,11 +58,13 @@ public class FMODEmitter : MonoBehaviour
             FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
         }
 
+        /*
         if (is3D && OverrideAttenuation)
         {
             instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MINIMUM_DISTANCE, OverrideMinDistance);
             instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, OverrideMaxDistance);
         }
+        */
 
         instance.start();
     }
@@ -92,6 +99,7 @@ public class FMODEmitter : MonoBehaviour
         return false;
     }
 
+    /*
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawIcon(transform.position, "FMODEmitter.tiff", true);
@@ -106,6 +114,7 @@ public class FMODEmitter : MonoBehaviour
             }
         }
     }
+    */
 
     public float GetLength(string eventPath)
     {
