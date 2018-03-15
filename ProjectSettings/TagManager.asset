@@ -71,6 +71,9 @@ TagManager:
   - name: Playfield
     uniqueID: 3664269281
     locked: 0
+  - name: Portal
+    uniqueID: 4255522109
+    locked: 0
   - name: Foreground
     uniqueID: 2800070951
     locked: 0
