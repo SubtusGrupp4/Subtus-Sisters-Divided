@@ -85,6 +85,13 @@ public class MainMenuManager : MonoBehaviour {
     private AudioClip[] staticClips;
     private AudioSource[] audioSources;
 
+	[SerializeField]
+	[Range(0f, 1f)]
+	private float topMaxVolume = 0.6f;
+	[SerializeField]
+	[Range(0f, 1f)]
+	private float botMaxVolume = 0.6f;
+
     void Start () 
 	{
 		StartCoroutine(KeyTimer());     // Coroutine that displays the "Press any key" prompt
@@ -133,14 +140,14 @@ public class MainMenuManager : MonoBehaviour {
             lightParent.gameObject.SetActive(false);
 
             audioSources[1].volume = 0f;
-            audioSources[2].volume = 1f;
+			audioSources[2].volume = botMaxVolume;
         }
         else if (isActivated)
         {
             darkParent.gameObject.SetActive(false);
             lightParent.gameObject.SetActive(true);
 
-            audioSources[1].volume = 0.6f;
+			audioSources[1].volume = topMaxVolume;
             audioSources[2].volume = 0f;
         }
     }

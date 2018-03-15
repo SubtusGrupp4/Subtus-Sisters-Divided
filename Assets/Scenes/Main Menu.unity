@@ -5028,9 +5028,9 @@ MonoBehaviour:
   glitchesSwitch: {fileID: 391453122}
   glitchTarget: {fileID: 2066160477}
   minWait: 3
-  maxWait: 8
-  minWaitSwitch: 10
-  maxWaitSwitch: 20
+  maxWait: 6
+  minWaitSwitch: 8
+  maxWaitSwitch: 16
   staticClips:
   - {fileID: 8300000, guid: 53bf582f3919a05458bef07dc26ffabd, type: 3}
   - {fileID: 8300000, guid: 7bfbec622386eee438bed91cc65b6397, type: 3}
@@ -5040,6 +5040,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 93d51efaa790bfb4da22585a26272a7c, type: 3}
   - {fileID: 8300000, guid: 123518f1485e73948a9bc9ec3ed93f8c, type: 3}
   - {fileID: 8300000, guid: db900e22319d0864c95d1e9206793e6a, type: 3}
+  topMaxVolume: 0.6
+  botMaxVolume: 0.6
 --- !u!82 &580306688
 AudioSource:
   m_ObjectHideFlags: 0
