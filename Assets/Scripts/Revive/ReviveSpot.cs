@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ReviveSpot : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class ReviveSpot : MonoBehaviour
     private ParticleSystem stars;
     [SerializeField]
     private ParticleSystem lines;
+    [SerializeField]
+    private Image radialProgressBar; 
+
+    private float timer;
+    private float timerAmount = 1f;
+    private bool doTimer = false;
 
     private void Start()
     {
@@ -21,8 +28,16 @@ public class ReviveSpot : MonoBehaviour
             constantMin = -main.startSpeed.constantMin;
             constantMax = -main.startSpeed.constantMax;
         }
+
+        timer = SafepointManager.instance.pickupTime;
+        StartCoroutine(SafepointManager.instance.PickupTimer());
     }
 
+    public void Update()
+    {
+        timerAmount -= Time.deltaTime / timer;
+        radialProgressBar.fillAmount = timerAmount;
+    }
     public void SetParticleEmission(float amount)
     {
         var emission = lines.emission;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SafepointManager : MonoBehaviour {
 
@@ -28,6 +29,11 @@ public class SafepointManager : MonoBehaviour {
     // References to the players. Fetched from GameManager
     private Transform playerTop;
     private Transform playerBot;
+
+
+    public float pickupTime = 10f;
+    [SerializeField]
+    private float pickupDecrease = 2f;
 
     private void Awake()
 	{
@@ -171,5 +177,36 @@ public class SafepointManager : MonoBehaviour {
         playerBot.GetComponent<PlayerController>().isActive = true;
 
         SetSafepointsAsCheckpoints();
+    }
+
+    public void DecreaseTimer()
+    {
+        pickupTime -= pickupDecrease;
+        Debug.Log("ReviveTimer decreased to" + pickupTime);
+    }
+
+    private void OutOfTime()
+    {
+        // TODO: Something prettier
+        GameManager.instance.ResetLevel();
+    }
+
+    public IEnumerator PickupTimer()
+    {
+        Debug.Log("ReviveTimer = " + pickupTime);
+        if (pickupTime <= 0.1f)
+            OutOfTime();
+        else
+        {
+            yield return new WaitForSeconds(pickupTime);
+
+            if (GameManager.instance.onePlayerDead)
+            {
+                if (!playerTop.GetComponent<PlayerController>().isActive)
+                    playerBot.GetComponent<Reviving>().BothDead();
+                else
+                    playerTop.GetComponent<Reviving>().BothDead();
+            }
+        }
     }
 }

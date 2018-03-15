@@ -32,7 +32,6 @@ GameObject:
   - component: {fileID: 114440906952355416}
   - component: {fileID: 114000819981330180}
   - component: {fileID: 61235791482143752}
-  - component: {fileID: 320013927041322330}
   m_Layer: 0
   m_Name: PlayerTop
   m_TagString: Player
@@ -575,21 +574,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!320 &320013927041322330
-PlayableDirector:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1221702535368190}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 0}
-    value: {fileID: 1221702535368190}
-  m_ExposedReferences:
-    m_References: []

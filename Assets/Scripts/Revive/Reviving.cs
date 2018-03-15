@@ -126,9 +126,11 @@ public class Reviving : MonoBehaviour
         Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingBoth);
 
         GameManager.instance.onePlayerDead = false;
+
+        SafepointManager.instance.DecreaseTimer();
     }
 
-    private void BothDead()
+    public void BothDead()
     {
         Camera.main.GetComponent<CameraClamp>().SetClamp(false);
 
@@ -140,16 +142,20 @@ public class Reviving : MonoBehaviour
         GameManager.instance.playerTop.GetComponent<PlayerController>().crawling = false;
         // Set the camera to transition towards the safepoints
         SafepointManager.instance.RespawnTransition();
+        SafepointManager.instance.DecreaseTimer();
 
 
         Transform player;
+
+        GameManager.instance.playerTop.gameObject.SetActive(false);
+        GameManager.instance.playerBot.gameObject.SetActive(false);
 
         if (pc.player == Controller.Player1)
             player = GameManager.instance.playerBot;
         else
             player = GameManager.instance.playerTop;
 
-            Destroy(player.GetComponent<Reviving>().deathAnimationObject);
+        Destroy(player.GetComponent<Reviving>().deathAnimationObject);
 
         Destroy(deathAnimationObject);
 
