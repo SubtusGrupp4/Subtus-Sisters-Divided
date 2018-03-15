@@ -169,7 +169,7 @@ public class BuzzerMovement:MonoBehaviour
         Vector2 attackDir = new Vector2(targetingPos.x - transform.position.x, targetingPos.y - transform.position.y);  // Get the direction towards where the player was
         rb.AddForce(attackDir.normalized * attackSpeed, ForceMode2D.Impulse);   // Fly quickly towards where the player used to be
         sr.flipX = attackDir.x < 0f ? true : false;     // Flip the sprite in the direction of attack
-        FMODUnity.RuntimeManager.PlayOneShot(attackEvent, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShotAttached(attackEvent, gameObject);
 
         yield return new WaitForSeconds(time);  // Wait
 
