@@ -104,13 +104,16 @@ public class MainMenuManager : MonoBehaviour {
             darkUI.transform.position = lightUI.transform.position; // Keep both versions of the UI on the same position
 
             ProgressBar();  // Progress bar input and processing
-
-            if (doGlitch && !isSwitching)
-                GlitchAnimation();  // Cycle through glitch sprites
-
-            if (isSwitching)
-                SwitchAnimation();  // Cycle through switching sprites
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (doGlitch && !isSwitching)
+            GlitchAnimation();  // Cycle through glitch sprites
+
+        if (isSwitching)
+            SwitchAnimation();  // Cycle through switching sprites
     }
 
     private void StartAnimation()
