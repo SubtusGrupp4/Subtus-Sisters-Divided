@@ -40,6 +40,8 @@ public class BuzzerMovement:MonoBehaviour
     private float attackSpeed = 5f;
     [SerializeField]
     private float attackDistance = 5f;
+    [SerializeField]
+    private float chaseDistance = 15f;
 
     private bool attacking = false;
     private float attackTime;
@@ -121,7 +123,7 @@ public class BuzzerMovement:MonoBehaviour
 
             float playerDistance = Vector2.Distance(transform.position, playerTarget.position);     // Get the distance to the player
 
-            if (playerDistance < attackDistance && playerTarget.GetComponent<PlayerController>().isActive)  // If the player is closer than the attack distance
+            if (playerDistance < attackDistance && playerTarget.GetComponent<PlayerController>().isActive && Vector2.Distance(transform.position, targetPos) < chaseDistance)  // If the player is closer than the attack distance
                 StartCoroutine(AttackInterval(attackTimeWait));                                             // Start the attacking sequence
         }
 
