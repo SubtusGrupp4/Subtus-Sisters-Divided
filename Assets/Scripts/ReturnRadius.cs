@@ -20,7 +20,7 @@ public class ReturnRadius : MonoBehaviour {
     {
 		if(Vector3.Distance(transform.position, startPosition) > radius)
         {
-            transform.position = startPosition + new Vector3(offset.x, offset.y, 0f);
+            transform.position = startPosition;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 	}
