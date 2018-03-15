@@ -80,8 +80,11 @@ public class EnemyPortal : PortalBehaviour
 	public GameObject particleEffect;
 	public override void OnPortalContact()
 	{
+        FMODEmitter[] emitters = GetComponents<FMODEmitter>();
+        foreach (FMODEmitter emitter in emitters)
+            emitter.Stop();
 		GameObject clone = Instantiate (particleEffect, transform.position, Quaternion.identity);
-		Destroy (clone, 1f);
+		Destroy (clone, 2f);
 		Destroy (gameObject);
 	}
 
