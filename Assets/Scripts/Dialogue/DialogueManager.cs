@@ -254,6 +254,9 @@ public class DialogueManager : MonoBehaviour
     // Runs for each dialogue script
     private void StartDialogue()
     {
+        if (dialogues.Length == 0)
+            return;
+
         isBusy = true;
 
         // Enable the correct dialogue canvas, depending on the player index
