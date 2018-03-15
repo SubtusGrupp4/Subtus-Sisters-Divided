@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1341491842525582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5499992, y: -0.10400009, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4862396126950018}
@@ -137,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 273.02902, y: -2.9116757, z: 0}
+  m_LocalPosition: {x: -59.159264, y: -3.0204875, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -380,7 +380,6 @@ MonoBehaviour:
     type: 2}
   dyingAnimationGO: {fileID: 1260716085056240, guid: 0d6717f871dd14944b8fc4cf53fef963,
     type: 2}
-  deathAnimationObject: {fileID: 0}
 --- !u!114 &114954191565589998
 MonoBehaviour:
   m_ObjectHideFlags: 1
