@@ -70,6 +70,10 @@ public class RevivePlacer : MonoBehaviour
                         passedThrough = false;
                         continue;
                     }
+
+                    if (hit.transform.tag == "Player")
+                        search = true;
+
                     if (hit.collider.isTrigger)
                     {
                         if (hit.transform.tag != "Player" || hit.transform.tag == "ReviveBlock")
@@ -78,8 +82,6 @@ public class RevivePlacer : MonoBehaviour
                             continue;
                         }
                     }
-                    if (hit.transform.tag == "Player")
-                        search = true;
 
                     if (hit.transform.position.y < 0f && moveAmount > 0f)
                         continue;
