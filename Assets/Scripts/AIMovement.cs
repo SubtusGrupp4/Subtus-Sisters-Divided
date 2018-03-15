@@ -424,6 +424,10 @@ public class AIMovement : MonoBehaviour
 
         StuckDebugg();
 
+        if (directionMultiplier == Vector2.zero)
+        {
+            directionMultiplier = Vector2.right;
+        }
 
         //  rigidbody2D.AddForce(speed * directionMultiplier * Time.deltaTime * accerlation);
 
