@@ -8,6 +8,12 @@ public class PoliceBehaviour : AIMovement
     private float startSpeed;
     public float engagedSpeed;
 
+    private float startClimb;
+    public float engagedClimb;
+
+    private float startStepRange;
+    public float engagedStepRange;
+
     public float attentionSpan;
     private float attentionTimer;
 
@@ -21,7 +27,8 @@ public class PoliceBehaviour : AIMovement
     private void Start()
     {
         startSpeed = speed;
-
+        startClimb = climbRange;
+        startStepRange = stepRange;
     }
 
 
@@ -113,11 +120,12 @@ public class PoliceBehaviour : AIMovement
                 engaged = true;
                 currentState = engagedState;
                 speed = engagedSpeed;
+                climbRange = engagedClimb;
+                stepRange = engagedStepRange;
 
                 
             }
            
-
         }
     }
 
@@ -130,6 +138,8 @@ public class PoliceBehaviour : AIMovement
             Bounce();
             engaged = false;
             speed = startSpeed;
+            climbRange = startClimb;
+            stepRange = startStepRange;
            
         }
      
