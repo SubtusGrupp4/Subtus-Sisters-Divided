@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 223483394372467076}
   - component: {fileID: 114761188548681370}
   - component: {fileID: 114249302388777058}
+  - component: {fileID: 114587213206774946}
   m_Layer: 5
   m_Name: ReviveCanvas
   m_TagString: Untagged
@@ -209,7 +210,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325320069798532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.076973, y: -8.162697, z: -0.21484375}
+  m_LocalPosition: {x: -51.603107, y: -22.036896, z: -0.21484375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4900497593747608}
@@ -328,6 +329,19 @@ MonoBehaviour:
   sizeMultiplier: 1
   useSwitchingSprites: 0
   sprites: []
+--- !u!114 &114587213206774946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508142374303860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff21840c1b2d604ca5a26ae72768bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4470542765024452}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114761188548681370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7371,7 +7385,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1316764541399436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.21484375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224354916744704294}
@@ -7379,7 +7393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -592.07697, y: -327.1627}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224354916744704294
@@ -7389,7 +7403,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508142374303860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.21484375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224020757497757042}
@@ -7398,6 +7412,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 592.07697, y: 327.1627}
-  m_SizeDelta: {x: 1134, y: 638}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
