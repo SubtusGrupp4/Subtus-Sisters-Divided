@@ -139,16 +139,15 @@ public class BaseButton : MonoBehaviour
 
                 if (change > 0)
                     Hide();// Change to 2 pictures??, aka picture 1 and picture 2? good incase we want to Toggle a lever or something
-                else
-                    Show();
+               
+                    
 
             }
         else
         {
             if (change > 0)
                 Hide();// Change to 2 pictures??, aka picture 1 and picture 2? good incase we want to Toggle a lever or something
-            else
-                Show();
+            
 
             triggerCounter += change;
             CountChange();
@@ -196,6 +195,8 @@ public class BaseButton : MonoBehaviour
             {
                 UndoStuff();
                 IsActive = false;
+
+                Show();
 
                 if (Sounds)
                     FMODUnity.RuntimeManager.PlayOneShot(deActivationEvent, transform.position);
