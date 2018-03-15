@@ -185,7 +185,7 @@ public class AIMovement : MonoBehaviour
                 Debug.Log("MOVIGN IS TRU + state is " + currentState);
 
             }
-          
+
         }
         CheckFalling();
     }
@@ -401,6 +401,12 @@ public class AIMovement : MonoBehaviour
             else
                 directionMultiplier = Vector2.zero;
         }
+
+        if (CheckLedge())
+        {
+            directionMultiplier = Vector2.zero;
+        }
+
         NormalizeSlope();
 
         rigidbody2D.velocity = new Vector2(directionMultiplier.x * speed, rigidbody2D.velocity.y);
