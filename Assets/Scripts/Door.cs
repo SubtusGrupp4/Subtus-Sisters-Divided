@@ -25,8 +25,12 @@ public class Door : MonoBehaviour
     public Sprite openImage;
     public Sprite closedImage;
     [Header("Sounds")]
-    public AudioClip openDoorSound;
-    public AudioClip closeDoorSound;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string deActivationEvent;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string activationEvent;
 
     private SpriteRenderer sRender;
     private BoxCollider2D collider;
@@ -77,7 +81,7 @@ public class Door : MonoBehaviour
         {
             sRender.sprite = openImage;
             collider.enabled = false;
-            myAudio.PlayOneShot(openDoorSound);
+            FMODUnity.RuntimeManager.PlayOneShot(activationEvent, transform.position);
             open = true;
 
             currentlyAtDoor = true;
@@ -91,7 +95,7 @@ public class Door : MonoBehaviour
         {
             sRender.sprite = closedImage;
             collider.enabled = true;
-            myAudio.PlayOneShot(closeDoorSound);
+            FMODUnity.RuntimeManager.PlayOneShot(deActivationEvent, transform.position);
             open = false;
         }
     }

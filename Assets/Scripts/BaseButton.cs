@@ -19,7 +19,7 @@ public class BaseButton : MonoBehaviour
     public string[] InteractWith = new string[] { };
 
     [SerializeField]
-    private bool StayDown; // if triggered, stay down.
+    private bool stayDown; // if triggered, stay down.
     private bool isDown;
 
     [Header("Sprites")]
@@ -37,10 +37,10 @@ public class BaseButton : MonoBehaviour
 
     [SerializeField]
     private bool useTriggerIndex;
-    public int TriggerIndex; // Other buttons ID
+    public int triggerIndex; // Other buttons ID
 
     [SerializeField]
-    private int TriggerCount; // Amount of buttons that need to be down before you do your shit. ?? Only show if TriggerIndex is used?
+    private int triggerCount; // Amount of buttons that need to be down before you do your shit. ?? Only show if TriggerIndex is used?
     [HideInInspector]
     public int triggerCounter;
 
@@ -48,15 +48,19 @@ public class BaseButton : MonoBehaviour
     [SerializeField]
     private bool Sounds;
     [SerializeField]
-    private AudioClip ActivationSound;
+    [FMODUnity.EventRef]
+    private string activationEvent;
     [SerializeField]
-    private AudioClip DeactivationSound;
+    [FMODUnity.EventRef]
+    private string deActivationEvent;
 
     private AudioSource myAudio;
     private SpriteRenderer sr;
 
     private List<BaseButton> otherButtons = new List<BaseButton>();
     private List<GameObject> brothers = new List<GameObject>();
+
+
 
    protected virtual void  Start()
     {
@@ -75,7 +79,7 @@ public class BaseButton : MonoBehaviour
                 if (!otherButtons[i].GetComponent<BaseButton>().useTriggerIndex)
                     continue;
 
-                if (otherButtons[i].GetComponent<BaseButton>().TriggerIndex == TriggerIndex)
+                if (otherButtons[i].GetComponent<BaseButton>().triggerIndex == triggerIndex)
                 {
                     brothers.Add(otherButtons[i].gameObject);
                 }
@@ -176,25 +180,25 @@ public class BaseButton : MonoBehaviour
         if (!isDown)
         {
             // Activate interaction
-            if (triggerCounter >= TriggerCount && !IsActive)
+            if (triggerCounter >= triggerCount && !IsActive)
             {
                 DoStuff();
                 IsActive = true;
 
                 if (Sounds)
-                    myAudio.PlayOneShot(ActivationSound);
+                    FMODUnity.RuntimeManager.PlayOneShot(activationEvent, transform.position);
 
-                if (StayDown)
+                if (stayDown)
                     isDown = true;
             }
             // Deactivate interaction
-            else if (triggerCounter < TriggerCount && IsActive)
+            else if (triggerCounter < triggerCount && IsActive)
             {
                 UndoStuff();
                 IsActive = false;
 
                 if (Sounds)
-                    myAudio.PlayOneShot(DeactivationSound);
+                    FMODUnity.RuntimeManager.PlayOneShot(deActivationEvent, transform.position);
 
             }
         }
