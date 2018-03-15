@@ -129,7 +129,7 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
         // If there are dialogues to process
-        if (dialogues != null)
+        if (dialogues != null && dialogues.Length != 0)
         {
             // playerIndex is what player is required to press a button to interact with the dialogue
             switch (dialogues[di].playerIndex)
