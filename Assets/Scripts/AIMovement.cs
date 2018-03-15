@@ -398,6 +398,8 @@ public class AIMovement : MonoBehaviour
                 // DOING JUMP 
                 isFalling = true;
             }
+            else
+                directionMultiplier = Vector2.zero;
         }
         NormalizeSlope();
 
