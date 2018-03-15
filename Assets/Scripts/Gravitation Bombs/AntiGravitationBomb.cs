@@ -68,7 +68,7 @@ public class AntiGravitationBomb : MonoBehaviour
 			foreach (GameObject particle in particles) 
 			{
 				GameObject clone = Instantiate (particle, transform.position, Quaternion.identity);
-				Destroy (clone, 2f);
+				Destroy (clone, 5f);
 			}
             targetting = true;
             TargetInRange();

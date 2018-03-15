@@ -222,7 +222,9 @@ public class GravitationBomb : MonoBehaviour
     {
         foreach (GameObject particle in particleClones)
         {
-            Destroy(particle);
+            var emission = particle.GetComponent<ParticleSystem>().emission;
+            emission.rateOverTime = 0f;
+            Destroy(particle, 5f);
         }
     }
 }
