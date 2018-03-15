@@ -20,7 +20,7 @@ public class PoliceBehaviour : AIMovement
     protected override void Awake()
     {
         base.Awake();
-       
+
 
     }
 
@@ -35,13 +35,15 @@ public class PoliceBehaviour : AIMovement
     // Use this for initialization
     protected override void Update()
     {
-        if (!engaged)
-            CheckEngagement();
+        if (!stunned)
+        {
+            if (!engaged)
+                CheckEngagement();
 
-        if (engaged)
-            CheckDisEngagement();
+            if (engaged)
+                CheckDisEngagement();
+        }
 
-        CheckFalling();
     }
 
     protected override void FixedUpdate()
@@ -123,9 +125,9 @@ public class PoliceBehaviour : AIMovement
                 climbRange = engagedClimb;
                 stepRange = engagedStepRange;
 
-                
+
             }
-           
+
         }
     }
 
@@ -140,9 +142,9 @@ public class PoliceBehaviour : AIMovement
             speed = startSpeed;
             climbRange = startClimb;
             stepRange = startStepRange;
-           
+
         }
-     
+
 
         float distance = Vector2.Distance(transform.position, target.transform.position);
 
