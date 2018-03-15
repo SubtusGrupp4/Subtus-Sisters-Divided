@@ -40,6 +40,7 @@ public class Dialogue : MonoBehaviour {
     public float moveCameraSpeed = 1f;
     public float moveCameraWait = 0f;
 
+    public bool manualSkip = true;
     [HideInInspector]
     public bool hide = false;
     [HideInInspector]

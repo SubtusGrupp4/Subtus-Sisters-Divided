@@ -21,6 +21,7 @@ public class DialogueEditor : Editor {
 
         EditorGUILayout.LabelField("UI Settings", EditorStyles.boldLabel);
         d.npcName = EditorGUILayout.TextField(new GUIContent("NPC Name", "Will be displayed at the top as the name."), d.npcName);
+        d.manualSkip = EditorGUILayout.Toggle(new GUIContent("Allow Skipping", "Can the player press X to skip?"), d.manualSkip);
         d.hide = EditorGUILayout.Toggle(new GUIContent("Hide", "Hide settings to save space."), d.hide);
         if (!d.hide)
         {
@@ -72,9 +73,7 @@ public class DialogueEditor : Editor {
             EditorGUILayout.LabelField("Type Speed", EditorStyles.boldLabel);
             d.overrideSpeed = EditorGUILayout.Toggle(new GUIContent("Override Speed", "Choose to use the global speed value on the DialogueManager or a custom one for this dialogue."), d.overrideSpeed);
             if (d.overrideSpeed)
-            {
                 d.typeSpeed = EditorGUILayout.FloatField(new GUIContent("Type Speed", "[DO NOT SET TO 0] The speed in hundreds of a second for each character to appear."), d.typeSpeed);
-            }
 
             EditorGUILayout.Space();
             d.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), d.debug);

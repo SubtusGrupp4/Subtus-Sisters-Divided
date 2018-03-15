@@ -236,9 +236,9 @@ public class DialogueManager : MonoBehaviour
     // If the button to skip is pressed, not dependant on which player, that is handled in Update()
     private void InputGet()
     {
-        if(dialogues[di].fadeIn && panel.GetComponent<CanvasGroup>().alpha < 0.99f && !fadeInDone)  // If fading in
+        if (dialogues[di].fadeIn && panel.GetComponent<CanvasGroup>().alpha < 0.99f && !fadeInDone)  // If fading in
             panel.GetComponent<CanvasGroup>().alpha = 1f;                                           // Finish the fade
-        else if(dialogues[di].fadeOut && panel.GetComponent<CanvasGroup>().alpha > 0.01f && !fadeOutDone && doFadeOut)  // If fading out
+        else if (dialogues[di].fadeOut && panel.GetComponent<CanvasGroup>().alpha > 0.01f && !fadeOutDone && doFadeOut)  // If fading out
             panel.GetComponent<CanvasGroup>().alpha = 0f;                                                               // Finish the fade
         else if (sentenceToWrite.Length > charIndex && panel.GetComponent<CanvasGroup>().alpha > 0.9f)  // If the text is not done being written
         {
@@ -246,7 +246,7 @@ public class DialogueManager : MonoBehaviour
             charIndex = sentenceToWrite.Length;     // Skip to the last character, preventing the typing to occur
             typeTime = 0f;                          // Reset the typing timer
         }
-        else    // If not fading and is finished typing
+        else // If not fading and is finished typing
             DisplayNextSentence();  // Grab the next sentence, and start typing it
     }
 
@@ -331,31 +331,33 @@ public class DialogueManager : MonoBehaviour
     // Fetches the next sentence
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)   // If there is no more sentences to read
+        if (sentences.Count == 0 && dialogues[di].manualSkip)   // If there is no more sentences to read
         {
             BetweenNextDialogue();  // Go to the "between" next dialogue
-            return;                 // Stop this method from trying to read the next sentence
         }
-        string sentence = sentences.Dequeue();  // Store the next sentence into a string, and remove it (dequeue)
-        sentenceToWrite = sentence; 
-        writtenSentence = string.Empty;         // Clear what has been typed
-        charIndex = 0;                          // Reset the typing char index
-
-        if (dialogues[di].voiceOver)            // If there is voiceover to play
+        else if (sentences.Count != 0)
         {
-            if (dialogues[di].audioClips.Length > sentenceIndex)    // If there are more audioclips than the current sentence index
-            {
-                if (dialogues[di].audioClips[sentenceIndex] != null)    // And the current sentence has an audioclip assigned to it
-                {
-                    audioSources[0].clip = dialogues[di].audioClips[sentenceIndex];
-                    audioSources[0].Play();                             // Play the voiceover clip
-                }
-                else
-                    Debug.LogWarning("No audioclip on dialogue with index " + di + ". This is not an error, the game will work just fine without it.");
-            }
-        }
+            string sentence = sentences.Dequeue();  // Store the next sentence into a string, and remove it (dequeue)
+            sentenceToWrite = sentence;
+            writtenSentence = string.Empty;         // Clear what has been typed
+            charIndex = 0;                          // Reset the typing char index
 
-        sentenceIndex++;    // Increment the sentence index for next time
+            if (dialogues[di].voiceOver)            // If there is voiceover to play
+            {
+                if (dialogues[di].audioClips.Length > sentenceIndex)    // If there are more audioclips than the current sentence index
+                {
+                    if (dialogues[di].audioClips[sentenceIndex] != null)    // And the current sentence has an audioclip assigned to it
+                    {
+                        audioSources[0].clip = dialogues[di].audioClips[sentenceIndex];
+                        audioSources[0].Play();                             // Play the voiceover clip
+                    }
+                    else
+                        Debug.LogWarning("No audioclip on dialogue with index " + di + ". This is not an error, the game will work just fine without it.");
+                }
+            }
+
+            sentenceIndex++;    // Increment the sentence index for next time
+        }
     }
 
     private void BetweenNextDialogue()
