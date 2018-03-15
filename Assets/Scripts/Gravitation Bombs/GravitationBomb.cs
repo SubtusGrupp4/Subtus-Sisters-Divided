@@ -149,10 +149,13 @@ public class GravitationBomb : MonoBehaviour
                 GameObject[] o = GameObject.FindGameObjectsWithTag(tag);
                 foreach (GameObject targetObjects in o)
                 {
-                    float inRange = Vector3.Distance(transform.position, targetObjects.transform.position);
-                    if (range > inRange)
+                    if (transform.position.y < 0f && targetObjects.transform.position.y < 0f || transform.position.y > 0f && targetObjects.transform.position.y > 0f)
                     {
-                        pullObjects.Add(targetObjects);
+                        float inRange = Vector3.Distance(transform.position, targetObjects.transform.position);
+                        if (range > inRange)
+                        {
+                            pullObjects.Add(targetObjects);
+                        }
                     }
                 }
             }
