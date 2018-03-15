@@ -5,6 +5,8 @@ using UnityEngine;
 public class ReturnRadius : MonoBehaviour {
 
     private Vector3 startPosition;
+    [SerializeField]
+    private Vector2 offset;
 
     [SerializeField]
     private float radius = 15f;
@@ -18,7 +20,7 @@ public class ReturnRadius : MonoBehaviour {
     {
 		if(Vector3.Distance(transform.position, startPosition) > radius)
         {
-            transform.position = startPosition;
+            transform.position = startPosition + new Vector3(offset.x, offset.y, 0f);
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 	}
@@ -26,6 +28,6 @@ public class ReturnRadius : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1f, 0.75f, 0f);
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(offset.x, offset.y, 0f), radius);
     }
 }
