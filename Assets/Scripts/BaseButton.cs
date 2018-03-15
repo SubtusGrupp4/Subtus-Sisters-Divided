@@ -55,7 +55,7 @@ public class BaseButton : MonoBehaviour
     [FMODUnity.EventRef]
     private string deActivationEvent;
 
-    private AudioSource myAudio;
+    private FMODEmitter myAudio;
     private SpriteRenderer sr;
 
     private List<BaseButton> otherButtons = new List<BaseButton>();
@@ -63,12 +63,16 @@ public class BaseButton : MonoBehaviour
 
 
 
+
+
     protected virtual void Start()
     {
         if (Sounds)
-            myAudio = GetComponent<AudioSource>();
+            myAudio = GetComponent<FMODEmitter>();
 
         sr = GetComponent<SpriteRenderer>();
+
+
 
         // Find other buttons with same TriggerIndex
         otherButtons.AddRange(FindObjectsOfType<BaseButton>());
@@ -169,8 +173,11 @@ public class BaseButton : MonoBehaviour
 
 
             if (Sounds)
-                FMODUnity.RuntimeManager.PlayOneShot(activationEvent, transform.position);
-
+            {
+                myAudio.Stop();
+                myAudio.SetEvent(deActivationEvent);
+                myAudio.Play();
+            }
             hidden = true;
         }
     }
@@ -189,7 +196,11 @@ public class BaseButton : MonoBehaviour
             hidden = false;
 
             if (Sounds)
-                FMODUnity.RuntimeManager.PlayOneShot(deActivationEvent, transform.position);
+            {
+                myAudio.Stop();
+                myAudio.SetEvent(deActivationEvent);
+                myAudio.Play();
+            }
 
         }
     }
@@ -198,6 +209,7 @@ public class BaseButton : MonoBehaviour
     {
         if (!isDown)
         {
+            Debug.Log("triggercounter " + triggerCounter);
 
             if (triggerCounter >= 1)
                 Hide();
