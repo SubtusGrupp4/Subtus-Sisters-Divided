@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4439681465796254}
   - component: {fileID: 212636949055321058}
   - component: {fileID: 68193250635773310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light_SlopeUnder_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

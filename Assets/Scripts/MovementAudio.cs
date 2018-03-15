@@ -32,6 +32,14 @@ public class MovementAudio : MonoBehaviour
     [SerializeField]
     private string woodEvent;
 
+    private bool isBot = false;
+
+    private void Start()
+    {
+        if (transform == GameManager.instance.playerBot)
+            isBot = true;
+    }
+
     public void Footstep()
     {
         string eventPath = CheckGroundType();
@@ -64,11 +72,11 @@ public class MovementAudio : MonoBehaviour
             case GroundType.Wood:
                 eventPath = woodEvent;
                 break;
-            case GroundType.GrassGross:
-                eventPath = grassGrossEvent;
-                break;
             default:
-                eventPath = grassEvent;
+                if (!isBot)
+                    eventPath = grassEvent;
+                else
+                    eventPath = grassGrossEvent;
                 break;
         }
 

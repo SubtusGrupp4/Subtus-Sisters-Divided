@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4051651067914738}
   - component: {fileID: 212937918396557716}
   - component: {fileID: 60688398120822246}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dark_SlopeTop_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

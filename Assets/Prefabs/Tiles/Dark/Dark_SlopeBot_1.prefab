@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4344020963024270}
   - component: {fileID: 212146489405179244}
   - component: {fileID: 60338514719270338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dark_SlopeBot_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

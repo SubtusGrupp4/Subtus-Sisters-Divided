@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114694023081593626}
   - component: {fileID: 251780896752304268}
   - component: {fileID: 68152728607454662}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Comb_Cobble_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

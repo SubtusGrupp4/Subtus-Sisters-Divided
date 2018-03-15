@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114052315553522566}
   - component: {fileID: 251395708097975238}
   - component: {fileID: 68477624092395662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Comb_SlopeBot_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

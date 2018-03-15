@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114602217164485070}
   - component: {fileID: 251212435810899474}
   - component: {fileID: 68388298190950646}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Light_CobbleRight_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4655704895061220}
   - component: {fileID: 212602389236532678}
   - component: {fileID: 68734141946477680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dark_GrassLeft_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

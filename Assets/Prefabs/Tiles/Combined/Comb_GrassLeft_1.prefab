@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114705794646271116}
   - component: {fileID: 251446592874663778}
   - component: {fileID: 68971411793552538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Comb_GrassLeft_1
   m_TagString: Floor
   m_Icon: {fileID: 0}

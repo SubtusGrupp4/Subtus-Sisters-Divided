@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114092394431164652}
   - component: {fileID: 251174858877648754}
   - component: {fileID: 68628504195989992}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Dark_CobbleLeft_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
