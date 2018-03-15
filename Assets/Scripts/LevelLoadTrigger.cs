@@ -8,11 +8,8 @@ public class LevelLoadTrigger : BaseButton {
 
     public int levelIndex;
 
-
-
-
     protected override void DoStuff()
     {
-        SceneManager.LoadScene(levelIndex);
+        GameManager.instance.ChangeLevel(levelIndex);
     }
 }

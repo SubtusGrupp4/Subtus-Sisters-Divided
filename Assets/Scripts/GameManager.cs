@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
     private void RestartKey()
     {
         if (Input.GetKeyDown(resetKey))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            ResetLevel();
     }
 
     private void PauseKey()
@@ -143,6 +143,23 @@ public class GameManager : MonoBehaviour {
             onePlayerDead = true;
             playerBot.GetComponent<Reviving>().Die();
         }
+    }
+
+    public void ResetLevel()
+    {
+        ChangeLevel(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ChangeLevel(int id)
+    {
+        GameObject[] gos = FindObjectsOfType<GameObject>();
+        foreach (GameObject go in gos)
+        {
+            FMODEmitter[] emitters = go.GetComponents<FMODEmitter>();
+            foreach (FMODEmitter emitter in emitters)
+                emitter.Stop();
+        }
+        SceneManager.LoadScene(id);
     }
 
     public float PreventZero(float value) 
