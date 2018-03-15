@@ -161,13 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4631589fc43a4c4c97f0a98655e6eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitters: []
+  audioState: 0
   idleEvent: 
   walkingEvent: event:/Mario/Enemy/Police footsteps grass
   attackEvent: 
   fallingEvent: 
-  growlEvent: 
-  loopEvent: 
 --- !u!114 &114289116344412696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,6 +204,9 @@ MonoBehaviour:
   Event: event:/Mario/Enemy/Police footsteps grass
   playOnStart: 1
   is3D: 1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
   parameters: []
 --- !u!114 &114800699194534338
 MonoBehaviour:
@@ -238,9 +239,7 @@ MonoBehaviour:
   turnRate: 0
   aggroRange: 6
   checkPoints: []
-  engagedSpeed: 5
-  engagedClimb: 2
-  engagedStepRange: 2
+  engagedSpeed: 8
   attentionSpan: 1
 --- !u!212 &212996390384708728
 SpriteRenderer:
