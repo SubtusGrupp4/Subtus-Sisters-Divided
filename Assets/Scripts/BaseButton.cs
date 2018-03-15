@@ -21,6 +21,7 @@ public class BaseButton : MonoBehaviour
     [SerializeField]
     private bool stayDown; // if triggered, stay down.
     private bool isDown;
+    private bool hidden;
 
     [Header("Sprites")]
     public bool HideOnInteraction; // Hide the sprite if the button is active.
@@ -62,7 +63,7 @@ public class BaseButton : MonoBehaviour
 
 
 
-   protected virtual void  Start()
+    protected virtual void Start()
     {
         if (Sounds)
             myAudio = GetComponent<AudioSource>();
@@ -139,53 +140,78 @@ public class BaseButton : MonoBehaviour
 
                 if (change > 0)
                     Hide();// Change to 2 pictures??, aka picture 1 and picture 2? good incase we want to Toggle a lever or something
-               
-                    
+
+
 
             }
         else
         {
             if (change > 0)
                 Hide();// Change to 2 pictures??, aka picture 1 and picture 2? good incase we want to Toggle a lever or something
-            
+
 
             triggerCounter += change;
             CountChange();
         }
 
-        
+
     }
 
     private void Hide()
     {
-        // Change to Show Picture 2
-        sr.sprite = stateTwo;
+        if (!hidden)
+        {
+            // Change to Show Picture 2
+            sr.sprite = stateTwo;
 
-        if (HideOnInteraction)
-            GetComponent<SpriteRenderer>().enabled = false;
+            if (HideOnInteraction)
+                GetComponent<SpriteRenderer>().enabled = false;
+
+
+            if (Sounds)
+                FMODUnity.RuntimeManager.PlayOneShot(activationEvent, transform.position);
+
+            hidden = true;
+        }
     }
 
     private void Show()
     {
-        sr.sprite = stateOne;
+        if (hidden)
+        {
 
-        // Change to Show picture 1
-        if (HideOnInteraction)
-            GetComponent<SpriteRenderer>().enabled = true;
+            sr.sprite = stateOne;
+
+            // Change to Show picture 1
+            if (HideOnInteraction)
+                GetComponent<SpriteRenderer>().enabled = true;
+
+            hidden = false;
+
+            if (Sounds)
+                FMODUnity.RuntimeManager.PlayOneShot(deActivationEvent, transform.position);
+
+        }
     }
 
     public void CountChange()
     {
         if (!isDown)
         {
+
+            if (triggerCounter >= 1)
+                Hide();
+            else
+            if (triggerCounter < triggerCount)
+                Show();
+
             // Activate interaction
             if (triggerCounter >= triggerCount && !IsActive)
             {
                 DoStuff();
                 IsActive = true;
 
-                if (Sounds)
-                    FMODUnity.RuntimeManager.PlayOneShot(activationEvent, transform.position);
+
 
                 if (stayDown)
                     isDown = true;
@@ -196,10 +222,9 @@ public class BaseButton : MonoBehaviour
                 UndoStuff();
                 IsActive = false;
 
-                Show();
 
-                if (Sounds)
-                    FMODUnity.RuntimeManager.PlayOneShot(deActivationEvent, transform.position);
+
+
 
             }
         }
