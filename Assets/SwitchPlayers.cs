@@ -22,6 +22,8 @@ public class SwitchPlayers : MonoBehaviour
 
     [Header("Dialogue")]
     [SerializeField]
+    private float startTimer = 2f;
+    [SerializeField]
     private float waitTime = 2f;
     private Dialogue[] dialogues;
 
@@ -35,7 +37,13 @@ public class SwitchPlayers : MonoBehaviour
 
     public void StartSwitch()
     {
-        switchImage.gameObject.SetActive(true); 
+        StartCoroutine(StartTimer());
+    }
+
+    private IEnumerator StartTimer()
+    {
+        yield return new WaitForSeconds(startTimer);
+        switchImage.gameObject.SetActive(true);
         doAnimation = true;
         source.Play();
     }

@@ -80,6 +80,8 @@ public class DialogueManager : MonoBehaviour
     private bool player1Pressed = false;
     private bool player2Pressed = false;
 
+    private bool startSwitch = true;
+
     private void Awake()
     {
         CreateSingleton();
@@ -373,6 +375,9 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayNextDialogue()
     {
+        if (dialogues[di].causeSwitch)
+            startSwitch = true;
+
         di++;                   // Increment the dialogue index
         sentenceIndex = 0;      // Reset the sentence index
 
@@ -411,6 +416,9 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        if (startSwitch)
+            SwitchPlayers.instance.StartSwitch();
+
         // Disable all of the canvases
         mDialogueCanvas.enabled = false;
         lDialogueCanvas.enabled = false;

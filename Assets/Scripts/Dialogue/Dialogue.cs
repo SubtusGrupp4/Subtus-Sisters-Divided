@@ -49,6 +49,8 @@ public class Dialogue : MonoBehaviour {
     public bool overrideSpeed = false;
     public float typeSpeed = 8f;
 
+    public bool causeSwitch = false;
+
     private void Start()
     {
         GameManager.instance.PreventZero(moveCameraSpeed, 1f);

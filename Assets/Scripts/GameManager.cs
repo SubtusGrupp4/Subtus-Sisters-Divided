@@ -47,6 +47,13 @@ public class GameManager : MonoBehaviour
     private float fillRate = 1f;
     private float emptyRate = 0.4f;
 
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string pauseEvent;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string unpauseEvent;
+
     [Header("Loading Screen")]
     public GameObject loadingScreen;
     public Slider slider;
@@ -123,6 +130,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(pauseKey) || Input.GetKeyDown("joystick button 7"))
         {
+            if (isPaused)
+                FMODUnity.RuntimeManager.PlayOneShot(unpauseEvent, transform.position);
+            else
+                FMODUnity.RuntimeManager.PlayOneShot(pauseEvent, transform.position);
 
             pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
             // Use something else instead
@@ -196,7 +207,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(progress);
 
             slider.value = progress;
-            progressText.text = progress * 100f + "%";
+            progressText.text = Mathf.RoundToInt(progress * 100f) + "%";
 
             yield return null;
         }

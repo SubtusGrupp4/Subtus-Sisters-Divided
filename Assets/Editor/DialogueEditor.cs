@@ -74,6 +74,7 @@ public class DialogueEditor : Editor {
             d.overrideSpeed = EditorGUILayout.Toggle(new GUIContent("Override Speed", "Choose to use the global speed value on the DialogueManager or a custom one for this dialogue."), d.overrideSpeed);
             if (d.overrideSpeed)
                 d.typeSpeed = EditorGUILayout.FloatField(new GUIContent("Type Speed", "[DO NOT SET TO 0] The speed in hundreds of a second for each character to appear."), d.typeSpeed);
+            d.causeSwitch = EditorGUILayout.Toggle("Cause Switch", d.causeSwitch);
 
             EditorGUILayout.Space();
             d.debug = EditorGUILayout.Toggle(new GUIContent("Display Debug", "Displays debug variables. Useful for debugging."), d.debug);
