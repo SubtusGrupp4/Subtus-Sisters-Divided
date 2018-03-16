@@ -102,8 +102,9 @@ public class SwitchPlayers : MonoBehaviour
             player.GetComponent<PullBoxes>().Flip();
         }
 
-        GameManager.instance.playerTop = top;
-        GameManager.instance.playerBot = bot;
+        GameManager.instance.playerTop = bot;
+        GameManager.instance.playerBot = top;
+        Camera.main.GetComponent<CameraController>().ResetTransforms();
     }
 
     private void CreateSingleton()

@@ -267,4 +267,10 @@ public class CameraController : MonoBehaviour
         Gizmos.DrawLine(new Vector3(maxX, (Camera.main.orthographicSize)),
                 new Vector3(maxX, -(Camera.main.orthographicSize)));
     }
+
+    public void ResetTransforms()
+    {
+        playerTop = GameManager.instance.playerTop;
+        playerBot = GameManager.instance.playerBot;
+    }
 }

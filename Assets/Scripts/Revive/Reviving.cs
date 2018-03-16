@@ -94,7 +94,17 @@ public class Reviving : MonoBehaviour
 
                 Vector2 spawnPos = new Vector2(pc.lastSafe.x, 0f);
                 revivePlacer = Instantiate(revivePlacerPrefab, spawnPos, Quaternion.identity);
-                revivePlacer.GetComponent<RevivePlacer>().Initialize(pc.player);
+
+                if (pc.preventInput)
+                {
+                    if(pc.player == Controller.Player1)
+                        revivePlacer.GetComponent<RevivePlacer>().Initialize(Controller.Player2);
+                    else
+                        revivePlacer.GetComponent<RevivePlacer>().Initialize(Controller.Player2);
+                }
+                else
+                    revivePlacer.GetComponent<RevivePlacer>().Initialize(pc.player);
+
                 Camera.main.GetComponent<CameraController>().SetCameraState(CameraState.FollowingOne, transform);
                 GameManager.instance.onePlayerDead = true;
             }
