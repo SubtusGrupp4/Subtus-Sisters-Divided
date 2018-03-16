@@ -401,12 +401,12 @@ public class AIMovement : MonoBehaviour
                 isFalling = true;
             }
             else
-                new Vector2(0, rigidbody2D.velocity.y);
+                directionMultiplier = new Vector2(0, rigidbody2D.velocity.y);
         }
 
         if (CheckLedge())
         {
-            new Vector2(0, rigidbody2D.velocity.y);
+            directionMultiplier = new Vector2(0, rigidbody2D.velocity.y);
         }
 
         NormalizeSlope();
