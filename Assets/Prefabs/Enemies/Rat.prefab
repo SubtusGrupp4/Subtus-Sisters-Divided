@@ -164,9 +164,6 @@ MonoBehaviour:
   Event: event:/Players/Grass/Grass
   playOnStart: 1
   is3D: 1
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
   parameters: []
 --- !u!114 &114550923685617972
 MonoBehaviour:
@@ -179,11 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4631589fc43a4c4c97f0a98655e6eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioState: 0
+  emitters: []
   idleEvent: 
   walkingEvent: event:/Players/Grass/Grass
   attackEvent: event:/Mario/Enemy/Rat attack
   fallingEvent: event:/Mario/Enemy/Rat falling
+  growlEvent: 
+  loopEvent: 
 --- !u!114 &114725340640989346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +198,7 @@ MonoBehaviour:
   bounceOn:
   - Floor
   - Box
+  - Enemy
   walkOn:
   - Floor
   flipped: 0
