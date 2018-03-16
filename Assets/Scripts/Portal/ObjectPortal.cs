@@ -32,7 +32,7 @@ public class ObjectPortal : PortalBehaviour
 	}
 
 	void ChangeSprite(){
-		if (!CompareTag("GravitationBomb")) {
+		if (!CompareTag("GravitationBomb") && !CompareTag("Pickup")) {
 			if (checkState) {
 				this.GetComponent<SpriteRenderer> ().sprite = original;
 			} else {
