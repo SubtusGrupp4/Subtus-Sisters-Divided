@@ -32,6 +32,8 @@ public class PullBoxes : MonoBehaviour
 
     public bool flip = false;
 
+    private FMODEmitter emitter;
+
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -48,6 +50,8 @@ public class PullBoxes : MonoBehaviour
 
         arm = playerController.armAnim;
         body = playerController.bodyAnim;
+
+        emitter = GetComponent<FMODEmitter>();
     }
 
     void Update()
@@ -91,8 +95,7 @@ public class PullBoxes : MonoBehaviour
         {
             StopDragging();
         }
-
-		if (!isPulling) 
+        if(!isPulling)
 		{
 			playerController.pulling = false;
 
@@ -137,6 +140,7 @@ public class PullBoxes : MonoBehaviour
         box.GetComponent<Rigidbody2D>().mass = 100;
         box.GetComponent<Rigidbody2D>().velocity = new Vector2(0, box.GetComponent<Rigidbody2D>().velocity.y);
         box.GetComponent<FixedJoint2D>().enabled = false;
+        emitter.Stop();
     }
 
 	public void EnableController()
@@ -184,6 +188,8 @@ public class PullBoxes : MonoBehaviour
 
                 body.Push(true);
                 arm.Push(true);
+
+                emitter.Play();
             }
             else if (isRight && joyStickInput < 0 || !isRight && joyStickInput > 0)
             {
@@ -192,6 +198,8 @@ public class PullBoxes : MonoBehaviour
 
                 body.Push(false);
                 arm.Push(false);
+
+                emitter.Play();
             }
             else
             {
@@ -200,6 +208,8 @@ public class PullBoxes : MonoBehaviour
 
                 body.Push(false);
                 arm.Push(false);
+
+                emitter.Stop();
             }
 
         }

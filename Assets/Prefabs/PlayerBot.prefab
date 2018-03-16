@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 114861638884894700}
   - component: {fileID: 114012148373138204}
   - component: {fileID: 61382578469589184}
+  - component: {fileID: 114318700841003268}
   m_Layer: 0
   m_Name: PlayerBot
   m_TagString: Player
@@ -137,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566391204588738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 273.02902, y: -2.9116757, z: 0}
+  m_LocalPosition: {x: 83.76002, y: -4.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4862396126950018}
@@ -289,6 +290,21 @@ MonoBehaviour:
   walls:
   - Floor
   range: 2
+--- !u!114 &114318700841003268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566391204588738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad1432057e23f47945e839117f78b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Carl/Box Dragging
+  playOnStart: 0
+  is3D: 1
+  parameters: []
 --- !u!114 &114440824730290900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -365,6 +381,7 @@ MonoBehaviour:
   pushSpeed: 25
   delayTime: 1
   isPulling: 0
+  flip: 0
 --- !u!114 &114861638884894700
 MonoBehaviour:
   m_ObjectHideFlags: 1
