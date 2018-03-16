@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager instance;
 
@@ -38,10 +39,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Canvas pauseMenu;
     public bool isPaused = false;
+    public float fillTime;
     [SerializeField]
-    private float player1A = 0f;
+    private float player1X = 0f;
     [SerializeField]
-    private float player2A = 0f;
+    private float player2X = 0f;
     private float fillRate = 1f;
     private float emptyRate = 0.4f;
 
@@ -80,7 +82,8 @@ public class GameManager : MonoBehaviour {
         DialogueManager.gameObject.SetActive(true);
     }
 
-    private void Update () {
+    private void Update()
+    {
         RestartKey();
         PauseKey();
         KillKey();
@@ -93,21 +96,8 @@ public class GameManager : MonoBehaviour {
             ChangeLevel(2);
 
         if (isPaused)
-        {
-            // Holding A to fill the progress bars
-            if (Input.GetAxis("Jump_C1") > 0f || Input.GetKey(KeyCode.U))
-                player1A += Time.deltaTime * fillRate;
-            else
-                player1A -= Time.deltaTime * emptyRate; // Empty if not holding A
+            ReadQuit();
 
-            if (Input.GetAxis("Jump_C2") > 0f || Input.GetKey(KeyCode.I))
-                player2A += Time.deltaTime * fillRate;
-            else
-                player2A -= Time.deltaTime * emptyRate;
-
-            player1A = Mathf.Clamp(player1A, 0f, 1f);
-            player2A = Mathf.Clamp(player2A, 0f, 1f);
-        }
     }
 
     private void CreateSingleton()
@@ -131,19 +121,43 @@ public class GameManager : MonoBehaviour {
 
     private void PauseKey()
     {
-        if (Input.GetKeyDown(pauseKey))
+        if (Input.GetKeyDown(pauseKey) || Input.GetKeyDown("joystick button 7"))
+        {
+
+            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+            // Use something else instead
+            Time.timeScale = pauseMenu.gameObject.activeSelf ? 0f : 1f;
+            isPaused = pauseMenu.gameObject.activeSelf;
+        }
+
+
+    }
+
+    private void ReadQuit()
+    {
+        if (Input.GetKey("joystick 1 button 2"))
+        {
+            player1X += fillRate * Time.unscaledDeltaTime;
+        }
+        else if (player1X > 0)
+            player1X -= Time.unscaledDeltaTime * emptyRate;
+
+        if (Input.GetKey("joystick 2 button 2"))
+        {
+            player2X += fillRate * Time.unscaledDeltaTime;
+        }
+        else if (player2X > 0)
+            player2X -= Time.unscaledDeltaTime * emptyRate;
+
+        if (player1X >= fillTime && player2X >= fillTime)
         {
             Application.Quit();
-            //pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-            // Use something else instead
-            //Time.timeScale = pauseMenu.gameObject.activeSelf ? 0f : 1f;
-            //isPaused = pauseMenu.gameObject.activeSelf;
         }
     }
 
     private void KillKey()
     {
-        if(Input.GetKeyDown(killKey))
+        if (Input.GetKeyDown(killKey))
         {
             playerTop.GetComponent<Reviving>().Die();
             onePlayerDead = true;
@@ -169,14 +183,14 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(LevelLoadAsynchronous(id));
     }
 
-    IEnumerator LevelLoadAsynchronous (int id)
+    IEnumerator LevelLoadAsynchronous(int id)
     {
         float progress;
         AsyncOperation operation = SceneManager.LoadSceneAsync(id);
 
         loadingScreen.SetActive(true);
 
-        while(!operation.isDone)
+        while (!operation.isDone)
         {
             progress = Mathf.Clamp01(operation.progress / 0.9f);
             Debug.Log(progress);
@@ -189,7 +203,7 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public float PreventZero(float value) 
+    public float PreventZero(float value)
     {
         value = value < 0.01f ? 0.01f : value;
         return value;
