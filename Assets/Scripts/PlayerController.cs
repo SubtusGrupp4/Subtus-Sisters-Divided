@@ -355,7 +355,8 @@ public class PlayerController : MonoBehaviour
         //
         //
 
-        rigidbody2D.velocity = new Vector2(temp, Y);
+        if(!preventInput)
+            rigidbody2D.velocity = new Vector2(temp, Y);
     }
 
     private void ControllingAir()
