@@ -4,7 +4,27 @@ using UnityEngine;
 
 public class EnemyPortal : PortalBehaviour 
 {
-	/*
+	
+	public GameObject particleEffect;
+	public override void OnPortalContact()
+	{
+        
+        FMODEmitter[] emitters = GetComponents<FMODEmitter>();
+        foreach (FMODEmitter emitter in emitters)
+            emitter.Stop();
+        GameObject clone = Instantiate(particleEffect, transform.position, Quaternion.identity);
+        clone.transform.localScale = new Vector2(clone.transform.localScale.x, transform.localScale.y);
+        Destroy(clone, t: 1f);
+        Destroy(gameObject);
+    }
+
+   
+
+}
+
+// this changes the sprite and script when passing through portals
+
+/*
 	[Header ("Scripts")]
 	public MonoBehaviour enemyScript;
 	public MonoBehaviour enemyScript2;
@@ -77,15 +97,3 @@ public class EnemyPortal : PortalBehaviour
 	}
 
 */
-	public GameObject particleEffect;
-	public override void OnPortalContact()
-	{
-        FMODEmitter[] emitters = GetComponents<FMODEmitter>();
-        foreach (FMODEmitter emitter in emitters)
-            emitter.Stop();
-		GameObject clone = Instantiate (particleEffect, transform.position, Quaternion.identity);
-		Destroy (clone, 2f);
-		Destroy (gameObject);
-	}
-
-}
