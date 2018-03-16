@@ -35,14 +35,14 @@ public class PoliceBehaviour : AIMovement
     // Use this for initialization
     protected override void Update()
     {
-        if (!stunned)
-        {
-            if (!engaged)
-                CheckEngagement();
+        StunCountDown();
 
-            if (engaged)
-                CheckDisEngagement();
-        }
+        if (!engaged)
+            CheckEngagement();
+
+        if (engaged)
+            CheckDisEngagement();
+
 
     }
 
@@ -118,6 +118,7 @@ public class PoliceBehaviour : AIMovement
             target = tempTarget;
             if (target != null)
             {
+                Debug.Log("Engage");
                 target = tempTarget;
                 engaged = true;
                 currentState = engagedState;
@@ -136,7 +137,9 @@ public class PoliceBehaviour : AIMovement
         bAnim.ToggleWalk(false);
         if (attentionTimer >= attentionSpan || target.activeInHierarchy != true)
         {
+            Debug.Log("Disengage");
             currentState = startState;
+            savedState = startState;
             Bounce();
             engaged = false;
             speed = startSpeed;

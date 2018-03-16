@@ -122,8 +122,6 @@ public class AIMovement : MonoBehaviour
         //Maxslope
         maxSlope = Mathf.Sin((maxSlope * Mathf.PI) / 180);
 
-
-
         directionMultiplier = new Vector2(1, 0);
 
         // Raydistance
@@ -134,8 +132,6 @@ public class AIMovement : MonoBehaviour
         rayDistanceHypot += 0.0f; // offSet.
 
         // rayDistanceHypot = 0.7f;
-
-
 
         // SlopeRay
         rayOffSetX = GetComponent<BoxCollider2D>().size.x * transform.localScale.x / 2;
@@ -151,10 +147,6 @@ public class AIMovement : MonoBehaviour
         if (flipped)
             Flip();
     }
-
-
-
-
     protected virtual void Update()
     {
         //  Activate();
@@ -168,8 +160,6 @@ public class AIMovement : MonoBehaviour
             {
                 CheckEngagement();
             }
-
-
             //  CheckFalling();
 
         }
@@ -177,12 +167,17 @@ public class AIMovement : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+
+        Debug.Log("Stunend State" + stunned);
+        Debug.Log("Frozen State" + frozen);
+        Debug.Log("Dead State" + isDead);
+
         if (!stunned)
         {
             if (!isDead && !frozen)
             {
                 Move();
-                Debug.Log("MOVIGN IS TRU + state is " + currentState);
+                Debug.Log("Current State" + currentState);
 
             }
 
@@ -192,14 +187,14 @@ public class AIMovement : MonoBehaviour
 
     public void Freeze(bool autoActivate, float time)
     {
-        Debug.Log("Freeze");
 
         if (!frozen)
         {
+            Debug.Log("freze");
+
             savedState = currentState;
             Debug.Log(savedState);
             currentState = MovementEnum.Idle;
-            rigidbody2D.velocity = Vector2.zero;
 
             frozen = true;
             this.autoActivate = autoActivate;
@@ -213,10 +208,13 @@ public class AIMovement : MonoBehaviour
 
     public void UnFreeze()
     {
-        Debug.Log("UnFreeze");
-        Debug.Log("svaedSTAte " + savedState);
-        currentState = savedState;
-        frozen = false;
+        if (frozen)
+        {
+            Debug.Log("UnFreeze");
+            Debug.Log("svaedSTAte " + savedState);
+            currentState = savedState;
+            frozen = false;
+        }
     }
 
     public void Die()
@@ -238,7 +236,7 @@ public class AIMovement : MonoBehaviour
         stunned = true;
     }
 
-    private void StunCountDown()
+    protected void StunCountDown()
     {
         if (stunned)
         {
@@ -287,8 +285,12 @@ public class AIMovement : MonoBehaviour
                 {
                     if (objHit[j].transform.tag == walkOn[i])
                     {
-                        if (autoActivate)
+                        if (autoActivate && !stunned)
+                        {
+                            Debug.Log("AUTOUNFREEZE");
                             UnFreeze();
+                            autoActivate = false;
+                        }
 
                         if (Mathf.Abs(objHit[j].normal.x) < maxSlope) // So we cant jump on walls.
                         {
@@ -399,16 +401,17 @@ public class AIMovement : MonoBehaviour
                 isFalling = true;
             }
             else
-                directionMultiplier = Vector2.zero;
+                new Vector2(0, rigidbody2D.velocity.y);
         }
 
         if (CheckLedge())
         {
-            directionMultiplier = Vector2.zero;
+            new Vector2(0, rigidbody2D.velocity.y);
         }
 
         NormalizeSlope();
 
+        Debug.Log("STALKING MOOOOVE");
         rigidbody2D.velocity = new Vector2(directionMultiplier.x * speed, rigidbody2D.velocity.y);
 
     }
@@ -424,7 +427,7 @@ public class AIMovement : MonoBehaviour
 
         StuckDebugg();
 
-        if (directionMultiplier == Vector2.zero)
+        if (directionMultiplier.x == 0)
         {
             directionMultiplier = Vector2.right;
         }

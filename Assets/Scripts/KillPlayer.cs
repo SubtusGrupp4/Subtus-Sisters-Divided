@@ -57,6 +57,9 @@ public class KillPlayer : MonoBehaviour
             attacking = true;
             Debug.Log("KILL PLAYER");
             AImove.Freeze(false, 0);
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+
         }
     }
 }
