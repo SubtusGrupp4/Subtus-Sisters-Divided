@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
     private bool player1Pressed = false;
     private bool player2Pressed = false;
 
-    private bool startSwitch = true;
+    private bool startSwitch = false;
 
     private void Awake()
     {
@@ -125,6 +125,15 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
 
         this.dialogues = dialogues;     // Assign the dialogues
+        foreach(Dialogue d in dialogues)
+        {
+            if(d.causeSwitch)
+            {
+                startSwitch = true;
+                GameManager.instance.playerTop.GetComponent<PlayerController>().preventInput = true;
+                GameManager.instance.playerBot.GetComponent<PlayerController>().preventInput = true;
+            }
+        }
         StartDialogue();                // Start processing the dialogue
     }
 

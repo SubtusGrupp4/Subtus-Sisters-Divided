@@ -105,6 +105,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 savedColliderSize;
 
     [HideInInspector]
+    public bool preventInput = false;
+
+    [HideInInspector]
     public Vector2 lastSafe;
 
     void Awake()
@@ -226,7 +229,7 @@ public class PlayerController : MonoBehaviour
             speed = savedSpeed;
         }
 
-        if (Input.GetAxisRaw(crawlInput) > 0 && !crawlAxisInUse)
+        if (Input.GetAxisRaw(crawlInput) > 0 && !crawlAxisInUse && !preventInput)
         {
             Collider2D[] allObjs;
             bool blocked = false;
@@ -300,7 +303,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         // JUMP
-        if (Input.GetAxis(jumpInput) > 0 && !jumpAxisInUse)
+        if (Input.GetAxis(jumpInput) > 0 && !jumpAxisInUse && !preventInput)
         {
             jumpAxisInUse = true;
             if (!inAir && !landing && !crawling && !pulling)
@@ -313,46 +316,49 @@ public class PlayerController : MonoBehaviour
 
 
         // Input Manager
-        X = Input.GetAxis(horAx); // Valute between 0 and 1 from input manager.
-        float Y = GetComponent<Rigidbody2D>().velocity.y;
-
-        // Round it to nearest .5
-        temp = X;
-        temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
-
-        if (Mathf.Abs(temp) <= 0.5f)
+        if (!preventInput)
         {
-            bodyAnim.ToggleWalk(true);
-            armAnim.ToggleWalk(true);
-        }
-        else
-        {
-            bodyAnim.ToggleWalk(false);
-            armAnim.ToggleWalk(false);
-        }
+            X = Input.GetAxis(horAx); // Valute between 0 and 1 from input manager.
+            float Y = GetComponent<Rigidbody2D>().velocity.y;
 
-        if (!inAir)
-            temp *= speed;
+            // Round it to nearest .5
+            temp = X;
+            temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
 
-        // Fixing all the Jumping and shit
-        ControllingAir();
+            if (Mathf.Abs(temp) <= 0.5f)
+            {
+                bodyAnim.ToggleWalk(true);
+                armAnim.ToggleWalk(true);
+            }
+            else
+            {
+                bodyAnim.ToggleWalk(false);
+                armAnim.ToggleWalk(false);
+            }
 
-        // Creating SavedVelocity.
-        if (!inAir)
-        {
+            if (!inAir)
+                temp *= speed;
+
+            // Fixing all the Jumping and shit
+            ControllingAir();
+
+            // Creating SavedVelocity.
+            if (!inAir)
+            {
+                rigidbody2D.velocity = new Vector2(temp, Y);
+                savedVelocity = rigidbody2D.velocity;
+                changedMade = false;
+            }
+
+            //
+            //
+            bodyAnim.Walking(new Vector2(temp, Y), true);
+            armAnim.Walking(new Vector2(temp, Y), false);
+            //
+            //
+
             rigidbody2D.velocity = new Vector2(temp, Y);
-            savedVelocity = rigidbody2D.velocity;
-            changedMade = false;
         }
-
-        //
-        //
-        bodyAnim.Walking(new Vector2(temp, Y), true);
-        armAnim.Walking(new Vector2(temp, Y), false);
-        //
-        //
-
-        rigidbody2D.velocity = new Vector2(temp, Y);
     }
 
     private void ControllingAir()
