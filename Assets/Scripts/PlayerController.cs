@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public Vector2 lastSafe;
+    [SerializeField]
+    private InstantiateGravityBomb instantiateGravityBomb;
 
     void Awake()
     {
@@ -350,8 +352,16 @@ public class PlayerController : MonoBehaviour
 
         //
         //
-        bodyAnim.Walking(new Vector2(temp, Y), true);
-        armAnim.Walking(new Vector2(temp, Y), false);
+        if (!preventInput)
+        {
+            bodyAnim.Walking(new Vector2(temp, Y), true);
+            armAnim.Walking(new Vector2(temp, Y), false);
+        }
+        else
+        {
+            bodyAnim.Walking(new Vector2(0f, Y), true);
+            armAnim.Walking(new Vector2(0f, Y), false);
+        }
         //
         //
 
@@ -567,6 +577,13 @@ public class PlayerController : MonoBehaviour
             if (slope)
                 break;
         }
+    }
+
+    public void PreventInput()
+    {
+        preventInput = true;
+        instantiateGravityBomb.enabled = false;
+        rigidbody2D.velocity = Vector2.zero;
     }
 
 }

@@ -285,7 +285,9 @@ MonoBehaviour:
   crawlSpeed: 3
   crawlColliderOffset: {x: 0.0739, y: -0.862}
   crawlColliderSize: {x: 1.927, y: 0.815}
+  preventInput: 0
   lastSafe: {x: 0, y: 0}
+  instantiateGravityBomb: {fileID: 114162503053591004}
 --- !u!114 &114162503053591004
 MonoBehaviour:
   m_ObjectHideFlags: 1

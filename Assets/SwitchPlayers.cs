@@ -100,12 +100,7 @@ public class SwitchPlayers : MonoBehaviour
         {
             player.GetComponent<PlayerController>().Flip();
             player.GetComponent<PullBoxes>().Flip();
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            player.GetComponent<BasicAnimator>().ToggleWalk(false);
         }
-
-        antiGrav.enabled = false;
-        grav.enabled = false;
 
         GameManager.instance.playerTop = top;
         GameManager.instance.playerBot = bot;
