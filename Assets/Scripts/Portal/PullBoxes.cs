@@ -30,6 +30,8 @@ public class PullBoxes : MonoBehaviour
     private BasicAnimator body;
     private float joyStickInput;
 
+    public bool flip = false;
+
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -46,21 +48,29 @@ public class PullBoxes : MonoBehaviour
 
         arm = playerController.armAnim;
         body = playerController.bodyAnim;
-
     }
 
     void Update()
     {
         PullOrPush();
 
-
-        if (playerController.player == Controller.Player1)
-            rayLine = new Vector2(transform.position.x, transform.position.y - 1f);
-        else
-            rayLine = new Vector2(transform.position.x, transform.position.y + 1.5f);
-
         Physics2D.queriesStartInColliders = false;
         RaycastHit2D hit = Physics2D.Raycast(rayLine, Vector2.right * transform.localScale.x, distance);
+
+        if (!flip)
+        {
+            if (playerController.player == Controller.Player1)
+                rayLine = new Vector2(transform.position.x, transform.position.y - 1f);
+            else
+                rayLine = new Vector2(transform.position.x, transform.position.y + 1.5f);
+        }
+        else
+        {
+            if (playerController.player == Controller.Player2)
+                rayLine = new Vector2(transform.position.x, transform.position.y - 1.5f);
+            else
+                rayLine = new Vector2(transform.position.x, transform.position.y + 1f);
+        }
 
         if (hit.collider != null && hit.collider.gameObject.tag == tagName && (hit.collider.GetComponent<OverEdgeFalling>() != null)
             && !playerController.inAir && (Input.GetKeyDown(KeyCode.G) || Input.GetButtonDown(pushAndPullBox)))
@@ -93,6 +103,11 @@ public class PullBoxes : MonoBehaviour
 			arm.Push(false);
 		}
 
+    }
+
+    public void Flip()
+    {
+        flip = !flip;  
     }
 
     private void StartDragging()
