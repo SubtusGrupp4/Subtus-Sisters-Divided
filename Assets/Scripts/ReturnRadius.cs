@@ -11,6 +11,9 @@ public class ReturnRadius : MonoBehaviour {
     [SerializeField]
     private float radius = 15f;
 
+    [HideInInspector]
+    public Transform draggedBy;
+
 	void Start ()
     {
         startPosition = transform.position;
@@ -20,6 +23,11 @@ public class ReturnRadius : MonoBehaviour {
     {
 		if(Vector3.Distance(transform.position, startPosition + new Vector3(offset.x, offset.y, 0f)) > radius)
         {
+            if(draggedBy != null)
+            {
+                draggedBy.GetComponent<PullBoxes>().StopDragging();
+                draggedBy = null;
+            }
             transform.position = startPosition;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
