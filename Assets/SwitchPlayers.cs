@@ -85,14 +85,9 @@ public class SwitchPlayers : MonoBehaviour
         Transform top = GameManager.instance.playerTop;
         Transform bot = GameManager.instance.playerBot;
 
-        Vector3 topPos = top.position;
-        Vector3 botPos = bot.position;
-
-        Destroy(top.gameObject);
-        Destroy(bot.gameObject);
-
-        top = Instantiate(GameManager.instance.playerTopPrefab, botPos, Quaternion.identity).transform;
-        bot = Instantiate(GameManager.instance.playerBotPrefab, topPos + new Vector3(0f, 1f, 0f), Quaternion.identity).transform;
+        Vector3 temp = top.position;
+        top.position = bot.position;
+        bot.position = temp;
 
         Transform[] players = { top, bot };
 
@@ -100,11 +95,8 @@ public class SwitchPlayers : MonoBehaviour
         {
             player.GetComponent<PlayerController>().Flip();
             player.GetComponent<PullBoxes>().Flip();
+            player.GetComponent<PlayerController>().PreventInput(false);
         }
-
-        GameManager.instance.playerTop = bot;
-        GameManager.instance.playerBot = top;
-        Camera.main.GetComponent<CameraController>().ResetTransforms();
     }
 
     private void CreateSingleton()

@@ -130,8 +130,8 @@ public class DialogueManager : MonoBehaviour
             if(d.causeSwitch)
             {
                 startSwitch = true;
-                GameManager.instance.playerTop.GetComponent<PlayerController>().PreventInput();
-                GameManager.instance.playerBot.GetComponent<PlayerController>().PreventInput();
+                GameManager.instance.playerTop.GetComponent<PlayerController>().PreventInput(true);
+                GameManager.instance.playerBot.GetComponent<PlayerController>().PreventInput(true);
             }
         }
         StartDialogue();                // Start processing the dialogue

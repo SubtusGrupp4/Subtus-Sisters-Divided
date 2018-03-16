@@ -579,11 +579,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PreventInput()
+    public void PreventInput(bool prevent)
     {
-        preventInput = true;
-        instantiateGravityBomb.enabled = false;
-        rigidbody2D.velocity = Vector2.zero;
+        preventInput = prevent;
+        instantiateGravityBomb.enabled = !prevent;
+        if(prevent)
+            rigidbody2D.velocity = Vector2.zero;
     }
 
 }
