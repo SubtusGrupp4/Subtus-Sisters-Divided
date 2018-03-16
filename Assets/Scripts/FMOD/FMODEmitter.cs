@@ -46,27 +46,30 @@ public class FMODEmitter : MonoBehaviour
 
     public void Play()
     {
-        //Debug.Log("Play FMOD Emitter. Event: " + Event);
-        instance = FMODUnity.RuntimeManager.CreateInstance(Event);
-
-        // Only want to update if we need to set 3D attributes
-        if (is3D)
+        if (!instance.isValid())
         {
-            Rigidbody2D rigidBody2D = GetComponent<Rigidbody2D>();
-            Transform transform = GetComponent<Transform>();
-            instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
-        }
+            //Debug.Log("Play FMOD Emitter. Event: " + Event);
+            instance = FMODUnity.RuntimeManager.CreateInstance(Event);
 
-        /*
-        if (is3D && OverrideAttenuation)
-        {
-            instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MINIMUM_DISTANCE, OverrideMinDistance);
-            instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, OverrideMaxDistance);
-        }
-        */
+            // Only want to update if we need to set 3D attributes
+            if (is3D)
+            {
+                Rigidbody2D rigidBody2D = GetComponent<Rigidbody2D>();
+                Transform transform = GetComponent<Transform>();
+                instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
+            }
 
-        instance.start();
+            /*
+            if (is3D && OverrideAttenuation)
+            {
+                instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MINIMUM_DISTANCE, OverrideMinDistance);
+                instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, OverrideMaxDistance);
+            }
+            */
+
+            instance.start();
+        }
     }
 
     public void Stop()
