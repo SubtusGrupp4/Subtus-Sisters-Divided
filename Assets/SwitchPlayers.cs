@@ -79,6 +79,15 @@ public class SwitchPlayers : MonoBehaviour
         Transform top = GameManager.instance.playerTop;
         Transform bot = GameManager.instance.playerBot;
 
+        Vector3 topPos = top.position;
+        Vector3 botPos = bot.position;
+
+        Destroy(top.gameObject);
+        Destroy(bot.gameObject);
+
+        top = Instantiate(GameManager.instance.playerTopPrefab, botPos, Quaternion.identity).transform;
+        bot = Instantiate(GameManager.instance.playerBotPrefab, topPos, Quaternion.identity).transform;
+
         Transform[] players = { top, bot };
 
         foreach(Transform player in players)
@@ -86,10 +95,6 @@ public class SwitchPlayers : MonoBehaviour
             player.GetComponent<PlayerController>().Flip();
             player.GetComponent<PullBoxes>().Flip();
         }
-        Vector3 temp = Vector3.zero;
-        temp = top.position;
-        top.position = bot.position;
-        bot.position = temp + new Vector3(0f, 1f);
     }
 
     private void CreateSingleton()
@@ -103,6 +108,7 @@ public class SwitchPlayers : MonoBehaviour
     private IEnumerator DialogueTimer()
     {
         yield return new WaitForSeconds(waitTime);
-        DialogueManager.instance.FetchDialogue(dialogues);  // Send the dialogue to the DialogueManager when triggered
+        if(dialogues.Length != 0)
+            DialogueManager.instance.FetchDialogue(dialogues);  // Send the dialogue to the DialogueManager when triggered
     }
 }
