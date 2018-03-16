@@ -316,49 +316,46 @@ public class PlayerController : MonoBehaviour
 
 
         // Input Manager
-        if (!preventInput)
+        X = Input.GetAxis(horAx); // Valute between 0 and 1 from input manager.
+        float Y = GetComponent<Rigidbody2D>().velocity.y;
+
+        // Round it to nearest .5
+        temp = X;
+        temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
+
+        if (Mathf.Abs(temp) <= 0.5f && !preventInput)
         {
-            X = Input.GetAxis(horAx); // Valute between 0 and 1 from input manager.
-            float Y = GetComponent<Rigidbody2D>().velocity.y;
-
-            // Round it to nearest .5
-            temp = X;
-            temp = (float)Math.Round(temp * 2, MidpointRounding.AwayFromZero) / 2;
-
-            if (Mathf.Abs(temp) <= 0.5f)
-            {
-                bodyAnim.ToggleWalk(true);
-                armAnim.ToggleWalk(true);
-            }
-            else
-            {
-                bodyAnim.ToggleWalk(false);
-                armAnim.ToggleWalk(false);
-            }
-
-            if (!inAir)
-                temp *= speed;
-
-            // Fixing all the Jumping and shit
-            ControllingAir();
-
-            // Creating SavedVelocity.
-            if (!inAir)
-            {
-                rigidbody2D.velocity = new Vector2(temp, Y);
-                savedVelocity = rigidbody2D.velocity;
-                changedMade = false;
-            }
-
-            //
-            //
-            bodyAnim.Walking(new Vector2(temp, Y), true);
-            armAnim.Walking(new Vector2(temp, Y), false);
-            //
-            //
-
-            rigidbody2D.velocity = new Vector2(temp, Y);
+            bodyAnim.ToggleWalk(true);
+            armAnim.ToggleWalk(true);
         }
+        else
+        {
+            bodyAnim.ToggleWalk(false);
+            armAnim.ToggleWalk(false);
+        }
+
+        if (!inAir)
+            temp *= speed;
+
+        // Fixing all the Jumping and shit
+        ControllingAir();
+
+        // Creating SavedVelocity.
+        if (!inAir)
+        {
+            rigidbody2D.velocity = new Vector2(temp, Y);
+            savedVelocity = rigidbody2D.velocity;
+            changedMade = false;
+        }
+
+        //
+        //
+        bodyAnim.Walking(new Vector2(temp, Y), true);
+        armAnim.Walking(new Vector2(temp, Y), false);
+        //
+        //
+
+        rigidbody2D.velocity = new Vector2(temp, Y);
     }
 
     private void ControllingAir()
