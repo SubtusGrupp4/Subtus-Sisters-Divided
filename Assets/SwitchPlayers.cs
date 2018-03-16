@@ -92,7 +92,7 @@ public class SwitchPlayers : MonoBehaviour
         Destroy(bot.gameObject);
 
         top = Instantiate(GameManager.instance.playerTopPrefab, botPos, Quaternion.identity).transform;
-        bot = Instantiate(GameManager.instance.playerBotPrefab, topPos, Quaternion.identity).transform;
+        bot = Instantiate(GameManager.instance.playerBotPrefab, topPos + new Vector3(0f, 1f, 0f), Quaternion.identity).transform;
 
         Transform[] players = { top, bot };
 
