@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 114728803591559300}
   - component: {fileID: 114135039996014676}
   m_Layer: 10
-  m_Name: Box
+  m_Name: box
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 115.86
-  m_LinearDrag: 0.5
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
