@@ -117,7 +117,9 @@ public class EnemyAudio : MonoBehaviour
 
     private IEnumerator LoopTimer(float time)
     {
-        emitters[1].Stop();
+        if(emitters[1] != null)
+            emitters[1].Stop();
+
         yield return new WaitForSeconds(time);
         Loop();
     }
