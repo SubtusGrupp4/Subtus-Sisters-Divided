@@ -341,7 +341,7 @@ public class PlayerController : MonoBehaviour
         ControllingAir();
 
         // Creating SavedVelocity.
-        if (!inAir)
+        if (!inAir && !preventInput)
         {
             rigidbody2D.velocity = new Vector2(temp, Y);
             savedVelocity = rigidbody2D.velocity;
