@@ -69,20 +69,8 @@ public class PullBoxes : MonoBehaviour
 
             if (hit.collider.GetComponent<OverEdgeFalling>().IsGrounded())
             {
-                isPulling = true;
-                playerController.pulling = true;
-
-                Debug.Log("1");
-
                 box = hit.collider.gameObject;
-                box.GetComponent<Rigidbody2D>().mass = pushSpeed;
-                box.GetComponent<FixedJoint2D>().enabled = true;
-                box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
-
-                Debug.Log("2");
-
-
-                Debug.Log("3");
+                StartDragging();
             }
             //code
             //cant jump while pulling/pushing
@@ -91,18 +79,7 @@ public class PullBoxes : MonoBehaviour
         }
         else if ((Input.GetKeyUp(KeyCode.G) || Input.GetButtonUp(pushAndPullBox)) && isPulling || (isPulling && playerController.inAir))
         {
-            isPulling = false;
-            playerController.pulling = false;
-
-            body.Pull(false);
-            arm.Pull(false);
-
-            body.Push(false);
-            arm.Push(false);
-
-            box.GetComponent<Rigidbody2D>().mass = 100;
-            box.GetComponent<Rigidbody2D>().velocity = new Vector2(0, box.GetComponent<Rigidbody2D>().velocity.y);
-            box.GetComponent<FixedJoint2D>().enabled = false;
+            StopDragging();
         }
 
 		if (!isPulling) 
@@ -116,6 +93,35 @@ public class PullBoxes : MonoBehaviour
 			arm.Push(false);
 		}
 
+    }
+
+    private void StartDragging()
+    {
+        isPulling = true;
+        playerController.pulling = true;
+
+        box.GetComponent<Rigidbody2D>().mass = pushSpeed;
+        box.GetComponent<FixedJoint2D>().enabled = true;
+        box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
+
+        if (box.GetComponent<ReturnRadius>() != null)
+            box.GetComponent<ReturnRadius>().draggedBy = transform;
+    }
+
+    public void StopDragging()
+    {
+        isPulling = false;
+        playerController.pulling = false;
+
+        body.Pull(false);
+        arm.Pull(false);
+
+        body.Push(false);
+        arm.Push(false);
+
+        box.GetComponent<Rigidbody2D>().mass = 100;
+        box.GetComponent<Rigidbody2D>().velocity = new Vector2(0, box.GetComponent<Rigidbody2D>().velocity.y);
+        box.GetComponent<FixedJoint2D>().enabled = false;
     }
 
 	public void EnableController()
