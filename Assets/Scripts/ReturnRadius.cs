@@ -36,6 +36,9 @@ public class ReturnRadius : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1f, 0.75f, 0f);
-        Gizmos.DrawWireSphere(startPosition + new Vector3(offset.x, offset.y, 0f), radius);
+        if(Application.isPlaying)
+            Gizmos.DrawWireSphere(startPosition + new Vector3(offset.x, offset.y, 0f), radius);
+        else
+            Gizmos.DrawWireSphere(transform.position + new Vector3(offset.x, offset.y, 0f), radius);
     }
 }
