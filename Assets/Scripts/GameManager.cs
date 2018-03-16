@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour {
     private float fillRate = 1f;
     private float emptyRate = 0.4f;
 
+    [Header("Loading Screen")]
+    public GameObject loadingScreen;
+    public Slider slider;
+    public Text progressText;
+
+
     private void Awake()
     {
         CreateSingleton();
@@ -80,11 +86,11 @@ public class GameManager : MonoBehaviour {
         KillKey();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            SceneManager.LoadScene(0);
+            ChangeLevel(0);
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            SceneManager.LoadScene(1);
+            ChangeLevel(1);
         else if (Input.GetKeyDown(KeyCode.Alpha3))
-            SceneManager.LoadScene(2);
+            ChangeLevel(2);
 
         if (isPaused)
         {
@@ -159,7 +165,28 @@ public class GameManager : MonoBehaviour {
             foreach (FMODEmitter emitter in emitters)
                 emitter.Stop();
         }
-        SceneManager.LoadScene(id);
+
+        StartCoroutine(LevelLoadAsynchronous(id));
+    }
+
+    IEnumerator LevelLoadAsynchronous (int id)
+    {
+        float progress;
+        AsyncOperation operation = SceneManager.LoadSceneAsync(id);
+
+        loadingScreen.SetActive(true);
+
+        while(!operation.isDone)
+        {
+            progress = Mathf.Clamp01(operation.progress / 0.9f);
+            Debug.Log(progress);
+
+            slider.value = progress;
+            progressText.text = progress * 100f + "%";
+
+            yield return null;
+        }
+
     }
 
     public float PreventZero(float value) 
