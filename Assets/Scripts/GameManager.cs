@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
     public Slider slider;
     public Text progressText;
 
+    public GameObject fadeScreen;
+    public Image fadeImage;
+    public float fadeTime;
+
 
     private void Awake()
     {
@@ -87,7 +91,12 @@ public class GameManager : MonoBehaviour
         onePlayerDead = false;
 
         DialogueManager.gameObject.SetActive(true);
+
+        StartCoroutine(FadeToBlack(-1, fadeTime));
+
+
     }
+  
 
     private void Update()
     {
@@ -140,8 +149,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = pauseMenu.gameObject.activeSelf ? 0f : 1f;
             isPaused = pauseMenu.gameObject.activeSelf;
         }
-
-
     }
 
     private void ReadQuit()
@@ -169,10 +176,10 @@ public class GameManager : MonoBehaviour
     private void KillKey()
     {
         if (Input.GetKeyDown(killKey))
-        {
+        {        
             playerTop.GetComponent<Reviving>().Die();
             onePlayerDead = true;
-            playerBot.GetComponent<Reviving>().Die();
+            playerBot.GetComponent<Reviving>().Die();            
         }
     }
 
@@ -181,7 +188,48 @@ public class GameManager : MonoBehaviour
         ChangeLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
+
+    private IEnumerator FadeToBlack(int dir, float time)
+    {
+        // Fading values
+        // DO WE WANT TO PAUSE THE GAME ??????????
+        float internalTimer = 0;
+        Color ogC = fadeImage.color;
+        Color c = fadeImage.color;
+        float fade = 1 - dir;
+        fade = Mathf.Clamp01(fade);
+        fadeScreen.SetActive(true);
+        // Fading starts
+        do
+        {
+            internalTimer += Time.unscaledDeltaTime / time;         
+            c.a = fade;
+
+            fadeImage.color = c;
+            fade += Time.deltaTime / time * dir;
+            yield return null;
+
+        } while (internalTimer <= 1.0f);
+        // Fading done
+        fadeScreen.SetActive(false);
+    }
+
+    IEnumerator WaitForFade(float time, int level)
+    {
+        yield return new WaitForSeconds(time);
+        ChangeLevelLoadingScreen(level);
+        // DO WHAT THE FK U WANT TO DO
+    }
+
+
     public void ChangeLevel(int id)
+    {
+        StartCoroutine(FadeToBlack(1, fadeTime));
+        StartCoroutine(WaitForFade(fadeTime, id));
+    }
+
+
+    private void ChangeLevelLoadingScreen(int id)
     {
         GameObject[] gos = FindObjectsOfType<GameObject>();
         foreach (GameObject go in gos)
@@ -204,7 +252,6 @@ public class GameManager : MonoBehaviour
         while (!operation.isDone)
         {
             progress = Mathf.Clamp01(operation.progress / 0.9f);
-            Debug.Log(progress);
 
             slider.value = progress;
             progressText.text = Mathf.RoundToInt(progress * 100f) + "%";
