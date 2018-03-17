@@ -128,8 +128,6 @@ public class SafepointManager : MonoBehaviour {
         {
             Vector2 rayOrigin = topCheckpoint.position;
             Vector2 rayDirection = Vector2.down;
-            // TODO: Set this correctly. Should for example not detect the players
-            //LayerMask layer = 1 << 0;
 
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, 11f);
             if (hit.transform != null)  // If it hits something, prevent the player from spawning in the ground
@@ -141,8 +139,6 @@ public class SafepointManager : MonoBehaviour {
         {
             Vector2 rayOrigin = botCheckpoint.position;
             Vector2 rayDirection = Vector2.up;
-            // TODO: Set this correctly. Should for example not detect the players
-            //LayerMask layer = 1 << 0;
 
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, 11f);
             if (hit.transform != null)  // If it hits something, prevent the player from spawning in the ground

@@ -41,20 +41,24 @@ public class CameraController : MonoBehaviour
     private float yZoomOffset;
     [SerializeField]
     private float minZoom = 7f;
-    [SerializeField]
-    private float maxZoom = 11f;
+    public float maxZoom = 11f;
     [SerializeField]
     private float zoomTime = 1f;
     private float currentZoomTime;
     private bool zoomIn = false;
     private float startZoom;
     private float startYPos;
+    private bool doZoom = false;
+    private float to;
 
     [Header("Boundaries")]
     [SerializeField]
     private float minX = -10000f;
     [SerializeField]
     private float maxX = 10000f;
+
+    private Camera cam;
+    private CameraClamp clamp;
 
     private void Start()
     {
@@ -67,7 +71,9 @@ public class CameraController : MonoBehaviour
 
         currentZoomTime = zoomTime;
 
-        maxZoom = GetComponent<Camera>().orthographicSize;
+        cam = GetComponent<Camera>();
+        maxZoom = cam.orthographicSize;
+        startZoom = maxZoom;
 
         // Prevent the zooms from being 0, which crashes Unity
         GameManager.instance.PreventZero(minZoom, 1f, 7f);
@@ -75,59 +81,20 @@ public class CameraController : MonoBehaviour
 
         // Place camera on the players
         transform.position = new Vector2(playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2, 0f);
+
+        clamp = GetComponent<CameraClamp>();
     }
 
     private void Update()
     {
-        if (useZooming)
-        {
-            // Camera zooming depending on state
-            if (State == CameraState.FollowingBoth)
-                FollowBothZoom();
-            else if (State == CameraState.FollowingOne)
-                FollowOneZoom();
-        }
+        if (useZooming && doZoom)
+            DoZoom();
 
         KeepInBoundry();
     }
 
-    private void FollowBothZoom()
+    private void DoZoom()
     {
-        if (zoomIn)
-        {
-            currentZoomTime = 0f;
-            zoomIn = false;
-            startZoom = GetComponent<Camera>().orthographicSize;
-            startYPos = transform.position.y;
-        }
-
-        // Timer
-        currentZoomTime += Time.deltaTime;
-        if (currentZoomTime > zoomTime)
-            currentZoomTime = zoomTime;
-
-        // Smothly transition in a S curve
-        float t = currentZoomTime / zoomTime;
-        t = t * t * (3f - 2f * t);
-
-        // Lerp towards maxZoom
-        GetComponent<Camera>().orthographicSize = Mathf.Lerp(startZoom, maxZoom, t);
-
-        // Lerp towards the set Y position
-        float yZoomMove = Mathf.Lerp(startYPos, 0f, t);
-        transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
-    }
-
-    private void FollowOneZoom()
-    {
-        if (!zoomIn)
-        {
-            currentZoomTime = 0f;
-            zoomIn = true;
-            startZoom = GetComponent<Camera>().orthographicSize;
-            startYPos = transform.position.y;
-        }
-
         // Timer
         currentZoomTime += Time.deltaTime;
         if (currentZoomTime > zoomTime)
@@ -138,22 +105,54 @@ public class CameraController : MonoBehaviour
         t = t * t * (3f - 2f * t);
 
         // Lerp towards minZoom
-        GetComponent<Camera>().orthographicSize = Mathf.Lerp(startZoom, minZoom, t);
+        cam.orthographicSize = Mathf.Lerp(startZoom, to, t);
 
         // Choose what Y position based on what player to target
-        if (target == playerBot)
-            yZoomOffset = -Mathf.Abs(yZoomOffset);
-        else
-            yZoomOffset = Mathf.Abs(yZoomOffset);
+        if (GameManager.instance.onePlayerDead)
+        {
+            if (target == playerBot)
+                yZoomOffset = -Mathf.Abs(yZoomOffset);
+            else
+                yZoomOffset = Mathf.Abs(yZoomOffset);
 
-        // Lerp towards the set Y position
-        float yZoomMove = Mathf.Lerp(startYPos, yZoomOffset, t);
-        transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
+            // Lerp towards the set Y position
+            float yZoomMove = Mathf.Lerp(startYPos, yZoomOffset, t);
+            transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
+        }
+        else
+        {
+            // Lerp towards the set Y position
+            float yZoomMove = Mathf.Lerp(startYPos, yZoomOffset, t);
+            transform.position = new Vector3(transform.position.x, 0f, -10f);
+        }
+    }
+
+    private void Zoom()
+    {
+        if (State == CameraState.FollowingOne)
+            to = minZoom;
+        else
+            to = maxZoom;
+
+        startZoom = cam.orthographicSize;
+        currentZoomTime = 0f;
+        startYPos = transform.position.y;
+        doZoom = true;
+    }
+
+    private void Zoom(float to)
+    {
+        this.to = to;
+
+        startZoom = cam.orthographicSize;
+        currentZoomTime = 0f;
+        startYPos = transform.position.y;
+        doZoom = true;
     }
 
     private void KeepInBoundry()
     {
-        float boundryMargin = ((GetComponent<Camera>().orthographicSize / 9f) * 16f);
+        float boundryMargin = ((cam.orthographicSize / 9f) * 16f);
 
         if (transform.position.x > maxX - boundryMargin)
             transform.position = new Vector3(maxX - boundryMargin, transform.position.y, -10f);
@@ -184,7 +183,7 @@ public class CameraController : MonoBehaviour
             transform.Translate(new Vector2((camDistance + deadZone) / followSpeed, 0.0f), Space.Self);      // Move Left
 
         if (camDistance > 0.1f || camDistance < -0.1f)
-            GetComponent<CameraClamp>().SetClamp(true);
+            clamp.SetClamp(true);
     }
 
     private void FollowOneMove()
@@ -195,6 +194,8 @@ public class CameraController : MonoBehaviour
         // If the target moves even slightly from the camera X, translate towards the player
         if (camDistance > 0.1f || camDistance < -0.1f)
             transform.Translate(new Vector2(camDistance / followSpeed, 0.0f), Space.Self);      // Move Right
+
+        clamp.SetClamp(false);
     }
 
     private void Transition()
@@ -206,25 +207,25 @@ public class CameraController : MonoBehaviour
         if (camDistance < 3f && camDistance > -3f)
         {
             Debug.Log("Reached safepoint. Spawning players");
-            GetComponent<CameraClamp>().SetClamp(true);
+            clamp.SetClamp(true);
             SafepointManager.instance.SpawnPlayers();
             SetCameraState(CameraState.FollowingBoth);
         }
         else
-            GetComponent<CameraClamp>().SetClamp(false);
+            clamp.SetClamp(false);
 
         // Move towards safepoint with max speed maxSpeed
         float moveSpeed = camDistance / followSpeed;
         moveSpeed = Mathf.Clamp(moveSpeed, -maxSpeed, maxSpeed);
 
         transform.Translate(new Vector2(moveSpeed, 0.0f), Space.Self);
-        FollowBothZoom();
         
     }
 
     public void SetCameraState(CameraState State)
     {
         this.State = State;
+        Zoom();
     }
 
     public void SetCameraState(CameraState State, Transform playerTarget)
@@ -234,6 +235,7 @@ public class CameraController : MonoBehaviour
             target = playerBot;
         else
             target = playerTop;
+        Zoom();
     }
 
     public void DialogueMove(float moveCameraSpeed, float moveCameraX, float moveCameraWait)
@@ -272,5 +274,11 @@ public class CameraController : MonoBehaviour
     {
         playerTop = GameManager.instance.playerTop;
         playerBot = GameManager.instance.playerBot;
+    }
+
+    public void ZoomZone(float newZoom)
+    {
+        if(newZoom != cam.orthographicSize)
+            Zoom(newZoom);
     }
 }
