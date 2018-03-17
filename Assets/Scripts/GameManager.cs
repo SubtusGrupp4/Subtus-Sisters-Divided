@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         DialogueManager.gameObject.SetActive(true);
 
-        StartCoroutine(FadeToBlack(-1, fadeTime));
+        StartCoroutine(Fade(-1, fadeTime));
 
 
     }
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private IEnumerator FadeToBlack(int dir, float time)
+    public IEnumerator Fade(int dir, float time)
     {
         // Fading values
         // DO WE WANT TO PAUSE THE GAME ??????????
@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel(int id)
     {
-        StartCoroutine(FadeToBlack(1, fadeTime));
+        StartCoroutine(Fade(1, fadeTime));
         StartCoroutine(WaitForFade(fadeTime, id));
     }
 
