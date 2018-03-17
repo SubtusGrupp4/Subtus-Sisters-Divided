@@ -168,16 +168,13 @@ public class AIMovement : MonoBehaviour
     protected virtual void FixedUpdate()
     {
 
-        Debug.Log("Stunend State" + stunned);
-        Debug.Log("Frozen State" + frozen);
-        Debug.Log("Dead State" + isDead);
+
 
         if (!stunned)
         {
             if (!isDead && !frozen)
             {
                 Move();
-                Debug.Log("Current State" + currentState);
 
             }
 
@@ -190,7 +187,6 @@ public class AIMovement : MonoBehaviour
 
         if (!frozen)
         {
-            Debug.Log("freze");
 
             savedState = currentState;
             Debug.Log(savedState);
@@ -210,8 +206,7 @@ public class AIMovement : MonoBehaviour
     {
         if (frozen)
         {
-            Debug.Log("UnFreeze");
-            Debug.Log("svaedSTAte " + savedState);
+
             currentState = savedState;
             frozen = false;
         }
@@ -665,7 +660,7 @@ public class AIMovement : MonoBehaviour
 
         if (turnRate != 0)
         {
-            Debug.Log("Turning2");
+            rigidbody2D.velocity = Vector2.zero;
             Freeze(false, turnRate);
             TurnAnim(turnRate);
         }
