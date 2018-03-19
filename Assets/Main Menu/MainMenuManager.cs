@@ -5,27 +5,28 @@ using UnityEngine.Playables;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenuManager : MonoBehaviour {
+public class MainMenuManager : MonoBehaviour
+{
 
     [Header("UI")]
-	[SerializeField]
-	private Transform lightUI;
-	[SerializeField]
-	private Transform darkUI;
+    [SerializeField]
+    private Transform lightUI;
+    [SerializeField]
+    private Transform darkUI;
 
     [Header("Version Parents")]
-	[SerializeField]
-	private Transform lightParent;
-	[SerializeField]
-	private Transform darkParent;
+    [SerializeField]
+    private Transform lightParent;
+    [SerializeField]
+    private Transform darkParent;
 
     [Header("Press Any Key notification")]
-	[SerializeField]
-	private Transform pressAnyKey;
+    [SerializeField]
+    private Transform pressAnyKey;
 
-	private bool useDark = false;
-	private bool isActivated = false;
-	private bool isDonePlaying = false;
+    private bool useDark = false;
+    private bool isActivated = false;
+    private bool isDonePlaying = false;
 
     private float player1A = 0.4f;
     private float player2A = 0.4f;
@@ -52,6 +53,7 @@ public class MainMenuManager : MonoBehaviour {
     private bool fadeOut = false;
     [SerializeField]
     private float fadeSpeed = 1f;
+    private bool playedOnce = false;
 
     [Header("Glitches")]
     [SerializeField]
@@ -85,27 +87,27 @@ public class MainMenuManager : MonoBehaviour {
     private AudioClip[] staticClips;
     private AudioSource[] audioSources;
 
-	[SerializeField]
-	[Range(0f, 1f)]
-	private float topMaxVolume = 0.6f;
-	[SerializeField]
-	[Range(0f, 1f)]
-	private float botMaxVolume = 0.6f;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float topMaxVolume = 0.6f;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float botMaxVolume = 0.6f;
 
-    void Start () 
-	{
-		StartCoroutine(KeyTimer());     // Coroutine that displays the "Press any key" prompt
+    void Start()
+    {
+        StartCoroutine(KeyTimer());     // Coroutine that displays the "Press any key" prompt
         glitchTarget.enabled = false;   // Do not show the glitch sprite
         audioSources = GetComponents<AudioSource>();
     }
-	
-	void Update () 
-	{
+
+    void Update()
+    {
         if (Input.anyKey && !isActivated)
             StartAnimation();
 
-		if(isDonePlaying) 
-		{
+        if (isDonePlaying)
+        {
             SwitchLightDark();  // Chooses what version to display
 
             darkUI.transform.position = lightUI.transform.position; // Keep both versions of the UI on the same position
@@ -140,14 +142,14 @@ public class MainMenuManager : MonoBehaviour {
             lightParent.gameObject.SetActive(false);
 
             audioSources[1].volume = 0f;
-			audioSources[2].volume = botMaxVolume;
+            audioSources[2].volume = botMaxVolume;
         }
         else if (isActivated)
         {
             darkParent.gameObject.SetActive(false);
             lightParent.gameObject.SetActive(true);
 
-			audioSources[1].volume = topMaxVolume;
+            audioSources[1].volume = topMaxVolume;
             audioSources[2].volume = 0f;
         }
     }
@@ -188,11 +190,12 @@ public class MainMenuManager : MonoBehaviour {
             radial3.SetAmount(1f);
             radial4.SetAmount(1f);
 
-            // Fade in a black image
-            if (fadeOutImage.GetComponent<CanvasGroup>().alpha < 1f)
-                fadeOutImage.GetComponent<CanvasGroup>().alpha += Time.deltaTime * fadeSpeed;
-            else
-                SceneManager.LoadScene("Main"); // When finished, load the main scene
+            if(!playedOnce)
+            {
+                playedOnce = true;
+                //SceneManager.LoadScene("Main"); // When finished, load the main scene
+                FindObjectOfType<GameManager>().GetComponent<GameManager>().ChangeLevel(1);
+            }
         }
     }
 
@@ -252,7 +255,7 @@ public class MainMenuManager : MonoBehaviour {
         SpriteArray[] spriteArrays = glitchesLight.GetComponents<SpriteArray>();
 
         if (useDark)
-                spriteArrays = glitchesDark.GetComponents<SpriteArray>();
+            spriteArrays = glitchesDark.GetComponents<SpriteArray>();
 
         int index = Random.Range(0, spriteArrays.Length - 1);
         spriteSequence = spriteArrays[index].frames;
@@ -266,18 +269,18 @@ public class MainMenuManager : MonoBehaviour {
         isSwitching = true;
     }
 
-    IEnumerator KeyTimer() 
-	{
-		yield return new WaitForSeconds(5f);
-		if(!isActivated)
-			pressAnyKey.gameObject.SetActive(true);
-			
-	}
+    IEnumerator KeyTimer()
+    {
+        yield return new WaitForSeconds(5f);
+        if (!isActivated)
+            pressAnyKey.gameObject.SetActive(true);
 
-	IEnumerator DonePlaying(float animationLength) 
-	{
-		yield return new WaitForSeconds(animationLength);
-		isDonePlaying = true;
+    }
+
+    IEnumerator DonePlaying(float animationLength)
+    {
+        yield return new WaitForSeconds(animationLength);
+        isDonePlaying = true;
         StartCoroutine(GlitchTimer());
         StartCoroutine(SwitchTimer());
     }
