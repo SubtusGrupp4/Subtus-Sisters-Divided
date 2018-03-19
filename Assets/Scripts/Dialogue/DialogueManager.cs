@@ -124,17 +124,20 @@ public class DialogueManager : MonoBehaviour
         if (isBusy)
             EndDialogue();
 
-        this.dialogues = dialogues;     // Assign the dialogues
-        foreach(Dialogue d in dialogues)
-        {
-            if(d.causeSwitch)
-            {
-                startSwitch = true;
-                GameManager.instance.playerTop.GetComponent<PlayerController>().PreventInput(true);
-                GameManager.instance.playerBot.GetComponent<PlayerController>().PreventInput(true);
-            }
-        }
-        StartDialogue();                // Start processing the dialogue
+		if(dialogues != null) 
+		{
+	        this.dialogues = dialogues;     // Assign the dialogues
+	        foreach(Dialogue d in dialogues)
+	        {
+	            if(d.causeSwitch)
+	            {
+	                startSwitch = true;
+	                GameManager.instance.playerTop.GetComponent<PlayerController>().PreventInput(true);
+	                GameManager.instance.playerBot.GetComponent<PlayerController>().PreventInput(true);
+	            }
+	        }
+	        StartDialogue();                // Start processing the dialogue
+		}
     }
 
     private void Update()
@@ -265,7 +268,7 @@ public class DialogueManager : MonoBehaviour
     // Runs for each dialogue script
     private void StartDialogue()
     {
-        if (dialogues.Length == 0)
+        if (dialogues != null && dialogues.Length == 0)
             return;
 
         isBusy = true;
