@@ -49,7 +49,7 @@ public class CameraController : MonoBehaviour
     private float startZoom;
     private float startYPos;
     private bool doZoom = false;
-    private float to;
+    public float zoomTo;
 
     [Header("Boundaries")]
     [SerializeField]
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float maxX = 10000f;
 
-    private Camera cam;
+    public Camera cam;
     private CameraClamp clamp;
 
     private void Start()
@@ -105,7 +105,7 @@ public class CameraController : MonoBehaviour
         t = t * t * (3f - 2f * t);
 
         // Lerp towards minZoom
-        cam.orthographicSize = Mathf.Lerp(startZoom, to, t);
+        cam.orthographicSize = Mathf.Lerp(startZoom, zoomTo, t);
 
         // Choose what Y position based on what player to target
         if (GameManager.instance.onePlayerDead)
@@ -130,9 +130,9 @@ public class CameraController : MonoBehaviour
     private void Zoom()
     {
         if (State == CameraState.FollowingOne)
-            to = minZoom;
+            zoomTo = minZoom;
         else
-            to = maxZoom;
+            zoomTo = maxZoom;
 
         startZoom = cam.orthographicSize;
         currentZoomTime = 0f;
@@ -142,7 +142,7 @@ public class CameraController : MonoBehaviour
 
     private void Zoom(float to)
     {
-        this.to = to;
+        this.zoomTo = to;
 
         startZoom = cam.orthographicSize;
         currentZoomTime = 0f;
@@ -208,8 +208,8 @@ public class CameraController : MonoBehaviour
         {
             Debug.Log("Reached safepoint. Spawning players");
             clamp.SetClamp(true);
-            SafepointManager.instance.SpawnPlayers();
             SetCameraState(CameraState.FollowingBoth);
+            StartCoroutine(SpawnDelay());
         }
         else
             clamp.SetClamp(false);
@@ -218,8 +218,15 @@ public class CameraController : MonoBehaviour
         float moveSpeed = camDistance / followSpeed;
         moveSpeed = Mathf.Clamp(moveSpeed, -maxSpeed, maxSpeed);
 
+        transform.position = new Vector3(transform.position.x, 0f, -10f);
         transform.Translate(new Vector2(moveSpeed, 0.0f), Space.Self);
         
+    }
+
+    private IEnumerator SpawnDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        SafepointManager.instance.SpawnPlayers();
     }
 
     public void SetCameraState(CameraState State)
@@ -230,6 +237,13 @@ public class CameraController : MonoBehaviour
 
     public void SetCameraState(CameraState State, Transform playerTarget)
     {
+        StartCoroutine(CameraStateDelay(State, playerTarget));
+    }
+
+    private IEnumerator CameraStateDelay(CameraState State, Transform playerTarget)
+    {
+        yield return new WaitForSeconds(1f);
+
         this.State = State;
         if (playerTarget == playerTop)
             target = playerBot;
