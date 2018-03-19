@@ -98,6 +98,7 @@ public class PullBoxes : MonoBehaviour
         if(!isPulling)
 		{
 			playerController.pulling = false;
+            emitter.Stop();
 
 			body.Pull(false);
 			arm.Pull(false);
