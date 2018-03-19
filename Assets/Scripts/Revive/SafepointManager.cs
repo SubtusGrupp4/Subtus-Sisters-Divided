@@ -177,32 +177,20 @@ public class SafepointManager : MonoBehaviour {
 
     public void DecreaseTimer()
     {
-        pickupTime -= pickupDecrease;
-        Debug.Log("ReviveTimer decreased to" + pickupTime);
-    }
-
-    private void OutOfTime()
-    {
-        // TODO: Something prettier
-        GameManager.instance.ResetLevel();
+        if(pickupTime - pickupDecrease > 0f)
+            pickupTime -= pickupDecrease;
     }
 
     public IEnumerator PickupTimer()
     {
-        Debug.Log("ReviveTimer = " + pickupTime);
-        if (pickupTime <= 0.1f)
-            OutOfTime();
-        else
-        {
-            yield return new WaitForSeconds(pickupTime);
+        yield return new WaitForSeconds(pickupTime);
 
-            if (GameManager.instance.onePlayerDead)
-            {
-                if (!playerTop.GetComponent<PlayerController>().isActive)
-                    playerBot.GetComponent<Reviving>().BothDead();
-                else
-                    playerTop.GetComponent<Reviving>().BothDead();
-            }
+        if (GameManager.instance.onePlayerDead)
+        {
+            if (!playerTop.GetComponent<PlayerController>().isActive)
+                playerBot.GetComponent<Reviving>().BothDead();
+            else
+                playerTop.GetComponent<Reviving>().BothDead();
         }
     }
 }
