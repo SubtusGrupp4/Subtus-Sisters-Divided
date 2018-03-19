@@ -87,8 +87,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1003717881537676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 31.2, z: 100}
-  m_LocalScale: {x: 100, y: 40, z: 1}
+  m_LocalPosition: {x: 0, y: 22.6, z: 100}
+  m_LocalScale: {x: 165.4211, y: 66.16845, z: 1.6542112}
   m_Children: []
   m_Father: {fileID: 4451983900264174}
   m_RootOrder: 2
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541369210040188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.42, y: 0, z: -10}
+  m_LocalPosition: {x: -53.5, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4658466928059590}
@@ -129,8 +129,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841006329716370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -31.2, z: 100}
-  m_LocalScale: {x: 100, y: 40, z: 1}
+  m_LocalPosition: {x: 0, y: -33.2, z: 100}
+  m_LocalScale: {x: 165.4211, y: 66.16845, z: 1.6542112}
   m_Children: []
   m_Father: {fileID: 4451983900264174}
   m_RootOrder: 1
@@ -155,7 +155,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -234,8 +234,6 @@ MonoBehaviour:
   followPos: {x: 0, y: 0}
   useZooming: 1
   yZoomOffset: 4
-  minZoom: 7
-  maxZoom: 11
   zoomTime: 2
   zoomTo: 0
   minX: -66
@@ -286,7 +284,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1106017909
   m_SortingLayer: -4
-  m_SortingOrder: -4141
+  m_SortingOrder: -11959
   m_Sprite: {fileID: 21300000, guid: 41f637d0b990116408a65e5ea599a9e5, type: 3}
   m_Color: {r: 0.40784317, g: 0.48627454, b: 0.5803922, a: 1}
   m_FlipX: 0
@@ -330,7 +328,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1106017909
   m_SortingLayer: -4
-  m_SortingOrder: -4141
+  m_SortingOrder: -11959
   m_Sprite: {fileID: 21300000, guid: 41f637d0b990116408a65e5ea599a9e5, type: 3}
   m_Color: {r: 0.7411765, g: 0.21176472, b: 0.3372549, a: 1}
   m_FlipX: 0

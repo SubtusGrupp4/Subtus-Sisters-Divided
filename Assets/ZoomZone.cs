@@ -15,7 +15,13 @@ public class ZoomZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" &&cc.zoomTo != newZoom)
+        if (collision.tag == "Player" &&cc.zoomTo != newZoom && !GameManager.instance.onePlayerDead)
             cc.ZoomZone(newZoom);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0.4f, 0.7f);
+        Gizmos.DrawWireCube(transform.position, GetComponent<BoxCollider2D>().size);
     }
 }

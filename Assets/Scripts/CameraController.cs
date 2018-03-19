@@ -9,7 +9,7 @@ using UnityEngine;
 
 public enum CameraState
 {
-    FollowingBoth, FollowingOne, Transitioning, Frozen, Moving
+    FollowingBoth, FollowingOne, Transitioning
 }
 
 public class CameraController : MonoBehaviour
@@ -40,9 +40,6 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float yZoomOffset;
     [SerializeField]
-    private float minZoom = 7f;
-    public float maxZoom = 11f;
-    [SerializeField]
     private float zoomTime = 1f;
     private float currentZoomTime;
     private bool zoomIn = false;
@@ -72,12 +69,6 @@ public class CameraController : MonoBehaviour
         currentZoomTime = zoomTime;
 
         cam = GetComponent<Camera>();
-        maxZoom = cam.orthographicSize;
-        startZoom = maxZoom;
-
-        // Prevent the zooms from being 0, which crashes Unity
-        GameManager.instance.PreventZero(minZoom, 1f, 7f);
-        GameManager.instance.PreventZero(maxZoom, 1f, 11f);
 
         // Place camera on the players
         transform.position = new Vector3(playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2, 0f, -10f);
@@ -127,22 +118,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void Zoom()
-    {
-        if (State == CameraState.FollowingOne)
-            zoomTo = minZoom;
-        else
-            zoomTo = maxZoom;
-
-        startZoom = cam.orthographicSize;
-        currentZoomTime = 0f;
-        startYPos = transform.position.y;
-        doZoom = true;
-    }
-
     private void Zoom(float to)
     {
-        this.zoomTo = to;
+        zoomTo = to;
 
         startZoom = cam.orthographicSize;
         currentZoomTime = 0f;
@@ -232,24 +210,34 @@ public class CameraController : MonoBehaviour
     public void SetCameraState(CameraState State)
     {
         this.State = State;
-        Zoom();
+        switch(State)
+        {
+            case CameraState.FollowingOne:
+                Zoom(7f);
+                break;
+            default:
+                Zoom(11f);
+                break;
+        }
     }
 
     public void SetCameraState(CameraState State, Transform playerTarget)
     {
-        StartCoroutine(CameraStateDelay(State, playerTarget));
-    }
-
-    private IEnumerator CameraStateDelay(CameraState State, Transform playerTarget)
-    {
-        yield return new WaitForSeconds(1f);
-
         this.State = State;
         if (playerTarget == playerTop)
             target = playerBot;
         else
             target = playerTop;
-        Zoom();
+
+        switch (State)
+        {
+            case CameraState.FollowingOne:
+                Zoom(7f);
+                break;
+            default:
+                Zoom(11f);
+                break;
+        }
     }
 
     public void DialogueMove(float moveCameraSpeed, float moveCameraX, float moveCameraWait)

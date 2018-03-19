@@ -258,7 +258,8 @@ public class GameManager : MonoBehaviour
 
         while (!operation.isDone)
         {
-            progress = Mathf.Clamp01(operation.progress / 0.9f);
+            progress = (operation.progress / 0.9f) * 100f;
+            Debug.Log("Progress: " + progress);
 
             slider.value = progress;
             progressText.text = Mathf.RoundToInt(progress * 100f) + "%";

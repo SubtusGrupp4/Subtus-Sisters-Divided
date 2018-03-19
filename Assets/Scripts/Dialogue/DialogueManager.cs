@@ -362,6 +362,7 @@ public class DialogueManager : MonoBehaviour
             sentenceToWrite = sentence;
             writtenSentence = string.Empty;         // Clear what has been typed
             charIndex = 0;                          // Reset the typing char index
+            buttonImage.enabled = false;
 
             if (dialogues[di].voiceOver)            // If there is voiceover to play
             {
