@@ -35,4 +35,10 @@ MonoBehaviour:
   - {fileID: 4045700814925908, guid: f8a89a85072f7b642a00440836c0e432, type: 2}
   - {fileID: 4883460725149154, guid: 24f2d315a7a76fa4c84d755964090f64, type: 2}
   - {fileID: 4833629835118072, guid: 4e7563a298d6bcd408149eed82be0227, type: 2}
+  - {fileID: 4311179617989676, guid: 6f6ade71483b8004d95698872fe97464, type: 2}
+  - {fileID: 4199856084774172, guid: 361e336747fc23f4ba8f3f40a501f03f, type: 2}
+  - {fileID: 4456014151362344, guid: 040a2ab4b6e906f45993854d26072be8, type: 2}
+  - {fileID: 4636943823559260, guid: ee08ad0ba3de9fa42bbffc6ef707fa75, type: 2}
+  - {fileID: 4649665679473206, guid: b653e1deb455ac64dbb7e3a970c3505b, type: 2}
+  - {fileID: 4212906325680832, guid: 5e3b4b38a01946c4d8552b7d71251bcd, type: 2}
   isStatic: 1
