@@ -173,7 +173,6 @@ public class PlayerController : MonoBehaviour
             ResetJump();
 
         // If u wanna bind landing to animation
-
         /*   if (bodyAnim.GetLandState() == false)
                landing = false; */
 
@@ -183,7 +182,7 @@ public class PlayerController : MonoBehaviour
             ToggleCrawl();
 
         if (!inAir)
-            LandCounter();
+            LandTimeCounter();
 
     }
     private void FixedUpdate()
@@ -197,7 +196,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LandCounter()
+    void LandTimeCounter()
     {
         if (landing)
         {
@@ -217,7 +216,6 @@ public class PlayerController : MonoBehaviour
             // Collider
             myBox.size = crawlColliderSize;
             myBox.offset = crawlColliderOffset;
-          //  myBox.direction = CapsuleDirection2D.Horizontal;
 
             speed = crawlSpeed;
         }
@@ -226,7 +224,6 @@ public class PlayerController : MonoBehaviour
             // Collider
             myBox.size = savedColliderSize;
             myBox.offset = savedColliderOffSet;
-          //  myBox.direction = CapsuleDirection2D.Vertical;
 
             speed = savedSpeed;
         }
@@ -238,26 +235,10 @@ public class PlayerController : MonoBehaviour
             crawlAxisInUse = true;
 
             if (!crawling)
-                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + crawlColliderOffset + new Vector2(0, 0.09f), crawlColliderSize, 0);
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + crawlColliderOffset + new Vector2(0, 0.09f * flippValue), crawlColliderSize, 0);
             else
-                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + savedColliderOffSet + new Vector2(0, 0.09f), savedColliderSize, 0);
-            /*
-            // We want to difference between transiton to crawl, and is currently crawling.
-            if (!crawling)
-                allObjs = Physics2D.CapsuleCastAll((Vector2)transform.position + crawlColliderOffset ,
-                    crawlColliderSize,
-                    CapsuleDirection2D.Horizontal,
-                    0,
-                    Vector2.right);
-            else
-                allObjs = Physics2D.CapsuleCastAll((Vector2)transform.position + savedColliderOffSet ,
-                    savedColliderSize,
-                    CapsuleDirection2D.Vertical,
-                    0,
-                    Vector2.right);
-                    */
-
-
+                allObjs = Physics2D.OverlapBoxAll((Vector2)transform.position + savedColliderOffSet + new Vector2(0, 0.09f * flippValue), savedColliderSize, 0);
+       
             for (int i = 0; i < allObjs.Length; i++)
             {
                 if (blocked)
@@ -276,10 +257,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("blocked" + blocked);
             if (!blocked)
             {
+                // InsideCrawling is used to toggle the animations
+                // and then the Crawl bool is gathered from the animation state
+                // that way we can bind the "hitbox" to the animation.
                 insideCrawling ^= true;
                 //
-
-
                 bodyAnim.Crawl(insideCrawling);
                 armAnim.Crawl(insideCrawling);
             }
@@ -417,10 +399,13 @@ public class PlayerController : MonoBehaviour
     {
         // If we asume we're always falling until told otherwise we get a more proper behaviour when falling off things.
 
+        // An gracetime for how long u need to be falling before you do the "land" animation, otherwise small bumps will make u land which can look wierd
+        // Also if we bind landanimation to stop playermovement that's realy frustrating
 
+        // Count up always, as we are always assuming we are falling
+        // reset it to 0 when we know we're at the ground.
         airbornTimer += Time.deltaTime;
 
-        // transform.parent = null;
         bool tempInAir = false;
         if (airbornTimer > timeUntilAirborn)
         {
@@ -437,15 +422,12 @@ public class PlayerController : MonoBehaviour
         {
             bool quickBreak = false;
 
+            // We want 2 raycast in each corner, therefore this foor loop runs twice and gives me the value -1 and 1 so that i can use it to determine
+            // which corner to put the ray in.
             for (int l = -1; l < 2; l += 2)
             {
                 if (quickBreak)
                     break;
-
-                /*
-                (transform.position + new Vector3((rayOffSetX - 0.05f) * l, 0, 0),
-                -Vector2.up * flipValue,
-                rayOffSetY + distanceGraceForFalling); */
 
                 objHit = Physics2D.RaycastAll(transform.position + new Vector3((capsuleRadiusX - 0.05f) * l, 0, 0) + new Vector3(capsuleOffSetX * transform.localScale.x, capsuleOffSetY * flippValue, 0),
                     -Vector2.up * flippValue,
@@ -468,14 +450,11 @@ public class PlayerController : MonoBehaviour
                                 //play land sound
                                 if (bodyAnim.GetJumpState() == false)
                                 {
-                                    Debug.Log("LANDING");
-
                                     bodyAnim.Land();
                                     armAnim.Land();
 
                                     movementAudio.Landing();
                                     landing = true;
-
                                 }
 
                             }
