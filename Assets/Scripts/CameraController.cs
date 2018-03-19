@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour
         GameManager.instance.PreventZero(maxZoom, 1f, 11f);
 
         // Place camera on the players
-        transform.position = new Vector2(playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2, 0f);
+        transform.position = new Vector3(playerTop.position.x + (playerBot.position.x - playerTop.position.x) / 2, 0f, -10f);
 
         clamp = GetComponent<CameraClamp>();
     }

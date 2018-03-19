@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114811711688063160}
   - component: {fileID: 82524927976057902}
   - component: {fileID: 114519620919750864}
+  - component: {fileID: 114949316056520790}
   m_Layer: 0
   m_Name: _Switch Manager
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1920719538379598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0222293, y: -1.4684675, z: -0.08984375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,7 +110,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -133,11 +134,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIndex: 1
-  npcName: Merina
+  playerIndex: 0
+  npcName: Nebris
   npcSprite: {fileID: 21300000, guid: 0982634d6974d0b428753f1ad4cf89a8, type: 3}
   sentences:
-  - I am a placeholder, but I still hate you!
+  - 'It will not be that easy little girl. '
+  voiceOver: 0
+  audioClips: []
+  typeSounds: 1
+  waitTime: 4
+  moveCamera: 0
+  fadeIn: 0
+  fadeOut: 0
+  fadeTime: 1
+  freezeTime: 0
+  freezeCamera: 0
+  moveCameraX: 0
+  moveCameraSpeed: 1
+  moveCameraWait: 0
+  manualSkip: 1
+  hide: 0
+  debug: 0
+  overrideSpeed: 0
+  typeSpeed: 8
+  causeSwitch: 0
+--- !u!114 &114811711688063160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920719538379598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16346bd402b90174a87804e4a4ae34e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  antiGrav: {fileID: 0}
+  grav: {fileID: 0}
+  switchImage: {fileID: 0}
+  spriteSequence:
+  - {fileID: 21300000, guid: 61963e89a69c9c74cb11eb875a66cf2c, type: 3}
+  - {fileID: 21300000, guid: d0b6b7d1655c9bb40add86c90e2f59cc, type: 3}
+  - {fileID: 21300000, guid: 218e9501f2d5f904eb4628b969ca61c0, type: 3}
+  - {fileID: 21300000, guid: 000327b20d799b940b3a462fbb0ad0d0, type: 3}
+  - {fileID: 21300000, guid: 5b75e6941a467ee4b846863ac2dccb8d, type: 3}
+  - {fileID: 21300000, guid: c32ba263522a89f47a20011f94d77865, type: 3}
+  - {fileID: 21300000, guid: bb1637d81387f35459f4e073c0515122, type: 3}
+  - {fileID: 21300000, guid: 3461b9c2d8b1d2b44b5e04b6bcb46a7b, type: 3}
+  - {fileID: 21300000, guid: 54752ea65b45cc340989ce2fb5a6fff2, type: 3}
+  - {fileID: 21300000, guid: e4935cfd1e562b144aa8b6d7024f8767, type: 3}
+  - {fileID: 21300000, guid: 371875629844a5a48816089c217e033e, type: 3}
+  - {fileID: 21300000, guid: ba13435bc142d734fafa3c4554e97e8e, type: 3}
+  - {fileID: 21300000, guid: 88a272cdb70b2894793ae75e644a2f09, type: 3}
+  staticClip: {fileID: 8300000, guid: 53bf582f3919a05458bef07dc26ffabd, type: 3}
+  startTimer: 2
+  waitTime: 2
+--- !u!114 &114949316056520790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920719538379598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe33b3bcbce94e643ba817f175f13c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  npcName: Nebris
+  npcSprite: {fileID: 0}
+  sentences:
+  - Let us see how brave you can be.
   voiceOver: 0
   audioClips: []
   typeSounds: 1
@@ -156,31 +223,4 @@ MonoBehaviour:
   debug: 0
   overrideSpeed: 0
   typeSpeed: 8
---- !u!114 &114811711688063160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1920719538379598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16346bd402b90174a87804e4a4ae34e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  switchImage: {fileID: 0}
-  spriteSequence:
-  - {fileID: 21300000, guid: 61963e89a69c9c74cb11eb875a66cf2c, type: 3}
-  - {fileID: 21300000, guid: d0b6b7d1655c9bb40add86c90e2f59cc, type: 3}
-  - {fileID: 21300000, guid: 218e9501f2d5f904eb4628b969ca61c0, type: 3}
-  - {fileID: 21300000, guid: 000327b20d799b940b3a462fbb0ad0d0, type: 3}
-  - {fileID: 21300000, guid: 5b75e6941a467ee4b846863ac2dccb8d, type: 3}
-  - {fileID: 21300000, guid: c32ba263522a89f47a20011f94d77865, type: 3}
-  - {fileID: 21300000, guid: bb1637d81387f35459f4e073c0515122, type: 3}
-  - {fileID: 21300000, guid: 3461b9c2d8b1d2b44b5e04b6bcb46a7b, type: 3}
-  - {fileID: 21300000, guid: 54752ea65b45cc340989ce2fb5a6fff2, type: 3}
-  - {fileID: 21300000, guid: e4935cfd1e562b144aa8b6d7024f8767, type: 3}
-  - {fileID: 21300000, guid: 371875629844a5a48816089c217e033e, type: 3}
-  - {fileID: 21300000, guid: ba13435bc142d734fafa3c4554e97e8e, type: 3}
-  - {fileID: 21300000, guid: 88a272cdb70b2894793ae75e644a2f09, type: 3}
-  staticClip: {fileID: 8300000, guid: 53bf582f3919a05458bef07dc26ffabd, type: 3}
-  waitTime: 2
+  causeSwitch: 0
