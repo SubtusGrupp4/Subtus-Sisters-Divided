@@ -33,6 +33,8 @@ public class SwitchPlayers : MonoBehaviour
     private float waitTime = 2f;
     private Dialogue[] dialogues;
 
+    private bool hasSwitched = false;
+
     private void Start()
     {
         CreateSingleton();
@@ -54,15 +56,9 @@ public class SwitchPlayers : MonoBehaviour
         source.Play();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-            StartSwitch();
-    }
-
     private void FixedUpdate()
     {
-        if (doAnimation)
+        if (doAnimation && !hasSwitched)
         {
             if (spriteIndex < spriteSequence.Length)
             {
@@ -76,6 +72,7 @@ public class SwitchPlayers : MonoBehaviour
                 doAnimation = false;
                 spriteIndex = 0;
                 StartCoroutine(DialogueTimer());
+                hasSwitched = true;
             }
         }
     }
