@@ -258,7 +258,7 @@ public class GameManager : MonoBehaviour
 
         while (!operation.isDone)
         {
-            progress = (operation.progress / 0.9f) * 100f;
+            progress = operation.progress / 0.9f;
             Debug.Log("Progress: " + progress);
 
             slider.value = progress;
