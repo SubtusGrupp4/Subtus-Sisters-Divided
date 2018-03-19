@@ -174,7 +174,10 @@ public class DialogueManager : MonoBehaviour
             }
             else    // If done writing
             {
-                buttonImage.enabled = true;
+                if (!dialogues[di].manualSkip && sentences.Count == 0)
+                    buttonImage.enabled = false;
+                else
+                    buttonImage.enabled = true;
             }
             // If there is dialogue to write, and the panel should fade in but not currently out
             if(dialogues != null && dialogues[di].fadeIn && !doFadeOut)

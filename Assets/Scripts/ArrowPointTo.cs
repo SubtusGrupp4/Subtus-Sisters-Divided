@@ -37,11 +37,11 @@ public class ArrowPointTo : MonoBehaviour
     	float x = Input.GetAxisRaw(rightXAxis);
         float y = Input.GetAxisRaw(rightYAxis);
 
-        if (y < 0f)
+        if (y <= 0f)
 			x = -x;
 
         direction = new Vector2(x, y);
-        Quaternion rotation = Quaternion.LookRotation(direction.normalized, Vector2.right);
+        Quaternion rotation = Quaternion.LookRotation(direction, Vector2.right);
         transform.rotation = new Quaternion(0f, 0f, rotation.x, rotation.w);
         
     }

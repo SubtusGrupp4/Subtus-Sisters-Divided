@@ -54,6 +54,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float maxX = 10000f;
 
+    [HideInInspector]
     public Camera cam;
     private CameraClamp clamp;
 
@@ -99,7 +100,7 @@ public class CameraController : MonoBehaviour
         cam.orthographicSize = Mathf.Lerp(startZoom, zoomTo, t);
 
         // Choose what Y position based on what player to target
-        if (GameManager.instance.onePlayerDead)
+        if (GameManager.instance.onePlayerDead && State != CameraState.Transitioning)
         {
             if (target == playerBot)
                 yZoomOffset = -Mathf.Abs(yZoomOffset);
@@ -110,10 +111,13 @@ public class CameraController : MonoBehaviour
             float yZoomMove = Mathf.Lerp(startYPos, yZoomOffset, t);
             transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
         }
+        else if(State == CameraState.Transitioning)
+        {
+            float yZoomMove = Mathf.Lerp(startYPos, 0f, t);
+            transform.position = new Vector3(transform.position.x, yZoomMove, -10f);
+        }
         else
         {
-            // Lerp towards the set Y position
-            float yZoomMove = Mathf.Lerp(startYPos, yZoomOffset, t);
             transform.position = new Vector3(transform.position.x, 0f, -10f);
         }
     }
@@ -186,8 +190,9 @@ public class CameraController : MonoBehaviour
         {
             Debug.Log("Reached safepoint. Spawning players");
             clamp.SetClamp(true);
-            SetCameraState(CameraState.FollowingBoth);
-            StartCoroutine(SpawnDelay());
+            if(GameManager.instance.onePlayerDead)
+                StartCoroutine(SpawnDelay());
+            GameManager.instance.onePlayerDead = false;
         }
         else
             clamp.SetClamp(false);
@@ -196,15 +201,15 @@ public class CameraController : MonoBehaviour
         float moveSpeed = camDistance / followSpeed;
         moveSpeed = Mathf.Clamp(moveSpeed, -maxSpeed, maxSpeed);
 
-        transform.position = new Vector3(transform.position.x, 0f, -10f);
-        transform.Translate(new Vector2(moveSpeed, 0.0f), Space.Self);
-        
+        transform.Translate(new Vector2(moveSpeed, 0f), Space.Self);
+
     }
 
     private IEnumerator SpawnDelay()
     {
         yield return new WaitForSeconds(1f);
         SafepointManager.instance.SpawnPlayers();
+        SetCameraState(CameraState.FollowingBoth);
     }
 
     public void SetCameraState(CameraState State)

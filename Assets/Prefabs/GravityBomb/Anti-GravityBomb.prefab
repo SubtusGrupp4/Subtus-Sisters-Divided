@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventPath: event:/Mario/Gravitybomb/Bounce
   magnitude: 2
+  isActive: 1
 --- !u!114 &114964056136560778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3737,9 +3738,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1494896345
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 0253e68c93c658344a61b6ce642fb4ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f66c01e21b8bec34b9587489ca741922, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0

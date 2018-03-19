@@ -8,8 +8,8 @@ public class PositionParent : MonoBehaviour {
     private Transform parent;
     [SerializeField]
     private Vector3 offset;
-	
-	void Update ()
+
+    void Update ()
     {
         transform.position = parent.position + offset;
 	}

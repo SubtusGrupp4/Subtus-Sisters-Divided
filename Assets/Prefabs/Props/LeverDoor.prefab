@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 61898388585520764}
   - component: {fileID: 114742437461299892}
   - component: {fileID: 114165696968103590}
+  - component: {fileID: 58730722139946020}
+  - component: {fileID: 114954388189754634}
   m_Layer: 0
   m_Name: LeverDoor
   m_TagString: Lever
@@ -43,6 +45,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58730722139946020
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962543871636540}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
 --- !u!61 &61898388585520764
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -98,21 +115,35 @@ MonoBehaviour:
   IsActive: 0
   Type: 1
   InteractWith: []
-  StayDown: 0
+  stayDown: 0
   HideOnInteraction: 0
   stateOne: {fileID: 21300000, guid: 7c277f1cb672a55409e3e2ccd68254f6, type: 3}
   stateTwo: {fileID: 21300008, guid: 7c277f1cb672a55409e3e2ccd68254f6, type: 3}
   useItemIndex: 0
   itemIndex: 1
   useTriggerIndex: 0
-  TriggerIndex: 0
-  TriggerCount: 1
+  triggerIndex: 0
+  triggerCount: 0
   triggerCounter: 0
   Sounds: 0
-  ActivationSound: {fileID: 0}
-  DeactivationSound: {fileID: 0}
+  activationEvent: 
+  deActivationEvent: 
   objects:
   - {fileID: 0}
+--- !u!114 &114954388189754634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962543871636540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c345fb8958130e54aa8bb801df951b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonType: 1
+  buttonIcon: {fileID: 1201335773688786, guid: cffc9b418049f65478dc0156801a1bf1, type: 2}
+  offset: {x: 0, y: 2, z: 0}
 --- !u!212 &212694859992501960
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -59,6 +59,9 @@ TagManager:
   - name: Decorations
     uniqueID: 1017279869
     locked: 0
+  - name: Streetlamps
+    uniqueID: 454311367
+    locked: 0
   - name: Back Tile Decorations
     uniqueID: 4087717803
     locked: 0

@@ -30,9 +30,9 @@ public class DialogueTrigger : MonoBehaviour {
             isTriggered = true;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = new Color(0.44f, 0.18f, 0.21f);
+        Gizmos.color = new Color(0.64f, 0.38f, 0.41f);
         if(GetComponent<BoxCollider2D>() != null)
             Gizmos.DrawWireCube(transform.position + new Vector3(GetComponent<BoxCollider2D>().offset.x, GetComponent<BoxCollider2D>().offset.y), GetComponent<BoxCollider2D>().size);
     }

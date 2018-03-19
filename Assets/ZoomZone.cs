@@ -19,9 +19,11 @@ public class ZoomZone : MonoBehaviour
             cc.ZoomZone(newZoom);
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1f, 0.4f, 0.7f);
         Gizmos.DrawWireCube(transform.position, GetComponent<BoxCollider2D>().size);
+        Gizmos.color = new Color(1f, 0.6f, 0.9f);
+        Gizmos.DrawWireCube(transform.position, new Vector3((newZoom * 2f / 9f) * 16f, newZoom * 2f));
     }
 }
