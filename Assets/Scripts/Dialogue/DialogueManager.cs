@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private float waitTimeAfterAllWritten = 1f;
 
+    private Image buttonImage;
     private TextMeshProUGUI nameText;
     private Image image;
     private TextMeshProUGUI dialogueText;
@@ -173,7 +174,7 @@ public class DialogueManager : MonoBehaviour
             }
             else    // If done writing
             {
-                //StartCoroutine(SkipTimer());
+                buttonImage.enabled = true;
             }
             // If there is dialogue to write, and the panel should fade in but not currently out
             if(dialogues != null && dialogues[di].fadeIn && !doFadeOut)
@@ -300,12 +301,15 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Assign the correct name text, image and dialogue text boxes
-        if(panel.GetChild(0).GetComponent<TextMeshProUGUI>() != null)
+        if (panel.GetChild(0).GetComponent<Image>() != null)
+            buttonImage = panel.GetChild(0).GetComponent<Image>();
+        if (panel.GetChild(1).GetComponent<TextMeshProUGUI>() != null)
             nameText = panel.GetChild(0).GetComponent<TextMeshProUGUI>();
-        if(panel.GetChild(1).GetComponent<Image>() != null)
-            image = panel.GetChild(1).GetComponent<Image>();
-        dialogueText = panel.GetChild(2).GetComponent<TextMeshProUGUI>();
+        if(panel.GetChild(2).GetComponent<Image>() != null)
+            image = panel.GetChild(2).GetComponent<Image>();
+        dialogueText = panel.GetChild(3).GetComponent<TextMeshProUGUI>();
 
+        buttonImage.enabled = false;
         // Display the name and image
         if(nameText != null)
             nameText.text = dialogues[di].npcName;
