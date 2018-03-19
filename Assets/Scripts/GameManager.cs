@@ -92,11 +92,11 @@ public class GameManager : MonoBehaviour
 
         DialogueManager.gameObject.SetActive(true);
 
-        StartCoroutine(Fade(-1, fadeTime));
+        StartCoroutine(Fade(-1, fadeTime, true));
 
 
     }
-  
+
 
     private void Update()
     {
@@ -176,10 +176,10 @@ public class GameManager : MonoBehaviour
     private void KillKey()
     {
         if (Input.GetKeyDown(killKey))
-        {        
+        {
             playerTop.GetComponent<Reviving>().Die();
             onePlayerDead = true;
-            playerBot.GetComponent<Reviving>().Die();            
+            playerBot.GetComponent<Reviving>().Die();
         }
     }
 
@@ -189,11 +189,13 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public IEnumerator Fade(int dir, float time)
+    public IEnumerator Fade(int dir, float time, bool deActivateFade)
     {
         // Fading values
         // DO WE WANT TO PAUSE THE GAME ??????????
         float internalTimer = 0;
+        Time.timeScale = 1;
+
         Color ogC = fadeImage.color;
         Color c = fadeImage.color;
         float fade = 1 - dir;
@@ -202,16 +204,21 @@ public class GameManager : MonoBehaviour
         // Fading starts
         do
         {
-            internalTimer += Time.unscaledDeltaTime / time;         
+            internalTimer += Time.unscaledDeltaTime / time;
             c.a = fade;
-
             fadeImage.color = c;
-            fade += Time.deltaTime / time * dir;
+
+            fade += Time.unscaledDeltaTime / time * dir;
+            fade = Mathf.Clamp01(fade);
+            Time.timeScale = 1 - fade;
             yield return null;
 
         } while (internalTimer <= 1.0f);
         // Fading done
-        fadeScreen.SetActive(false);
+        if (deActivateFade)
+            fadeScreen.SetActive(false);
+
+        Time.timeScale = 1;
     }
 
     IEnumerator WaitForFade(float time, int level)
@@ -224,7 +231,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel(int id)
     {
-        StartCoroutine(Fade(1, fadeTime));
+        StartCoroutine(Fade(1, fadeTime, false));
         StartCoroutine(WaitForFade(fadeTime, id));
     }
 
