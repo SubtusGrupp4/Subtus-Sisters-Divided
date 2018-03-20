@@ -99,19 +99,19 @@ MonoBehaviour:
   Type: 0
   InteractWith:
   - Player
-  StayDown: 0
-  HideOnInteraction: 1
+  stayDown: 0
+  HideOnInteraction: 0
   stateOne: {fileID: 21300000, guid: 5044f6569d64fc744b1f03884976ac68, type: 3}
   stateTwo: {fileID: 21300004, guid: 5044f6569d64fc744b1f03884976ac68, type: 3}
   useItemIndex: 0
   itemIndex: 2
   useTriggerIndex: 0
-  TriggerIndex: 0
-  TriggerCount: 1
+  triggerIndex: 0
+  triggerCount: 0
   triggerCounter: 0
   Sounds: 0
-  ActivationSound: {fileID: 0}
-  DeactivationSound: {fileID: 0}
+  activationEvent: 
+  deActivationEvent: 
   Objs:
   - Obj: {fileID: 0}
     MoveTo: {x: 0, y: 3, z: 0}
