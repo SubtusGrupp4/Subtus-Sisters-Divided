@@ -63,8 +63,6 @@ public class GameManager : MonoBehaviour
     private bool FadeOnLoad;
     [SerializeField]
     private float fadeTime;
-    [SerializeField]
-    private FadeMaster fadeMaster;
     
     private void Awake()
     {
@@ -95,7 +93,7 @@ public class GameManager : MonoBehaviour
         DialogueManager.gameObject.SetActive(true);
 
         if (FadeOnLoad)
-            fadeMaster.Fade(-1, fadeTime, true);
+          FadeMaster.fadeMaster.Fade(-1, fadeTime, true);
     }
 
 
@@ -198,7 +196,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel(int id)
     {
-        fadeMaster.Fade(1, fadeTime, false);
+        FadeMaster.fadeMaster.Fade(1, fadeTime, false);
         StartCoroutine(WaitForFade(fadeTime, id));
     }
 
