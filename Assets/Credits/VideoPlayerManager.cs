@@ -6,8 +6,17 @@ using UnityEngine.Video;
 
 public class VideoPlayerManager : MonoBehaviour
 {
+    [Header("Video")]
     [SerializeField]
     private VideoClip videoToPlay;
+
+    [Header("Loading")]
+    [SerializeField]
+    private bool changeScene = false;
+    [SerializeField]
+    private int sceneIndex;
+
+    [Header("Credits")]
     [SerializeField]
     private Animator animator;
     [SerializeField]
@@ -32,6 +41,9 @@ public class VideoPlayerManager : MonoBehaviour
         videoPlayer.playOnAwake = false;
         audioSource.playOnAwake = false;
 
+        if (videoPlayer.canSetSkipOnDrop)
+            videoPlayer.skipOnDrop = true;
+
         videoPlayer.source = VideoSource.VideoClip;
 
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
@@ -45,14 +57,21 @@ public class VideoPlayerManager : MonoBehaviour
         while (!videoPlayer.isPrepared)
             yield return null;
 
-        loadingText.gameObject.SetActive(false);
+        if(loadingText != null)
+            loadingText.gameObject.SetActive(false);
         videoPlayer.Play();
-        audioSource.Play();
-        creditsSource.Play();
+        if(audioSource != null)
+            audioSource.Play();
+        if(creditsSource != null)
+            creditsSource.Play();
 
         while (videoPlayer.isPlaying)
             yield return null;
 
-        animator.SetBool("Scroll", true);
+        if(animator != null)
+            animator.SetBool("Scroll", true);
+
+        if (changeScene)
+            LevelManager.instance.ChangeLevel(sceneIndex);
     }
 }

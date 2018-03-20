@@ -47,12 +47,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private RadialProgressBar radial4;
 
-    [Header("Fading")]
-    [SerializeField]
-    private Transform fadeOutImage;
+    // Fading
     private bool fadeOut = false;
-    [SerializeField]
-    private float fadeSpeed = 1f;
     private bool playedOnce = false;
 
     [Header("Glitches")]
@@ -193,8 +189,7 @@ public class MainMenuManager : MonoBehaviour
             if(!playedOnce)
             {
                 playedOnce = true;
-                //SceneManager.LoadScene("Main"); // When finished, load the main scene
-                FindObjectOfType<GameManager>().GetComponent<GameManager>().ChangeLevel(1);
+                LevelManager.instance.ChangeLevel(1);
             }
         }
     }

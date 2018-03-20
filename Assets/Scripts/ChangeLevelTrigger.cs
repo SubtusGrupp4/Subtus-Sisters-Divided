@@ -21,7 +21,7 @@ public class ChangeLevelTrigger : MonoBehaviour
                 botHasEntered = true;
 
             if (topHasEntered && botHasEntered)
-                GameManager.instance.ChangeLevel(levelId);
+                LevelManager.instance.ChangeLevel(levelId);
         }
     }
 

@@ -10,6 +10,6 @@ public class LevelLoadTrigger : BaseButton {
 
     protected override void DoStuff()
     {
-        GameManager.instance.ChangeLevel(levelIndex);
+        LevelManager.instance.ChangeLevel(levelIndex);
     }
 }

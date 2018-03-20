@@ -54,16 +54,6 @@ public class GameManager : MonoBehaviour
     [FMODUnity.EventRef]
     private string unpauseEvent;
 
-    [Header("Loading Screen")]
-    public GameObject loadingScreen;
-    public Slider slider;
-    public Text progressText;
-    [Header("Fade")]
-    [SerializeField]
-    private bool FadeOnLoad;
-    [SerializeField]
-    private float fadeTime;
-    
     private void Awake()
     {
         CreateSingleton();
@@ -91,9 +81,6 @@ public class GameManager : MonoBehaviour
         onePlayerDead = false;
 
         DialogueManager.gameObject.SetActive(true);
-
-        if (FadeOnLoad)
-          FadeMaster.fadeMaster.Fade(-1, fadeTime, true);
     }
 
 
@@ -104,11 +91,11 @@ public class GameManager : MonoBehaviour
         KillKey();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            ChangeLevel(0);
+            LevelManager.instance.ChangeLevel(0);
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            ChangeLevel(1);
+            LevelManager.instance.ChangeLevel(1);
         else if (Input.GetKeyDown(KeyCode.Alpha3))
-            ChangeLevel(2);
+            LevelManager.instance.ChangeLevel(2);
 
         if (isPaused)
             ReadQuit();
@@ -131,7 +118,7 @@ public class GameManager : MonoBehaviour
     private void RestartKey()
     {
         if (Input.GetKeyDown(resetKey))
-            ResetLevel();
+            LevelManager.instance.ResetLevel();
     }
 
     private void PauseKey()
@@ -180,58 +167,6 @@ public class GameManager : MonoBehaviour
             onePlayerDead = true;
             playerBot.GetComponent<Reviving>().Die();
         }
-    }
-
-    public void ResetLevel()
-    {
-        ChangeLevel(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    IEnumerator WaitForFade(float time, int level)
-    {
-        yield return new WaitForSeconds(time);
-        ChangeLevelLoadingScreen(level);
-    }
-
-
-    public void ChangeLevel(int id)
-    {
-        FadeMaster.fadeMaster.Fade(1, fadeTime, false);
-        StartCoroutine(WaitForFade(fadeTime, id));
-    }
-
-
-    private void ChangeLevelLoadingScreen(int id)
-    {
-        GameObject[] gos = FindObjectsOfType<GameObject>();
-        foreach (GameObject go in gos)
-        {
-            FMODEmitter[] emitters = go.GetComponents<FMODEmitter>();
-            foreach (FMODEmitter emitter in emitters)
-                emitter.Stop();
-        }
-
-        StartCoroutine(LevelLoadAsynchronous(id));
-    }
-
-    IEnumerator LevelLoadAsynchronous(int id)
-    {
-        float progress;
-        AsyncOperation operation = SceneManager.LoadSceneAsync(id);
-
-        loadingScreen.SetActive(true);
-
-        while (!operation.isDone)
-        {
-            progress = operation.progress / 0.9f;
-            Debug.Log("Progress: " + progress);
-
-            slider.value = progress;
-            progressText.text = Mathf.RoundToInt(progress * 100f) + "%";
-
-            yield return null;
-        }
-
     }
 
     public float PreventZero(float value)
