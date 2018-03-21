@@ -185,6 +185,11 @@ public class SafepointManager : MonoBehaviour {
             pickupTime -= pickupDecrease;
     }
 
+    public void ResetTimer()
+    {
+        pickupTime = 10f;
+    }
+
     public IEnumerator PickupTimer()
     {
         yield return new WaitForSeconds(pickupTime);

@@ -143,7 +143,7 @@ public class Reviving : MonoBehaviour
         GameManager.instance.playerTop.GetComponent<PlayerController>().crawling = false;
         // Set the camera to transition towards the safepoints
         SafepointManager.instance.RespawnTransition();
-        SafepointManager.instance.DecreaseTimer();
+        SafepointManager.instance.ResetTimer();
 
 
         Transform player;
