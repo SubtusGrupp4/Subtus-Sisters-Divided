@@ -186,8 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833b54a830099ce46af39afee6074eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: {fileID: 0}
-  reversed: {fileID: 0}
+  flipScale: 0
 --- !u!114 &114661525122279982
 MonoBehaviour:
   m_ObjectHideFlags: 1
