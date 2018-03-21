@@ -155,8 +155,6 @@ MonoBehaviour:
   manualSkip: 1
   hide: 0
   debug: 0
-  overrideSpeed: 0
-  typeSpeed: 8
   causeSwitch: 0
 --- !u!114 &114811711688063160
 MonoBehaviour:
@@ -173,19 +171,26 @@ MonoBehaviour:
   grav: {fileID: 0}
   switchImage: {fileID: 0}
   spriteSequence:
-  - {fileID: 21300000, guid: 61963e89a69c9c74cb11eb875a66cf2c, type: 3}
-  - {fileID: 21300000, guid: d0b6b7d1655c9bb40add86c90e2f59cc, type: 3}
-  - {fileID: 21300000, guid: 218e9501f2d5f904eb4628b969ca61c0, type: 3}
-  - {fileID: 21300000, guid: 000327b20d799b940b3a462fbb0ad0d0, type: 3}
-  - {fileID: 21300000, guid: 5b75e6941a467ee4b846863ac2dccb8d, type: 3}
-  - {fileID: 21300000, guid: c32ba263522a89f47a20011f94d77865, type: 3}
-  - {fileID: 21300000, guid: bb1637d81387f35459f4e073c0515122, type: 3}
-  - {fileID: 21300000, guid: 3461b9c2d8b1d2b44b5e04b6bcb46a7b, type: 3}
-  - {fileID: 21300000, guid: 54752ea65b45cc340989ce2fb5a6fff2, type: 3}
-  - {fileID: 21300000, guid: e4935cfd1e562b144aa8b6d7024f8767, type: 3}
-  - {fileID: 21300000, guid: 371875629844a5a48816089c217e033e, type: 3}
-  - {fileID: 21300000, guid: ba13435bc142d734fafa3c4554e97e8e, type: 3}
-  - {fileID: 21300000, guid: 88a272cdb70b2894793ae75e644a2f09, type: 3}
+  - {fileID: 21300000, guid: 117475448c921514788b9aa0a4ce98ff, type: 3}
+  - {fileID: 21300000, guid: b4830008e03fee7499550bcd5baaa142, type: 3}
+  - {fileID: 21300000, guid: 98a2aa9e70ffc5148b1c5b49c057ace8, type: 3}
+  - {fileID: 21300000, guid: c330eb35ed848d942b4c87dc1ed275b2, type: 3}
+  - {fileID: 21300000, guid: 71146127464ec3742ac8e6c80c9f6e65, type: 3}
+  - {fileID: 21300000, guid: b90b5b296edf7d849b15ecdb00082ddc, type: 3}
+  - {fileID: 21300000, guid: a02bb98acbf91354697ff93785b5131f, type: 3}
+  - {fileID: 21300000, guid: dfd04041f43cb9042a251de45c770f80, type: 3}
+  - {fileID: 21300000, guid: 480e9970c5af1aa4989bbebcc308b77b, type: 3}
+  - {fileID: 21300000, guid: 1c5b4a5817587ae43a0b9b61139db7c3, type: 3}
+  - {fileID: 21300000, guid: 5b69e289a0dd06d4bb2d34ec80b847c9, type: 3}
+  - {fileID: 21300000, guid: 1c24e5ba4bab00543afe8a2b0fb67323, type: 3}
+  - {fileID: 21300000, guid: 3b3d9ac12b94fa84997e09a45c6f38e2, type: 3}
+  - {fileID: 21300000, guid: 6867ea4dbd25cdc4abeb8cf31ce7af9d, type: 3}
+  - {fileID: 21300000, guid: 86bdb0d866cb99f46b8dc5f67d673728, type: 3}
+  - {fileID: 21300000, guid: 8ce387fc92ea61d419bd8dd0d4b4a41c, type: 3}
+  - {fileID: 21300000, guid: aa7e8734d1fb6a54bbc8a6b074e2656d, type: 3}
+  - {fileID: 21300000, guid: 27faba86a23a8e446bf09b679986cd7a, type: 3}
+  - {fileID: 21300000, guid: 790b751490d9f75488871b361fb3a0ad, type: 3}
+  - {fileID: 21300000, guid: 064e2d3394e4e2e47808f8cab7a9a780, type: 3}
   staticClip: {fileID: 8300000, guid: 53bf582f3919a05458bef07dc26ffabd, type: 3}
   startTimer: 2
   waitTime: 2
@@ -221,6 +226,4 @@ MonoBehaviour:
   manualSkip: 1
   hide: 0
   debug: 0
-  overrideSpeed: 0
-  typeSpeed: 8
   causeSwitch: 0

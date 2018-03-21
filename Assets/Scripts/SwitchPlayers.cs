@@ -70,6 +70,8 @@ public class SwitchPlayers : MonoBehaviour
             }
             else
             {
+                switchImage.sprite = null;
+                source.clip = null;
                 switchImage.gameObject.SetActive(false);
                 DoSwitch();
                 doAnimation = false;
