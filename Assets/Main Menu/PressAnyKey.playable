@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 114759729029560208}
   m_FixedDuration: 0
   m_EditorSettings:
-    fps: 60
+    m_Framerate: 60
   m_DurationMode: 0
 --- !u!74 &74593003527847362
 AnimationClip:
@@ -89,7 +89,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 1
-        value: 6.586441
+        value: 50.542236
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -246,7 +246,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 1
-        value: 6.586441
+        value: 50.542236
         inSlope: 0
         outSlope: 0
         tangentMode: 136
