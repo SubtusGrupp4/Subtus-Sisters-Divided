@@ -259,6 +259,7 @@ MonoBehaviour:
   fadeScreen: {fileID: 767082482}
   fadeImage: {fileID: 767082483}
   fadeTime: 2
+  sourceList: []
 --- !u!4 &702825078
 Transform:
   m_ObjectHideFlags: 0
@@ -804,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dccbe3b794c3c45ab16960ffcc398c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoToPlay: {fileID: 32900000, guid: 508eaee48fdec184aa7f9aed599a718b, type: 3}
+  videoToPlay: {fileID: 32900000, guid: c5eccdd76f20a0e4aa9bc5fe77321f05, type: 3}
   changeScene: 1
   sceneIndex: 2
   animator: {fileID: 0}
