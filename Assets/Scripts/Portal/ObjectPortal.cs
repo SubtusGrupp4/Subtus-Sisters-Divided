@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class ObjectPortal : PortalBehaviour 
 {
-	public Sprite original;
-	public Sprite reversed;
-
-
 	private Rigidbody2D rb;
 	private bool checkState = true;
     private int lengthToPortal;
+
+    [SerializeField]
+    private bool flipScale = true;
     
-
-	// Use this for initialization
-	void Start () {
-		rb = GetComponent<Rigidbody2D> ();
-
+	void Start ()
+    {
+		rb = GetComponent<Rigidbody2D>();
 	}
 
     private void OnCollisionStay2D(Collision2D other)
@@ -25,26 +22,15 @@ public class ObjectPortal : PortalBehaviour
             lengthToPortal = (int)transform.position.y;
     }
 
-    void ChangeSprite(){
-		if (!CompareTag("GravitationBomb") || !CompareTag("Pickup")) {
-			if (checkState)
-				this.GetComponent<SpriteRenderer> ().sprite = original;
-            else
-				this.GetComponent<SpriteRenderer> ().sprite = reversed;
-		}
-	}
-
 	public override void OnPortalContact()
 	{
 		if (rb != null)
 		{
 			checkState = !checkState;
-			ChangeSprite ();
-			transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+            if(flipScale)
+			    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
 			rb.gravityScale = -rb.gravityScale;
 
-
-            
                 float gravity = -9.81f;
                 float power;
                 float offSet = 0.7f;
@@ -53,7 +39,8 @@ public class ObjectPortal : PortalBehaviour
                 power = 0 - (2 * (gravity * (Mathf.Abs(lengthToPortal) + offSet)));
                 // U = sqrt U^2 
                 power = Mathf.Sqrt(power);
-                Debug.Log("PORTAL RUNNING YES YES   " + rb.velocity.y);
+                if(Debug.isDebugBuild)
+                    Debug.Log("PORTAL RUNNING YES YES   " + rb.velocity.y);
                 
                 rb.velocity = new Vector2(rb.velocity.x, rb.gravityScale * power);
         }

@@ -79,6 +79,8 @@ public class Reviving : MonoBehaviour
             pc.isActive = false;
             gameObject.SetActive(false);
 
+            GetComponent<Pickup>().DropIt();
+
             // If any of the players is dead and the last dies, call BothDead() instead.
             if (GameManager.instance.onePlayerDead)
             {

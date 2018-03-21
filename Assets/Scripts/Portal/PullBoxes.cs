@@ -79,7 +79,7 @@ public class PullBoxes : MonoBehaviour
         if (hit.collider != null && hit.collider.gameObject.tag == tagName && (hit.collider.GetComponent<OverEdgeFalling>() != null)
             && !playerController.inAir)
         {
-            if (hit.transform.GetComponent<DisplayIconTrigger>() != null && !isPulling)
+            if (hit.transform.GetComponent<DisplayIconTrigger>() != null && !isPulling && hit.transform.GetComponent<OverEdgeFalling>().IsGrounded())
                 hit.transform.GetComponent<DisplayIconTrigger>().SetShowIcon(true);
 
             if (Input.GetKeyDown(KeyCode.G) || Input.GetButtonDown(pushAndPullBox))
@@ -161,7 +161,6 @@ public class PullBoxes : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-
         Gizmos.DrawLine(rayLine, rayLine + Vector2.right * transform.localScale.x * distance);
     }
 

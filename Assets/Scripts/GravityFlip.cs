@@ -24,4 +24,18 @@ public class GravityFlip : MonoBehaviour {
                 transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y * -1f);
         }
 	}
+
+    public void SetGravity(float yPos)
+    {
+        if (yPos > 0f)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+            rb.gravityScale = Mathf.Abs(rb.gravityScale);
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, -Mathf.Abs(transform.localScale.y), transform.localScale.z);
+            rb.gravityScale = -Mathf.Abs(rb.gravityScale);
+        }
+    }
 }
