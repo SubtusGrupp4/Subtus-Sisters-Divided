@@ -71,6 +71,11 @@ public class GravitationBomb : MonoBehaviour
         rotationSpeed = 360f;
 
         FMODUnity.RuntimeManager.PlayOneShot(thrown, transform.position);
+
+        if (transform.position.y > 0f)
+            rb.gravityScale = Mathf.Abs(rb.gravityScale);
+        else
+            rb.gravityScale = -Mathf.Abs(rb.gravityScale);
     }
 
     void Update()

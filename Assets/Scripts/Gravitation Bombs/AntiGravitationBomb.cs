@@ -49,6 +49,11 @@ public class AntiGravitationBomb : MonoBehaviour
         targetting = false;
 
         FMODUnity.RuntimeManager.PlayOneShot(thrown, transform.position);
+
+        if (transform.position.y > 0f)
+            rb.gravityScale = Mathf.Abs(rb.gravityScale);
+        else
+            rb.gravityScale = -Mathf.Abs(rb.gravityScale);
     }
 
     void Update()

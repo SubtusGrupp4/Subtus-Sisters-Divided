@@ -7,12 +7,6 @@ public class SwitchPlayers : MonoBehaviour
 {
     public static SwitchPlayers instance;
 
-    [Header("References")]
-    [SerializeField]
-    private InstantiateGravityBomb antiGrav;
-    [SerializeField]
-    private InstantiateGravityBomb grav;
-
     [Header("Animation")]
     [SerializeField]
     private Image switchImage;
