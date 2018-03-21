@@ -372,7 +372,7 @@ public class AIMovement : MonoBehaviour
             bAnim.Walking(directionMultiplier, true);
         //
 
-        StuckDebugg();
+      //  StuckDebugg();
 
         float xDistance = target.transform.position.x - transform.position.x; // positive value = right, negative = left
 
