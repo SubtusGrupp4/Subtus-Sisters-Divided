@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114510259391335332}
   m_Layer: 0
   m_Name: hatch
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,8 +88,8 @@ MonoBehaviour:
   itemIndex: 0
   openImage: {fileID: 21300006, guid: 988d165a4a48d174a9951d25161a9947, type: 3}
   closedImage: {fileID: 21300000, guid: 988d165a4a48d174a9951d25161a9947, type: 3}
-  openDoorSound: {fileID: 0}
-  closeDoorSound: {fileID: 0}
+  deActivationEvent: 
+  activationEvent: 
 --- !u!114 &114510259391335332
 MonoBehaviour:
   m_ObjectHideFlags: 1

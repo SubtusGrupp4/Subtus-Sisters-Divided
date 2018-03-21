@@ -88,8 +88,8 @@ MonoBehaviour:
   itemIndex: 0
   openImage: {fileID: 21300000, guid: 0f8deffaf68d5ca48a6b90548bca7115, type: 3}
   closedImage: {fileID: 21300000, guid: a5e7180d590b9c044aa53e8d05cbaa99, type: 3}
-  openDoorSound: {fileID: 0}
-  closeDoorSound: {fileID: 0}
+  deActivationEvent: 
+  activationEvent: 
 --- !u!114 &114275470071287376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,8 +137,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -207249493
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a5e7180d590b9c044aa53e8d05cbaa99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
