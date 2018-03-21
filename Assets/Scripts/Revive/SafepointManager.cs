@@ -173,6 +173,10 @@ public class SafepointManager : MonoBehaviour {
         playerBot.GetComponent<PlayerController>().isActive = true;
 
         SetSafepointsAsCheckpoints();
+
+        ReturnRadius[] rr = FindObjectsOfType<ReturnRadius>();
+        foreach(ReturnRadius r in rr)
+            r.RespawnObject();
     }
 
     public void DecreaseTimer()

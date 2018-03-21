@@ -50,10 +50,13 @@ public class SwitchPlayers : MonoBehaviour
 
     private IEnumerator StartTimer()
     {
-        yield return new WaitForSeconds(startTimer);
-        switchImage.gameObject.SetActive(true);
-        doAnimation = true;
-        source.Play();
+        if (!hasSwitched)
+        {
+            yield return new WaitForSeconds(startTimer);
+            switchImage.gameObject.SetActive(true);
+            doAnimation = true;
+            source.Play();
+        }
     }
 
     private void FixedUpdate()
@@ -84,7 +87,7 @@ public class SwitchPlayers : MonoBehaviour
 
         Vector3 temp = top.position;
         top.position = bot.position;
-        bot.position = temp;
+        bot.position = temp + new Vector3(0f, 1f);
 
         Transform[] players = { top, bot };
 
