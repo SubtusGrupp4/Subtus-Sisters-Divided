@@ -45,9 +45,9 @@ public class Dialogue : MonoBehaviour {
     public bool hide = false;
     [HideInInspector]
     public bool debug = false;
-    [HideInInspector]
-    public bool overrideSpeed = false;
-    public float typeSpeed = 8f;
+    //[HideInInspector]
+    //public bool overrideSpeed = false;
+    //public float typeSpeed = 8f;
 
     public bool causeSwitch = false;
 

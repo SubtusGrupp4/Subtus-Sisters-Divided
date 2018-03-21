@@ -59,6 +59,7 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector]
     public bool freezeCamera = false;
 
+    /*
     [Header("Typing Settings")]
     [Tooltip("The global speed in hundreds of a second for each character to appear. Can be overrided on individual Dialogue components.")]
     [SerializeField]
@@ -70,6 +71,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)]
     private float typingVolume = 1f;
+    */
 
     private Transform panel;
 
@@ -101,7 +103,7 @@ public class DialogueManager : MonoBehaviour
         rDialogueCanvas.enabled = false;
 
         // Two values enabled switching the speed between dialogues, but then resetting to the original value
-        actualTypeSpeed = typeSpeed;
+        /*actualTypeSpeed = typeSpeed;
 
         camController = Camera.main.GetComponent<CameraController>();
 
@@ -109,6 +111,7 @@ public class DialogueManager : MonoBehaviour
         if (audioSources.Length < 2)    // Check if there are too few audiosources to work correctly
             Debug.LogError("DialogueManager requires 2 AudioSource components to function.");
         audioSources[1].volume = typingVolume;  // Assign the typing volume
+        */
     }
 
     private void CreateSingleton()
@@ -170,7 +173,7 @@ public class DialogueManager : MonoBehaviour
                 if (dialogues[di].fadeIn && !fadeInDone)    // Prevent characters being typed if the boxes are fading
                     return;
 
-                StartCoroutine(TypeTimer(actualTypeSpeed / 100f));
+                //StartCoroutine(TypeTimer(actualTypeSpeed / 100f));
             }
             else    // If done writing
             {
@@ -235,12 +238,14 @@ public class DialogueManager : MonoBehaviour
             writtenSentence += toWrite;                 // Add it to the string
             dialogueText.text = writtenSentence;        // Set the text in the dialogue box to the current string
             charIndex++;                            // Increment the character index
+            /*
             if (dialogues[di].typeSounds && toWrite != ' ')     // If sounds are enabled and the character is not a space
             {
                 int typeSoundIndex = Random.Range(0, typingSounds.Length);  // Get a random typing sound from the array TODO: Make this not repeating the previous sound
                 audioSources[1].clip = typingSounds[typeSoundIndex];        // Play the selected sound
                 audioSources[1].Play();
             }
+            */
         }
     }
 
@@ -262,7 +267,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = sentenceToWrite;    // Complete the written sentence
             charIndex = sentenceToWrite.Length;     // Skip to the last character, preventing the typing to occur
-            typeTime = 0f;                          // Reset the typing timer
+            //typeTime = 0f;                          // Reset the typing timer
         }
         else // If not fading and is finished typing
             DisplayNextSentence();  // Grab the next sentence, and start typing it
@@ -325,11 +330,13 @@ public class DialogueManager : MonoBehaviour
         sentenceToWrite = string.Empty;
         charIndex = 0;  // Reset the char index, resetting the typing
 
-        // Assignt the correct typing speed for the current dialogue
+        /*
+        // Assign the correct typing speed for the current dialogue
         if (dialogues[di].overrideSpeed)
             actualTypeSpeed = dialogues[di].typeSpeed;
         else
             actualTypeSpeed = typeSpeed;
+            */
 
         // TODO: Make these work
         //freezeCamera = dialogues[di].freezeCamera;                      // Freezing camera

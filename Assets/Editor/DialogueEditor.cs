@@ -42,7 +42,7 @@ public class DialogueEditor : Editor {
             if(EditorGUI.EndChangeCheck())
                 serializedObject.ApplyModifiedProperties();
 
-            d.typeSounds = EditorGUILayout.Toggle(new GUIContent("Type Sounds", "Play auio clips with every character appearing."), d.typeSounds);
+            //d.typeSounds = EditorGUILayout.Toggle(new GUIContent("Type Sounds", "Play auio clips with every character appearing."), d.typeSounds);
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Between Dialogues", EditorStyles.boldLabel);
@@ -69,11 +69,14 @@ public class DialogueEditor : Editor {
             d.freezeTime = EditorGUILayout.Toggle(new GUIContent("Freeze Time", "[DO NOT SET TO 0] Essentially pauses the game to display the text. Might have unforseen consequences."), d.freezeTime);
             d.freezeCamera = EditorGUILayout.Toggle(new GUIContent("Freeze Camera", "Stops the camera from moving, and in turn prevents the players from leaving the view."), d.freezeCamera);
 
+            
             EditorGUILayout.Space();
+            /*
             EditorGUILayout.LabelField("Type Speed", EditorStyles.boldLabel);
             d.overrideSpeed = EditorGUILayout.Toggle(new GUIContent("Override Speed", "Choose to use the global speed value on the DialogueManager or a custom one for this dialogue."), d.overrideSpeed);
             if (d.overrideSpeed)
                 d.typeSpeed = EditorGUILayout.FloatField(new GUIContent("Type Speed", "[DO NOT SET TO 0] The speed in hundreds of a second for each character to appear."), d.typeSpeed);
+            */
             d.causeSwitch = EditorGUILayout.Toggle("Cause Switch", d.causeSwitch);
 
             EditorGUILayout.Space();
