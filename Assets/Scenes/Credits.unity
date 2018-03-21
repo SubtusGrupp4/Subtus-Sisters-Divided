@@ -1075,8 +1075,7 @@ MonoBehaviour:
     Kaks\r\r\n\r\n\r\nDesign\r\nParsa Mohaghegh Harandi\r\nElias Olofsson\r\n\r\n\r\nStory
     and Dialogue by\r\nSanna Ylven\r\nFrida Rosengren\r\n\r\n\r\n\r\nSpecial Thanks
     To\r\nGustav Gereonsson\nAll the Teachers\r\n\r\nTesters\r\nGabriel Cardell\r\nDan
-    Isaksson\r\nSamuel Forsback\r\nFredrik Olsson\r\n\r\nAnd\r\nour beloved\r\nDSU-peers\r\nGustav
-    Gereonsson"
+    Isaksson\r\nSamuel Forsback\r\nFredrik Olsson\r\n\r\nAnd\r\nour beloved\r\nDSU-peers\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: df8ce4c47d90a074f88161672b2be729, type: 2}
   m_sharedMaterial: {fileID: 21555093828285148, guid: df8ce4c47d90a074f88161672b2be729,
@@ -1144,12 +1143,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1084110903}
-    characterCount: 681
+    characterCount: 663
     spriteCount: 0
-    spaceCount: 107
-    wordCount: 86
+    spaceCount: 105
+    wordCount: 84
     linkCount: 0
-    lineCount: 61
+    lineCount: 60
     pageCount: 1
     materialCount: 2
   m_havePropertiesChanged: 0
@@ -1454,7 +1453,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4e85a883739e41a42995fc52bec8bfa3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7b811a94ee8899f4d96dfb4796eb8a66, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
