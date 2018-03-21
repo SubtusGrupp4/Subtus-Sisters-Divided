@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
     [FMODUnity.EventRef]
     private string unpauseEvent;
 
+    [SerializeField]
+    private RadialProgressBar radial1;
+    [SerializeField]
+    private RadialProgressBar radial2;
+
     private void Awake()
     {
         CreateSingleton();
@@ -140,20 +145,24 @@ public class GameManager : MonoBehaviour
     private void ReadQuit()
     {
         if (Input.GetKey("joystick 1 button 2"))
-        {
             player1X += fillRate * Time.unscaledDeltaTime;
-        }
-        else if (player1X > 0)
+        else
             player1X -= Time.unscaledDeltaTime * emptyRate;
 
         if (Input.GetKey("joystick 2 button 2"))
-        {
             player2X += fillRate * Time.unscaledDeltaTime;
-        }
-        else if (player2X > 0)
+        else
             player2X -= Time.unscaledDeltaTime * emptyRate;
 
-        if (player1X >= fillTime && player2X >= fillTime)
+        // Clamping to appropriate numbers
+        player1X = Mathf.Clamp(player1X, 0.4f, 1f);
+        player2X = Mathf.Clamp(player2X, 0.4f, 1f);
+
+        // Applying the amount to each radial progress bar
+        radial1.SetAmount(player1X);
+        radial2.SetAmount(player2X);
+
+        if (player1X >= 0.99f && player2X >= 0.99f)
         {
             Application.Quit();
         }
