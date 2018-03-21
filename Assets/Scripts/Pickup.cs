@@ -46,7 +46,6 @@ public class Pickup : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // TODO: Replace with last direction in PlayerController
         if (rb.velocity.x > 0.1f)
             goingRight = true;
         else if (rb.velocity.x < -0.1f)
@@ -65,38 +64,13 @@ public class Pickup : MonoBehaviour
             grabPosition = transform.position + grabLeft;
         }
 
-        // TODO: Set this correctly
-        LayerMask layer = 1 << 0;
-/*
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, layer);
-        Color color = hit ? Color.green : Color.red;
-        Debug.DrawRay(rayOrigin, rayDirection, color);
-
-        if (hit.transform != null)
-        {
-            foreach (string tag in pickUp)
-            {
-                if (hit.transform.tag == tag)
-                    hitTransform = hit.transform;
-            }
-        }
-        else if (!isPickedUp)
-            hitTransform = null; */
-
         if (isPickedUp)
         {
             pickedUp.position = grabPosition;
             DisableOnPickup();
         }
         else if (!pickupEnabled)
-        {
             EnableOnPickup(rayDirection);
-        }
-    }
-
-    private void Update()
-    {
-       // PickUpAction();
     }
 
     public void PickItUp(GameObject obj)
@@ -131,8 +105,6 @@ public class Pickup : MonoBehaviour
                             float distance = Vector2.Distance(transform.position, allObjs[i].transform.position);
                             Vector2 direction = (allObjs[i].transform.position - transform.position).normalized;
                             Debug.DrawRay(transform.position, direction, Color.red);
-                            // (transform.position + new Vector3((rayOffset + 0.1f)
-                            // (transform.position + new Vector3((rayOffSetX - 0.1f) * directionMultiplier.x, 0, 0)
                             RaycastHit2D[] objHit = Physics2D.RaycastAll(transform.position, direction, distance);
 
 
@@ -161,9 +133,7 @@ public class Pickup : MonoBehaviour
             }
         }
         else if (isPickedUp)
-        {
             isPickedUp = false;
-        }
     }
 
     private void DisableOnPickup()

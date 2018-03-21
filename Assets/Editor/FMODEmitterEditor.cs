@@ -19,7 +19,6 @@ public class StudioEventEmitterEditor : Editor
     {
         var ev = serializedObject.FindProperty("Event");
         var param = serializedObject.FindProperty("parameters");
-        var fadeout = serializedObject.FindProperty("AllowFadeout");
         /*
         var overrideAtt = serializedObject.FindProperty("OverrideAttenuation");
         var minDistance = serializedObject.FindProperty("OverrideMinDistance");

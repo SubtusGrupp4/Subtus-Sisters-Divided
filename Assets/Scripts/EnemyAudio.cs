@@ -123,42 +123,4 @@ public class EnemyAudio : MonoBehaviour
         yield return new WaitForSeconds(time);
         Loop();
     }
-
-    /*
-    public void ChangeState(EnemyAudioState state)
-    {
-        string eventPath;
-
-        switch(state)
-        {
-            case EnemyAudioState.Attack:
-                eventPath = attackEvent;
-                break;
-            case EnemyAudioState.Falling:
-                eventPath = fallingEvent;
-                break;
-            case EnemyAudioState.Idle:
-                eventPath = idleEvent;
-                break;
-            default:
-                eventPath = walkingEvent;
-                break;
-        }
-
-        if(eventPath == "")
-        {
-            emitter.Stop();
-            return;
-        }
-
-        if (audioState != state)
-        {
-            Debug.Log("Playing " + eventPath);
-            audioState = state;
-            emitter.Stop();
-            emitter.SetEvent(eventPath);
-            emitter.Play();
-        }
-    }
-    */
 }

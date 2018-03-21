@@ -10,8 +10,6 @@ public class ObjectPortal : PortalBehaviour
 
 	private Rigidbody2D rb;
 	private bool checkState = true;
-	private bool onPortal;
-
     private int lengthToPortal;
     
 
@@ -20,40 +18,24 @@ public class ObjectPortal : PortalBehaviour
 		rb = GetComponent<Rigidbody2D> ();
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-		if (rb.velocity == Vector2.zero) {
-			onPortal = false;
-		}
-
-    
-        
-    }
-
 
     private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "Floor")
-        {
             lengthToPortal = (int)transform.position.y;
-        }
     }
 
     void ChangeSprite(){
 		if (!CompareTag("GravitationBomb") || !CompareTag("Pickup")) {
-			if (checkState) {
+			if (checkState)
 				this.GetComponent<SpriteRenderer> ().sprite = original;
-			} else {
+            else
 				this.GetComponent<SpriteRenderer> ().sprite = reversed;
-			}
 		}
 	}
 
 	public override void OnPortalContact()
 	{
-		onPortal = true;
 		if (rb != null)
 		{
 			checkState = !checkState;
@@ -74,9 +56,6 @@ public class ObjectPortal : PortalBehaviour
                 Debug.Log("PORTAL RUNNING YES YES   " + rb.velocity.y);
                 
                 rb.velocity = new Vector2(rb.velocity.x, rb.gravityScale * power);
-            
-
         }
 	}
-
 }

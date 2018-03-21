@@ -531,7 +531,6 @@ public class AIMovement : MonoBehaviour
             new Vector2(directionMultiplier.x, 0),
             Color.green);
 
-        float distanceXXX;
         bool blocked = false;
 
         for (int i = 0; i < objHit.Length; i++)
@@ -544,12 +543,7 @@ public class AIMovement : MonoBehaviour
                 if (objHit[i].transform.tag == bounceOn[j])
                 {
                     if ((Mathf.Abs(objHit[i].normal.x) >= maxSlope))
-                    {
-                        distanceXXX = Vector3.Distance(pos + new Vector3(boxOffSetX + directionMultiplier.x + rayDistanceX * directionMultiplier.x, boxOffSetY * flipValue, 0),
-                            objHit[i].transform.position);
-
                         walls = true;
-                    }
                     else
                     {
                         blocked = true;

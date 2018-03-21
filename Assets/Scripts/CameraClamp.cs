@@ -13,8 +13,6 @@ public class CameraClamp : MonoBehaviour
     private GameObject pTop;
     private GameObject pBot;
 
-    private Vector3 camPos;
-
     float height;
     float width;
 
@@ -44,8 +42,6 @@ public class CameraClamp : MonoBehaviour
     {
         height = 2f * myCam.orthographicSize;
         width = height * myCam.aspect;
-
-        camPos = myCam.transform.position;
     }
 
     public void ClampObject(GameObject obj)

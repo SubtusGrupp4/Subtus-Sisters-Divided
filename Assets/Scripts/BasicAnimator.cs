@@ -14,9 +14,6 @@ public class BasicAnimator : MonoBehaviour
     public const string animCrawl = "IsCrawling";
     public const string animPull = "IsPulling";
     public const string animPush = "IsPushing";
- 
-
-    private bool walkRunBool = false;
 
     public const string attackAnimName = "Attack";
     public const string crawlEndName = "EndCrawl";
@@ -34,7 +31,6 @@ public class BasicAnimator : MonoBehaviour
     protected float savedX;
     protected float y;
     Animator anim;
-    private new Rigidbody2D rigidbody2D;
 
     protected virtual void Start()
     {
@@ -45,8 +41,6 @@ public class BasicAnimator : MonoBehaviour
         anim.SetBool(animAttack, false);//Attacking animation is deactivated
         anim.SetBool(animFall, false);//Falling animation is deactivated
         anim.SetBool(animWalk, true);
-
-        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Update()

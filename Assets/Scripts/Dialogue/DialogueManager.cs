@@ -102,12 +102,13 @@ public class DialogueManager : MonoBehaviour
         lDialogueCanvas.enabled = false;
         rDialogueCanvas.enabled = false;
 
+        audioSources = GetComponents<AudioSource>();
+
         // Two values enabled switching the speed between dialogues, but then resetting to the original value
         /*actualTypeSpeed = typeSpeed;
 
         camController = Camera.main.GetComponent<CameraController>();
 
-        audioSources = GetComponents<AudioSource>();
         if (audioSources.Length < 2)    // Check if there are too few audiosources to work correctly
             Debug.LogError("DialogueManager requires 2 AudioSource components to function.");
         audioSources[1].volume = typingVolume;  // Assign the typing volume

@@ -39,7 +39,6 @@ public class InstantiateGravityBomb : MonoBehaviour
 
     [SerializeField]
     private BasicAnimator playerAnim;
-    private BasicAnimator armAnim;
     private BasicAnimator throwArmAnim;
 
     private SpriteRenderer armSprite;
@@ -56,7 +55,6 @@ public class InstantiateGravityBomb : MonoBehaviour
 
     void Start()
     {
-        armAnim = arm.GetComponent<BasicAnimator>();
         throwArmAnim = throwArm.GetComponent<BasicAnimator>();
 
         armSprite = arm.GetComponent<SpriteRenderer>();
@@ -196,7 +194,6 @@ public class InstantiateGravityBomb : MonoBehaviour
         armSprite.enabled = false;
 
         Quaternion rot = Quaternion.LookRotation(dir);
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         throwArm.transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
 
         // Animation for the arm.

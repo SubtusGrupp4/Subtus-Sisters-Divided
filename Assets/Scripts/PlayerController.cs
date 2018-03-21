@@ -64,8 +64,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool pulling;
 
-    private SpriteRenderer sr;
-
     [Header("Physics")]
 
     private bool flipped;
@@ -163,7 +161,6 @@ public class PlayerController : MonoBehaviour
         isActive = true;
         inAir = true;
 
-        sr = GetComponent<SpriteRenderer>();
         movementAudio = GetComponent<MovementAudio>();
     }
 

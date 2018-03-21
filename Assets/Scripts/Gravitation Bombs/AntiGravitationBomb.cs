@@ -37,11 +37,8 @@ public class AntiGravitationBomb : MonoBehaviour
     [FMODUnity.EventRef]
     private string activate;
 
-    private FMODEmitter emitter;
-
     void Start()
     {
-        emitter = GetComponent<FMODEmitter>();
         ignoreObject = GameObject.FindGameObjectsWithTag ("Player");
 		foreach (GameObject IO in ignoreObject)
 			Physics2D.IgnoreCollision (IO.GetComponent<Collider2D> (), this.GetComponent<Collider2D>(), true);

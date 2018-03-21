@@ -14,8 +14,6 @@ public class ArrowPointTo : MonoBehaviour
     [SerializeField]
     Vector2 direction;
 
-    private bool showArrow = false;
-
     private SpriteRenderer sr;
 
     // Use this for initialization
@@ -41,14 +39,16 @@ public class ArrowPointTo : MonoBehaviour
 			x = -x;
 
         direction = new Vector2(x, y);
-        Quaternion rotation = Quaternion.LookRotation(direction, Vector2.right);
-        transform.rotation = new Quaternion(0f, 0f, rotation.x, rotation.w);
-        
+        Quaternion rotation;
+        if (direction != Vector2.zero)
+        {
+            rotation = Quaternion.LookRotation(direction, Vector2.right);
+            transform.rotation = new Quaternion(0f, 0f, rotation.x, rotation.w);
+        }
     }
 
     public void ShowArrow(bool show)
     {
         sr.enabled = show;
-        showArrow = show;
     }
 }

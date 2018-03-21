@@ -33,14 +33,12 @@ public class Door : MonoBehaviour
     private string activationEvent;
 
     private SpriteRenderer sRender;
-    private BoxCollider2D collider;
-    private AudioSource myAudio;
+    private BoxCollider2D col;
 
     // Use this for initialization
     void Start()
     {
-        myAudio = GetComponent<AudioSource>();
-        collider = GetComponent<BoxCollider2D>();
+        col = GetComponent<BoxCollider2D>();
         sRender = GetComponent<SpriteRenderer>();
 
 
@@ -80,7 +78,7 @@ public class Door : MonoBehaviour
         if (!open)
         {
             sRender.sprite = openImage;
-            collider.enabled = false;
+            col.enabled = false;
             FMODUnity.RuntimeManager.PlayOneShot(activationEvent, transform.position);
             open = true;
 
@@ -94,7 +92,7 @@ public class Door : MonoBehaviour
         if (open)
         {
             sRender.sprite = closedImage;
-            collider.enabled = true;
+            col.enabled = true;
             FMODUnity.RuntimeManager.PlayOneShot(deActivationEvent, transform.position);
             open = false;
         }

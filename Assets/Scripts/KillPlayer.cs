@@ -9,8 +9,6 @@ public class KillPlayer : MonoBehaviour
     AIMovement AImove;
     private bool attacking;
 
-    private EnemyAudio enemyAudio;
-
     // Use this for initialization
     void Start()
     {
@@ -19,8 +17,6 @@ public class KillPlayer : MonoBehaviour
 
         if (GetComponent<AIMovement>())
             AImove = GetComponent<AIMovement>();
-
-        enemyAudio = GetComponent<EnemyAudio>();
     }
 
     // Update is called once per frame

@@ -14,8 +14,6 @@ public class ReviveSpot : MonoBehaviour
 
     private float timer;
     private float timerAmount = 1f;
-    private bool doTimer = false;
-
     private void Start()
     {
         if(transform.position.y < 0f)

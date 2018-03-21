@@ -42,7 +42,6 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float zoomTime = 1f;
     private float currentZoomTime;
-    private bool zoomIn = false;
     private float startZoom;
     private float startYPos;
     private bool doZoom = false;

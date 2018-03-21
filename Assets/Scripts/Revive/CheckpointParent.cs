@@ -29,13 +29,15 @@ public class CheckpointParent : MonoBehaviour
 
     private void Update()
     {
-        if (transform != SafepointManager.instance.topCheckpoint && playerTop.gameObject.activeSelf)
-            if (playerTop.position.x > transform.position.x - 1f && playerTop.position.x < transform.position.x + 1f)
-                SafepointManager.instance.SetCheckpoint(transform, playerTop);
+        if(SafepointManager.instance.topCheckpoint != null)
+            if (transform != SafepointManager.instance.topCheckpoint && playerTop.gameObject.activeSelf)
+                if (playerTop.position.x > transform.position.x - 1f && playerTop.position.x < transform.position.x + 1f)
+                    SafepointManager.instance.SetCheckpoint(transform, playerTop);
 
-        if (child != SafepointManager.instance.botCheckpoint && playerBot.gameObject.activeSelf)
-            if (playerBot.position.x > child.position.x - 1f && playerBot.position.x < transform.position.x + 1f)
-                SafepointManager.instance.SetCheckpoint(child, playerBot);
+        if(SafepointManager.instance.botCheckpoint != null)
+            if (child != SafepointManager.instance.botCheckpoint && playerBot.gameObject.activeSelf)
+                if (playerBot.position.x > child.position.x - 1f && playerBot.position.x < transform.position.x + 1f)
+                    SafepointManager.instance.SetCheckpoint(child, playerBot);
     }
 
     private void OnDrawGizmos()
