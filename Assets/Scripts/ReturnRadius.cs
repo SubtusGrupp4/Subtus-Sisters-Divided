@@ -14,9 +14,12 @@ public class ReturnRadius : MonoBehaviour {
     [HideInInspector]
     public Transform draggedBy;
 
+    private Rigidbody2D rb;
+
 	void Start ()
     {
         startPosition = transform.position;
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	void Update ()
@@ -29,7 +32,7 @@ public class ReturnRadius : MonoBehaviour {
                 draggedBy = null;
             }
             transform.position = startPosition;
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
 	}
 
@@ -40,5 +43,11 @@ public class ReturnRadius : MonoBehaviour {
             Gizmos.DrawWireSphere(startPosition + new Vector3(offset.x, offset.y, 0f), radius);
         else
             Gizmos.DrawWireSphere(transform.position + new Vector3(offset.x, offset.y, 0f), radius);
+    }
+
+    public void RespawnObject()
+    {
+        transform.position = startPosition;
+        rb.velocity = Vector2.zero;
     }
 }
