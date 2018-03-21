@@ -57,6 +57,8 @@ public class CameraController : MonoBehaviour
     public Camera cam;
     private CameraClamp clamp;
 
+    private Vector3 prevPosition;
+
     private void Start()
     {
         // Get the players transforms from the GameManager
@@ -185,11 +187,11 @@ public class CameraController : MonoBehaviour
         camDistance = SafepointManager.instance.currentTopSafepoint.position.x - transform.position.x;
 
         // If the camera is close, enable clamping. Otherwise, disable it.
-        if (camDistance < 3f && camDistance > -3f)
+        if (camDistance < 3f && camDistance > -3f || prevPosition == transform.position)
         {
             Debug.Log("Reached safepoint. Spawning players");
             clamp.SetClamp(true);
-            if(GameManager.instance.onePlayerDead)
+            if (GameManager.instance.onePlayerDead)
                 StartCoroutine(SpawnDelay());
             GameManager.instance.onePlayerDead = false;
         }
@@ -199,7 +201,7 @@ public class CameraController : MonoBehaviour
         // Move towards safepoint with max speed maxSpeed
         float moveSpeed = camDistance / followSpeed;
         moveSpeed = Mathf.Clamp(moveSpeed, -maxSpeed, maxSpeed);
-
+        prevPosition = transform.position;
         transform.Translate(new Vector2(moveSpeed, 0f), Space.Self);
 
     }
