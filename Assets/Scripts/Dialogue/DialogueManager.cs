@@ -171,7 +171,7 @@ public class DialogueManager : MonoBehaviour
                 if (dialogues[di].fadeIn && !fadeInDone)    // Prevent characters being typed if the boxes are fading
                     return;
 
-                StartCoroutine(TypeTimer(Types / 100f));
+                StartCoroutine(TypeTimer(typeSpeed / 100f));
             }
             else    // If done writing
             {
