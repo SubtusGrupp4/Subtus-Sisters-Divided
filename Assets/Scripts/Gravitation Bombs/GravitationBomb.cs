@@ -95,6 +95,7 @@ public class GravitationBomb : MonoBehaviour
             if (duration < 0)
             {
                 ResetGravity(0);
+                emitter.Stop();
                 Destroy(gameObject);
             }
         }
@@ -225,6 +226,7 @@ public class GravitationBomb : MonoBehaviour
             var emission = particle.GetComponent<ParticleSystem>().emission;
             emission.rateOverTime = 0f;
             Destroy(particle, 5f);
+            emitter.Stop();
         }
     }
 }
