@@ -21,6 +21,6 @@ public class IgnoreCollision : MonoBehaviour {
         }
         if(ignoreObjects.Count != 0)
             foreach (GameObject obj in ignoreObjects)
-                Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), this.GetComponent<Collider2D>(), true);
+                Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
 	}
 }
