@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1441354743689498
 GameObject:
   m_ObjectHideFlags: 1
@@ -1609,13 +1609,6 @@ MonoBehaviour:
   waitTimeAfterAllWritten: 2
   freezeCamera: 0
   typeSpeed: 2
-  typingSounds:
-  - {fileID: 8300000, guid: 2bb580c757504bf4d8eb050824d88316, type: 3}
-  - {fileID: 8300000, guid: 7e24eaab7d07fac4898f17bd83254d4d, type: 3}
-  - {fileID: 8300000, guid: 1fc48750f211a8140bfb54f55e3dc71c, type: 3}
-  - {fileID: 8300000, guid: 93c3e3319aaad0644b50ae9a9461e671, type: 3}
-  - {fileID: 8300000, guid: 1aaede4400cc83448add86a16fb1661c, type: 3}
-  typingVolume: 0
 --- !u!114 &114920750101371528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1934,7 +1927,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224679885981056410}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2047,7 +2040,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224679885981056410}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2083,8 +2076,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224764996785526638}
-  - {fileID: 224305030086774064}
   - {fileID: 224505081058532006}
+  - {fileID: 224305030086774064}
   - {fileID: 224906753110311728}
   m_Father: {fileID: 224398236148230416}
   m_RootOrder: 0
