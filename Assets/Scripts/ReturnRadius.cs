@@ -31,8 +31,7 @@ public class ReturnRadius : MonoBehaviour {
                 draggedBy.GetComponent<PullBoxes>().StopDragging();
                 draggedBy = null;
             }
-            transform.position = startPosition;
-            rb.velocity = Vector2.zero;
+            RespawnObject();
         }
 	}
 
@@ -49,5 +48,6 @@ public class ReturnRadius : MonoBehaviour {
     {
         transform.position = startPosition;
         rb.velocity = Vector2.zero;
+        GetComponent<GravityFlip>().SetGravity(transform.position.y);
     }
 }

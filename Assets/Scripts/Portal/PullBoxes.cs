@@ -161,7 +161,6 @@ public class PullBoxes : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-
         Gizmos.DrawLine(rayLine, rayLine + Vector2.right * transform.localScale.x * distance);
     }
 
