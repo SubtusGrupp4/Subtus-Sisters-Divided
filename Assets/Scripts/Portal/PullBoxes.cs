@@ -77,19 +77,22 @@ public class PullBoxes : MonoBehaviour
         }
 
         if (hit.collider != null && hit.collider.gameObject.tag == tagName && (hit.collider.GetComponent<OverEdgeFalling>() != null)
-            && !playerController.inAir && (Input.GetKeyDown(KeyCode.G) || Input.GetButtonDown(pushAndPullBox)))
+            && !playerController.inAir)
         {
+            if (hit.transform.GetComponent<DisplayIconTrigger>() != null && !isPulling)
+                hit.transform.GetComponent<DisplayIconTrigger>().SetShowIcon(true);
 
-
-            if (hit.collider.GetComponent<OverEdgeFalling>().IsGrounded())
+            if (Input.GetKeyDown(KeyCode.G) || Input.GetButtonDown(pushAndPullBox))
             {
-                box = hit.collider.gameObject;
-                StartDragging();
-            }
-            //code
-            //cant jump while pulling/pushing
-            //code
+                if (hit.collider.GetComponent<OverEdgeFalling>().IsGrounded())
+                {
+                    box = hit.collider.gameObject;
+                    StartDragging();
 
+                    if (hit.transform.GetComponent<DisplayIconTrigger>() != null)
+                        hit.transform.GetComponent<DisplayIconTrigger>().SetShowIcon(false);
+                }
+            }
         }
         else if ((Input.GetKeyUp(KeyCode.G) || Input.GetButtonUp(pushAndPullBox)) && isPulling || (isPulling && playerController.inAir))
         {
