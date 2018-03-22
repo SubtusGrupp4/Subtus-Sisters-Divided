@@ -236,7 +236,7 @@ InputManager:
     negativeButton: 
     positiveButton: joystick 1 button 1
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: g
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -249,7 +249,7 @@ InputManager:
     m_Name: Interacting_C2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: g
     positiveButton: 
     altNegativeButton: joystick 2 button 1
     altPositiveButton: 
