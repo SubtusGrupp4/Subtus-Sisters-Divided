@@ -46,8 +46,13 @@ public class ReturnRadius : MonoBehaviour {
 
     public void RespawnObject()
     {
+        if (GameManager.instance.playerTop.GetComponent<Pickup>().pickedUp == transform)
+            GameManager.instance.playerTop.GetComponent<Pickup>().DropIt();
+        else if (GameManager.instance.playerBot.GetComponent<Pickup>().pickedUp == transform)
+            GameManager.instance.playerBot.GetComponent<Pickup>().DropIt();
+
         transform.position = startPosition;
         rb.velocity = Vector2.zero;
-        GetComponent<GravityFlip>().SetGravity(transform.position.y);
+        GetComponent<GravityFlip>().SetGravity(startPosition.y);
     }
 }

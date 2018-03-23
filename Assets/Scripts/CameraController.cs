@@ -191,6 +191,7 @@ public class CameraController : MonoBehaviour
         {
             Debug.Log("Reached safepoint. Spawning players");
             clamp.SetClamp(true);
+            SetCameraState(CameraState.FollowingBoth);
             if (GameManager.instance.onePlayerDead)
                 StartCoroutine(SpawnDelay());
             GameManager.instance.onePlayerDead = false;
@@ -210,7 +211,6 @@ public class CameraController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SafepointManager.instance.SpawnPlayers();
-        SetCameraState(CameraState.FollowingBoth);
     }
 
     public void SetCameraState(CameraState State)

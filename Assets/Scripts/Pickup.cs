@@ -8,7 +8,7 @@ public class Pickup : MonoBehaviour
     [GiveTag]
     [SerializeField]
     private string[] pickUp;
-    private Transform pickedUp;
+    public Transform pickedUp;
 
     private Transform hitTransform;
 
@@ -24,8 +24,6 @@ public class Pickup : MonoBehaviour
     private bool isPickedUp = false;
     private bool pickupEnabled = true;
 
-
-
     [Header("Grabbing")]
     [SerializeField]
     private float range;
@@ -37,6 +35,12 @@ public class Pickup : MonoBehaviour
     [Space]
     [SerializeField]
     private float throwDistance = 2.5f;
+
+    private Vector2 rayDirection;
+
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string pickUpEvent;
 
     private void Start()
     {
@@ -52,7 +56,7 @@ public class Pickup : MonoBehaviour
             goingRight = false;
 
 
-        Vector2 rayDirection = Vector2.zero;
+        rayDirection = Vector2.zero;
         if (goingRight)
         {
             rayDirection = Vector2.right;
@@ -65,23 +69,23 @@ public class Pickup : MonoBehaviour
         }
 
         if (isPickedUp)
-        {
             pickedUp.position = grabPosition;
-            DisableOnPickup();
-        }
-        else if (!pickupEnabled)
-            EnableOnPickup(rayDirection);
     }
 
     public void PickItUp(GameObject obj)
     {
-            pickedUp = obj.transform;
-            isPickedUp = true;
+        pickedUp = obj.transform;
+        isPickedUp = true;
+        DisableOnPickup();
+        FMODUnity.RuntimeManager.PlayOneShot(pickUpEvent, transform.position);
     }
     public void DropIt()
     {
-        if(isPickedUp)
+        if (isPickedUp)
+        {
             isPickedUp = false;
+            EnableOnPickup();
+        }
     }
 
     public void PickUpAction()
@@ -125,15 +129,15 @@ public class Pickup : MonoBehaviour
                             if (!blocked)
                             {
                                 PickItUp(allObjs[i].gameObject);
-                                break; 
+                                break;
                             }
                         }
                     }
                 }
             }
         }
-        else if (isPickedUp)
-            isPickedUp = false;
+        else if (Input.GetKeyDown(KeyCode.E) && isPickedUp)
+            DropIt();
     }
 
     private void DisableOnPickup()
@@ -146,15 +150,18 @@ public class Pickup : MonoBehaviour
         pickupEnabled = false;
     }
 
-    private void EnableOnPickup(Vector2 direction)
+    private void EnableOnPickup()
     {
         pickedUp.GetComponent<Rigidbody2D>().isKinematic = false;
         Collider2D[] colliders = pickedUp.GetComponents<Collider2D>();
         foreach (Collider2D collider in colliders)
             collider.enabled = true;
 
-        pickedUp.GetComponent<Rigidbody2D>().velocity = (direction + rb.velocity) * throwDistance;
+        pickedUp.GetComponent<Rigidbody2D>().velocity = (rayDirection + rb.velocity) * throwDistance;
+        pickedUp.GetComponent<GravityFlip>().SetGravity(pickedUp.position.y);
 
         pickupEnabled = true;
+
+        pickedUp = null;
     }
 }

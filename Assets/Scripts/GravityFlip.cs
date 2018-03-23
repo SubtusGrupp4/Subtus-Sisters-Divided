@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class GravityFlip : MonoBehaviour {
+public class GravityFlip : MonoBehaviour
+{
 
     Rigidbody2D rb;
     [SerializeField]
@@ -11,19 +12,21 @@ public class GravityFlip : MonoBehaviour {
     [SerializeField]
     private bool flipLocalScale = true;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
         if (transform.position.y < 0f)
         {
             if (flipGravity)
             {
-                rb = GetComponent<Rigidbody2D>();
                 rb.gravityScale *= -1f;
             }
             if (flipLocalScale)
                 transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y * -1f);
         }
-	}
+    }
 
     public void SetGravity(float yPos)
     {
@@ -37,5 +40,7 @@ public class GravityFlip : MonoBehaviour {
             transform.localScale = new Vector3(transform.localScale.x, -Mathf.Abs(transform.localScale.y), transform.localScale.z);
             rb.gravityScale = -Mathf.Abs(rb.gravityScale);
         }
+
+        rb.velocity = Vector2.zero;
     }
 }

@@ -53,7 +53,7 @@ public class RevivePlacer : MonoBehaviour
 
                 if (Mathf.Abs(transform.position.y) > maxDistance)
                 {
-                    transform.position = new Vector2(transform.position.x - 0.5f, 0f);
+                    transform.position = new Vector2(transform.position.x - 1f, 0f);
                     passedThrough = false;
                 }
 
@@ -66,7 +66,7 @@ public class RevivePlacer : MonoBehaviour
                     // Criterias for what is hit
                     if (hit.transform.tag == "Portal")
                     {
-                        transform.position = new Vector2(transform.position.x - 0.5f, 0f);
+                        //transform.position = new Vector2(transform.position.x - 0.5f, 0f);
                         passedThrough = false;
                         continue;
                     }

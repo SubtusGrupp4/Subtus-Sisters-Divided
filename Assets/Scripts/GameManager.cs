@@ -101,6 +101,12 @@ public class GameManager : MonoBehaviour
             LevelManager.instance.ChangeLevel(1);
         else if (Input.GetKeyDown(KeyCode.Alpha3))
             LevelManager.instance.ChangeLevel(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            LevelManager.instance.ChangeLevel(3);
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+            LevelManager.instance.ChangeLevel(4);
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+            LevelManager.instance.ChangeLevel(5);
 
         if (isPaused)
             ReadQuit();
