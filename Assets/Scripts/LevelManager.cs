@@ -19,9 +19,6 @@ public class LevelManager : MonoBehaviour
     public Image fadeImage;
     public float fadeTime = 2f;
 
-    [SerializeField]
-    private List<AudioSource> sourceList = new List<AudioSource>();
-
     private void Awake()
     {
         CreateSingleton();
@@ -38,15 +35,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         if(fadeOnStart)
-            StartCoroutine(Fade(-1, fadeTime, true));
-
-        GameObject[] gos = FindObjectsOfType<GameObject>();
-        foreach (GameObject go in gos)
-        {
-            AudioSource[] sources = go.GetComponents<AudioSource>();
-            foreach (AudioSource source in sources)
-                sourceList.Add(source);
-        }
+            StartCoroutine(StartWait());
     }
 
     public void ResetLevel()
@@ -54,6 +43,11 @@ public class LevelManager : MonoBehaviour
         ChangeLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
+    private IEnumerator StartWait()
+    {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(Fade(-1, fadeTime, true));
+    }
 
     public IEnumerator Fade(int dir, float time, bool deActivateFade)
     {
@@ -76,8 +70,6 @@ public class LevelManager : MonoBehaviour
             fade += Time.unscaledDeltaTime / time * dir;
             fade = Mathf.Clamp01(fade);
             Time.timeScale = 1f - fade;
-            foreach (AudioSource source in sourceList)
-                source.volume = 1f - fade;
             yield return null;
 
         } while (internalTimer <= 1.0f);
