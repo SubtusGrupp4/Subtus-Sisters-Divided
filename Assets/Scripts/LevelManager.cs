@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator StartWait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0f);
         StartCoroutine(Fade(-1, fadeTime, true));
     }
 
