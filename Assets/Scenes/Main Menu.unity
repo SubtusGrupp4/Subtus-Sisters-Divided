@@ -5003,6 +5003,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: db900e22319d0864c95d1e9206793e6a, type: 3}
   topMaxVolume: 0.6
   botMaxVolume: 0.6
+  sceneName: Cutscene
 --- !u!82 &580306688
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17135,7 +17136,6 @@ MonoBehaviour:
   fadeScreen: {fileID: 377301944}
   fadeImage: {fileID: 377301945}
   fadeTime: 3
-  sourceList: []
 --- !u!1 &1455704305
 GameObject:
   m_ObjectHideFlags: 0

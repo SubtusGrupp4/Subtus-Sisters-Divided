@@ -7,7 +7,7 @@ public class ChangeLevelTrigger : MonoBehaviour
     bool topHasEntered = false;
     bool botHasEntered = false;
     [SerializeField]
-    private int levelId = 0;
+    private string sceneName;
     [SerializeField]
     private bool bothHaveToStay = true;
 
@@ -21,7 +21,7 @@ public class ChangeLevelTrigger : MonoBehaviour
                 botHasEntered = true;
 
             if (topHasEntered && botHasEntered)
-                LevelManager.instance.ChangeLevel(levelId);
+                LevelManager.instance.ChangeLevel(sceneName);
         }
     }
 

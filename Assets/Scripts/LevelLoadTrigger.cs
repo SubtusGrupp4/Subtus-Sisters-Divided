@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoadTrigger : BaseButton {
 
-    public int levelIndex;
+    public string sceneName;
 
     protected override void DoStuff()
     {
-        LevelManager.instance.ChangeLevel(levelIndex);
+        LevelManager.instance.ChangeLevel(sceneName);
     }
 }

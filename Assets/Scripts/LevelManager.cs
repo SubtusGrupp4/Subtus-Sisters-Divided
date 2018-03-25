@@ -35,18 +35,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         if(fadeOnStart)
-            StartCoroutine(StartWait());
+            StartCoroutine(Fade(-1, fadeTime, true));
     }
 
     public void ResetLevel()
     {
-        ChangeLevel(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private IEnumerator StartWait()
-    {
-        yield return new WaitForSeconds(0f);
-        StartCoroutine(Fade(-1, fadeTime, true));
+        ChangeLevel(SceneManager.GetActiveScene().name);
     }
 
     public IEnumerator Fade(int dir, float time, bool deActivateFade)
@@ -80,19 +74,19 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    IEnumerator WaitForFade(float time, int level)
+    IEnumerator WaitForFade(float time, string sceneName)
     {
         yield return new WaitForSeconds(time);
-        ChangeLevelLoadingScreen(level);
+        ChangeLevelLoadingScreen(sceneName);
     }
 
-    public void ChangeLevel(int id)
+    public void ChangeLevel(string sceneName)
     {
         StartCoroutine(Fade(1, fadeTime, false));
-        StartCoroutine(WaitForFade(fadeTime, id));
+        StartCoroutine(WaitForFade(fadeTime, sceneName));
     }
 
-    private void ChangeLevelLoadingScreen(int id)
+    private void ChangeLevelLoadingScreen(string sceneName)
     {
         GameObject[] gos = FindObjectsOfType<GameObject>();
         foreach (GameObject go in gos)
@@ -102,14 +96,14 @@ public class LevelManager : MonoBehaviour
                 emitter.Stop();
         }
 
-        StartCoroutine(LevelLoadAsynchronous(id));
+        StartCoroutine(LevelLoadAsynchronous(sceneName));
     }
 
-    IEnumerator LevelLoadAsynchronous(int id)
+    IEnumerator LevelLoadAsynchronous(string sceneName)
     {
         
         //float progress;
-        AsyncOperation operation = SceneManager.LoadSceneAsync(id);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 
         loadingScreen.SetActive(true);
 

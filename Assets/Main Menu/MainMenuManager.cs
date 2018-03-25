@@ -90,6 +90,10 @@ public class MainMenuManager : MonoBehaviour
     [Range(0f, 1f)]
     private float botMaxVolume = 0.6f;
 
+    [Header("Loading")]
+    [SerializeField]
+    private string sceneName;
+
     void Start()
     {
         StartCoroutine(KeyTimer());     // Coroutine that displays the "Press any key" prompt
@@ -189,7 +193,7 @@ public class MainMenuManager : MonoBehaviour
             if(!playedOnce)
             {
                 playedOnce = true;
-                LevelManager.instance.ChangeLevel(1);
+                LevelManager.instance.ChangeLevel(sceneName);
             }
         }
     }

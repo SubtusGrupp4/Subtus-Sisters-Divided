@@ -155,7 +155,7 @@ AnimationClip:
   m_Events:
   - time: 57
     functionName: ChangeLevel
-    data: 
+    data: Main Menu
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

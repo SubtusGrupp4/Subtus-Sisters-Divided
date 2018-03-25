@@ -14,7 +14,7 @@ public class VideoPlayerManager : MonoBehaviour
     [SerializeField]
     private bool changeScene = false;
     [SerializeField]
-    private int sceneIndex;
+    private string sceneName;
 
     [Header("Credits")]
     [SerializeField]
@@ -72,6 +72,6 @@ public class VideoPlayerManager : MonoBehaviour
             animator.SetBool("Scroll", true);
 
         if (changeScene)
-            LevelManager.instance.ChangeLevel(sceneIndex);
+            LevelManager.instance.ChangeLevel(sceneName);
     }
 }

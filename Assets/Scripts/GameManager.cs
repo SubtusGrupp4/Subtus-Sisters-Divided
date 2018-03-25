@@ -96,17 +96,15 @@ public class GameManager : MonoBehaviour
         KillKey();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            LevelManager.instance.ChangeLevel(0);
+            LevelManager.instance.ChangeLevel("Main Menu");
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            LevelManager.instance.ChangeLevel(1);
+            LevelManager.instance.ChangeLevel("Cutscene");
         else if (Input.GetKeyDown(KeyCode.Alpha3))
-            LevelManager.instance.ChangeLevel(2);
+            LevelManager.instance.ChangeLevel("Tutorial");
         if (Input.GetKeyDown(KeyCode.Alpha4))
-            LevelManager.instance.ChangeLevel(3);
+            LevelManager.instance.ChangeLevel("Level");
         else if (Input.GetKeyDown(KeyCode.Alpha5))
-            LevelManager.instance.ChangeLevel(4);
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-            LevelManager.instance.ChangeLevel(5);
+            LevelManager.instance.ChangeLevel("Credits");
 
         if (isPaused)
             ReadQuit();
